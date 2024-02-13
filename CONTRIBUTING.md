@@ -5,11 +5,11 @@ In order to contribute, you will want to fork [https://github.com/Paul-Austin-Os
 ## General Workflow Overview:
 1) Develop within your fork
 2) Once you have something you want to share or just save, do a Git Commit
-3) To move onto your GitHub remote, do Git Push
+3) To move code onto GitHub, do Git Push
 4) To share, create a Pull Request (different than Git Pull...) and specify which branch you would like to merge into (e.g. main, engine, gui, etc.)
-5) Await approval/review from the Triage team if making a PR to the main branch, otherwise from any classmate 
+5) Await approval/review from the Triage team if making a PR to the main branch, otherwise from any classmate
 
-NOTE: Push requests are not enabled, you MUST create a Pull Request so that it can be properly triaged.
+NOTE: Push requests are not enabled in the main branch, you MUST create a Pull Request so that it can be properly triaged.
 
 ## Using VS Code to Contribute
 
@@ -24,7 +24,7 @@ This suggested workflow requires that you have integrated with GitHub and are al
 6) Select a folder to place the repository on your local machine
 
 ### Developing
-Periodically, you will want to run "Git Pull" through the SOURCE CONTROL menu to get the latest changes from the class's repository.
+Periodically, you will want to run "Git Pull" through the SOURCE CONTROL menu to get the latest changes from the class's repository, or go through the GitHub website and click "Sync Fork".
 
 ### Contributing
 
@@ -35,7 +35,6 @@ Once you are done developing:
 3) Click "Commit"
 4) Select the GITHUB PULL REQUEST extension tab on the far left pane
 5) Fill out a message describing what you added
-6) 
 
 # Branches:
 * TO DO: ~~The main branch runs CI/CD (tests, lints, deployment) through GitHub Actions for each Pull Request.~~
