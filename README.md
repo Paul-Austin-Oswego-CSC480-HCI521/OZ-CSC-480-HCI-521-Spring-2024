@@ -1,4 +1,3 @@
-# OZ-CSC-480-HCI-521-Spring-2024
 ## Requirements:
 * Docker w/ Docker Compose plugin
 
@@ -19,6 +18,9 @@ If running with the "dev" profile, additional environment variables **must** be 
 * ME_CONFIG_MONGODB_ADMINUSERNAME
 * ME_CONFIG_MONGODB_ADMINPASSWORD
 
+If you are developing, it is highly recommended to include this in your .env file in order to reduce image build times:
+* OPENJ9_SCC="false"
+
 #### Docker Compose Options:
 Docker Compose has been configured to have two "modes":
 * Production mode (``` docker compose up ```)
@@ -29,3 +31,7 @@ The main difference between Production mode and Dev mode is that Mongo Express, 
 #### Development Tips:
 * If network issues occur, try ``` docker compose up ``` with the following flag at the end: ``` --force-recreate ```
 * If you would like to reset the database, do ``` docker volume ls``` and find the volume, then delete it with ``` docker volume rm <name of volume>```
+* When you have made changes to the source code, add the ``` --build ``` flag to the end of the command to rebuild
+
+RECOMMENDED COMMAND:
+docker compose --profile dev up --force-recreate --build 
