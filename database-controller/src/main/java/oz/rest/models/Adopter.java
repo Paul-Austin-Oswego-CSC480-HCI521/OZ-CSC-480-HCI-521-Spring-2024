@@ -1,14 +1,17 @@
 package oz.rest.models;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
+
 import jakarta.validation.constraints.Email;
 
-public class Adopter {
+public class Adopter extends AbstractModel {
     private String name;
 
     // TODO: implement location
     // private Location location;
 
     @Email
+    @BsonProperty("email_address")
     private String emailAddress;
 
     public String getName() {

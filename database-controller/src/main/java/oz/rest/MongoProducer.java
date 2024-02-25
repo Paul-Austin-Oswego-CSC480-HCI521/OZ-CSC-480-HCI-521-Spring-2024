@@ -2,6 +2,10 @@ package oz.rest;
 
 import java.util.Map;
 
+import org.bson.codecs.configuration.CodecProvider;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
+
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoCredential;
@@ -12,6 +16,9 @@ import com.mongodb.client.MongoDatabase;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 
 @ApplicationScoped
 public class MongoProducer {
@@ -30,12 +37,15 @@ public class MongoProducer {
         var mongoClient = MongoClients.create(mongoClientSettings);
 
         return mongoClient;
-        // return null;
     }
 
     @Produces
     public MongoDatabase createDB(MongoClient mongoClient) {
-        return mongoClient.getDatabase("PlaceholderAppName");
+        // allows us to use POJO, inserting objects directly instead of manually
+        CodecProvider pojoCodecProvider = fromProviders(PojoCodecProvider.builder().automatic(true).build());
+        CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
+
+        return mongoClient.getDatabase("PlaceholderAppName").withCodecRegistry(pojoCodecRegistry);
     }
 
     public void close(@Disposes MongoClient toClose) {

@@ -1,9 +1,13 @@
 package oz.rest.models;
 
-import jakarta.validation.constraints.NotEmpty;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 
-public class Pet {
-    @NotEmpty
+import jakarta.validation.constraints.NotEmpty;
+// import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.PositiveOrZero;
+
+public class Pet extends AbstractModel {
+    @NotEmpty(message = "Pet name must not be empty")
     private String name;
 
     // TODO: embed JPEGs
@@ -11,18 +15,20 @@ public class Pet {
 
     // private Shelter currentShelter;
 
-    // // possibly use an enum instead of string?
-    // private String petType;
+    // @Pattern(regexp = "(Dog|Cat|Other)")
+    @BsonProperty("pet_type")
+    private String petType;
 
-    // private String breed;
+    private String breed;
 
-    // private String color;
+    private String color;
 
-    // private String health;
+    private String health;
 
-    // private Integer age;
+    @PositiveOrZero(message = "Pet age must be at least 0")
+    private Integer age;
 
-    // private String sex;
+    private String sex;
 
     public String getName() {
         return name;
@@ -45,52 +51,52 @@ public class Pet {
     // this.currentShelter = currentShelter;
     // }
 
-    // public String getPetType() {
-    // return petType;
-    // }
+    public String getPetType() {
+        return petType;
+    }
 
-    // public void setPetType(String petType) {
-    // this.petType = petType;
-    // }
+    public void setPetType(String petType) {
+        this.petType = petType;
+    }
 
-    // public String getBreed() {
-    // return breed;
-    // }
+    public String getBreed() {
+        return breed;
+    }
 
-    // public void setBreed(String breed) {
-    // this.breed = breed;
-    // }
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
 
-    // public String getColor() {
-    // return color;
-    // }
+    public String getColor() {
+        return color;
+    }
 
-    // public void setColor(String color) {
-    // this.color = color;
-    // }
+    public void setColor(String color) {
+        this.color = color;
+    }
 
-    // public String getHealth() {
-    // return health;
-    // }
+    public String getHealth() {
+        return health;
+    }
 
-    // public void setHealth(String health) {
-    // this.health = health;
-    // }
+    public void setHealth(String health) {
+        this.health = health;
+    }
 
-    // public Integer get_age() {
-    // return age;
-    // }
+    public Integer getAge() {
+        return age;
+    }
 
-    // public void setAge(Integer age) {
-    // this.age = age;
-    // }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
-    // public String getSex() {
-    // return sex;
-    // }
+    public String getSex() {
+        return sex;
+    }
 
-    // public void setSex(String sex) {
-    // this.sex = sex;
-    // }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
 }
