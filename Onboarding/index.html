@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Pet Shelter Signup</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hero-image" alt="Hero Image"></div>
+        <div class="signup-container">
+            <h2>Pet Shelter Signup</h2>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+
+                <form action="signup" method="post" class="signup-form">
+                    <!-- Page 1: Shelter Information -->
+
+                        <label for="shelter-name">Shelter Name:</label>
+                        <input type="text" name="shelter-name" id="shelter-name" required><br>
+
+                        <label for="location">Location:</label>
+                        <input type="text" name="location" id="location" required><br>
+
+                    <!-- Page 2: Pet Information -->
+
+                        <label for="pet-type">Pet Type:</label>
+                        <input type="text" name="pet-type" id="pet-type" required><br>
+
+                        <label for="pet-breed">Pet Breed:</label>
+                        <input type="text" name="pet-breed" id="pet-breed" required><br>
+
+                    <!-- Page 3: Contact Information -->
+                        <label for="contact-email">Contact Email:</label>
+                        <input type="email" name="contact-email" id="contact-email" required><br>
+
+                        <label for="contact-phone">Contact Phone:</label>
+                        <input type="text" name="contact-phone" id="contact-phone" required><br>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+    </div>
+</body>
+
+</html>
