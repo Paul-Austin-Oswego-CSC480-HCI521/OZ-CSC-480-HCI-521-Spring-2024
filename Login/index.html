@@ -13,20 +13,18 @@
         <div class="hero-image" alt="Hero Image"></div>
         <div class="login-container">
             <h2>User Login</h2>
-            <form action="login" method="post" class="login-form">
-                <label for="username">Username:</label>
+            <form action="login" method="post" class="login-form" id="loginForm">
+                <label for="username">Username:</label> 
                 <input type="text" name="username" id="username" required><br>
 
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" required><br>
-
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" name="password" id="password" required><br>
-
-                <input type="submit" value="Submit">
+                
+                <input type="submit" id="submitBtn" value="Submit">
             </form>
         </div>
     </div>
+    <script src="index.js"></script>
 </body>
 
 </html>
