@@ -10,6 +10,7 @@ import com.mongodb.client.MongoCollection;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.JsonArray;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -70,6 +71,29 @@ public class ShelterService extends AbstractService<Shelter> {
             return Response.ok(shelter.toJson()).build();
         }
     }
+    
+    // @GET
+    // @Produces(MediaType.APPLICATION_JSON)
+    // public Response retrieve(@QueryParam("username") String username)
+    // {
+    //     if(username == null)
+    //     {
+    //         return Response.status(400).build();
+    //     }
+
+    //     else
+    //     {
+    //         MongoCollection<Shelter> shelters = db.getCollection("Shelters",
+    //             Shelter.class);
+
+    //         var shelter = shelters.find(eq("_id", username)).first();
+    //         if (shelter == null) {
+    //             return Response.status(400).build();
+    //         } else {
+    //             return Response.ok(shelter.toJson()).build();
+    //         }
+    //     }
+    // }
 
     // @Override
     // public Response update() {
@@ -112,4 +136,31 @@ public class ShelterService extends AbstractService<Shelter> {
 
         return Response.ok(record.toJson()).build();
     }
+
+    @GET
+    @Path("/login")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response test(@QueryParam("username") String username)
+    {
+        if(username == null)
+        {
+            return Response.status(400).build();
+        }
+
+        else
+        {
+            MongoCollection<Shelter> shelters = db.getCollection("Shelters",
+                Shelter.class);
+
+            var shelter = shelters.find(eq("_id", username)).first();
+            if (shelter == null) {
+                return Response.status(400).build();
+            } else {
+                return Response.ok(shelter.toJson()).build();
+            }
+        }
+    }
 }
+
+// http://localhost:9080/database-controller/index.html
+// http://localhost:9080/openapi/ui/
