@@ -2,11 +2,15 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css"
 
+
 export const Navbar = () => {
     return (
-    <nav>
+    <nav className="destop-nav">
         <Link to="/" className="title">Logo</Link>
-        <ul>
+        <ul className="menus">
+            <li>
+                <NavLink to="/PetDetails">Pet Details</NavLink>
+            </li>
             <li>
                 <NavLink to="/about">About</NavLink>
             </li>
