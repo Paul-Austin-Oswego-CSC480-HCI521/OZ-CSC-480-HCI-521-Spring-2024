@@ -1,0 +1,13 @@
+oz\rest\services\ShelterService.class
+oz\rest\crudTest.class
+oz\rest\Database.class
+oz\rest\models\Adopter.class
+oz\rest\services\PetService.class
+oz\rest\models\Pet.class
+oz\rest\services\AbstractService.class
+oz\rest\PropertiesResource.class
+oz\rest\RestApplication.class
+oz\rest\services\AdopterService.class
+oz\rest\MongoProducer.class
+oz\rest\models\Shelter.class
+oz\rest\models\AbstractModel.class
