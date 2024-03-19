@@ -7,12 +7,21 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.JsonArray;
+import jakarta.websocket.server.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import oz.rest.models.Shelter;
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.and;
 import oz.rest.models.Pet;
+import oz.rest.models.Shelter;
 
 import com.mongodb.client.MongoCollection;
 
@@ -56,9 +65,35 @@ public class PetService extends AbstractService<Pet> {
 
     @Override
     @DELETE
+    //Removes a pet specific shelter
     public Response remove(Pet entry) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        MongoCollection<Shelter> shelters = db.getCollection("Shelters",
+        Shelter.class);
+
+        
+         
     }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @APIResponses({
+        @APIResponse(
+            responseCode = "200",
+            description = "Successfully updated shelter."),
+        @APIResponse(
+            responseCode = "400",
+            description = "Invalid name or configuration"),
+        @APIResponse(
+            responseCode = "404",
+            description = "Shelter not found")})
+    @Operation(summary = "Update a pet in a shelter")
+    public Response updatePet(Pet pet,
+        @Parameter(
+            description = "Name of the shelter the pet is in",
+            required = true
+        )){
+            JsonArray violations = getViolations(pet);
+        }
 
 }

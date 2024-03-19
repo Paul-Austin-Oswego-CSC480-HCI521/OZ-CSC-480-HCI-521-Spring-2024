@@ -13,7 +13,7 @@ public class Pet extends AbstractModel {
     // TODO: embed JPEGs
     // private JPEG[] petPhotos;
 
-    // private Shelter currentShelter;
+    private Shelter currentShelter;
 
     // @Pattern(regexp = "(Dog|Cat|Other)")
     @BsonProperty("pet_type")
@@ -43,13 +43,13 @@ public class Pet extends AbstractModel {
     // // return petPhotos;
     // // }
 
-    // public Shelter getCurrenShelter() {
-    // return currentShelter;
-    // }
+    public Shelter getCurrenShelter() {
+        return currentShelter;
+    }
 
-    // public void setCurrentShelter(Shelter currentShelter) {
-    // this.currentShelter = currentShelter;
-    // }
+    public void setCurrentShelter(Shelter currentShelter) {
+    this.currentShelter = currentShelter;
+    }
 
     public String getPetType() {
         return petType;

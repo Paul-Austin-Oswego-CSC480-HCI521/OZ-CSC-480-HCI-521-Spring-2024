@@ -1,20 +1,26 @@
 package oz.rest.services;
 
+import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.UpdateResult;
+import com.mongodb.internal.bulk.UpdateRequest;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.JsonArray;
+import jakarta.websocket.server.PathParam;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -30,7 +36,7 @@ public class ShelterService extends AbstractService<Shelter> {
     @POST
     @APIResponses({
             @APIResponse(responseCode = "400", description = "The request was invalid"),
-            @APIResponse(responseCode = "200", description = "Successfully added new pet") })
+            @APIResponse(responseCode = "200", description = "Successfully added new shelter") })
     @Operation(summary = "Add a new shelter to the database")
     public Response add(Shelter newEntry) {
         JsonArray violations = getViolations(newEntry);
@@ -71,35 +77,62 @@ public class ShelterService extends AbstractService<Shelter> {
             return Response.ok(shelter.toJson()).build();
         }
     }
-    
-    // @GET
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public Response retrieve(@QueryParam("username") String username)
-    // {
-    //     if(username == null)
-    //     {
-    //         return Response.status(400).build();
-    //     }
 
-    //     else
-    //     {
-    //         MongoCollection<Shelter> shelters = db.getCollection("Shelters",
-    //             Shelter.class);
+    @PUT
+    @Path("/{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @APIResponses({
+        @APIResponse(
+            responseCode = "200",
+            description = "Successfully updated shelter."),
+        @APIResponse(
+            responseCode = "400",
+            description = "Invalid name or configuration"),
+        @APIResponse(
+            responseCode = "404",
+            description = "Shelter not found")})
+    @Operation (summary = "Update info about a shelter")
+    public Response update(Shelter shelter,
+        @Parameter(
+            description = "Name of shelter to update",
+            required = true
+        )
+        @PathParam("name") String name) {
+            JsonArray vio = getViolations(shelter);
 
-    //         var shelter = shelters.find(eq("_id", username)).first();
-    //         if (shelter == null) {
-    //             return Response.status(400).build();
-    //         } else {
-    //             return Response.ok(shelter.toJson()).build();
-    //         }
-    //     }
-    // }
+            if(!vio.isEmpty()){
+                return Response
+                .status(Response.Status.BAD_REQUEST)
+                .entity(vio.toString())
+                .build();
+            }
+            MongoCollection<Shelter> shelters = db.getCollection("Shelters",
+                Shelter.class);
+            //shelter = shelters.find(and(eq("_id", shelter.getName()), eq("password", shelter.getPassword()))).first(); 
 
-    // @Override
-    // public Response update() {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method 'update'");
-    // }
+            Shelter newShelter = new Shelter();
+            newShelter.setName(shelter.getName());
+            newShelter.setPassword(shelter.getPassword());
+            newShelter.setAvailablePets(shelter.getAvailablePets());
+
+            
+            UpdateResult updateResult = shelters.replaceOne(and(eq("_id", shelter.getName()), eq("password", shelter.getPassword())), newShelter);
+
+            if(updateResult.getMatchedCount() == 0){
+                return Response
+                .status(Response.Status.NOT_FOUND)
+                .entity("[\"_id was not found!\"]")
+                .build();
+            }
+
+            shelters.replaceOne(and(eq("_id", shelter.getName()), eq("password", shelter.getPassword())), newShelter); 
+
+            return Response
+                .status(Response.Status.OK)
+                .entity(newShelter.toJson())
+                .build();
+        }
 
     @Override
     @DELETE
@@ -119,6 +152,7 @@ public class ShelterService extends AbstractService<Shelter> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation (summary = "Update info about a shelter")
     @APIResponses({
             @APIResponse(responseCode = "400", description = "Login failed"),
             @APIResponse(responseCode = "200", description = "Login was successful") })
@@ -136,31 +170,4 @@ public class ShelterService extends AbstractService<Shelter> {
 
         return Response.ok(record.toJson()).build();
     }
-
-    @GET
-    @Path("/login")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response test(@QueryParam("username") String username)
-    {
-        if(username == null)
-        {
-            return Response.status(400).build();
-        }
-
-        else
-        {
-            MongoCollection<Shelter> shelters = db.getCollection("Shelters",
-                Shelter.class);
-
-            var shelter = shelters.find(eq("_id", username)).first();
-            if (shelter == null) {
-                return Response.status(400).build();
-            } else {
-                return Response.ok(shelter.toJson()).build();
-            }
-        }
-    }
 }
-
-// http://localhost:9080/database-controller/index.html
-// http://localhost:9080/openapi/ui/

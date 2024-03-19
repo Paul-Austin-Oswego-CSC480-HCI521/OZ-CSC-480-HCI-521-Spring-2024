@@ -54,4 +54,13 @@ public class Shelter extends AbstractModel {
     public void setAvailablePets(ArrayList<Pet> availablePets) {
         this.availablePets = availablePets;
     }
+
+    //TODO - Add the method to update available pets
+    public void addAvailablePets(ArrayList<Pet> newPets){
+        this.availablePets.addAll(newPets);
+    }
+
+    public void removeAvailablePets(Pet toRemove){
+        this.availablePets.remove(toRemove);
+    }
 }

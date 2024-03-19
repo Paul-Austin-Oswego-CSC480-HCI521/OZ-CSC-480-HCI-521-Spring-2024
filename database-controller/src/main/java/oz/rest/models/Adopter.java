@@ -30,4 +30,13 @@ public class Adopter extends AbstractModel {
         this.emailAddress = emailAddress;
     }
 
+    // public void setLocation(String location){
+    //     //Turn the string into geographical location
+        
+    //     //Set the new location
+    // }
+
+    // public Location getLocation(){
+    //     return location
+    // }
 }
