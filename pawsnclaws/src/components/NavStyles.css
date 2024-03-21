@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+
+/* TOP NAV BAR CSS */
+.top-nav {
+    display: flex;
+    justify-content: center; 
+    background-color: #fff; 
+    padding: 0.5em;
+    border-bottom: 1px solid #e7e7e7; 
+  }
+  
+  .top-nav a {
+    text-decoration: none;
+    color: #B0B0B0; 
+    font-weight: bold;
+    padding: 0.5em 1em; 
+    border-radius: 15px; 
+    transition: background-color 0.3s;
+  }
+  
+  .top-nav a:hover {
+    color: #000;
+    background-color: #e0e0e0; 
+    transition: color 0.3s; 
+    transition: background-color 0.3s; 
+  }
+
+/* LOWER NAV BAR CSS */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em;
+    background-color: #f8f8f8; 
+  }
+
+  /* BROWSE PETS CSS */
+  .dropbtn {
+    text-decoration: none;
+    color: #000; 
+    font-weight: bold;
+    padding: .5em 1em; 
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border: none;
+    background-color: #f8f8f8; 
+    font-family: 'Josefin Sans', cursive;
+    font-size:medium;
+    
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; 
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+  
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+.dropdown .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn, .dropdown .dropbtn:focus {
+  background-color: #F4A5A5;
+}
+
+/* LOGO */
+
+  .logo img {
+    width: 65px; 
+  }
+  
+/* NAVBAR LINKS CSS */
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #000; 
+    font-weight: bold;
+    padding: .5em 1em; 
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+    font-family: 'Josefin Sans', cursive;
+  }
+
+  .nav-links a:hover {
+    background-color: #F4A5A5; 
+  }
+  
