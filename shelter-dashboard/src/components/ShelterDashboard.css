@@ -1,0 +1,88 @@
+.shelter-dashboard {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shelter-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .shelter-details {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .shelter-details label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .shelter-details input,
+  .shelter-details textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .pet-carousel {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+
+.shelter-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+  align-self: center;
+}
+
+.shelter-details {
+  flex: 1;
+}
+
+.shelter-details h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.shelter-details p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.shelter-details button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shelter-details button:hover {
+  background-color: #0056b3;
+}
+
+.shelter-image {
+    text-align: center;
+  }

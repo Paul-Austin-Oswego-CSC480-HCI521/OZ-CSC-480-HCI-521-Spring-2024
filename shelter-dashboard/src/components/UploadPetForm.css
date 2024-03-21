@@ -1,0 +1,43 @@
+.upload-pet-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.upload-pet-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.upload-pet-form input[type="text"],
+.upload-pet-form input[type="file"],
+.upload-pet-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.upload-pet-form textarea {
+  resize: vertical;
+}
+
+.upload-pet-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.upload-pet-form button:hover {
+  background-color: #0056b3;
+}
