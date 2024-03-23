@@ -1,3 +1,10 @@
-# OZ-CSC-480-HCI-521-Spring-2024
+# QA Engine Testing
 
-For tests, anything related to the backend will be copied here along side with a folder named "Tests" where all the coding for testing will go in. If anything is detected, Requirements will be notified and the tests files will be shown for them to remerge their side of the code after it has been edited. 
+The engine tests will be saved under the tests folder which will be placed next to the source code in a tests folder. This can be copied into the main code of the application and be tested next to the main source itself of the database-controller.
+The tests mostly consist in manipulating Database data as well as the insertion of data. It will also check for the proper requests sent from the Front End to the back end to store and display information.
+
+For Front End Testing please refer to the QA Documentation where the web application is tested utilizing State Based Testing, where it consists of:
+
+- A UML Diagram of the flow of the events
+- Transition Matrix
+- Coverage Criterion
