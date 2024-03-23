@@ -1,21 +1,22 @@
 package oz.rest.services;
 
-import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+// import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.InsertOneResult;
 import com.mongodb.client.result.UpdateResult;
-import com.mongodb.internal.bulk.UpdateRequest;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.JsonArray;
-import jakarta.websocket.server.PathParam;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -28,15 +29,23 @@ import oz.rest.models.Shelter;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.and;
 
+// TODO: i think we need to make email address unique between adopter and shelters,
+// so there can be a generic "login" page and then just navigate to whichever
+// functionality they need, likely involves a generic "user" class and having adopteruser
+// and shelteruser inherit from superclass; remember to deal with permissions in JWT etc
 @Tag(name = "Shelters")
 @Path("/shelter")
 @ApplicationScoped
 public class ShelterService extends AbstractService<Shelter> {
+    // TODO: getting the collection is done for every service,
+    // so it would be nice to have that moved into the AbstractService
+    // as a field somehow, and initialized in each service
     @Override
     @POST
     @APIResponses({
             @APIResponse(responseCode = "400", description = "The request was invalid"),
-            @APIResponse(responseCode = "200", description = "Successfully added new shelter") })
+            @APIResponse(responseCode = "200", description = "Successfully added new shelter")
+    })
     @Operation(summary = "Add a new shelter to the database")
     public Response add(Shelter newEntry) {
         JsonArray violations = getViolations(newEntry);
@@ -48,13 +57,13 @@ public class ShelterService extends AbstractService<Shelter> {
                     .build();
         }
 
-        // TODO: getting the collection is done for every service,
-        // so it would be nice to have that moved into the AbstractService
-        // as a field somehow, and initialized in each service
-        MongoCollection<Shelter> shelters = db.getCollection("Shelters",
+        MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
+        InsertOneResult res = sheltersCollection.insertOne(newEntry);
 
-        shelters.insertOne(newEntry);
+        ObjectId oid = res.getInsertedId().asObjectId().getValue();
+
+        newEntry.setId(oid);
 
         return Response
                 .status(Response.Status.OK)
@@ -62,15 +71,27 @@ public class ShelterService extends AbstractService<Shelter> {
                 .build();
     }
 
-    // TODO: this does not work! needs to be redone using query parameters
-    // instead of JSON in the request body
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{id}")
     @Override
     @GET
-    public Response retrieve(Shelter entry) {
-        MongoCollection<Shelter> shelters = db.getCollection("Shelters",
+    public Response retrieve(@PathParam(value = "id") String id) {
+        ObjectId oid;
+
+        try {
+            oid = new ObjectId(id);
+        } catch (Exception e) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity("[\"Invalid object id!\"]")
+                    .build();
+        }
+
+        MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
-        var shelter = shelters.find(eq("_id", entry.getName())).first();
+        var shelter = sheltersCollection.find(eq("_id", oid)).first();
+
         if (shelter == null) {
             return Response.status(400).build();
         } else {
@@ -79,70 +100,79 @@ public class ShelterService extends AbstractService<Shelter> {
     }
 
     @PUT
-    @Path("/{name}")
+    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @APIResponses({
-        @APIResponse(
-            responseCode = "200",
-            description = "Successfully updated shelter."),
-        @APIResponse(
-            responseCode = "400",
-            description = "Invalid name or configuration"),
-        @APIResponse(
-            responseCode = "404",
-            description = "Shelter not found")})
-    @Operation (summary = "Update info about a shelter")
-    public Response update(Shelter shelter,
-        @Parameter(
-            description = "Name of shelter to update",
-            required = true
-        )
-        @PathParam("name") String name) {
-            JsonArray vio = getViolations(shelter);
+    @APIResponses({ @APIResponse(responseCode = "200", description = "Successfully updated shelter."),
+            @APIResponse(responseCode = "400", description = "Invalid name orconfiguration"),
+            @APIResponse(responseCode = "404", description = "Shelter not found")
+    })
+    @Operation(summary = "Update info about a shelter")
+    public Response update(Shelter updatedEntry,
+            @Parameter(description = "Object id of the crew member to update.", required = true) @PathParam("id") String id) {
+        ObjectId oid;
 
-            if(!vio.isEmpty()){
-                return Response
-                .status(Response.Status.BAD_REQUEST)
-                .entity(vio.toString())
-                .build();
-            }
-            MongoCollection<Shelter> shelters = db.getCollection("Shelters",
-                Shelter.class);
-            //shelter = shelters.find(and(eq("_id", shelter.getName()), eq("password", shelter.getPassword()))).first(); 
-
-            Shelter newShelter = new Shelter();
-            newShelter.setName(shelter.getName());
-            newShelter.setPassword(shelter.getPassword());
-            newShelter.setAvailablePets(shelter.getAvailablePets());
-
-            
-            UpdateResult updateResult = shelters.replaceOne(and(eq("_id", shelter.getName()), eq("password", shelter.getPassword())), newShelter);
-
-            if(updateResult.getMatchedCount() == 0){
-                return Response
-                .status(Response.Status.NOT_FOUND)
-                .entity("[\"_id was not found!\"]")
-                .build();
-            }
-
-            shelters.replaceOne(and(eq("_id", shelter.getName()), eq("password", shelter.getPassword())), newShelter); 
-
+        try {
+            oid = new ObjectId(id);
+        } catch (Exception e) {
             return Response
-                .status(Response.Status.OK)
-                .entity(newShelter.toJson())
-                .build();
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity("[\"Invalid object id!\"]")
+                    .build();
         }
 
-    @Override
-    @DELETE
-    public Response remove(Shelter entry) {
+        JsonArray vio = getViolations(updatedEntry);
+
+        if (!vio.isEmpty()) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity(vio.toString())
+                    .build();
+        }
         MongoCollection<Shelter> shelters = db.getCollection("Shelters",
                 Shelter.class);
 
-        var removedShelter = shelters.findOneAndDelete(eq("_id", entry.getName()));
+        UpdateResult updateResult = shelters
+                .replaceOne(eq("_id", oid), updatedEntry);
+
+        if (updateResult.getMatchedCount() == 0) {
+            return Response
+                    .status(Response.Status.NOT_FOUND)
+                    .entity("[\"_id was not found!\"]")
+                    .build();
+        }
+
+        updatedEntry.setId(oid);
+
+        return Response
+                .status(Response.Status.OK)
+                .entity(updatedEntry.toJson())
+                .build();
+    }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{/id}")
+    @DELETE
+    @Override
+    public Response remove(@PathParam(value = "id") String id) {
+        ObjectId oid;
+
+        try {
+            oid = new ObjectId(id);
+        } catch (Exception e) {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity("[\"Invalid object id!\"]")
+                    .build();
+        }
+
+        MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
+                Shelter.class);
+
+        var removedShelter = sheltersCollection.findOneAndDelete(eq("_id", oid));
+
         if (removedShelter == null) {
-            return Response.status(400).build();
+            return Response.status(404).entity("Shelter ID not found...").build();
         } else {
             return Response.ok(removedShelter.toJson()).build();
         }
@@ -152,20 +182,21 @@ public class ShelterService extends AbstractService<Shelter> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation (summary = "Update info about a shelter")
+    @Operation(summary = "Login as a shelter user")
     @APIResponses({
-            @APIResponse(responseCode = "400", description = "Login failed"),
-            @APIResponse(responseCode = "200", description = "Login was successful") })
-    public Response login(Shelter entry) {
-        MongoCollection<Shelter> shelters = db.getCollection("Shelters",
+            @APIResponse(responseCode = "200", description = "Login was successful"),
+            @APIResponse(responseCode = "401", description = "Login failed")
+    })
+    public Response login(@QueryParam(value = "name") String name, @QueryParam(value = "password") String password) {
+        MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
         // TODO: encrypt passwords at rest, java.security MessageDigest looks promising
 
-        var record = shelters.find(and(eq("_id", entry.getName()), eq("password", entry.getPassword()))).first();
+        var record = sheltersCollection.find(and(eq("name", name), eq("password", password))).first();
 
         if (record == null) {
-            return Response.status(400).build();
+            return Response.status(401).build();
         }
 
         return Response.ok(record.toJson()).build();

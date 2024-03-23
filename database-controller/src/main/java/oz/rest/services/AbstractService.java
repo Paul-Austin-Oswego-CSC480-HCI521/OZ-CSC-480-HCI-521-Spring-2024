@@ -45,9 +45,11 @@ public abstract class AbstractService<T> {
 
     abstract public Response add(T newEntry);
 
-    abstract public Response retrieve(T entry);
+    // abstract public Response retrieve(T entry);
+
+    abstract public Response retrieve(String id);
 
     // abstract public Response update();
 
-    abstract public Response remove(T entry);
+    abstract public Response remove(String id);
 }

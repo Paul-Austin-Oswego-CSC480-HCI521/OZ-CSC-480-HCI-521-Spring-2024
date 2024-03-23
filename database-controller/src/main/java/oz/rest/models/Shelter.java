@@ -1,30 +1,28 @@
 package oz.rest.models;
 
-import java.util.ArrayList;
+import java.util.Set;
 
-import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.codecs.pojo.annotations.BsonProperty;
-
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 // import org.bson.codecs.pojo.annotations.BsonProperty;
 import jakarta.validation.constraints.NotEmpty;
-// import jakarta.validation.constraints.Pattern;
 
 public class Shelter extends AbstractModel {
     // SRS says name as primary key, but should probably be email
     @NotEmpty(message = "Shelter name must not be empty")
-    @BsonId()
+    // can't figure out how to make unique fields....
+    // @Column(name = "name", unique = true)
     private String name;
 
     @NotEmpty(message = "Password must not be left empty")
+    @Schema(writeOnly = true)
     private String password;
 
     // TODO: Implement location
     // private String location;
 
-    // TODO: this should almost definitely store strings instead of entire
-    // pet records
-    @BsonProperty("available_pets")
-    private ArrayList<Pet> availablePets;
+    @BsonProperty("available_pet_ids")
+    private Set<String> availablePetIds;
 
     // TODO: idk how to insert the regex that is in the SRS
     // @Pattern(regexp = "")
@@ -47,20 +45,30 @@ public class Shelter extends AbstractModel {
         this.password = password;
     }
 
-    public ArrayList<Pet> getAvailablePets() {
-        return availablePets;
+    public Set<String> getAvailablePetIds() {
+        return availablePetIds;
     }
 
-    public void setAvailablePets(ArrayList<Pet> availablePets) {
-        this.availablePets = availablePets;
+    public void setAvailablePetIds(Set<String> availablePetIds) {
+        this.availablePetIds = availablePetIds;
     }
 
-    //TODO - Add the method to update available pets
-    public void addAvailablePets(ArrayList<Pet> newPets){
-        this.availablePets.addAll(newPets);
+    public void addAvailablePetId(String newPetIds) {
+        this.availablePetIds.add(newPetIds);
     }
 
-    public void removeAvailablePets(Pet toRemove){
-        this.availablePets.remove(toRemove);
+    public void removeAvailablePetId(String toRemove) {
+        this.availablePetIds.remove(toRemove);
     }
+
+    // likely not needed, i think we always add pets one at a time rather than in
+    // bulk
+
+    // public void addAvailablePetIds(ArrayList<String> newPetIds) {
+    // this.availablePetIds.addAll(newPetIds);
+    // }
+
+    // public void removeAvailablePetIds(ArrayList<String> toRemove) {
+    // this.availablePetIds.removeAll(toRemove);
+    // }
 }

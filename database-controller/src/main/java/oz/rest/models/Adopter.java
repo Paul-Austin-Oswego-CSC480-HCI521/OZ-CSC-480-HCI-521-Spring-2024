@@ -31,12 +31,12 @@ public class Adopter extends AbstractModel {
     }
 
     // public void setLocation(String location){
-    //     //Turn the string into geographical location
-        
-    //     //Set the new location
+    // //Turn the string into geographical location
+
+    // //Set the new location
     // }
 
     // public Location getLocation(){
-    //     return location
+    // return location
     // }
 }

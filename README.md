@@ -21,12 +21,23 @@ If running with the "dev" profile, additional environment variables **must** be 
 If you are developing, it is highly recommended to include this in your .env file in order to reduce image build times:
 * OPENJ9_SCC="false"
 
+As an example of how your .env file might look:
+MONGO_INITDB_ROOT_USERNAME="user"
+MONGO_INITDB_ROOT_PASSWORD="password"
+ME_CONFIG_MONGODB_ADMINUSERNAME="user"
+ME_CONFIG_MONGODB_ADMINPASSWORD="password"
+OPENJ9_SCC="false"
+
 #### Docker Compose Options:
 Docker Compose has been configured to have two "modes":
 * Production mode (``` docker compose up ```)
 * Dev mode (``` docker compose --profile dev up ```)
 
 The main difference between Production mode and Dev mode is that Mongo Express, a web interface for administering MongoDB accessed via http://localhost:8081, is only provided in Dev mode.
+
+The credentials for logging into Mongo Express in dev mode are:
+Username: admin
+Password: pass
 
 #### Development Tips:
 * If network issues occur, try ``` docker compose up ``` with the following flag at the end: ``` --force-recreate ```
