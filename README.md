@@ -22,11 +22,13 @@ If you are developing, it is highly recommended to include this in your .env fil
 * OPENJ9_SCC="false"
 
 As an example of how your .env file might look:
+```
 MONGO_INITDB_ROOT_USERNAME="user"
 MONGO_INITDB_ROOT_PASSWORD="password"
 ME_CONFIG_MONGODB_ADMINUSERNAME="user"
 ME_CONFIG_MONGODB_ADMINPASSWORD="password"
 OPENJ9_SCC="false"
+```
 
 #### Docker Compose Options:
 Docker Compose has been configured to have two "modes":
@@ -39,10 +41,10 @@ The credentials for logging into Mongo Express in dev mode are:
 Username: admin
 Password: pass
 
+# RECOMMENDED DOCKER COMMAND FOR DEVELOPING:
+docker compose --profile dev up --force-recreate --build
+
 #### Development Tips:
 * If network issues occur, try ``` docker compose up ``` with the following flag at the end: ``` --force-recreate ```
 * If you would like to reset the database, do ``` docker volume ls``` and find the volume, then delete it with ``` docker volume rm <name of volume>```
 * When you have made changes to the source code, add the ``` --build ``` flag to the end of the command to rebuild
-
-RECOMMENDED COMMAND:
-docker compose --profile dev up --force-recreate --build 
