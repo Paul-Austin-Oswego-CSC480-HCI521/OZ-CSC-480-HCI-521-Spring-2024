@@ -1,5 +1,7 @@
 package oz.rest.services;
 
+import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
@@ -9,8 +11,10 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.JsonArray;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.Produces;
-// import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -21,8 +25,14 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import oz.rest.models.Shelter;
+
+import static com.mongodb.client.model.Filters.gte;
+import static com.mongodb.client.model.Filters.lte;
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 // import static com.mongodb.client.model.Filters.and;
+
+import java.util.ArrayList;
 
 import oz.rest.models.Pet;
 
@@ -91,6 +101,83 @@ public class PetService extends AbstractService<Pet> {
         }
 
         return Response.ok(pet.toJson()).build();
+    }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public Response find(@QueryParam(value = "name") String name,
+            @QueryParam(value = "current_shelter_id") String currentShelterId,
+            @QueryParam(value = "pet_type") String petType,
+            @QueryParam(value = "breed") String breed,
+            @QueryParam(value = "color") String color,
+            @QueryParam(value = "health") String health,
+            @QueryParam(value = "min_age") Integer minAge,
+            @QueryParam(value = "max_age") Integer maxAge,
+            @QueryParam(value = "sex") String sex,
+            @QueryParam(value = "limit") Integer limit) {
+        MongoCollection<Pet> petsCollection = db.getCollection("Pets", Pet.class);
+
+        ArrayList<Bson> filters = new ArrayList<Bson>();
+
+        if (name != null) {
+            filters.add(eq("name", name));
+        }
+
+        if (currentShelterId != null) {
+            filters.add(eq("currentShelterId", currentShelterId));
+        }
+
+        if (petType != null) {
+            filters.add(eq("petType", petType));
+        }
+
+        if (breed != null) {
+            filters.add(eq("breed", breed));
+        }
+
+        if (color != null) {
+            filters.add(eq("color", color));
+        }
+
+        if (health != null) {
+            filters.add(eq("health", health));
+        }
+
+        if (minAge != null) {
+            filters.add(gte("age", minAge));
+        }
+
+        if (maxAge != null) {
+            filters.add(lte("age", maxAge));
+        }
+
+        if (sex != null) {
+            filters.add(eq("sex", sex));
+        }
+
+        if (limit == null) {
+            limit = 1;
+        }
+
+        var foundPets = (filters.size() != 0) ? petsCollection.find(and(filters)).limit(limit)
+                : petsCollection.find().limit(limit);
+
+        // horrible but necessary way to format the documents for frontend to use
+        // below...
+        Jsonb jsonb = JsonbBuilder.create();
+
+        var pets = new ArrayList<Document>();
+        for (Pet foundPet : foundPets) {
+            var doc = Document.parse(jsonb.toJson(foundPet));
+            doc.replace("id", foundPet.getId().toString());
+            pets.add(doc);
+        }
+
+        if (pets.size() == 0) {
+            return Response.status(404).build();
+        }
+
+        return Response.ok(jsonb.toJson(pets)).build();
     }
 
     @PUT

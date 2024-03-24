@@ -1,5 +1,7 @@
 package oz.rest.services;
 
+import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
@@ -13,7 +15,10 @@ import com.mongodb.client.result.UpdateResult;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.JsonArray;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 // import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -27,6 +32,9 @@ import jakarta.ws.rs.core.Response;
 import oz.rest.models.Adopter;
 
 import static com.mongodb.client.model.Filters.eq;
+
+import java.util.ArrayList;
+
 import static com.mongodb.client.model.Filters.and;
 
 @Tag(name = "Adopters")
@@ -90,6 +98,45 @@ public class AdopterService extends AbstractService<Adopter> {
         } else {
             return Response.ok(adopter.toJson()).build();
         }
+    }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public Response find(@QueryParam(value = "name") String name,
+            @QueryParam(value = "email_address") String emailAddress, @QueryParam(value = "limit") Integer limit) {
+        MongoCollection<Adopter> adoptersCollection = db.getCollection("Adopters",
+                Adopter.class);
+
+        ArrayList<Bson> filters = new ArrayList<Bson>();
+        if (name != null) {
+            filters.add(eq("name", name));
+        }
+
+        if (emailAddress != null) {
+            filters.add(eq("email_address", emailAddress));
+        }
+
+        if (limit == null) {
+            limit = 1;
+        }
+
+        var foundAdopters = (filters.size() != 0) ? adoptersCollection.find(and(filters)).limit(limit)
+                : adoptersCollection.find().limit(limit);
+
+        Jsonb jsonb = JsonbBuilder.create();
+
+        var adopters = new ArrayList<Document>();
+        for (Adopter foundAdopter : foundAdopters) {
+            var doc = Document.parse(jsonb.toJson(foundAdopter));
+            doc.replace("id", foundAdopter.getId().toString());
+            adopters.add(doc);
+        }
+
+        if (adopters.size() == 0) {
+            return Response.status(404).build();
+        }
+
+        return Response.ok(jsonb.toJson(adopters)).build();
     }
 
     @PUT

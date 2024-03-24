@@ -1,5 +1,7 @@
 package oz.rest.services;
 
+import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
@@ -14,6 +16,8 @@ import com.mongodb.client.result.UpdateResult;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.JsonArray;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
@@ -27,6 +31,9 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import oz.rest.models.Shelter;
 import static com.mongodb.client.model.Filters.eq;
+
+import java.util.ArrayList;
+
 import static com.mongodb.client.model.Filters.and;
 
 // TODO: i think we need to make email address unique between adopter and shelters,
@@ -75,7 +82,7 @@ public class ShelterService extends AbstractService<Shelter> {
     @Path("/{id}")
     @Override
     @GET
-    public Response retrieve(@PathParam(value = "id") String id) {
+    public Response retrieve(@PathParam("id") String id) {
         ObjectId oid;
 
         try {
@@ -97,6 +104,42 @@ public class ShelterService extends AbstractService<Shelter> {
         } else {
             return Response.ok(shelter.toJson()).build();
         }
+    }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public Response find(@QueryParam(value = "name") String name, @QueryParam(value = "limit") Integer limit) {
+        MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
+                Shelter.class);
+
+        ArrayList<Bson> filters = new ArrayList<Bson>();
+        if (name != null) {
+            filters.add(eq("name", name));
+        }
+
+        // TODO: DECIDE HOW TO MANY ENTRIES A USER SHOULD BE ABLE TO RETRIEVE (set cap
+        // on how large limit can be)
+        if (limit == null) {
+            limit = 1;
+        }
+
+        var foundShelters = (filters.size() != 0) ? sheltersCollection.find(and(filters)).limit(limit)
+                : sheltersCollection.find().limit(limit);
+
+        Jsonb jsonb = JsonbBuilder.create();
+
+        var shelters = new ArrayList<Document>();
+        for (Shelter foundShelter : foundShelters) {
+            var doc = Document.parse(jsonb.toJson(foundShelter));
+            doc.replace("id", foundShelter.getId().toString());
+            shelters.add(doc);
+        }
+
+        if (shelters.size() == 0) {
+            return Response.status(404).build();
+        }
+
+        return Response.ok(jsonb.toJson(shelters)).build();
     }
 
     @PUT
@@ -151,7 +194,7 @@ public class ShelterService extends AbstractService<Shelter> {
     }
 
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{/id}")
+    @Path("/{id}")
     @DELETE
     @Override
     public Response remove(@PathParam(value = "id") String id) {

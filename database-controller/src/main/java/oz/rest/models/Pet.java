@@ -1,18 +1,43 @@
 package oz.rest.models;
 
+import org.bson.codecs.pojo.annotations.BsonCreator;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
+import jakarta.json.bind.annotation.JsonbCreator;
+import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.validation.constraints.NotEmpty;
 // import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.PositiveOrZero;
 
 public class Pet extends AbstractModel {
+    // @JsonbCreator
+    // @BsonCreator
+    // public Pet(@JsonbProperty("name") String name,
+    // @JsonbProperty("current_shelter_id") String currentShelterId,
+    // @JsonbProperty("petType") String petType,
+    // @JsonbProperty("breed") String breed,
+    // @JsonbProperty("color") String color,
+    // @JsonbProperty("health") String health,
+    // @JsonbProperty("age") Integer age,
+    // @JsonbProperty("sex") String sex) {
+    // this.name = name;
+    // this.age = age;
+    // this.currentShelterId = currentShelterId;
+    // this.petType = petType;
+    // this.breed = breed;
+    // this.color = color;
+    // this.health = health;
+    // this.age = age;
+    // this.sex = sex;
+    // }
+
     @NotEmpty(message = "Pet name must not be empty")
     private String name;
 
     // TODO: embed JPEGs
     // private JPEG[] petPhotos;
 
+    @BsonProperty("current_shelter_id")
     private String currentShelterId;
 
     // @Pattern(regexp = "(Dog|Cat|Other)")

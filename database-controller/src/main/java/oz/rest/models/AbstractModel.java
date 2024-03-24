@@ -34,4 +34,5 @@ public class AbstractModel {
         doc.replace("id", id.toString());
         return doc.toJson();
     }
+
 }

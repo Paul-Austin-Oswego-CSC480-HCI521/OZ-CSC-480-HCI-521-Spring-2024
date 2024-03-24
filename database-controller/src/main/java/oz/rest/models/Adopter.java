@@ -2,9 +2,19 @@ package oz.rest.models;
 
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
+import jakarta.json.bind.annotation.JsonbAnnotation;
+import jakarta.json.bind.annotation.JsonbCreator;
+import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.validation.constraints.Email;
 
 public class Adopter extends AbstractModel {
+    // @JsonbCreator
+    // public Adopter(@JsonbProperty("name") String name,
+    // @JsonbProperty("emailAddress") String emailAddress) {
+    // this.name = name;
+    // this.emailAddress = emailAddress;
+    // }
+
     private String name;
 
     // TODO: implement location
