@@ -21,7 +21,7 @@ const Step4 = ({ prevStep, formData }) => {
 
     try {
       // Send the form data as JSON to the endpoint
-      const response = await fetch('{endpoint}', {
+      const response = await fetch('localhost:8090/shelter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

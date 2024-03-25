@@ -48,6 +48,7 @@ body {
     width: 100%;
     background-color: #ddd;
     border-radius: 8px;
+    margin: 5%;
   }
   
   .progress {
