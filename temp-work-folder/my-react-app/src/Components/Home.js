@@ -24,6 +24,14 @@ import "../App.css";
 
 
 const Home = () => {
+  const scrollToHowItWorks = (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    const howItWorksSection = document.getElementById('how_it_works'); // Get the section element
+
+    if (howItWorksSection) {
+      howItWorksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
   const workInfoData = [
     {
       image: PickMeals,
@@ -119,9 +127,9 @@ const Home = () => {
           <p className="primary-text">
             
           </p>
-          <a href="#how_it_works"><button className="secondary-button" id="how_it_works_button">
+          <button className="secondary-button" id="how_it_works_button" onClick={scrollToHowItWorks}>
             How It Works <FiArrowRight />{" "}
-          </button></a>
+          </button>
         
           <div className="button-container">
       {/* Navigate to Multifilters page when this button is clicked */}
@@ -189,7 +197,7 @@ const Home = () => {
         ))}
       </div>
     </div>
-    <div className="adoption-faq-container">
+    <div className="adoption-faq-container" id="FAQ">
       <h1>Adoption FAQ</h1>
       <div className="faq-item">
         <h2>Question 1?</h2>
