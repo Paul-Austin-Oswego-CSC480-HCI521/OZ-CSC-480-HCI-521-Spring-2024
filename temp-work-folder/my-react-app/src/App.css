@@ -24,6 +24,9 @@ a {
   text-decoration: none;
 }
 
+.dropdown-content {
+  z-index: 1;
+}
 
 
 

@@ -13,6 +13,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import logo from "../Assets/logo.png";
 
 
 const Navbar = () => {
@@ -34,14 +35,20 @@ const Navbar = () => {
     {
       text: "About",
       icon: <InfoIcon />,
+      link: "about",
     },
     {
       text: "How It Works",
       icon: <CommentRoundedIcon />,
+      link: "#how_it_works",
     },
     {
       text: "Contact",
       icon: <PhoneRoundedIcon />,
+    },
+    {
+      text: "FAQs",
+      icon: <ShoppingCartRoundedIcon />,
     },
     {
       text: "Donate",
@@ -52,7 +59,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav-logo-container">
-        <img src={""} alt="" />
+        <img src={logo} alt="logo" />
       </div>
       <div className="navbar-links-container">
         {menuOptions.map((item, index) => (
@@ -68,7 +75,7 @@ const Navbar = () => {
             {openPetsDropdown &&
               <div className="dropdown-content">
                 {item.options.map((option, index) => (
-                  <a href="#" key={index}>
+                  <a href={item.link ? item.link : "#"} key={index}>
                     {option.text}
                   </a>
                 ))}
@@ -99,7 +106,7 @@ const Navbar = () => {
           <List>
             {menuOptions.map((item) => (
               <ListItem key={item.text} disablePadding>
-                <ListItemButton>
+                <ListItemButton >
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
