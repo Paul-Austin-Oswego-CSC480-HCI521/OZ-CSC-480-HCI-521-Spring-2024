@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hero-image" alt="Hero Image"></div>
+        <div class="login-container">
+            <h2>User Login</h2>
+            <form action="login" method="post" class="login-form" id="loginForm">
+                <label for="name">Username:</label> 
+                <input type="text" name="name" id="name" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required><br>
+                
+                <input type="submit" id="submitBtn" value="Submit">
+            </form>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

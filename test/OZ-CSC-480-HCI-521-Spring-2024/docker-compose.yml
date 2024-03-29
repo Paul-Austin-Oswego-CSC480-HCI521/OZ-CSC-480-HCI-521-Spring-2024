@@ -1,0 +1,61 @@
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    # once setup, dont expose ports; simply connect inter-service
+
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      # mongo runs on port 27017 by default
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      # MONGO_INITDB_DATABASE: Oswego
+
+  mongo-express:
+    image: mongo-express
+    profiles:
+      - dev
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${ME_CONFIG_MONGODB_ADMINUSERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${ME_CONFIG_MONGODB_ADMINPASSWORD}
+      # REMEMBER mongo username/password is also passed below; additionally,
+      # service name 'mongo' is used as host instead of localhost
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/
+  # adding microservices is as simple as this!
+  # just add build path to root of microservice containing a Dockerfile
+  open-liberty:
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    build:
+      args:
+        - OPENJ9_SCC=${OPENJ9_SCC:-true}
+      context: ./database-controller
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - mongo
+    volumes:
+      - build_volume:/target
+    ports:
+      # alternative to allow user to specify port, but give a default:
+      # ${MICROSERVICE_PORT:-9080}:${MICROSERVICE_PORT:-9080}
+      - 9080:9080
+
+volumes:
+  # allows this volume to be created automatically if it does not already exist
+  mongodb_data:
+  build_volume:
+
+    # secrets:
+    #   mongodb_secrets:
+    #     file: mongodb_secrets.txt
