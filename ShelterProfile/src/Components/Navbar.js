@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
+import { BsCart2 } from "react-icons/bs";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -13,42 +13,83 @@ import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
+import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openPetsDropdown, setOpenPetsDropdown] = useState(false); // State for the "Browse Pets" dropdown
   const menuOptions = [
     {
-      text: "Home",
+      text: "Browse Pets ▼",
       icon: <HomeIcon />,
+      // Nested options for the "Browse Pets" dropdown
+      options: [
+        { text: "Dogs", icon: <HomeIcon /> },
+        { text: "Cats", icon: <HomeIcon /> },
+        { text: "Birds", icon: <HomeIcon /> },
+        { text: "Small Critters", icon: <HomeIcon /> },
+
+      ],
     },
     {
-      text: "Browse Pets",
+      text: "About",
       icon: <InfoIcon />,
     },
     {
-      text: "How it Works",
+      text: "How It Works",
       icon: <CommentRoundedIcon />,
     },
     {
       text: "Contact",
       icon: <PhoneRoundedIcon />,
     },
+    {
+      text: "Donate",
+      icon: <ShoppingCartRoundedIcon />,
+    },
   ];
+
   return (
     <nav>
+      <div className="nav-logo-container">
+        <img src={""} alt="" />
+      </div>
       <div className="navbar-links-container">
-        <a href="">Home</a>
-        <a href="">Browse Pets</a>
-        <a href="">How it Works</a>
-        <a href="">Contact</a>
-        <a href="">
-        </a>
-        <button className="primary-button">Adopt Now</button>
+        {menuOptions.map((item, index) => (
+          <div key={index}>
+            {item.options ? (
+            <div className="dropdown">
+            {/* Render the button to toggle the dropdown */}
+            <button className="browse-pets-button" onClick={() => setOpenPetsDropdown(!openPetsDropdown)}>
+              {item.text}
+            </button>
+            
+            {/* Render nested options if the dropdown is open */}
+            {openPetsDropdown &&
+              <div className="dropdown-content">
+                {item.options.map((option, index) => (
+                  <a href="#" key={index}>
+                    {option.text}
+                  </a>
+                ))}
+              </div>
+            }
+          </div>
+            ) : (
+              // If no nested options, render a regular link
+              <a href="#">{item.text}</a>
+            )}
+          </div>
+        ))}
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
       </div>
-      <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
+      <Drawer
+        open={openMenu}
+        onClose={() => setOpenMenu(false)}
+        anchor="right"
+      >
         <Box
           sx={{ width: 250 }}
           role="presentation"

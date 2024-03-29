@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Reem Kufi", sans-serif !important;
+  font-family: 'Quicksand';
+  font-style: normal;
 }
 img {
   max-width: 100%;
@@ -20,59 +22,73 @@ body {
 }
 
 body {
-  background-color: #fcfffc;
+  background-color: #d2f6dc;
 }
 
-
-.home-banner-container {
+.pet-detail-inner-container {
   position: relative;
   display: flex;
   padding-top: 3rem;
 }
-.home-bannerImage-container {
-  position: absolute;
-  top: -100px;
-  right: -170px;
-  z-index: -2;
-  max-width: 700px;
-}
+
 .home-pet-img1 {
-  padding: 0.2rem 0.2rem;
+  padding: 0.8rem 0.2rem;
   border-radius: 0.5rem;
+  border-color: #fdfdfc;
   align-items: center;
   position: absolute;
-  top: 200px;
-  left: 430px;
+  top: 220px;
+  left: 610px;
   max-width: 200px;
 }
 
 .home-pet-img2 {
-  padding: 0.2rem 0.2rem;
+  padding: 0.8rem 0.2rem;
   border-radius: 0.5rem;
+  border-color: #fdfdfc;
   align-items: center;
   position: absolute;
-  top: 200px;
-  left: 680px;
+  top: 220px;
+  left: 860px;
   max-width: 200px;
 }
 
 .home-pet-img3 {
-  padding: 0.2rem 0.2rem;
+  padding: 0.8rem 0.2rem;
   border-radius: 0.5rem;
+  border-color: #fdfdfc;
   align-items: center;
   position: absolute;
-  top: 200px;
-  left: 930px;
+  top: 220px;
+  left: 1110px;
   max-width: 200px;
 }
 
-.home-image-section {
-  max-width: 100px;
-  flex: 1;
+.profile-img {
+  padding: 0.2rem 0.2rem;
+  border-radius: 0.5rem;
+  border-color: #fdfdfc;
+  align-items: center;
   position: absolute;
-  top: 90px;
-  left:-10px;
+  top: 200px;
+  left: 210px;
+  max-width: 200px;
 }
+
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  background-color:  rgb(255, 255, 255);;
+  border-radius: 40px;
+  top: 150px;
+  left: 100px;
+  height: 700px;
+}
+
+
 
 .home-link-section {
   flex: 1;
@@ -116,11 +132,11 @@ body {
 .primary-text {
   font-size: clamp(1rem, 3vw, 1.5rem);
   max-width: 500px;
-  color: #6a6a6a;
+  color: #000000;
   margin: 1.5rem 0rem;
   position: absolute;
-  top: 250px;
-  left: 10px;
+  top: 390px;
+  left: 235px;
 }
 
 .primary-text2 {
@@ -129,105 +145,267 @@ body {
   color: #6a6a6a;
   margin: 1.5rem 0rem;
   position: absolute;
-  top: 390px;
-  left: 10px;
+  font-size: smaller;
+  top: 430px;
+  left: 270px;
 }
 
 .primary-text3 {
   font-size: clamp(1rem, 3vw, 1.5rem);
-  max-width: 500px;
-  color: #6a6a6a;
+  max-width: 350px;
+  color: #020202;
   margin: 1.5rem 0rem;
   position: absolute;
-  top: 530px;
-  left: 10px;
+  font-size: smaller;
+  top: 480px;
+  left: 150px;
 }
 
 .primary-text4 {
-  padding: 0rem 2rem;
-  background-color: #fdfdfc;
-  outline: none;
-  border: none;
-  border-radius: 5rem;
   font-size: 1.1rem;
-  cursor: pointer;
+ 
   font-weight: 600;
-  color: #6a6a6a;
+  color: black;
   transition: 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 110px;
-  left: 400px;
+  top: 150px;
+  left: 610px;
 }
+
 
 .secondary-button {
   padding: 1rem 2.5rem;
-  background-color: #fe9e0d;
+  background-color: #82ba92;
   outline: none;
   border: none;
   border-radius: 5rem;
   font-size: 1.1rem;
   cursor: pointer;
   font-weight: 600;
-  color: white;
+  color: black;
   transition: 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   top: 650px;
+  left: 220px;
 }
 .secondary-button2 {
   padding: 1rem 2.5rem;
-  background-color: #fe9e0d;
+  background-color: #82ba92;
   outline: none;
   border: none;
   border-radius: 5rem;
   font-size: 1.1rem;
   cursor: pointer;
   font-weight: 600;
-  color: white;
+  color: black;
   transition: 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   top: 730px;
+  left: 220px;
 }
 .secondary-button svg {
   margin-left: 0.75rem;
   font-size: 1.5rem;
 }
 .secondary-button:hover {
-  background-color: #e48f0f;
+  background-color: #5b8366;
 }
 
 .secondary-button2:hover {
-  background-color: #e48f0f;
+  background-color: #5b8366;
 }
 
-.primary-text4:hover {
-  background-color: #efedec;
-}
+
 
 .home-pet-img1:hover {
-  background-color: #e48f0f;
+  background-color: #82ba92;
 }
 
 .home-pet-img2:hover {
-  background-color: #e48f0f;
+  background-color: #82ba92;
 }
 
 .home-pet-img3:hover {
-  background-color: #e48f0f;
+  background-color: #82ba92;
+}
+
+.home-image-section:hover {
+  background-color: #82ba92;
 }
 
 .primary-subheading {
   font-weight: 700;
   color: #fe9e0d;
   font-size: 1.15rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color:  rgb(255, 255, 255);;
+  border-radius: 50px;
+  min-height: 90px;
+
+}
+.navbar-menu-container {
+  display: none;
+}
+.navbar-links-container a {
+  margin-right: 3rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.navbar-menu-container {
+  display: none;
+}
+
+.navbar-links-container {
+  display: flex; /* Display links horizontally */
+  align-items: center;
+}
+
+.navbar-links-container a {
+  margin-right: 2rem; /* Adjust spacing between links */
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.navbar-buttons-container {
+  display: flex; /* Display buttons horizontally */
+  align-items: center;
+}
+/* Position the dropdown container */
+.dropdown {
+  position: relative;
+}
+
+/* Style the button */
+.browse-pets-button {
+  margin-right: 2rem; /* Adjust spacing between links and buttons */
+  background-color: rgba(224, 253, 227, 0.6); /* Background color */
+  color: black; /* Text color */
+  padding: 0.5rem 1rem; /* Padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Border radius */
+  cursor: pointer; /* Cursor style */
+  font-size: 1.1rem; /* Font size */
+  font-weight: 600;
+  /* Your existing button styles */
+}
+
+/* Position the dropdown content */
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 5px); /* Position below the button */
+  left: 0;
+  background-color: #fff; /* Background color of the dropdown */
+  border: 1px solid #ccc; /* Example border */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Change color of links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+
+.primary-button {
+  padding: .45rem 4.5rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+  border: none;
+  border-radius: .25rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  margin-right: 10px; /* Add some space between buttons */
+}
+
+.adopt-button {
+  background-color: rgba(255, 255, 255, 0.4);; /* Change background color here */
+}
+.moved-button {
+  margin-left: 300px; /* Move this button 10px to the right */
+}
+
+.navbar-cart-icon {
+  font-size: 1.15rem;
+}
+
+.navbar-menu-container svg {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .navbar-links-container a {
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+  
+  .primary-button {
+    font-size: 1rem;
+  }
+  .home-bannerImage-container {
+    max-width: 600px;
+  }
+}
+@media (max-width: 800px) {
+  .nav-logo-container {
+    max-width: 140px;
+  }
+  .navbar-links-container {
+    display: none;
+  }
+  .navbar-menu-container {
+    display: flex;
+  }
+}
+
+.footer-wrapper {
+  flex-direction: column;
+}
+.footer-section-two {
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.footer-section-columns {
+  margin: 1rem 0rem;
+}
+.App {
+  max-width: 95vw;
+}
+
+@media (max-width: 600px) {
+.home-bannerImage-container,
+.about-background-image-container {
+  display: none;
+}
 }
 
 
