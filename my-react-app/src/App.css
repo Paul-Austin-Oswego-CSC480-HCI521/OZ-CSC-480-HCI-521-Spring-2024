@@ -1,0 +1,710 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand';
+  font-style: normal;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.App {
+  min-height: 100vh;
+  width: 85vw;
+  max-width: 1900px;
+  margin: 0rem auto;
+}
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+}
+
+.dropdown-content {
+  z-index: 1;
+}
+
+
+
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color:  rgba(255, 255, 255, 0.6);;
+  border-radius: 50px;
+  min-height: 90px;
+}
+.navbar-menu-container {
+  display: none;
+}
+.navbar-links-container a {
+  margin-right: 3rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50px;
+  min-height: 90px;
+}
+
+.navbar-menu-container {
+  display: none;
+}
+
+.navbar-links-container {
+  display: flex; /* Display links horizontally */
+  align-items: center;
+}
+
+.navbar-links-container a {
+  margin-right: 2rem; /* Adjust spacing between links */
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.navbar-buttons-container {
+  display: flex; /* Display buttons horizontally */
+  align-items: center;
+}
+/* Position the dropdown container */
+.dropdown {
+  position: relative;
+}
+
+
+/* Style the button */
+.browse-pets-button {
+  margin-right: 2rem; /* Adjust spacing between links and buttons */
+  background-color: rgba(255, 255, 255, 0.6); /* Background color */
+  color: black; /* Text color */
+  padding: 0.5rem 1rem; /* Padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Border radius */
+  cursor: pointer; /* Cursor style */
+  font-size: 1.1rem; /* Font size */
+  font-weight: 600;
+  /* Your existing button styles */
+}
+
+/* Position the dropdown content */
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 5px); /* Position below the button */
+  left: 0;
+  background-color: #fff; /* Background color of the dropdown */
+  border: 1px solid #ccc; /* Example border */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Change color of links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+
+.primary-button {
+  padding: .45rem 4.5rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+  border: none;
+  border-radius: .25rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  margin-right: 10px; /* Add some space between buttons */
+}
+
+.primary-buttons {
+  padding: .45rem 4.5rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  outline: none;
+  border: none;
+  border-radius: .25rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  margin-right: 10px; /* Add some space between buttons */
+}
+
+.adopts-button {
+  background-color: rgba(255, 255, 255, 0.6);; /* Change background color here */
+}
+
+.adopt-button {
+  background-color: rgba(255, 255, 255, 0.4);; /* Change background color here */
+}
+.moved-button {
+  margin-left: 300px; /* Move this button 10px to the right */
+}
+
+
+.navbar-cart-icon {
+  font-size: 1.15rem;
+}
+
+.navbar-menu-container svg {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.primary-button:hover {
+  background-color: rgb(234, 234, 234);
+}
+
+.home-banner-container {
+  position: relative;
+  display: flex;
+  padding-top: 3rem;
+}
+.home-bannerImage-container {
+  position: absolute;
+  top: 45px;
+  left: 120px;
+  z-index: -2;
+  max-width: 700px;
+}
+.home-image-section {
+  position: absolute;
+  top: 150px;
+  left: 170px;
+  z-index: -2;
+  max-width: 700px;
+}
+.home-text-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end; /* Align items to the far right */
+}
+.primary-heading {
+  font-size: 3.5rem;
+  color: black;
+  /* line-height: 5rem; */
+  max-width: 600px;
+  position: relative; /* Set position to relative */
+  left: -100px; /* Adjust left positioning as needed to move the heading more to the left */
+}
+.primary-headingg h1 {
+  font-size: 4.5rem;
+  color: black;
+  max-width: 600px;
+  position: relative;
+  left: 0 !important; /* Increase specificity and use !important */
+}
+.primary-headings  {
+  font-size: 3rem;
+  color: black;
+  max-width: 600px;
+  position: relative; /* Set position to relative */
+  top: -100px; /* Adjust top positioning as needed to move the heading up */
+}
+.primary-text {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-family: 'Quicksand', sans-serif !important;
+  max-width: 500px;
+  color: Black;
+  margin: 1.5rem 0rem;
+}
+
+
+.button-container {
+  display: flex;
+  margin-top: 7.5%;
+}
+
+.button-container a {
+  margin-right: 10px; /* Adjust as needed */
+  padding: 2.5rem 3.5rem; /* Adjust padding */
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: black;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column; /* Change flex-direction to column */
+  align-items: center;
+  text-decoration: none; /* Remove underline from links */
+}
+
+.button-container a svg {
+  font-size: 2.25rem; /* Adjust the font size of the icons */
+}
+
+.button-container a span {
+  margin-top: 10px; /* Adjust this value as needed */
+}
+
+/* Hover styling for links */
+.button-container a:hover {
+  background-color: #fe9e0d; /* Change background color on hover */
+  color: white; /* Change text color on hover */
+}
+
+
+.secondary-button {
+  padding: 1rem 2.5rem;
+  background-color: #fe9e0d;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: black;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Set position to relative */
+  left: -450px; /* Move the button 5px to the left (adjust as needed) */
+}
+.secondary-button svg {
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+.secondary-button:hover {
+  background-color: #e48f0f;
+}
+
+.about-section-container {
+  margin-top: 20rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.secondary-buttonn {
+  padding: 1rem ;
+  width: 10rem;
+  background-color: #fe9e0d;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: black;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Set position to relative */
+  margin-top: 2rem;
+}
+.about-background-image-container {
+  position: absolute;
+  left: -150px;
+  z-index: -2;
+}
+.about-section-image-container {
+  flex: 0.9;
+  margin-right: 1rem;
+}
+.about-section-text-container {
+  flex: 1;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.primary-subheading {
+  font-weight: 700;
+  color: #fe9e0d;
+  font-size: 1.15rem;
+  margin-top: 100px; /* Adjust this value to move the element down */
+}
+.about-buttons-container {
+  margin-top: 2rem;
+  display: flex;
+}
+.watch-video-button {
+  margin-left: 2rem;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: #484848;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.watch-video-button svg {
+  font-size: 3rem;
+  margin-right: 1rem;
+}
+.contact-page-wrapper h1 {
+  max-width: 900px !important;
+}
+.contact-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 6rem 0rem;
+}
+.contact-form-container {
+
+  max-width: 700px;
+  width: 100%;
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 5rem;
+}
+.contact-form-container input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+}
+.footer-wrapper {
+  margin: 6rem 0rem;
+  display: flex;
+  margin-top: 10rem;
+}
+.footer-logo-container {
+  max-width: 110px;
+}
+.footer-icons {
+  margin-top: 2.5rem;
+}
+.footer-icons svg {
+  font-size: 1.5rem;
+  margin-right: 1.25rem;
+  color: #585858;
+}
+/* .footer-section-one {
+  border: 2px solid blue;
+} */
+.footer-section-two {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+.footer-section-columns {
+  display: flex;
+  flex-direction: column;
+  min-width: 190px;
+}
+.footer-section-columns span {
+  margin: 0.25rem 0rem;
+  font-weight: 600;
+  color: #4c4c4c;
+  cursor: pointer;
+}
+.adoption-faq-container {
+  top: 400px;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.adoption-faq-container h1{
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.faq-item {
+  margin-bottom: 30px;
+  padding: 3.5rem 5.5rem; /* Adjust padding */
+  background-color: #6D37FE;
+  border-radius: 30px;
+  
+}
+
+.faq-item h2 {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.faq-item p {
+  font-size: 1.1rem;
+  color: white;
+  line-height: 1.6;
+}
+
+/* Style for alternating FAQ items */
+.faq-item:nth-child() {
+  background-color: #f9f9f9;
+}
+
+/* Add more specific styles as needed */
+.work-section-wrapper {
+  margin-top: 15rem;
+}
+.work-section-top p {
+  text-align: center;
+  max-width: 600px !important;
+}
+.work-section-top h1 {
+  max-width: 700px !important;
+}
+.work-section-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.work-section-info-container {
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  flex-wrap: wrap; /* Ensure items wrap to the next line if they exceed the container width */
+}
+
+
+.work-section-info {
+  width: 20rem; /* Adjust the width as needed */
+  height: 27rem;
+  align-items: center;
+  margin-right: 20px; /* Adjust the spacing between items */
+  margin-top: 40px;
+  margin-left: 90px; /* Move it to the right */
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: #505050;
+  display: inline-block; /* Display inline-block to make them appear horizontally */
+  vertical-align: top; /* Align them to the top */
+}
+.work-section-infos {
+  width: 275px;
+  min-height: 300px;
+  top:50%;
+  background-color: #112570;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 1rem;
+  color: white;
+  margin: 1rem 2rem;
+  margin-top: -40px;
+}
+.work-section-info .info-boxes-img-container {
+  width: 100%; /* Ensure container spans the entire width */
+  height: 50%; /* Adjust as needed */
+  overflow: hidden; /* Hide overflow content */
+}
+
+.work-section-info .info-boxes-img-container img {
+  width: 100%; /* Ensure images fill their containers horizontally */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any default spacing or alignment */
+  margin: 0 auto; /* Center the images horizontally within their containers */
+}
+/* Keep your existing styles */
+.work-section-info h2 {
+  margin: 1rem 0rem;
+  text-align: center; /* Center the text horizontally */
+}
+.work-section-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.work-section-info p {
+  flex: 1;
+  display: flex;
+  text-align: center; 
+  align-items: center;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .navbar-links-container a {
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+  
+  .primary-button {
+    font-size: 1rem;
+  }
+  .home-bannerImage-container {
+    max-width: 600px;
+  }
+}
+@media (max-width: 800px) {
+  .nav-logo-container {
+    max-width: 140px;
+  }
+  .navbar-links-container {
+    display: none;
+  }
+  .navbar-menu-container {
+    display: flex;
+  }
+
+  
+  .home-bannerImage-container {
+    max-width: 450px;
+  }
+  .home-banner-container,
+  .about-section-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-section-container {
+    flex-direction: column;
+  }
+  .home-image-section,
+  .about-section-image-container {
+    width: 100%;
+    max-width: 400px;
+  }
+  .primary-heading {
+    text-align: center;
+    max-width: 90%;
+  }
+  .primary-text {
+    text-align: center;
+    max-width: 80%;
+  }
+  .home-text-section,
+  .about-section-text-container {
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+  }
+  .secondary-button {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+  }
+  .about-section-container {
+    margin-top: 5rem !important;
+  }
+  .about-buttons-container {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .primary-subheading {
+    text-align: center;
+  }
+  .watch-video-button {
+    margin-left: 0rem !important;
+    margin-top: 1rem;
+    font-size: 1rem !important;
+  }
+  .watch-video-button svg {
+    margin-right: 0.5rem !important;
+  }
+  .about-section-image-container {
+    margin-right: 0rem !important;
+  }
+  .work-section-wrapper {
+    margin-top: 5rem !important;
+  }
+  .work-section-bottom {
+    margin-top: 1rem !important;
+  }
+  .contact-form-container {
+    padding: 0.5rem !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem !important;
+  }
+  .contact-form-container input {
+    font-size: 1rem !important;
+    max-width: 100%;
+    padding: 0.5rem 1rem !important;
+    margin-bottom: 0.8rem !important;
+    text-align: center;
+  }
+  .footer-wrapper {
+    flex-direction: column;
+  }
+  .footer-section-two {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+  .footer-section-columns {
+    margin: 1rem 0rem;
+  }
+  .App {
+    max-width: 95vw;
+  }
+}
+@media (max-width: 600px) {
+  .home-bannerImage-container,
+  .about-background-image-container {
+    display: none;
+  }
+  .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+}
+
