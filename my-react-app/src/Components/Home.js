@@ -119,9 +119,9 @@ const Home = () => {
           <p className="primary-text">
             
           </p>
-          <button className="secondary-button">
+          <a href="#how_it_works"><button className="secondary-button" id="how_it_works_button">
             How It Works <FiArrowRight />{" "}
-          </button>
+          </button></a>
         
           <div className="button-container">
       {/* Navigate to Multifilters page when this button is clicked */}
@@ -174,7 +174,7 @@ const Home = () => {
   </Slider>
   <div className="work-section-wrapper">
       <div className="work-section-top">
-        <h1 className="primary-headings">How It Works</h1>
+        <h1 className="primary-headings" id="how_it_works">How It Works</h1>
   
       </div>
       <div className="work-section-bottom">
