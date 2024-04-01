@@ -1,8 +1,12 @@
-FROM openjdk:17-jdk-slim as build
+FROM openjdk:17-alpine as build
+
+RUN apk add --no-cache maven
 
 COPY pom.xml /
 COPY mvnw /
 COPY .mvn/ .mvn/
+
+RUN mvn wrapper:wrapper
 
 COPY src/ /src/
 # RUN ./mvnw package
