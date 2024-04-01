@@ -1,6 +1,6 @@
 import Select from 'react-select';
 import React, { useEffect, useState } from "react";
-import { items } from "./items";
+import { items } from "./items"
 import "./MultiFilters.css";
 import { Link } from 'react-router-dom';
 
@@ -108,7 +108,7 @@ export default function MultiFilters() {
 
   return (
     <div>
-      <div className="buttons-container">
+      <div className="buttons-container" id='filters-button'>
         {filters.map((category, idx) => (
           <button
             onClick={() => handleFilterButtonClick(category)}
@@ -198,10 +198,11 @@ export default function MultiFilters() {
 
       <div className="buttons-container">
         {filteredItems.map((item, idx) => (
+          <Link to="/PetDetails" style={{textDecoration:"none"}}>
           <div key={`items-${idx}`} className="button">
-            <Link to="/PetDetails">
+            
               <p className="name">{item.name}</p>
-            </Link>
+          
             <img className="image" src= {item.image} alt ="Null"/>
             <p className="category">{item.category}</p>
             <p className="sex">{item.sex}</p>
@@ -209,6 +210,7 @@ export default function MultiFilters() {
             <p className="breed">{item.breed}</p>
             <p className="age">{item.age}</p>
           </div>
+          </Link>
         ))}
       </div>
 

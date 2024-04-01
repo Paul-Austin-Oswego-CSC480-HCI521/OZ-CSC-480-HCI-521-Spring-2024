@@ -7,6 +7,7 @@ import Hex from "../images/hex.jpg";
 import Luke from "../images/luke.jpg";
 import './PetDetails.css';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 export const PetDetails = () => {
@@ -86,9 +87,11 @@ const [selected, setSelected] = useState(null)
             </div>
 
             <div>
+        <Link to="/ExplorePets">
         <button className="back-arrow">
         <FiArrowLeft />{" "}
           </button>
+        </Link>
         </div>
             </div>
             

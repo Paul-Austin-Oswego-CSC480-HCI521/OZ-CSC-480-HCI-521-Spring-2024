@@ -6,7 +6,7 @@ export const items = [
     color: "White",
     breed: "Chihuaha",
     age: "8",
-    image: "./images/Screenshot2024.png"
+    image: "../images/Screenshot2024.png"
   },
   {
     name: "Hex",
@@ -15,7 +15,7 @@ export const items = [
     color: "Brown",
     breed: "Pitbull",
     age: "6",
-    image: "./images/Screenshot2025.png"
+    image: "../images/Screenshot2025.png"
   },
   {
     name: "Lucy",
@@ -24,7 +24,7 @@ export const items = [
     color: "Brown",
     breed: "Terrier",
     age: "7",
-    image: "./images/Screenshot2012.webp"
+    image: "../images/Screenshot2012.webp"
   },
   {
     name: "Danii",
@@ -33,7 +33,7 @@ export const items = [
     color: "Brown",
     breed: "Short Hair",
     age: "3",
-    image: "./images/Screenshot2023.png"
+    image: "../images/Screenshot2023.png"
   },
   {
     name: "Mabel",
@@ -42,7 +42,7 @@ export const items = [
     color: "Black",
     breed: "Short Hair",
     age: "10",
-    image: "./images/Screenshot2021.png"
+    image: "../images/Screenshot2021.png"
   },
   {
     name: "Chloe",
@@ -51,7 +51,7 @@ export const items = [
     color: "Grey",
     breed: "Chinchilla",
     age: "5",
-    image: "./images/Screenshot2022.jpg"
+    image: "../images/Screenshot2022.jpg"
   },
   {
     name: "Luke",
@@ -60,7 +60,7 @@ export const items = [
     color: "Brown",
     breed: "Spaniel",
     age: "5",
-    image: "./images/Screenshot2028.jpg"
+    image: "../images/Screenshot2028.jpg"
   },
   {
     name: "Batman",
@@ -69,7 +69,7 @@ export const items = [
     color: "Black",
     breed: "Short Hair",
     age: "3",
-    image: "./images/Screenshot2027.png"
+    image: "../images/Screenshot2027.png"
   },
   {
     name: "Pogo",
@@ -78,7 +78,7 @@ export const items = [
     color: ["Black","White"],
     breed: "Long Hair",
     age: "8",
-    image: "./images/Screenshot2020.png"
+    image: "../images/Screenshot2020.png"
   },
   {
     name: "Rascal",
@@ -87,7 +87,7 @@ export const items = [
     color: ["White", "Grey"],
     breed: "Long Hair",
     age: "11",
-    image: "./images/Screenshot2029.jpg"
+    image: "../images/Screenshot2029.jpg"
   },
   {
     name: "Jaxon",
@@ -96,7 +96,7 @@ export const items = [
     color: "Black",
     breed: "German Shepard",
     age: "5",
-    image: "../images/Jax.jpeg"
+    image: "../images/Screenshot2016.jpg"
   },
 
   {
@@ -106,7 +106,7 @@ export const items = [
     color: ["Black", "White"],
     breed: "Tuxedo",
     age: "11",
-    image: "./images/Screenshot2017.webp"
+    image: "../images/Screenshot2017.webp"
   },
 
   {
@@ -116,7 +116,7 @@ export const items = [
     color: "Brown",
     breed: "Pitbull",
     age: "1",
-    image: "./images/Screenshot2015.jpg"
+    image: "../images/Screenshot2015.jpg"
   },
   {
     name: "Finn",
@@ -125,7 +125,7 @@ export const items = [
     color: ["Orange"],
     breed: "Short Hair",
     age: "2",
-    image: "./images/Screenshot2014.jpg"
+    image: "../images/Screenshot2014.jpg"
   },
 
   {
@@ -135,7 +135,7 @@ export const items = [
     color: "Ginger",
     breed: "Retriever",
     age: "5",
-    image: "./images/Screenshot2013.JPG"
+    image: "../images/Screenshot2013.JPG"
   },
 
   {
@@ -145,7 +145,7 @@ export const items = [
     color: ["Black", "White"],
     breed: "Tuxedo",
     age: "1",
-    image: "./images/Screenshot2012.jpg"
+    image: "../images/Screenshot2012.jpg"
   },
 
   {
@@ -155,7 +155,7 @@ export const items = [
     color: ["Brown"],
     breed: "Ferret",
     age: "3",
-    image: "./images/Screenshot2011.jpg"
+    image: "../images/Screenshot2011.jpg"
   },
 
   {
@@ -165,7 +165,7 @@ export const items = [
     color: ["Brown"],
     breed: "idk",
     age: "3",
-    image: "./images/Screenshot2030.JPG"
+    image: "../images/Screenshot2030.JPG"
   },
   {
     name: "Bailey",
@@ -174,7 +174,7 @@ export const items = [
     color: ["Brown"],
     breed: "idk",
     age: "3",
-    image: "./images/Screenshot2040.JPG"
+    image: "../images/Screenshot2040.JPG"
   },
   {
     name: "June",
@@ -183,7 +183,7 @@ export const items = [
     color: ["Brown"],
     breed: "idk",
     age: "3",
-    image: "./images/Screenshot2031.JPG"
+    image: "../images/Screenshot2031.JPG"
   },
 
 ];

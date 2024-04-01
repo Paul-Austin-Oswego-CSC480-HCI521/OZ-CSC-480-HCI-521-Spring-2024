@@ -15,6 +15,7 @@ import Danii from "../../Assets/Screenshot2013.JPG";
 import Slider from "react-slick";
 import { FaDog } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa";
+import { FaPaw } from "react-icons/fa6";
 import { PiBirdFill } from "react-icons/pi";
 import { GiRabbit } from "react-icons/gi";
 import { FiArrowRight } from "react-icons/fi";
@@ -143,7 +144,8 @@ export const Home = () => {
                         </Link>
                         <Link to="/ExplorePets" className="fifth-buton">
                             <GiRabbit />
-                            Small Critters
+                              Small <br></br>
+                            Critters
                         </Link>
                     </div>
                 </div>

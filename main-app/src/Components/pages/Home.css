@@ -89,6 +89,7 @@
   
   .button-container a {
     margin-right: 10px; /* Adjust as needed */
+    margin-left: 0;
     padding: 2.5rem 3.5rem; /* Adjust padding */
     background-color: white;
     outline: none;
@@ -198,7 +199,7 @@
   .contact-page-wrapper {
     display: flex;
     flex-direction: column;
-    margin: 6rem 0rem;
+    margin: 6rem 6rem;
   }
   .contact-form-container {
   

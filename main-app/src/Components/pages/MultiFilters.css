@@ -118,3 +118,8 @@ p {
   color: #515151;
   font-size: 10px;
 }
+
+#filters-button .active{
+    background-color: #0d0d0d;
+    color: #fff;
+}
