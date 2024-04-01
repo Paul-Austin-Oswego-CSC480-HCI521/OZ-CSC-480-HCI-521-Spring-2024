@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.primary-button {
+    padding: .45rem 4.5rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    outline: none;
+    border: none;
+    border-radius: .25rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    margin-right: 10px; /* Add some space between buttons */
+  }
+  
+  .primary-buttons {
+    padding: .45rem 4.5rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    outline: none;
+    border: none;
+    border-radius: .25rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    margin-right: 10px; /* Add some space between buttons */
+  }
+
+  .home-banner-container {
+    position: relative;
+    display: flex;
+    padding-top: 3rem;
+  }
+  .home-bannerImage-container {
+    position: absolute;
+    top: 45px;
+    left: 120px;
+    z-index: -2;
+    max-width: 700px;
+  }
+  .home-image-section {
+    position: absolute;
+    top: 150px;
+    left: 170px;
+    z-index: -2;
+    max-width: 700px;
+  }
+  .home-text-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; /* Align items to the far right */
+  }
+
+  .primary-heading {
+    font-size: 3.5rem;
+    color: black;
+    /* line-height: 5rem; */
+    max-width: 600px;
+    position: relative; /* Set position to relative */
+    left: -100px; /* Adjust left positioning as needed to move the heading more to the left */
+  }
+  .primary-headingg h1 {
+    font-size: 4.5rem;
+    color: black;
+    max-width: 600px;
+    position: relative;
+    left: 0 !important; /* Increase specificity and use !important */
+  }
+  .primary-headings  {
+    font-size: 3rem;
+    color: black;
+    max-width: 600px;
+    position: relative; /* Set position to relative */
+    top: -100px; /* Adjust top positioning as needed to move the heading up */
+  }
+  .primary-text {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-family: 'Quicksand', sans-serif !important;
+    max-width: 500px;
+    color: Black;
+    margin: 1.5rem 0rem;
+  }
+  .button-container {
+    display: flex;
+    margin-top: 7.5%;
+  }
+  
+  .button-container a {
+    margin-right: 10px; /* Adjust as needed */
+    padding: 2.5rem 3.5rem; /* Adjust padding */
+    background-color: white;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: black;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column; /* Change flex-direction to column */
+    align-items: center;
+    text-decoration: none; /* Remove underline from links */
+  }
+  .button-container a svg {
+    font-size: 2.25rem; /* Adjust the font size of the icons */
+  }
+  
+  .button-container a span {
+    margin-top: 10px; /* Adjust this value as needed */
+  }
+  
+  /* Hover styling for links */
+  .button-container a:hover {
+    background-color: #fe9e0d; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+  }
+  .secondary-button {
+    padding: 1rem 2.5rem;
+    background-color: #fe9e0d;
+    outline: none;
+    border: none;
+    border-radius: 5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: black;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Set position to relative */
+    left: -450px; /* Move the button 5px to the left (adjust as needed) */
+  }
+  .secondary-button svg {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+  }
+  .secondary-button:hover {
+    background-color: #e48f0f;
+  }
+
+  .about-section-container {
+    margin-top: 20rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .secondary-buttonn {
+    padding: 1rem ;
+    width: 10rem;
+    background-color: #fe9e0d;
+    outline: none;
+    border: none;
+    border-radius: 5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: black;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Set position to relative */
+    margin-top: 2rem;
+  }
+  .about-background-image-container {
+    position: absolute;
+    left: -150px;
+    z-index: -2;
+  }
+  .about-section-image-container {
+    flex: 0.9;
+    margin-right: 1rem;
+  }
+  .about-section-text-container {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .primary-subheading {
+    font-weight: 700;
+    color: #fe9e0d;
+    font-size: 1.15rem;
+    margin-top: 100px; /* Adjust this value to move the element down */
+  }
+  .about-buttons-container {
+    margin-top: 2rem;
+    display: flex;
+  }
+  .contact-page-wrapper h1 {
+    max-width: 900px !important;
+  }
+  .contact-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 6rem 0rem;
+  }
+  .contact-form-container {
+  
+    max-width: 700px;
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 5rem;
+  }
+  .contact-form-container input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .adoption-faq-container {
+    top: 400px;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .adoption-faq-container h1{
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+  
+  .faq-item {
+    margin-bottom: 30px;
+    padding: 3.5rem 5.5rem; /* Adjust padding */
+    background-color: #6D37FE;
+    border-radius: 30px;
+    
+  }
+  
+  .faq-item h2 {
+    font-size: 1.5rem;
+    color: black;
+  }
+  
+  .faq-item p {
+    font-size: 1.1rem;
+    color: white;
+    line-height: 1.6;
+  }
+  
+  /* Style for alternating FAQ items */
+  .faq-item:nth-child() {
+    background-color: #f9f9f9;
+  }
+  .work-section-wrapper {
+    margin-top: 15rem;
+  }
+  .work-section-top p {
+    text-align: center;
+    max-width: 600px !important;
+  }
+  .work-section-top h1 {
+    max-width: 700px !important;
+  }
+  .work-section-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .work-section-info-container {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    flex-wrap: wrap; /* Ensure items wrap to the next line if they exceed the container width */
+  }
+  .work-section-info {
+    width: 20rem; /* Adjust the width as needed */
+    height: 27rem;
+    align-items: center;
+    margin-right: 20px; /* Adjust the spacing between items */
+    margin-top: 40px;
+    margin-left: 90px; /* Move it to the right */
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    color: #505050;
+    display: inline-block; /* Display inline-block to make them appear horizontally */
+    vertical-align: top; /* Align them to the top */
+  }
+  .work-section-infos {
+    width: 275px;
+    min-height: 300px;
+    top:50%;
+    background-color: #112570;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 1rem;
+    color: white;
+    margin: 1rem 2rem;
+    margin-top: -40px;
+  }
+  
+  .work-section-info .info-boxes-img-container {
+    width: 100%; /* Ensure container spans the entire width */
+    height: 50%; /* Adjust as needed */
+    overflow: hidden; /* Hide overflow content */
+  }
+  
+  .work-section-info .info-boxes-img-container img {
+    width: 100%; /* Ensure images fill their containers horizontally */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any default spacing or alignment */
+    margin: 0 auto; /* Center the images horizontally within their containers */
+  }
+  /* Keep your existing styles */
+  .work-section-info h2 {
+    margin: 1rem 0rem;
+    text-align: center; /* Center the text horizontally */
+  }
+  .work-section-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .work-section-info p {
+    flex: 1;
+    display: flex;
+    text-align: center; 
+    align-items: center;
+    font-weight: 600;
+  }

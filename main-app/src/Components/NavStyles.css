@@ -2,21 +2,30 @@
 
 
 /* TOP NAV BAR CSS */
+
+.top-nav-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
 .top-nav {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     display: flex;
     justify-content: center; 
-    background-color: #fff; 
+    background-color: darkgray; 
     padding: 0.5em;
-    border-bottom: 1px solid #e7e7e7; 
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   
   .top-nav a {
     text-decoration: none;
-    color: #B0B0B0; 
+    color: #000; 
     font-weight: bold;
     padding: 0.5em 1em; 
     border-radius: 15px; 
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
   }
   
   .top-nav a:hover {
@@ -26,13 +35,26 @@
     transition: background-color 0.3s; 
   }
 
+  .top-nav a:active{
+    color: #000;
+    background-color: #B0B0B0;
+  }
+
+   .top-nav a.active{
+    color: green;
+    background-color: yellow;
+  }
+
 /* LOWER NAV BAR CSS */
 .navbar {
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .5em;
-    background-color: #f8f8f8; 
+    background-color: darkgray; 
+    margin: 0 5em;
   }
 
   /* BROWSE PETS CSS */
@@ -83,8 +105,14 @@
 
 /* LOGO */
 
+.logo{
+    display: flex;
+    align-items: center;
+}
+
   .logo img {
-    width: 65px; 
+    width: auto;
+    max-height: 60px; 
   }
   
 /* NAVBAR LINKS CSS */
@@ -92,6 +120,7 @@
   .nav-links {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 1em;
   }
   
