@@ -13,7 +13,7 @@ public class GeoEncodingTest {
             Scanner addScanner = new Scanner(System.in);
             System.out.println("Please Enter your address:");
             String address = addScanner.nextLine();
-            String accessToken = "***REMOVED***";
+            String accessToken = "";
 
 
             String url = "https://api.mapbox.com/geocoding/v5/mapbox.places/"
