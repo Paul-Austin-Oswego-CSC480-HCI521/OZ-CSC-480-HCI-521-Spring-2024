@@ -4,7 +4,6 @@ RUN apk add --no-cache maven
 
 COPY pom.xml /
 COPY mvnw /
-COPY .mvn/ .mvn/
 
 RUN mvn wrapper:wrapper
 
