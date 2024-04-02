@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [loginError, setLoginError] = useState(false);
+    const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
 
   // Set background color when component renders
@@ -31,7 +31,7 @@ function Login() {
       })
         .then((response = 200) => {
           if (response.ok) {
-            //   if (1) {
+        //   if (1) {
             // Redirect to another component upon successful login
             navigate("/dashboard");
           } else {
@@ -46,18 +46,20 @@ function Login() {
         });
     };
 
-    document
-      .getElementById("loginForm")
-      .addEventListener("submit", handleSubmit);
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+      loginForm.addEventListener("submit", handleSubmit);
+    }
 
     return () => {
       // Clean up effect
       document.body.style.backgroundColor = null;
-      document
-        .getElementById("loginForm")
-        .removeEventListener("submit", handleSubmit);
+      if (loginForm) {
+        loginForm.removeEventListener("submit", handleSubmit);
+      }
     };
   }, [navigate]);
+
 
   return (
     <div
