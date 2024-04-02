@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const [loginError, setLoginError] = useState(false);
+  const navigate = useNavigate();
+
   // Set background color when component renders
   React.useEffect(() => {
     document.body.style.backgroundColor = "#FFE5CC";
@@ -17,7 +21,7 @@ function Login() {
         jsonObject[key] = value;
       });
 
-      // Send JSON object to backend (Replace '??' with the correct endpoint)
+    //   Send JSON object to backend
       fetch("YOUR_BACKEND_ENDPOINT_HERE", {
         method: "POST",
         headers: {
@@ -25,12 +29,20 @@ function Login() {
         },
         body: JSON.stringify(jsonObject),
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data); // Handle response from backend
+        .then((response=200) => {
+          if (response.ok) {
+        //   if (1) {
+            // Redirect to another component upon successful login
+            navigate("/dashboard");
+          } else {
+            // Handle unsuccessful login
+            setLoginError(true);
+          }
         })
         .catch((error) => {
           console.error("Error:", error);
+          // Handle error cases
+          setLoginError(true);
         });
     };
 
@@ -41,7 +53,7 @@ function Login() {
       document.body.style.backgroundColor = null;
       document.getElementById("loginForm").removeEventListener("submit", handleSubmit);
     };
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="container" style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f4f4f4', margin: 0, padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -59,6 +71,7 @@ function Login() {
       ></div>
       <div className="login-container" style={{ backgroundColor: "#fff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "50%", marginRight: "20px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
         <h2>User Login</h2>
+        {loginError && <p style={{ color: "red" }}>Invalid username or password. Please try again.</p>}
         <form action="login" method="post" className="login-form" id="loginForm">
           <label htmlFor="username">Username:</label>
           <input type="text" name="username" id="username" required /><br />

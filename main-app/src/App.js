@@ -9,6 +9,7 @@ import MultiFilters from './Components/pages/MultiFilters';
 import  RehomePage  from './Components/pages/Rehome';
 import Footer from './Components/Footer';
 import Login from './Components/pages/Login';
+import Dashboard from './Components/pages/Dashboard';
 // import RehomePage from './Components/pages/Rehome';
 
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/shelter" element={<RehomePage />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<RehomePage />}/>
+        <Route path="/dashboard" element={<Dashboard />}/>
       </Routes>
       <Footer />
       <div className="App">
