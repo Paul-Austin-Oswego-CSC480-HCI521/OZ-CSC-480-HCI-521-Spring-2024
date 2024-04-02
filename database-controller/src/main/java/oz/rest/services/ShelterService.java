@@ -13,6 +13,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.result.InsertOneResult;
 import com.mongodb.client.result.UpdateResult;
+import com.ibm.websphere.security.jwt.JwtBuilder;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.JsonArray;
@@ -29,6 +30,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.servlet.http.Cookie;
 import oz.rest.models.Shelter;
 import static com.mongodb.client.model.Filters.eq;
 
@@ -230,7 +232,7 @@ public class ShelterService extends AbstractService<Shelter> {
             @APIResponse(responseCode = "200", description = "Login was successful"),
             @APIResponse(responseCode = "401", description = "Login failed")
     })
-    public Response login(@QueryParam(value = "name") String name, @QueryParam(value = "password") String password) {
+    public Response login(@QueryParam(value = "name") String name, @QueryParam(value = "password") String password) throws Exception {
         MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
@@ -238,10 +240,26 @@ public class ShelterService extends AbstractService<Shelter> {
 
         var record = sheltersCollection.find(and(eq("name", name), eq("password", password))).first();
 
-        if (record == null) {
+        if (record == null) 
+        {
             return Response.status(401).build();
         }
 
-        return Response.ok(record.toJson()).build();
+        // Cookie shelterCookie = new Cookie(name, password);
+        // shelterCookie.setDomain("localhost:9080");
+        // // Set cookie to expire after 24 hours
+        // shelterCookie.setMaxAge(86400);
+
+        String shelterJWT = JwtBuilder.create("shelter_token")
+            .claim("sub", "paws_and_claws")
+            .claim("upn", name)
+            .claim("aud", "paws_and_claws")
+            .buildJwt()
+            .compact();
+
+        return Response.ok("JWT: " + shelterJWT).build();
     }
 }
+
+// http://localhost:9080/database-controller/login/index.html
+// http://localhost:9080/openapi/ui

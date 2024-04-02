@@ -5,6 +5,7 @@
     <featureManager>
         <feature>jakartaee-10.0</feature>
         <feature>microProfile-6.1</feature>
+        <feature>mpJwt-2.1</feature>
     </featureManager>
 
     <!-- This template enables security. To get the full use of all the capabilities, a keystore and user registry are required. -->
@@ -16,6 +17,12 @@
     <keyStore password=""/> 
     -->
 
+    <mpJwt 
+        id="shelter_token" tokenHeader="Authorization" 
+        issuer="http://localhost:9080/database-controller/login/index.html"
+        SignatureAlgorithm="RS512"
+    />
+
     <!--For a user registry configuration, configure your user registry. For example, configure a basic user registry using the
         basicRegistry element. Specify your own user name below in the name attribute of the user element. For the password,
         generate an encoded password using bin/securityUtility encode and add it in the password attribute of the user element.
@@ -25,6 +32,8 @@
         <user name="yourUserName" password="" />
         -->
     </basicRegistry>
+
+    <jwtBuilder id="shelter_token" expiresInSeconds="86400" jwkEnabled ="true" SignatureAlgorithm="RS512"/>
 
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
     <httpEndpoint id="defaultHttpEndpoint"

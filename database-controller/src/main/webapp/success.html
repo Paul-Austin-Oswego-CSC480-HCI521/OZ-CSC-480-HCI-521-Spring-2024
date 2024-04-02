@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Success Page</title>
+</head>
+
+<body>
+    <h2>User Login</h2>
+        <input type="submit" id="submitBtn" value="Submit">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() 
+        {
+            var button = document.getElementById("submitBtn");
+            button.addEventListener("click", function(event) 
+            {
+                console.log("Success!");
+                console.log(document.cookie);
+            });
+        });
+    </script>
+</body>
+
+</html>
