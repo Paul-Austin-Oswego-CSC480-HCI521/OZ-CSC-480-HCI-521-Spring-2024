@@ -21,7 +21,7 @@ function Login() {
         jsonObject[key] = value;
       });
 
-    //   Send JSON object to backend
+      //   Send JSON object to backend
       fetch("YOUR_BACKEND_ENDPOINT_HERE", {
         method: "POST",
         headers: {
@@ -29,9 +29,9 @@ function Login() {
         },
         body: JSON.stringify(jsonObject),
       })
-        .then((response=200) => {
+        .then((response = 200) => {
           if (response.ok) {
-        //   if (1) {
+            //   if (1) {
             // Redirect to another component upon successful login
             navigate("/dashboard");
           } else {
@@ -46,40 +46,150 @@ function Login() {
         });
     };
 
-    document.getElementById("loginForm").addEventListener("submit", handleSubmit);
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", handleSubmit);
 
     return () => {
       // Clean up effect
       document.body.style.backgroundColor = null;
-      document.getElementById("loginForm").removeEventListener("submit", handleSubmit);
+      document
+        .getElementById("loginForm")
+        .removeEventListener("submit", handleSubmit);
     };
   }, [navigate]);
 
   return (
-    <div className="container" style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f4f4f4', margin: 0, padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div
+      className="x-container"
+      style={{
+        fontFamily: "Arial, sans-serif",
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        height: "80vh",
+        padding: "0.5%",
+        marginTop: "20px",
+        color: "black",
+      }}
+    >
       <div
         className="hero-image"
         style={{
-          backgroundImage: "url('https://source.unsplash.com/random?dog,cat,pets')",
+          position: "relative",
+          backgroundImage:
+            "url('https://source.unsplash.com/random?dog,cat,pets')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           width: "50%",
-          height: "100vh",
+          height: "100%",
           borderRadius: "8px",
         }}
         alt="Hero Image"
       ></div>
-      <div className="login-container" style={{ backgroundColor: "#fff", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "50%", marginRight: "20px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-        <h2>User Login</h2>
-        {loginError && <p style={{ color: "red" }}>Invalid username or password. Please try again.</p>}
-        <form action="login" method="post" className="login-form" id="loginForm">
-          <label htmlFor="username">Username:</label>
-          <input type="text" name="username" id="username" required /><br />
+      <div
+        className="login-container"
+        style={{
+          //   backgroundColor: "#fff",
+          padding: "20px",
+          borderRadius: "8px",
+          //   boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+          width: "50%",
+          marginRight: "20px",
+          marginLeft: "20px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          //   padding: "2%",
+        }}
+      >
+        <h2
+          style={{
+            padding: "3%",
+          }}
+        >
+          User Login
+        </h2>
+        {loginError && (
+          <p style={{ color: "red" }}>
+            Invalid username or password. Please try again.
+          </p>
+        )}
+        <form
+          action="login"
+          method="post"
+          className="login-form"
+          id="loginForm"
+          style={{
+            width: "85%",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <label
+            htmlFor="username"
+            style={{
+              marginBottom: "8px",
+              fontWeight: "bold",
+            }}
+          >
+            Username:
+          </label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            required
+            style={{
+              padding: "10px",
+              marginBottom: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+            }}
+          />
+          <br />
 
-          <label htmlFor="password">Password:</label>
-          <input type="password" name="password" id="password" required /><br />
+          <label
+            htmlFor="password"
+            style={{
+              marginBottom: "8px",
+              fontWeight: "bold",
+            }}
+          >
+            Password:
+          </label>
 
-          <input type="submit" id="submitBtn" value="Submit" style={{ padding: "10px 20px", marginBottom: "16px", border: "none", borderRadius: "4px", cursor: "pointer", transition: "background-color 0.3s", backgroundColor: "#4caf50", color: "#fff" }} />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            style={{
+              padding: "10px",
+              marginBottom: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+            }}
+          />
+          <br />
+
+          <input
+            type="submit"
+            id="submitBtn"
+            value="Submit"
+            style={{
+              padding: "10px 20px",
+              borderRadius: "20px",
+              border: "none",
+              margin: "10px",
+              cursor: "pointer",
+              transition: "background-color 0.3s",
+              backgroundColor: "#4caf50",
+              color: "#fff",
+            }}
+          />
         </form>
       </div>
     </div>
