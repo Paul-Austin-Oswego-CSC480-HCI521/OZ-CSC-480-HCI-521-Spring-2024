@@ -79,7 +79,7 @@ const Navbar = () => {
                     </div>
                     )}
                 </li>   
-                <li><Link to="aboutus"> About Us</Link></li>
+                <li><Link to="about"> About Us</Link></li>
                 <li><Link to="contactus"> Contact Us</Link></li>
                 <li><Link to="donate"> Donate </Link></li>
                 <li><Link to="/#how_it_works" onClick={()=> handleLinkClick("/#how_it_works")}> How It Works</Link></li>

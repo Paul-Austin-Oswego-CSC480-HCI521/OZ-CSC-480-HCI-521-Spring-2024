@@ -8,6 +8,7 @@ import { PetDetails } from './Components/pages/PetDetails';
 import MultiFilters from './Components/pages/MultiFilters';
 import  RehomePage  from './Components/pages/Rehome';
 import Footer from './Components/Footer';
+import Login from './Components/pages/Login';
 // import RehomePage from './Components/pages/Rehome';
 
 
@@ -25,7 +26,7 @@ function App() {
         <Route path="/ExplorePets" element={<MultiFilters />}/>
         <Route path="PetDetails" element={<PetDetails />}/>
         <Route path="/shelter" element={<RehomePage />}/>
-        <Route path="/login" element={<RehomePage />}/>
+        <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<RehomePage />}/>
       </Routes>
       <Footer />
