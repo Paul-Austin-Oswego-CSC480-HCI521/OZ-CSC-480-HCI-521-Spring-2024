@@ -56,7 +56,7 @@ const Navbar = () => {
         <div className="top-nav-container">
             <div className="top-nav">
                 <Link to="" className={({isActive}) => (isActive ? 'active' : 'inactive')}> Adopt</Link>
-                <Link to="rehome" className={({isActive}) => (isActive ? 'active' : 'inactive')}> Rehome</Link>
+                <Link to="shelter" className={({isActive}) => (isActive ? 'active' : 'inactive')}> Shelter</Link>
             </div>
         </div>
 
