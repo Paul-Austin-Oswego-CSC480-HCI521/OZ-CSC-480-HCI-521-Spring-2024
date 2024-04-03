@@ -8,20 +8,10 @@ import { FiArrowLeft, FiArrowRight, FiArrowUp } from "react-icons/fi";
 
 const Home = () => {
   return (
-    <div className="pet-details-container">
-      
-      <div className="pet-details-inner-container">
+    <div>
 
-      <div className="profile-container">
-        <img src={profileBg} alt="" />
-
-      </div>
-
-      <div className="profile-img">
-        <img src={profilepic} alt="" />
-      </div>
-
-        <button className="home-pet-img1">
+    <div className="pets-container">
+      <button className="home-pet-img1">
           <img src={petImg1} alt="" />
           <h2>
           Lucy
@@ -30,11 +20,9 @@ const Home = () => {
           <div>
           Breed
           </div>
-          
-          
-        </button>
+      </button>
 
-        <button className="home-pet-img2">
+      <button className="home-pet-img2">
           <img src={petImg2} alt="" />
           <h2>
           Smoothie
@@ -43,10 +31,9 @@ const Home = () => {
           <div>
           American Shorthair
           </div>
+      </button>
 
-        </button>
-
-        <button className="home-pet-img3">
+      <button className="home-pet-img3">
           <img src={petImg3} alt="" />
           <h2>
           Danii
@@ -55,48 +42,52 @@ const Home = () => {
           <div>
           American Shorthair
           </div>
+      </button>
 
-        </button>
+    </div>
 
-        <div className="home-text-section">
-          <p className="primary-text">
+ 
+
+    <div className="profile-container">
+      
+     
+        
+      <div className="profile-img">
+        <img src={profilepic} alt="" />
+      </div>
+
+      <p className="primary-text">
             Shelter name
           </p>
-    
+
           <p className="primary-text2">
             Oswego, NY
           </p>
 
-        
           <p className="primary-text3">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
           </p>
 
-          <div className="primary-text4">
-            <h1>
-            All Pets
-            </h1>
-           
-          </div>
-
-
-          <div>
-            
+        <div>
           <button className="secondary-button">
           Upload Pet 
           </button>
           </div>
+
           <div>
           <button className="secondary-button2">
             Edit Profile
           </button>
           </div>
-        </div>
-        <div>
-        
-        </div>
-      </div>
+          
     </div>
+    <p className="primary-text4">
+          <h1>
+            All Pets
+            </h1>
+          </p>
+  </div>
+    
   );
 };
 
