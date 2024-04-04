@@ -30,11 +30,12 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import jakarta.servlet.http.Cookie;
 import oz.rest.models.Shelter;
 import static com.mongodb.client.model.Filters.eq;
 
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Date;
 
 import static com.mongodb.client.model.Filters.and;
 
@@ -245,19 +246,83 @@ public class ShelterService extends AbstractService<Shelter> {
             return Response.status(401).build();
         }
 
-        // Cookie shelterCookie = new Cookie(name, password);
-        // shelterCookie.setDomain("localhost:9080");
-        // // Set cookie to expire after 24 hours
-        // shelterCookie.setMaxAge(86400);
-
+        // Create the JWT for the Shelter
         String shelterJWT = JwtBuilder.create("shelter_token")
-            .claim("sub", "paws_and_claws")
-            .claim("upn", name)
+            .claim("iss", "http://localhost:9080")
             .claim("aud", "paws_and_claws")
+            .claim("sub", "paws_and_claws")
+            .claim("user", name)
             .buildJwt()
             .compact();
 
-        return Response.ok("JWT: " + shelterJWT).build();
+        return Response.ok(shelterJWT).build();
+    }
+
+    @Path("/test_service")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "A Simple Test Service to see if JWT Authentication works")
+    @APIResponses({
+        @APIResponse(responseCode = "200", description = "Test was successful"),
+        @APIResponse(responseCode = "401", description = "Test failed")
+    })
+    public Response test(@QueryParam(value = "jwt") String jwt, @QueryParam(value = "user") String user) 
+    {
+        // If the user had a JWT created
+        if(jwt != null)
+        {
+            String[] userCookieComponents = jwt.split("\\.", 3);
+
+            // Extract the encoded JWT Header
+            String userCookieHeader = userCookieComponents[0];
+
+            // Decode the JWT Header
+            byte[] headerBytes = Base64.getDecoder().decode(userCookieHeader.getBytes());
+            String decodedHeader = new String(headerBytes);
+
+            // Extract the token type and algorithm used from the header
+            String type = decodedHeader.substring(decodedHeader.indexOf("\"typ\":\"") + 7, decodedHeader.indexOf("\",\"alg\":\""));
+            String algorithm = decodedHeader.substring(decodedHeader.indexOf("\",\"alg\":\"") + 9, decodedHeader.indexOf("\"}"));
+
+            // If the token type and algorithm are the ones to be expected
+            if(type.equals("JWT") && algorithm.equals("RS512"))
+            {
+                // Extract the JWT Payload
+                String userCookiePayload = userCookieComponents[1];
+
+                // Decode the JWT Payload
+                byte[] payloadBytes = Base64.getDecoder().decode(userCookiePayload.getBytes());
+                String decodedPayload = new String(payloadBytes);
+
+                // Extract the user string and expiration time from the payload
+                String currentUser = decodedPayload.substring(decodedPayload.indexOf("\"user\":\"") + 8, decodedPayload.indexOf("\",\"iss\":"));
+                String expiryTime = decodedPayload.substring(decodedPayload.indexOf("\"exp\":") + 6, decodedPayload.indexOf(",\"iat\":"));
+                
+                Date expirationDate = new Date(Long.parseLong(expiryTime));
+                Date currentDate = new Date(System.currentTimeMillis());
+
+                // If the current user is the one to be expected and the expiration date comes after the current date
+                if(currentUser.equals(user) && currentDate.after(expirationDate))
+                {
+                    return Response.ok("JWT is Valid").build();
+                }
+
+                else
+                {
+                    return Response.status(401).build();
+                }
+            }
+
+            else
+            {
+                return Response.status(401).build();
+            }
+        }
+
+        else
+        {
+            return Response.status(401).build();
+        }
     }
 }
 

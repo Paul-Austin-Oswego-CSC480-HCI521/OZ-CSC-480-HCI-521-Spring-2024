@@ -27,23 +27,25 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     // If the user does exist
     if(response.ok)
     {       
-        const responseTxt = await response.text();
-        
-        // const sessionCookie = responseTxt.substring(responseTxt.indexOf("Session Cookie: ") + 16, responseTxt.indexOf(", JWT: "));
-        const jwt = responseTxt.substring(responseTxt.indexOf(", JWT: ") + 6);
-        // console.log(jwt);
+        // Retrieve the JWT from the Response
+        const jwt = await response.text();
 
-        document.cookie = "username=John Doe; expires=Thu, 18 Dec 2033 12:00:00 UTC; path=/";
-        document.cookie = "user=" + username + "; jwt=" + jwt + "; expires=Thu, 18 Dec 2033 12:00:00 UTC; path=/";
-        console.log(document.cookie.split(';'));
+        // Calculate the expiration date of the JWT
+        const jwtExpirationDate = new Date();
+        jwtExpirationDate.setDate(jwtExpirationDate.getDate() + 1);
+
+        // Create two cookies: One that represents the current user logged in and one that represents the current user's JWT
+        document.cookie = "currentUser=" + username + "; expires=" + jwtExpirationDate + "; path=/";
+        document.cookie = username + "=" + jwt + "; expires=" + jwtExpirationDate + "; path=/";
     
-        // window.location.href = '/database-controller/success.html';
+        // Redirect user to another page
+        window.location.href = '/database-controller/success.html';
     }
 
     // If the user doesn't exist
     else
     {
         // Display an error message
-        alert("***LOGIN FAILED***\n You've entered an incorrect username and/or password. Please try again.")
+        alert("***LOGIN FAILED***\nYou've entered an incorrect username and/or password. Please try again.")
     }
 });
