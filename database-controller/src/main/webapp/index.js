@@ -51,6 +51,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
     // Send JSON object to backend 
     fetch("http://localhost:9080/database-controller/api/shelter", {
+        mode: "no-cors",
         method: "POST",
         headers: {
             "Content-Type": "application/json"

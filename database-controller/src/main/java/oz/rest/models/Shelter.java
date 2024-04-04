@@ -29,6 +29,15 @@ public class Shelter extends AbstractModel {
     // @BsonProperty("phone_number")
     // private String phoneNumber;
 
+    private String contactEmail;
+
+    private String contactPhone;
+
+    private String city;
+    private String state;
+    private String zipcode;
+    
+
     public String getName() {
         return name;
     }
@@ -59,6 +68,46 @@ public class Shelter extends AbstractModel {
 
     public void removeAvailablePetId(String toRemove) {
         this.availablePetIds.remove(toRemove);
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 
     // likely not needed, i think we always add pets one at a time rather than in

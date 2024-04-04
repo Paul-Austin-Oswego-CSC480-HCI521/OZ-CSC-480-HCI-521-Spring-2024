@@ -37,6 +37,12 @@
     <!-- Configures the application on a specified context root -->
     <webApplication contextRoot="/database-controller" location="database-controller.war" />
 
+    <cors domain="/"
+        allowedOrigins="*"
+        allowedMethods="GET, POST, PUT, DELETE, OPTIONS"
+        allowedHeaders="*"
+        allowCredentials="true"/>
+
     <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 </server>
