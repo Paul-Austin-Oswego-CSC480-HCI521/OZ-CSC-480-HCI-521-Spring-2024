@@ -108,7 +108,8 @@ public class ShelterService extends AbstractService<Shelter> {
 
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    public Response find(@QueryParam(value = "name") String name, @QueryParam(value = "limit") Integer limit) {
+    public Response find(@QueryParam(value = "name") String name, @QueryParam(value = "page_size") Integer pageSize,
+            @QueryParam(value = "page_number") Integer pageNumber) {
         MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
@@ -119,12 +120,17 @@ public class ShelterService extends AbstractService<Shelter> {
 
         // TODO: DECIDE HOW TO MANY ENTRIES A USER SHOULD BE ABLE TO RETRIEVE (set cap
         // on how large limit can be)
-        if (limit == null) {
-            limit = 1;
+        if (pageSize == null) {
+            pageSize = 1;
         }
 
-        var foundShelters = (filters.size() != 0) ? sheltersCollection.find(and(filters)).limit(limit)
-                : sheltersCollection.find().limit(limit);
+        if (pageNumber == null) {
+            pageNumber = 0;
+        }
+
+        var foundShelters = (filters.size() != 0)
+                ? sheltersCollection.find(and(filters)).skip(pageSize * pageNumber).limit(pageSize)
+                : sheltersCollection.find().skip(pageSize * pageNumber).limit(pageSize);
 
         Jsonb jsonb = JsonbBuilder.create();
 

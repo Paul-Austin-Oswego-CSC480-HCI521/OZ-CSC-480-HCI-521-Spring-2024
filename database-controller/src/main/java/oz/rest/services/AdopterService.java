@@ -103,7 +103,8 @@ public class AdopterService extends AbstractService<Adopter> {
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public Response find(@QueryParam(value = "name") String name,
-            @QueryParam(value = "email_address") String emailAddress, @QueryParam(value = "limit") Integer limit) {
+            @QueryParam(value = "email_address") String emailAddress, @QueryParam(value = "page_size") Integer pageSize,
+            @QueryParam(value = "page_number") Integer pageNumber) {
         MongoCollection<Adopter> adoptersCollection = db.getCollection("Adopters",
                 Adopter.class);
 
@@ -116,12 +117,17 @@ public class AdopterService extends AbstractService<Adopter> {
             filters.add(eq("email_address", emailAddress));
         }
 
-        if (limit == null) {
-            limit = 1;
+        if (pageSize == null) {
+            pageSize = 1;
         }
 
-        var foundAdopters = (filters.size() != 0) ? adoptersCollection.find(and(filters)).limit(limit)
-                : adoptersCollection.find().limit(limit);
+        if (pageNumber == null) {
+            pageNumber = 0;
+        }
+
+        var foundAdopters = (filters.size() != 0)
+                ? adoptersCollection.find(and(filters)).skip(pageSize * pageNumber).limit(pageSize)
+                : adoptersCollection.find().skip(pageSize * pageNumber).limit(pageSize);
 
         Jsonb jsonb = JsonbBuilder.create();
 

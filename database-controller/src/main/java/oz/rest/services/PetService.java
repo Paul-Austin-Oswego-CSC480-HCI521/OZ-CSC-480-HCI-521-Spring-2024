@@ -107,14 +107,15 @@ public class PetService extends AbstractService<Pet> {
     @GET
     public Response find(@QueryParam(value = "name") String name,
             @QueryParam(value = "current_shelter_id") String currentShelterId,
-            @QueryParam(value = "pet_type") String petType,
+            @QueryParam(value = "type") String type,
             @QueryParam(value = "breed") String breed,
             @QueryParam(value = "color") String color,
             @QueryParam(value = "health") String health,
             @QueryParam(value = "min_age") Integer minAge,
             @QueryParam(value = "max_age") Integer maxAge,
             @QueryParam(value = "sex") String sex,
-            @QueryParam(value = "limit") Integer limit) {
+            @QueryParam(value = "page_size") Integer pageSize,
+            @QueryParam(value = "page_number") Integer pageNumber) {
         MongoCollection<Pet> petsCollection = db.getCollection("Pets", Pet.class);
 
         ArrayList<Bson> filters = new ArrayList<Bson>();
@@ -127,8 +128,8 @@ public class PetService extends AbstractService<Pet> {
             filters.add(eq("currentShelterId", currentShelterId));
         }
 
-        if (petType != null) {
-            filters.add(eq("petType", petType));
+        if (type != null) {
+            filters.add(eq("type", type));
         }
 
         if (breed != null) {
@@ -155,12 +156,17 @@ public class PetService extends AbstractService<Pet> {
             filters.add(eq("sex", sex));
         }
 
-        if (limit == null) {
-            limit = 1;
+        if (pageSize == null) {
+            pageSize = 1;
         }
 
-        var foundPets = (filters.size() != 0) ? petsCollection.find(and(filters)).limit(limit)
-                : petsCollection.find().limit(limit);
+        if (pageNumber == null) {
+            pageNumber = 0;
+        }
+
+        var foundPets = (filters.size() != 0)
+                ? petsCollection.find(and(filters)).skip(pageSize * pageNumber).limit(pageSize)
+                : petsCollection.find().skip(pageSize * pageNumber).limit(pageSize);
 
         // horrible but necessary way to format the documents for frontend to use
         // below...

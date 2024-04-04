@@ -37,7 +37,19 @@
     <!-- Configures the application on a specified context root -->
     <webApplication contextRoot="/database-controller" location="database-controller.war" />
 
-    <cors domain="/"
+    <cors domain="/database-controller/api/pet"
+        allowedOrigins="*"
+        allowedMethods="GET, POST, PUT, DELETE, OPTIONS"
+        allowedHeaders="*"
+        allowCredentials="true"/>
+
+    <cors domain="/database-controller/api/shelter/login"
+        allowedOrigins="*"
+        allowedMethods="GET, POST, PUT, DELETE, OPTIONS"
+        allowedHeaders="*"
+        allowCredentials="true"/>
+
+    <cors domain="/database-controller/api/shelter"
         allowedOrigins="*"
         allowedMethods="GET, POST, PUT, DELETE, OPTIONS"
         allowedHeaders="*"

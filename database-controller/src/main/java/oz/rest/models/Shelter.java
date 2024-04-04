@@ -21,22 +21,23 @@ public class Shelter extends AbstractModel {
     // TODO: Implement location
     // private String location;
 
-    @BsonProperty("available_pet_ids")
-    private Set<String> availablePetIds;
+    // @BsonProperty("available_pet_ids")
+    // private Set<String> availablePetIds;
 
     // TODO: idk how to insert the regex that is in the SRS
     // @Pattern(regexp = "")
     // @BsonProperty("phone_number")
     // private String phoneNumber;
 
-    private String contactEmail;
+    private String description;
 
-    private String contactPhone;
+    private String emailAddress;
+
+    private String phoneNumber;
 
     private String city;
     private String state;
     private String zipcode;
-    
 
     public String getName() {
         return name;
@@ -54,36 +55,44 @@ public class Shelter extends AbstractModel {
         this.password = password;
     }
 
-    public Set<String> getAvailablePetIds() {
-        return availablePetIds;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setAvailablePetIds(Set<String> availablePetIds) {
-        this.availablePetIds = availablePetIds;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void addAvailablePetId(String newPetIds) {
-        this.availablePetIds.add(newPetIds);
+    // public Set<String> getAvailablePetIds() {
+    // return availablePetIds;
+    // }
+
+    // public void setAvailablePetIds(Set<String> availablePetIds) {
+    // this.availablePetIds = availablePetIds;
+    // }
+
+    // public void addAvailablePetId(String newPetIds) {
+    // this.availablePetIds.add(newPetIds);
+    // }
+
+    // public void removeAvailablePetId(String toRemove) {
+    // this.availablePetIds.remove(toRemove);
+    // }
+
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void removeAvailablePetId(String toRemove) {
-        this.availablePetIds.remove(toRemove);
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
-    public String getContactEmail() {
-        return contactEmail;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
-
-    public String getContactPhone() {
-        return contactPhone;
-    }
-
-    public void setContactPhone(String contactPhone) {
-        this.contactPhone = contactPhone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getCity() {

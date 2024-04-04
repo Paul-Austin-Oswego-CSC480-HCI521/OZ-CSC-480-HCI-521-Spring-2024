@@ -37,12 +37,10 @@ public class Pet extends AbstractModel {
     // TODO: embed JPEGs
     // private JPEG[] petPhotos;
 
-    @BsonProperty("current_shelter_id")
     private String currentShelterId;
 
     // @Pattern(regexp = "(Dog|Cat|Other)")
-    @BsonProperty("pet_type")
-    private String petType;
+    private String type;
 
     private String breed;
 
@@ -76,12 +74,12 @@ public class Pet extends AbstractModel {
         this.currentShelterId = currentShelterId;
     }
 
-    public String getPetType() {
-        return petType;
+    public String getType() {
+        return type;
     }
 
-    public void setPetType(String petType) {
-        this.petType = petType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getBreed() {
