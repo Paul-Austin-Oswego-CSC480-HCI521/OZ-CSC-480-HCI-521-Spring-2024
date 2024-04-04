@@ -32,21 +32,32 @@ const ShelterDashboard = () => {
   };
 
   const addNewPet = (newPet) => {
-    const updatedPets = [...data.pets, { id: Date.now(), ...newPet }];
-    const updatedData = { ...data, pets: updatedPets };
 
-    setData(updatedData);
+    delete newPet.images;
+
+    newPet.currentShelterId = "123";
+
+    console.log(JSON.stringify(newPet));
+
+
+    // const updatedPets = [...data.pets, { id: Date.now(), ...newPet }];
+    // const updatedData = { ...data, pets: updatedPets };
+    // console.log("making new pet")
+    // console.log(JSON.stringify(updatedPets));
+
+    // setData(updatedData);
 
     // Update data.json file with the new data
-    fetch(process.env.PUBLIC_URL + '/data.json', {
-      method: 'PUT',
+    fetch("http://0.0.0.0:9080/database-controller/api/pet", {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedData),
+      body: JSON.stringify(newPet),
     })
       .then((response) => {
         if (!response.ok) {
+          console.log(response);
           throw new Error('Failed to update data');
         }
         console.log('Data updated successfully');
@@ -63,8 +74,10 @@ const ShelterDashboard = () => {
   };
 
   const updateDataJson = (updatedData) => {
-    fetch(process.env.PUBLIC_URL + '/data.json', {
-      method: 'PUT',
+    console.log(updateDataJson);
+
+    fetch("http://0.0.0.0:9080/database-controller/api/shelter", {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -99,7 +112,7 @@ const ShelterDashboard = () => {
     setData(updatedData);
 
     // Update data.json file with the new data
-    fetch(process.env.PUBLIC_URL + '/data.json', {
+    fetch("0.0.0.0:9080" + '/pet', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

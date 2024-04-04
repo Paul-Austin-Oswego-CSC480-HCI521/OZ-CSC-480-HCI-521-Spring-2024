@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const [loginError, setLoginError] = useState(false);
+  const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
 
   // Set background color when component renders
@@ -21,17 +21,22 @@ function Login() {
         jsonObject[key] = value;
       });
 
+      jsonObject.name = jsonObject.username;
+      delete jsonObject.username;
+
+      console.log(jsonObject);
+
       //   Send JSON object to backend
-      fetch("YOUR_BACKEND_ENDPOINT_HERE", {
+      fetch("http://0.0.0.0:9080/database-controller/api/shelter/login?" + new URLSearchParams(jsonObject), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(jsonObject),
+        // body: JSON.stringify(jsonObject),
       })
         .then((response = 200) => {
           if (response.ok) {
-        //   if (1) {
+            //   if (1) {
             // Redirect to another component upon successful login
             navigate("/dashboard");
           } else {

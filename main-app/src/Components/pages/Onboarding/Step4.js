@@ -21,7 +21,18 @@ const Step4 = ({ prevStep, formData }) => {
 
     try {
       // Send the form data as JSON to the endpoint
-      const response = await fetch('localhost:8090/shelter', {
+      formDataToSend.emailAddress = contactEmail;
+      formDataToSend.phoneNumber = contactPhone;
+      formDataToSend.name = shelterName;
+      formDataToSend.description = about;
+      delete formDataToSend.contactEmail;
+      delete formDataToSend.contactPhone;
+      delete formDataToSend.shelterName;
+      delete formDataToSend.about;
+      console.log(JSON.stringify(formDataToSend));
+
+
+      const response = await fetch('http://localhost:9080/database-controller/api/shelter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
