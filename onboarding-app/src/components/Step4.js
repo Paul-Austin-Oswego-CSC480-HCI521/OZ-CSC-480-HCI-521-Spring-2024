@@ -1,14 +1,14 @@
 import React from 'react';
 
 const Step4 = ({ prevStep, formData }) => {
-  const { shelterName, streetAddress, city, state, zipcode, contactEmail, contactPhone, about, password } = formData;
+  const { name, streetAddress, city, state, zipcode, contactEmail, contactPhone, about, password } = formData;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Create a data object with the form fields
     const formDataToSend = {
-      shelterName,
+      name,
       contactEmail,
       streetAddress,
       city,
@@ -21,7 +21,7 @@ const Step4 = ({ prevStep, formData }) => {
 
     try {
       // Send the form data as JSON to the endpoint
-      const response = await fetch('localhost:8090/shelter', {
+      const response = await fetch("http://localhost:9080/database-controller/api/shelter", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const Step4 = ({ prevStep, formData }) => {
   return (
     <form onSubmit={handleSubmit} className="signup-form">
       <h2>Review Your Information</h2>
-      <p><strong>Shelter Name:</strong> {shelterName}</p>
+      <p><strong>Shelter Name:</strong> {name}</p>
       <p><strong>Contact Email:</strong> {contactEmail}</p>
       <p><strong>Address:</strong> {streetAddress}</p>
       <p><strong>City:</strong> {city}</p>

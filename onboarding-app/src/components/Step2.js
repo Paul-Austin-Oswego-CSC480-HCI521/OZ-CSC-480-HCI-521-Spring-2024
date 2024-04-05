@@ -1,95 +1,73 @@
 import React, { useState } from 'react';
-import InputMask from 'react-input-mask';
 
-const Step2 = ({ nextStep, prevStep, formData, setForm }) => {
-  const { streetAddress, city, state, zipcode, contactPhone } = formData;
-  const [phoneError, setPhoneError] = useState(false);
+const Step1 = ({ nextStep, formData, setForm }) => {
+  const { shelterName, contactEmail, password, password2 } = formData;
+  const [passwordError, setPasswordError] = useState(''); // State for password error
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...formData, [name]: value });
-
-    // Check for phone number validation
-    if (name === 'contactPhone') {
-      const phoneRegex = /^\+1 \(\d{3}\) \d{3}-\d{4}$/;
-      setPhoneError(!phoneRegex.test(value));
-    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!phoneError) {
-      nextStep();
+    if (password !== password2) {
+      setPasswordError("Passwords don't match");
     } else {
-      console.log('Please enter a valid phone number');
+      setPasswordError('');
+      nextStep();
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="signup-form">
-      <label htmlFor="streetAddress">Address:</label>
+      <label htmlFor="shelter-name">Shelter Name:</label>
       <input
         type="text"
-        name="streetAddress"
-        id="streetAddress"
-        value={streetAddress}
+        name="name"
+        id="shelter-name"
+        value={shelterName}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="city">City:</label>
+      <label htmlFor="email">Email:</label>
       <input
-        type="text"
-        name="city"
-        id="city"
-        value={city}
+        type="email"
+        name="contactEmail"
+        id="email"
+        value={contactEmail}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="state">State:</label>
+      <label htmlFor="password">Password:</label>
       <input
-        type="text"
-        name="state"
-        id="state"
-        value={state}
+        type="password"
+        name="password"
+        id="password"
+        value={password}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="zipcode">Zipcode:</label>
+      <label htmlFor="password2">Re-enter Password:</label>
       <input
-        type="number"
-        name="zipcode"
-        id="zipcode"
-        value={zipcode}
+        type="password"
+        name="password2"
+        id="password2"
+        value={password2}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="contactPhone">Phone Number:</label>
-      <InputMask
-        mask="+1 (999) 999-9999"
-        maskChar="_"
-        type="tel"
-        name="contactPhone"
-        id="contactPhone"
-        value={contactPhone}
-        onChange={handleChange}
-        required
-      />
-      {phoneError && (
-        <p style={{ color: 'red', fontSize: '0.8em', marginTop: '5px' }}>
-          Please enter a valid phone number in the format +1 (123) 456-7890
-        </p>
-      )}
-
+      {passwordError && <p className="error-message">{passwordError}</p>} {/* Display error message */}
+      
       <div>
-        <button onClick={prevStep}>Back</button>
         <button type="submit">Next</button>
       </div>
     </form>
   );
 };
 
-export default Step2;
+export default Step1;
