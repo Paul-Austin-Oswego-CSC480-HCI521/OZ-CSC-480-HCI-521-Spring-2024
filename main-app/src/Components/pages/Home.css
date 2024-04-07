@@ -5,6 +5,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Grandstander", cursive, !important;
+
 }
 img {
   max-width: 100%;
@@ -686,14 +688,23 @@ body {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+.about-meet-teamss .about-team-members h3{
+  font-family: "Grandstander", cursive;
+}
+.about-meet-teamss .about-team-members p{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  /* change this shit!!! */
+}
 
 .about-meet-teamss .about-team-members h3,
 .about-meet-teamss .about-team-members p {
+
     position: absolute; /* Position text absolutely */
     z-index: 2; /* Ensure text is in front of the image */
     width: calc(100% - 40px); /* Subtract padding from container width */
     left: 20px; /* Move text to the side */
     text-align: center; /* Center the text horizontally */
+
 }
 
 .about-meet-teamss .about-team-members h3 {

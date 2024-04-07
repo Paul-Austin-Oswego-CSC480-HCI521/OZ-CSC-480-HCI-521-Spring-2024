@@ -1,0 +1,41 @@
+/* AdoptionFAQ.css */
+
+.adoption-faq {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px 0;
+    }
+    
+    .faq-list {
+      margin-top: 1rem;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid #ccc;
+    }
+    
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .faq-question:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .toggle-icon {
+      font-size: 1.2rem;
+    }
+    
+    .faq-answer {
+      padding: 1rem;
+    }
+    
+    .open .toggle-icon {
+      transform: rotate(180deg);
+    }
+  

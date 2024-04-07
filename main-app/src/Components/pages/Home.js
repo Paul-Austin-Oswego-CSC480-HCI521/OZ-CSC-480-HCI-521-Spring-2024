@@ -18,6 +18,7 @@ import Danii from "../../Assets/Screenshot2013.JPG";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import "./Home.css";
+// import FAQs from './AdoptionFAQ';
 
 export const Home = () => {
   const scrollToHowItWorks = (e) => {
@@ -239,6 +240,7 @@ export const Home = () => {
           <p>Answer to question 3.</p>
         </div>
       </div>
+      {/* <FAQs /> */}
       <div className="contact-page-wrapper">
         <h1 className="primary-headingg">Have Question In Mind</h1>
         <h1 className="primary-headingg">Let Us Help You</h1>
