@@ -18,7 +18,10 @@ import Danii from "../../Assets/Screenshot2013.JPG";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import "./Home.css";
-// import FAQs from './AdoptionFAQ';
+import FAQs from './AdoptionFAQ';
+import Background from '../../Assets/BG pattern.png';
+import { useState } from "react";
+
 
 export const Home = () => {
   const scrollToHowItWorks = (e) => {
@@ -28,6 +31,18 @@ export const Home = () => {
     if (howItWorksSection) {
       howItWorksSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  };
+
+    const [zipCode, setZipCode] = useState('13126'); // Define zipCode state
+  
+    const handleZipCodeChange = (e) => {
+      setZipCode(e.target.value);
+    };
+
+  const handleSubmitZipCode = (e) => {
+    e.preventDefault();
+    
+    console.log("Hello World");
   };
 
   const teams = [
@@ -175,6 +190,19 @@ export const Home = () => {
         <div className="home-bannerImage-container">
           <img className="home-bannerDog" src={BannerBackground} alt="" />
         </div>
+        {/* Sejal's code */}
+        <form onSubmit={handleSubmitZipCode} className="zip-form">
+            <input
+                type="text"
+                placeholder="Zip Code"
+                value={zipCode}
+                onChange={handleZipCodeChange}
+                className="zip-input"
+            />
+            <button type="submit" className="zip-submit">Lets Go</button>
+        </form>
+        {/*  End of Sejal's Code*/}
+
         <div className="home-text-section">
         <div className="button-container">
   {/* Navigate to Multifilters page when this button is clicked */}
@@ -225,7 +253,7 @@ export const Home = () => {
     ))}
 </div>
 
-      <div className="adoption-faq-container" id="FAQ">
+      {/* <div className="adoption-faq-container" id="FAQ">
         <h1>Adoption FAQ</h1>
         <div className="faq-item">
           <h2>Question 1</h2>
@@ -239,8 +267,10 @@ export const Home = () => {
           <h2>Question 3?</h2>
           <p>Answer to question 3.</p>
         </div>
-      </div>
-      {/* <FAQs /> */}
+      </div> */}
+
+      <FAQs />
+
       <div className="contact-page-wrapper">
         <h1 className="primary-headingg">Have Question In Mind</h1>
         <h1 className="primary-headingg">Let Us Help You</h1>

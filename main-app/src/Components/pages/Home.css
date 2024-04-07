@@ -22,6 +22,7 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   font-family: 'Quicksand', sans-serif;
+  background-image: url('../../Assets/BG pattern.png');
 }
 
 /* Position the dropdown container */
@@ -357,7 +358,7 @@ body {
   color: #4c4c4c;
   cursor: pointer;
 }
-.adoption-faq-container {
+/* .adoption-faq-container {
   top: 400px;
   max-width: 1450px;
   margin: 0 auto;
@@ -371,12 +372,12 @@ body {
 .faq-item {
   margin-bottom: 30px;
   padding: 3.5rem 5.5rem; /* Adjust padding */
-  background-color: #6D37FE;
+  /* background-color: #6D37FE;
   border-radius: 30px;
   
-}
+} */
 
-.faq-item h2 {
+/* .faq-item h2 {
   font-size: 1.5rem;
   color: black;
 }
@@ -385,12 +386,12 @@ body {
   font-size: 1.1rem;
   color: white;
   line-height: 1.6;
-}
+} */
 
 /* Style for alternating FAQ items */
-.faq-item:nth-child() {
+/* .faq-item:nth-child() {
   background-color: #f9f9f9;
-}
+}  */
 
 /* Add more specific styles as needed */
 .work-section-wrapper {
@@ -717,4 +718,79 @@ body {
     font-size: 14px;
     color: #000;
     top: 85%; /* Position text below the h3 with additional space */
+}
+
+.adoption-faq {
+    /* background-color: red; */
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px 0;
+}
+
+.faq-list {
+    margin-top: 1rem;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ccc;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-question:hover {
+    background-color: #f0f0f0;
+}
+
+.toggle-icon {
+    font-size: 1.2rem;
+}
+
+.faq-answer {
+    padding: 1rem;
+}
+
+.open .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.zip-form {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background-color: #b0b1b1;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+}
+
+.zip-input {
+  margin-left: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  width: 55px;
+}
+
+.zip-submit {
+  background-color: #b0b1b1;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.zip-submit:hover {
+  color:black;
 }

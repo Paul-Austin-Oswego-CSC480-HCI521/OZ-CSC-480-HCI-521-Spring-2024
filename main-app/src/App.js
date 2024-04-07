@@ -11,11 +11,17 @@ import Footer from "./Components/Footer";
 import Login from "./Components/pages/Login";
 import Dashboard from "./Components/pages/Dashboard";
 import Onboarding from "./Components/pages/Onboarding/Onboarding";
+import {Helmet} from "react-helmet";
 // import RehomePage from './Components/pages/Rehome';
 
 function App() {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Paws N Claws</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
