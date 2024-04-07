@@ -3,6 +3,9 @@ import './NavStyles.css';
 import logo from "../Assets/logo.png"
 import {NavLink as Link} from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { IoPawSharp } from "react-icons/io5";
+import { BsHouseHeartFill } from "react-icons/bs";
+
 
 const Navbar = () => {
 
@@ -54,10 +57,14 @@ const Navbar = () => {
     return(
         <>
         <div className="top-nav-container">
-            <div className="top-nav">
-                <Link to="" className={({isActive}) => (isActive ? 'active' : 'inactive')}> Adopt</Link>
-                <Link to="shelter" className={({isActive}) => (isActive ? 'active' : 'inactive')}> Shelter</Link>
-            </div>
+        <div className="top-nav">
+      <Link to="" className={({isActive}) => (isActive ? 'active' : 'inactive')}>
+        <IoPawSharp /> Adopt
+      </Link>
+      <Link to="shelter" className={({isActive}) => (isActive ? 'active' : 'inactive')}>
+        <BsHouseHeartFill /> Shelter
+      </Link>
+    </div>
         </div>
 
         <nav className="navbar">    

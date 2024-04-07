@@ -13,15 +13,16 @@
     border-top-right-radius: 30px;
     display: flex;
     justify-content: center; 
-    background-color: darkgray; 
+    background-color: rgba(255,255,255,0.9); 
     padding: 0.5em;
     border: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 20%;
   }
   
   .top-nav a {
     text-decoration: none;
     color: #000; 
+    font-size: medium;
     font-weight: bold;
     padding: 0.5em 1em; 
     border-radius: 15px; 
@@ -41,19 +42,18 @@
   }
 
    .top-nav a.active{
-    color: green;
-    background-color: yellow;
+    color: white;
+    background-color: orange;
   }
 
 /* LOWER NAV BAR CSS */
 .navbar {
     border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .5em;
-    background-color: darkgray; 
+    background-color: rgba(255,255,255,0.9); 
     margin: 0 5em;
   }
 

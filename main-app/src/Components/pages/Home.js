@@ -1,23 +1,21 @@
 import React from "react";
-import BannerBackground from "../../Assets/home-banner-background.png";
-import BannerImage from "../../Assets/home-banner-image.png";
+import BannerBackground from "../../Assets/Hero2.png";
+import dogImage from '../../Assets/dog.png';
+import catImage from '../../Assets/cat.png';
+import birdImage from '../../Assets/bird.png';
+import bunnyImage from '../../Assets/bunny.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Luke from "../../Assets/Screenshot2028.jpg";
-import Finn from "../../Assets/Screenshot2014.jpg";
-import Brownie from "../../Assets/Screenshot2015.jpg";
-import Jaxon from "../../Assets/Screenshot2016.jpg";
-import Chloe from "../../Assets/Screenshot2022.jpg";
+import Luke from "../../Assets/Furr-Ever friends near you_1.png";
+import Finn from "../../Assets/Furr-Ever friends near you_2.png";
+import Brownie from "../../Assets/Furr-Ever friends near you_3.png";
+import Jaxon from "../../Assets/Purrrr - Cat friends near you_1.png";
+import Chloe from "../../Assets/Furr-Ever friends near you_5.png";
 import Asame from "../../Assets/Screenshot2023.png";
 import Ginger from "../../Assets/Screenshot2029.jpg";
 import Rascal from "../../Assets/Screenshot2011.jpg";
 import Danii from "../../Assets/Screenshot2013.JPG";
 import Slider from "react-slick";
-import { FaDog } from "react-icons/fa6";
-import { FaCat } from "react-icons/fa";
-import { PiBirdFill } from "react-icons/pi";
-import { GiRabbit } from "react-icons/gi";
-import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
@@ -31,53 +29,96 @@ export const Home = () => {
     }
   };
 
-  const workInfoData = [
+  const teams = [
     {
-      image: Luke,
-      title: "LUKE",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et",
+    name: "",
+    members: [
+        {
+            name: "Smoothie, M",
+            image: Luke,
+            info: "American Shorthair"
+        },
+        {
+            name: "Watson, M",
+            image: Finn,
+            info: "American Shorthair"
+        },
+        {
+            name: "Victor, M",
+            image: Brownie,
+            info: "American Shorthair"
+        },
+        {
+            name: "Aofie, F",
+            image: Jaxon,
+            info: "American Shorthair"
+        },
+        {
+            name: "Smoothie F",
+            image: Chloe,
+            info: "American Shorthair"
+        },
+        {
+            name: "Jerry",
+            image: Chloe,
+            info: "American Shorthair"
+        },
+        {
+          name: "Jerry",
+          image: Ginger,
+          info: "American Shorthair"
+      },
+      {
+        name: "Jerry",
+        image: Rascal,
+        info: "American Shorthair"
     },
     {
-      image: Finn,
-      title: "FINN",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
-    },
-    {
-      image: Brownie,
-      title: "BROWNIE",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
-    },
-    {
-      image: Jaxon,
-      title: "JAXON",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
-    },
-    {
-      image: Chloe,
-      title: "CHLOE",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
-    },
-    {
-      image: Asame,
-      title: "ASAME",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
-    },
-    {
-      image: Ginger,
-      title: "GINGER",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
-    },
-    {
-      image: Rascal,
-      title: "RASCAL",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
-    },
-    {
+      name: "Jerry",
       image: Danii,
-      title: "DANII",
-      text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+      info: "American Shorthair"
+  }
+        ]
     },
-  ];
+
+    {
+      name: "Purrrr - Cat friends near you",
+      members: [
+          {
+              name: "Benson",
+              image: Finn,
+              info: "...To Be Added"
+          },
+          {
+              name: "Mordecai",
+              image: Asame,
+              info: "...To Be Added"
+          },
+          {
+              name: "Muscle Man",
+              image: Ginger ,
+              info: "...To Be Added"
+          },
+          {
+              name: "Pops",
+              image:Finn,
+              info: "...To Be Added"
+          },
+          {
+              name: "Rigby",
+              image: Asame,
+              info: "...To Be Added"
+          },
+          {
+              name: "Skips",
+              image:Finn ,
+              info: "...To Be Added"
+          }
+          // ... member objects
+          ]
+      },
+
+];
 
   const workInfoDatas = [
     {
@@ -98,97 +139,91 @@ export const Home = () => {
     },
   ];
 
-  const settings = {
+  
+
+  const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  <style>{(document.body.style.backgroundColor = "#D2E5F6")}</style>;
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    responsive: [
+    {
+        breakpoint: 1024,
+        settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+        }
+    },
+    {
+        breakpoint: 600,
+        settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+        }
+    }
+    ]
+};
+  <style>{(document.body.style.backgroundColor = "#E3EAE7")}</style>;
 
   return (
     <div className="home-container">
       <div className="home-banner-container">
         <div className="home-bannerImage-container">
-          <img src={BannerBackground} alt="Banner Background" />
+          <img className="home-bannerDog" src={BannerBackground} alt="" />
         </div>
         <div className="home-text-section">
-          <h1 className="primary-heading">Find Your Furr-Ever Friend Today</h1>
-          <p className="primary-text"></p>
-          <button
-            className="secondary-button"
-            id="how_it_works_button"
-            onClick={scrollToHowItWorks}
-          >
-            How It Works <FiArrowRight />
-          </button>
-          <div className="button-container">
-            <Link to="/ExplorePets" className="third-button">
-              <FaDog />
-              <span>Dog</span>
-            </Link>
-            <Link to="ExplorePets" className="fourth-button">
-              <FaCat />
-              <span>Cat</span>
-            </Link>
-            <Link to="/ExplorePets" className="fifth-button">
-              <PiBirdFill />
-              Birds
-            </Link>
-            <Link to="/ExplorePets" className="fifth-buton">
-              <GiRabbit />
-              Small <br></br>
-              Critters
-            </Link>
-          </div>
-        </div>
-        <div className="home-image-section">
-          <img src={BannerImage} alt="Cute Cat" />
-        </div>
-      </div>
-      <div className="work-section-top">
-        <p className="primary-subheading">Furry Friend For You</p>
-      </div>
-      <Slider {...settings}>
-        {[0, 3, 6].map((startIndex, groupIndex) => (
-          <div className="work-section-info-container" key={groupIndex}>
-            {workInfoData
-              .slice(startIndex, startIndex + 3)
-              .map((data, index) => (
-                <div className="work-section-info" key={index}>
-                  <div className="info-boxes-img-container">
-                    <img
-                      src={data.image}
-                      alt=""
-                      style={{ maxWidth: "80%", height: "auto" }}
-                    />
-                  </div>
-                  <h2>{data.title}</h2>
-                  <p>{data.text}</p>
-                </div>
-              ))}
-          </div>
-        ))}
-      </Slider>
-      <div className="work-section-wrapper">
-        <div className="work-section-top">
-          <h1 className="primary-headings" id="how_it_works">
-            How It Works
+        <div className="button-container">
+  {/* Navigate to Multifilters page when this button is clicked */}
+  <Link to="/multi-filters" className="third-button">
+  <img src={dogImage} alt="Dog" />
+  <span>Dog</span>
+</Link>
+
+  {/* Navigate to Multifilters page when this button is clicked */}
+  <Link to="/multi-filters" className="third-button">
+  <img src={catImage} alt="Cat" />
+  <span>Cat</span>
+</Link>
+
+  {/* Navigate to Multifilters page when this button is clicked */}
+  <Link to="/multi-filters" className="third-button">
+  <img src={birdImage} alt="Bird" />
+  <span>Bird</span>
+</Link>
+
+  {/* Navigate to Multifilters page when this button is clicked */}
+  <Link to="/multi-filters" className="fifth-button">
+  <img src={bunnyImage} alt="Small Critters" />
+    Small Critters
+  </Link>
+</div>
+    <h1 className="primary-heading">
+            Find your furr-ever friend today!
           </h1>
-        </div>
-        <div className="work-section-bottom">
-          {workInfoDatas.map((data) => (
-            <div className="work-section-infos" key={data.title}>
-              <div className="info-boxes-img-container">
-                <img src={data.image} alt="" />
-              </div>
-              <h2>{data.title}</h2>
-              <p>{data.text}</p>
-            </div>
-          ))}
-        </div>
+        </div> 
       </div>
+
+<div className="about-meet-teamss">
+    <h1>Furr-Ever friends near you</h1>
+    {teams.map((team, index) => (
+        <div key={index} className="about-team-sections">
+            <h2>{team.name}</h2>
+            <Slider {...sliderSettings}>
+                {team.members.map((member, memberIndex) => (
+                    <div key={memberIndex} className="about-team-members">
+                        <img src={member.image} alt={member.name} />
+                        <h3>{member.name}</h3>
+                        <p>{member.info}</p>
+                    </div>
+                ))}
+            </Slider>
+        </div>
+    ))}
+</div>
+
       <div className="adoption-faq-container" id="FAQ">
         <h1>Adoption FAQ</h1>
         <div className="faq-item">
