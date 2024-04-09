@@ -23,6 +23,7 @@ body {
   overflow-x: hidden;
   font-family: 'Quicksand', sans-serif;
   background-image: url('../../Assets/BG pattern.png');
+  background-color: rgb(227, 234, 231);
 }
 
 /* Position the dropdown container */
@@ -769,7 +770,8 @@ body {
   align-items: center;
   background-color: #b0b1b1;
   padding: 10px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  border-radius: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 
@@ -784,13 +786,17 @@ body {
 }
 
 .zip-submit {
-  background-color: #b0b1b1;
-  color: #ffffff;
+  /* background-color: #b0b1b1; */
+  background-color: orange;
+  /* color: #ffffff; */
   border: none;
   border-radius: 10px;
   cursor: pointer;
 }
 
 .zip-submit:hover {
-  color:black;
+  background-color: rgb(247, 178, 50);
+  /* color:black; */
+  /* color:black; */
+  color:rgb(70, 69, 69);
 }
