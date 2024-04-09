@@ -9,7 +9,7 @@ import MultiFilters from "./Components/pages/MultiFilters";
 import RehomePage from "./Components/pages/Rehome";
 import Footer from "./Components/Footer";
 import Login from "./Components/pages/Login";
-import Dashboard from "./Components/pages/Dashboard";
+import ShelterDashboard from "./Components/pages/ShelterDashboard";
 import Onboarding from "./Components/pages/Onboarding/Onboarding";
 import {Helmet} from "react-helmet";
 // import RehomePage from './Components/pages/Rehome';
@@ -32,10 +32,9 @@ function App() {
         <Route path="/shelter" element={<RehomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Onboarding />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<ShelterDashboard />} />
       </Routes>
       <Footer />
-      <div className="App"></div>
     </div>
   );
 }
