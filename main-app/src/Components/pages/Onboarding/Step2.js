@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 
 const Step2 = ({ nextStep, prevStep, formData, setForm }) => {
-  const { streetAddress, city, state, zipcode, contactPhone } = formData;
+  const { streetAddress, city, state, zipcode, phoneNumber } = formData;
   const [phoneError, setPhoneError] = useState(false);
 
   const handleChange = (e) => {
@@ -10,7 +10,7 @@ const Step2 = ({ nextStep, prevStep, formData, setForm }) => {
     setForm({ ...formData, [name]: value });
 
     // Check for phone number validation
-    if (name === 'contactPhone') {
+    if (name === 'phoneNumber') {
       const phoneRegex = /^\+1 \(\d{3}\) \d{3}-\d{4}$/;
       setPhoneError(!phoneRegex.test(value));
     }
@@ -67,14 +67,14 @@ const Step2 = ({ nextStep, prevStep, formData, setForm }) => {
         required
       />
 
-      <label htmlFor="contactPhone">Phone Number:</label>
+      <label htmlFor="phoneNumber">Phone Number:</label>
       <InputMask
         mask="+1 (999) 999-9999"
         maskChar="_"
         type="tel"
-        name="contactPhone"
-        id="contactPhone"
-        value={contactPhone}
+        name="phoneNumber"
+        id="phoneNumber"
+        value={phoneNumber}
         onChange={handleChange}
         required
       />

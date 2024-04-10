@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const [loginError, setLoginError] = useState(false);
+  const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
 
   // Set background color when component renders
@@ -21,8 +21,10 @@ function Login() {
         jsonObject[key] = value;
       });
 
+      console.log(jsonObject);
+
       //   Send JSON object to backend
-      fetch("YOUR_BACKEND_ENDPOINT_HERE", {
+      fetch("http://localhost:9080/database-controller/api/shelter/login?" + new URLSearchParams(jsonObject), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +33,7 @@ function Login() {
       })
         .then((response = 200) => {
           if (response.ok) {
-        //   if (1) {
+            //   if (1) {
             // Redirect to another component upon successful login
             navigate("/dashboard");
           } else {
@@ -116,7 +118,7 @@ function Login() {
         </h2>
         {loginError && (
           <p style={{ color: "red" }}>
-            Invalid username or password. Please try again.
+            Invalid email address or password. Please try again.
           </p>
         )}
         <form
@@ -131,18 +133,18 @@ function Login() {
           }}
         >
           <label
-            htmlFor="username"
+            htmlFor="emailAddress"
             style={{
               marginBottom: "8px",
               fontWeight: "bold",
             }}
           >
-            Username:
+            Email Address:
           </label>
           <input
             type="text"
-            name="username"
-            id="username"
+            name="emailAddress"
+            id="emailAddress"
             required
             style={{
               padding: "10px",

@@ -6,6 +6,7 @@ import CategoryFilter from './CategoryFilter';
 import './ShelterDashboard.css';
 
 const ShelterDashboard = () => {
+
   const [data, setData] = useState({
     shelter: {
       name: '',
@@ -39,10 +40,29 @@ const ShelterDashboard = () => {
   };
 
   const addNewPet = (newPet) => {
-    const updatedPets = [...data.pets, { id: Date.now(), ...newPet }];
-    const updatedData = { ...data, pets: updatedPets };
-    setData(updatedData);
-    updateDataJson(updatedData);
+    // const updatedPets = [...data.pets, { id: Date.now(), ...newPet }];
+    // const updatedData = { ...data, pets: updatedPets };
+
+    console.log(newPet);
+    fetch("http://0.0.0.0:9080/database-controller/api/pet", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newPet),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to update data');
+        }
+        console.log('Data updated successfully');
+      })
+
+      .catch((error) => {
+        console.error('Error updating data:', error);
+      });
+    // setData(updatedData);
+    // updateDataJson(updatedData);
   };
 
   const toggleEditMode = () => {
@@ -54,7 +74,7 @@ const ShelterDashboard = () => {
   };
 
   const updateDataJson = (updatedData) => {
-    fetch(process.env.PUBLIC_URL + '/data.json', {
+    fetch("http://0.0.0.0:9080/database-controller/api/pet", {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -67,6 +87,7 @@ const ShelterDashboard = () => {
         }
         console.log('Data updated successfully');
       })
+
       .catch((error) => {
         console.error('Error updating data:', error);
       });

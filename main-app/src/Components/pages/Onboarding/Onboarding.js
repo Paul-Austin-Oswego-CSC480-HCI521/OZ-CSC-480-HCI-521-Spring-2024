@@ -8,8 +8,8 @@ import "./Onboarding.css";
 const Onboarding = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    shelterName: "",
-    contactEmail: "",
+    name: "",
+    emailAddress: "",
     password: "",
     password2: "",
     streetAddress: "",

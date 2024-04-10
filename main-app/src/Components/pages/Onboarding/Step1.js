@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Step1 = ({ nextStep, formData, setForm }) => {
-  const { shelterName, contactEmail, password, password2 } = formData;
+  const { name, emailAddress, password, password2 } = formData;
   const [passwordError, setPasswordError] = useState(''); // State for password error
 
   const handleChange = (e) => {
@@ -24,9 +24,9 @@ const Step1 = ({ nextStep, formData, setForm }) => {
       <label htmlFor="shelter-name">Shelter Name:</label>
       <input
         type="text"
-        name="shelterName"
+        name="name"
         id="shelter-name"
-        value={shelterName}
+        value={name}
         onChange={handleChange}
         required
       />
@@ -34,9 +34,9 @@ const Step1 = ({ nextStep, formData, setForm }) => {
       <label htmlFor="email">Email:</label>
       <input
         type="email"
-        name="contactEmail"
+        name="emailAddress"
         id="email"
-        value={contactEmail}
+        value={emailAddress}
         onChange={handleChange}
         required
       />
@@ -62,7 +62,7 @@ const Step1 = ({ nextStep, formData, setForm }) => {
       />
 
       {passwordError && <p className="error-message">{passwordError}</p>} {/* Display error message */}
-      
+
       <div>
         <button type="submit">Next</button>
       </div>

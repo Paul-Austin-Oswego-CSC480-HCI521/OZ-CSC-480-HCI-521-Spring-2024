@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 const Step3 = ({ nextStep, prevStep, formData, setForm }) => {
-  const { about } = formData;
+  const { description } = formData;
   const textareaRef = useRef(null);
 
   const handleChange = (e) => {
@@ -22,12 +22,12 @@ const Step3 = ({ nextStep, prevStep, formData, setForm }) => {
 
   return (
     <form onSubmit={handleSubmit} className="signup-form">
-      <label htmlFor="about">Write a short description about your shelter:</label>
+      <label htmlFor="description">Write a short description about your shelter:</label>
       <textarea
         ref={textareaRef}
-        name="about"
-        id="about"
-        value={about}
+        name="description"
+        id="description"
+        value={description}
         onChange={handleChange}
         style={{ resize: 'none', minHeight: '100px', overflowY: 'hidden' }}
         required
