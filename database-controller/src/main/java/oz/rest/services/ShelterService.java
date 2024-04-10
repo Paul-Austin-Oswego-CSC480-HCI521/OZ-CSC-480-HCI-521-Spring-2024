@@ -108,14 +108,25 @@ public class ShelterService extends AbstractService<Shelter> {
 
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    public Response find(@QueryParam(value = "name") String name, @QueryParam(value = "page_size") Integer pageSize,
+    public Response find(@QueryParam(value = "username") String username, @QueryParam(value = "name") String name,
+            @QueryParam(value = "email_address") String emailAddress,
+            @QueryParam(value = "page_size") Integer pageSize,
             @QueryParam(value = "page_number") Integer pageNumber) {
         MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
         ArrayList<Bson> filters = new ArrayList<Bson>();
+
+        if (username != null) {
+            filters.add(eq("username", username));
+        }
+
         if (name != null) {
             filters.add(eq("name", name));
+        }
+
+        if (emailAddress != null) {
+            filters.add(eq("emailAddress", emailAddress));
         }
 
         // TODO: DECIDE HOW TO MANY ENTRIES A USER SHOULD BE ABLE TO RETRIEVE (set cap
@@ -236,13 +247,14 @@ public class ShelterService extends AbstractService<Shelter> {
             @APIResponse(responseCode = "200", description = "Login was successful"),
             @APIResponse(responseCode = "401", description = "Login failed")
     })
-    public Response login(@QueryParam(value = "name") String name, @QueryParam(value = "password") String password) {
+    public Response login(@QueryParam(value = "username") String username,
+            @QueryParam(value = "password") String password) {
         MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
         // TODO: encrypt passwords at rest, java.security MessageDigest looks promising
 
-        var record = sheltersCollection.find(and(eq("name", name), eq("password", password))).first();
+        var record = sheltersCollection.find(and(eq("username", username), eq("password", password))).first();
 
         if (record == null) {
             return Response.status(401).build();

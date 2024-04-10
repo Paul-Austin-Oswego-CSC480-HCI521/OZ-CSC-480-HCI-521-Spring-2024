@@ -15,6 +15,8 @@ public class Adopter extends AbstractModel {
     // this.emailAddress = emailAddress;
     // }
 
+    private String username;
+
     private String name;
 
     // TODO: implement location
@@ -23,6 +25,14 @@ public class Adopter extends AbstractModel {
     @Email
     @BsonProperty("email_address")
     private String emailAddress;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getName() {
         return name;

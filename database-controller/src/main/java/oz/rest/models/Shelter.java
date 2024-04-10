@@ -12,11 +12,13 @@ public class Shelter extends AbstractModel {
     @NotEmpty(message = "Shelter name must not be empty")
     // can't figure out how to make unique fields....
     // @Column(name = "name", unique = true)
-    private String name;
+    private String username;
 
     @NotEmpty(message = "Password must not be left empty")
     @Schema(writeOnly = true)
     private String password;
+
+    private String name;
 
     // TODO: Implement location
     // private String location;
@@ -39,12 +41,12 @@ public class Shelter extends AbstractModel {
     private String state;
     private String zipcode;
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -53,6 +55,14 @@ public class Shelter extends AbstractModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
