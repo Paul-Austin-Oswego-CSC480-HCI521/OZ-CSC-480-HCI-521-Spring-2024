@@ -108,7 +108,7 @@ public class ShelterService extends AbstractService<Shelter> {
 
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    public Response find(@QueryParam(value = "username") String username, @QueryParam(value = "name") String name,
+    public Response find(@QueryParam(value = "name") String name,
             @QueryParam(value = "email_address") String emailAddress,
             @QueryParam(value = "page_size") Integer pageSize,
             @QueryParam(value = "page_number") Integer pageNumber) {
@@ -116,10 +116,6 @@ public class ShelterService extends AbstractService<Shelter> {
                 Shelter.class);
 
         ArrayList<Bson> filters = new ArrayList<Bson>();
-
-        if (username != null) {
-            filters.add(eq("username", username));
-        }
 
         if (name != null) {
             filters.add(eq("name", name));
@@ -247,14 +243,14 @@ public class ShelterService extends AbstractService<Shelter> {
             @APIResponse(responseCode = "200", description = "Login was successful"),
             @APIResponse(responseCode = "401", description = "Login failed")
     })
-    public Response login(@QueryParam(value = "username") String username,
+    public Response login(@QueryParam(value = "emailAddress") String emailAddress,
             @QueryParam(value = "password") String password) {
         MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
         // TODO: encrypt passwords at rest, java.security MessageDigest looks promising
 
-        var record = sheltersCollection.find(and(eq("username", username), eq("password", password))).first();
+        var record = sheltersCollection.find(and(eq("emailAddress", emailAddress), eq("password", password))).first();
 
         if (record == null) {
             return Response.status(401).build();

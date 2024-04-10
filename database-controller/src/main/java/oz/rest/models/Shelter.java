@@ -4,6 +4,8 @@ import java.util.Set;
 
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import jakarta.validation.constraints.Email;
 // import org.bson.codecs.pojo.annotations.BsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -12,13 +14,11 @@ public class Shelter extends AbstractModel {
     @NotEmpty(message = "Shelter name must not be empty")
     // can't figure out how to make unique fields....
     // @Column(name = "name", unique = true)
-    private String username;
+    private String name;
 
     @NotEmpty(message = "Password must not be left empty")
     @Schema(writeOnly = true)
     private String password;
-
-    private String name;
 
     // TODO: Implement location
     // private String location;
@@ -33,6 +33,7 @@ public class Shelter extends AbstractModel {
 
     private String description;
 
+    @Email
     private String emailAddress;
 
     private String phoneNumber;
@@ -41,13 +42,13 @@ public class Shelter extends AbstractModel {
     private String state;
     private String zipcode;
 
-    public String getUsername() {
-        return username;
-    }
+    // public String getUsername() {
+    // return username;
+    // }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    // public void setUsername(String username) {
+    // this.username = username;
+    // }
 
     public String getPassword() {
         return password;
