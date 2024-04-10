@@ -1,6 +1,7 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar";
+import ShelterNavbar from "./Components/ShelterNavbar";
 import { Home } from "./Components/pages/Home";
 import { About } from "./Components/pages/About";
 import { Contact } from "./Components/pages/Contact";
@@ -11,10 +12,28 @@ import Footer from "./Components/Footer";
 import Login from "./Components/pages/Login";
 import Dashboard from "./Components/pages/Dashboard";
 import Onboarding from "./Components/pages/Onboarding/Onboarding";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 // import RehomePage from './Components/pages/Rehome';
 
 function App() {
+  let location = useLocation();
+  let navbarComponent;
+  if (
+    location.pathname === "/" ||
+    location.pathname === "/about" ||
+    location.pathname === "/ExplorePets" ||
+    location.pathname === "/PetDetails"
+  ) {
+    navbarComponent = <Navbar />;
+  } else if (
+    location.pathname === "/shelter" ||
+    location.pathname === "/login" ||
+    location.pathname === "/signup" ||
+    location.pathname === "/dashboard"
+  ) {
+    navbarComponent = <ShelterNavbar />;
+  }
+
   return (
     <div>
       <Helmet>
@@ -22,7 +41,8 @@ function App() {
         <title>Paws N Claws</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <Navbar />
+
+      {navbarComponent}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
