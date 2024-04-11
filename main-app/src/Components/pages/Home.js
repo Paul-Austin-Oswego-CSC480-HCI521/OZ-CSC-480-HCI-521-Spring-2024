@@ -205,25 +205,25 @@ export const Home = () => {
           <div className="main-container">
             <div className="button-container">
               {/* Navigate to Multifilters page when this button is clicked */}
-              <Link to="/multi-filters" className="third-button">
+              <Link to="/ExplorePets" className="third-button">
                 <img src={dogImage} alt="Dog" />
                 <span>Dog</span>
               </Link>
 
               {/* Navigate to Multifilters page when this button is clicked */}
-              <Link to="/multi-filters" className="third-button">
+              <Link to="/ExplorePets" className="third-button">
                 <img src={catImage} alt="Cat" />
                 <span>Cat</span>
               </Link>
 
               {/* Navigate to Multifilters page when this button is clicked */}
-              <Link to="/multi-filters" className="third-button">
+              <Link to="/ExplorePets" className="third-button">
                 <img src={birdImage} alt="Bird" />
                 <span>Bird</span>
               </Link>
 
               {/* Navigate to Multifilters page when this button is clicked */}
-              <Link to="/multi-filters" className="fifth-button">
+              <Link to="/ExplorePets" className="fifth-button">
                 <img src={bunnyImage} alt="Small Critters" />
                 Small Critters
               </Link>
@@ -231,7 +231,7 @@ export const Home = () => {
             <h1 className="primary-heading">
               Find your furr-ever friend today!
             </h1>
-            </div>
+          </div>
         </div>
       </div>
 

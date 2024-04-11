@@ -47,6 +47,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="#FAQ" element={<Home />} />
         <Route path="/ExplorePets" element={<MultiFilters />} />
         <Route path="PetDetails" element={<PetDetails />} />
         <Route path="/shelter" element={<RehomePage />} />

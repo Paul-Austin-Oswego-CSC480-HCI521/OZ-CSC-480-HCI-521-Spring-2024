@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './AdoptionFAQ.css';
+import React, { useState } from "react";
+import "./AdoptionFAQ.css";
 
 const AdoptionFAQ = () => {
   // State to keep track of which question is currently open
@@ -17,31 +17,31 @@ const AdoptionFAQ = () => {
   // Array of FAQ items with questions and answers
   const faqItems = [
     {
-      question: 'How can I adopt a pet from your shelter?',
+      question: "How can I adopt a pet from your shelter?",
       answer:
-        'Adopting a pet is easy! Simply browse through our available pets, choose the one that steals your heart, and fill out our adoption application. Our adoption counselors will guide you through the rest of the process.',
+        "Adopting a pet is easy! Simply browse through our available pets, choose the one that steals your heart, and fill out our adoption application. Our adoption counselors will guide you through the rest of the process.",
     },
     {
-      question: 'What are the adoption fees?',
+      question: "What are the adoption fees?",
       answer:
-        'Adoption fees vary based on the type of pet and their age. These fees typically cover vaccinations, spaying/neutering, microchipping, and other essential medical procedures. Rest assured, every penny goes towards the well-being of our animals.',
+        "Adoption fees vary based on the type of pet and their age. These fees typically cover vaccinations, spaying/neutering, microchipping, and other essential medical procedures. Rest assured, every penny goes towards the well-being of our animals.",
     },
     {
-      question: 'Can I meet the pet before adopting?',
+      question: "Can I meet the pet before adopting?",
       answer:
-        'Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it\'s a perfect match for both you and the pet.',
+        "Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it's a perfect match for both you and the pet.",
     },
     // Add more FAQ items as needed
   ];
 
   return (
-    <div className="adoption-faq">
+    <div className="adoption-faq" id="FAQ">
       <h1>Adoption FAQ</h1>
       <div className="faq-list">
         {faqItems.map((item, index) => (
           <div key={index} className="faq-item">
             <div
-              className={`faq-question ${openQuestion === index ? 'open' : ''}`}
+              className={`faq-question ${openQuestion === index ? "open" : ""}`}
               onClick={() => toggleQuestion(index)}
             >
               {item.question}

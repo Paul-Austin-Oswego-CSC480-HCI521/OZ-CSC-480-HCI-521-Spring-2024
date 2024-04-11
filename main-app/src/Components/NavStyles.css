@@ -100,7 +100,7 @@
 }
 
 .dropdown:hover .dropbtn, .dropdown .dropbtn:focus {
-  background-color: #F4A5A5;
+  background-color: #f0f0f0;
 }
 
 /* LOGO */
@@ -135,5 +135,5 @@
   }
 
   .nav-links a:hover {
-    background-color: #F4A5A5; 
+    background-color: #F0f0f0; 
   }
