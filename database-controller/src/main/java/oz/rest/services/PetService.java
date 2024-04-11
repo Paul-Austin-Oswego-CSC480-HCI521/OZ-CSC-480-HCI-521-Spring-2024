@@ -267,4 +267,3 @@ public class PetService extends AbstractService<Pet> {
         return Response.ok(removedPet.toJson()).build();
     }
 }
-arardasda
