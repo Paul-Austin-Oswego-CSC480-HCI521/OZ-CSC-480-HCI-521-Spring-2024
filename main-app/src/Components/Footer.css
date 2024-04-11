@@ -2,6 +2,7 @@
     margin: 6rem 6rem;
     display: flex;
     margin-top: 10rem;
+    padding: 5%;
   }
   .footer-logo-container {
     max-width: 110px;
@@ -20,7 +21,8 @@
   .footer-section-two {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    padding-left: 25%;
+    justify-content: center;
   }
   .footer-section-columns {
     display: flex;
@@ -31,5 +33,19 @@
     margin: 0.25rem 0rem;
     font-weight: 600;
     color: #4c4c4c;
+    cursor: pointer;
+  }
+
+  .footer-section-columns a {
+    text-decoration: none;
+    color: #4c4c4c;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0.25rem 0rem;
+    cursor: pointer;
+  }
+  
+  .footer-section-columns a:hover {
+    color: #fe9e0d;
     cursor: pointer;
   }

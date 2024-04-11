@@ -1,88 +1,75 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BannerBackground from "../../Assets/Cat Hero Banner.png";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import FAQs from "./AdoptionFAQ";
 
-function RehomePage() {
-  // Set background color when component renders
-  React.useEffect(() => {
-    document.body.style.backgroundColor = "#FFE5CC";
-    return () => {
-      // Clean up effect
-      document.body.style.backgroundColor = null;
-    };
-  }, []);
-
+export const RehomePage = () => {
   return (
-    <div
-      style={{
-        fontFamily: "Arial, sans-serif",
-        display: "flex",
-        width: "100%",
-        height: "80vh",
-        margin: "2%",
-      }}
-      className="rehome-container"
-    >
-      <div
-        className="rehome-hero-image"
-        style={{
-          backgroundImage:
-            "url('https://source.unsplash.com/random?dog,cat,pets')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          width: "50%",
-          borderRadius: "8px",
-          margin: "10", // Center the image horizontally
-        }}
-        alt="Hero Image"
-      ></div>
-      <div
-        className="login-container"
-        style={{
-          textAlign: "center",
-          marginTop: "20px",
-          display: "flex",
-          flexDirection: "row",
-          //   flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "50%"
-        }}
-      >
-        <Link to="/login">
-          <button
-            className="login-button"
+    <div className="rehome-container">
+      <div className="rehome-banner-container" style={{ position: "relative" }}>
+        <div className="rehome-bannerImage-container">
+          <img className="rehome-bannerDog" src={BannerBackground} alt="" />
+          <div
             style={{
-              padding: "20px 40px",
-              borderRadius: "40px",
-              border: "none",
-              backgroundColor: "#4caf50",
-              color: "#fff",
-              cursor: "pointer",
-              margin: "20px",
+              color: "black",
+              marginRight: "10px",
+              position: "absolute",
+              top: "35%",
+              right: "5%",
+              fontSize: "2rem",
+              fontWeight: "900",
+              fontFamily: "'Grandstander', cursive",
             }}
           >
-            Login
-          </button>
-        </Link>
-        <Link to="/signup">
-          <button
-            className="signup-button"
+            Find a home for your furr-ever friend!
+          </div>
+          <div
             style={{
-              padding: "20px 40px",
-              borderRadius: "40px",
-              border: "none",
-              backgroundColor: "#2196F3",
-              color: "#fff",
-              cursor: "pointer",
-              margin: "20px",
+              position: "absolute",
+              top: "50%",
+              right: "20%",
+              transform: "translateY(-50%)",
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            Signup
-          </button>
-        </Link>
+            <div>
+              <Link to="/login">
+                <button
+                  style={{
+                    padding: "10px 20px",
+                    backgroundColor: "#fe9e0d",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    marginRight: "10px",
+                  }}
+                >
+                  Login
+                </button>
+              </Link>
+              <Link to="/signup">
+                <button
+                  style={{
+                    padding: "10px 20px",
+                    backgroundColor: "#fe9e0d",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                  }}
+                >
+                  Signup
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
+      <FAQs />
     </div>
   );
-}
+};
 
 export default RehomePage;

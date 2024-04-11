@@ -7,12 +7,13 @@ import { About } from "./Components/pages/About";
 import { Contact } from "./Components/pages/Contact";
 import { PetDetails } from "./Components/pages/PetDetails";
 import MultiFilters from "./Components/pages/MultiFilters";
-import RehomePage from "./Components/pages/Rehome";
+import {RehomePage} from "./Components/pages/Rehome";
 import Footer from "./Components/Footer";
 import Login from "./Components/pages/Login";
 import ShelterDashboard from "./Components/pages/ShelterDashboard";
 import Onboarding from "./Components/pages/Onboarding/Onboarding";
 import { Helmet } from "react-helmet";
+import Subfooter from "./Components/Subfooter";
 // import RehomePage from './Components/pages/Rehome';
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Route path="/dashboard" element={<ShelterDashboard />} />
       </Routes>
       <Footer />
+      {/* <Subfooter /> */}
     </div>
   );
 }

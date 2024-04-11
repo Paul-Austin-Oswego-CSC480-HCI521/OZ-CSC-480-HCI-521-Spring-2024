@@ -3,29 +3,41 @@ import { BsTwitter } from "react-icons/bs";
 import { SiLinkedin } from "react-icons/si";
 import { BsYoutube } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
-import "./Footer.css"
+import "./Footer.css";
+import Favicon from "../Assets/Favicon.png";
 
 const Footer = () => {
   return (
     <div className="footer-wrapper">
+
       <div className="footer-section-one">
         <div className="footer-logo-container">
-          <img src={""} alt="" />
+          <img src={Favicon} alt="" />
         </div>
-        <div className="footer-icons">
+
+        {/* <div className="footer-icons">
           <BsTwitter />
           <SiLinkedin />
           <BsYoutube />
           <FaFacebookF />
-        </div>
+        </div> */}
       </div>
+
       <div className="footer-section-two">
         <div className="footer-section-columns">
+          <a href="hello@pawsnclaws.com">
+            <email>hello@pawsnclaws.com</email>
+          </a>
+          <div className="footer-section-columns">
+            <span>©2024 PawsNClaws</span>
+          </div>
+        </div>
+        {/* <div className="footer-section-columns">
           <span>Qualtiy</span>
           <span>Help</span>
           <span>Share</span>
           <span>Carrers</span>
-      
+
           <span>Work</span>
         </div>
         <div className="footer-section-columns">
@@ -37,9 +49,10 @@ const Footer = () => {
         <div className="footer-section-columns">
           <span>Terms & Conditions</span>
           <span>Privacy Policy</span>
-        </div>
+        </div> */}
       </div>
     </div>
+
   );
 };
 
