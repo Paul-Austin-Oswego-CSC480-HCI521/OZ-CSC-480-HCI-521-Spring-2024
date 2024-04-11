@@ -39,6 +39,7 @@ public class MongoProducer {
     @Produces
     public MongoDatabase createDB(MongoClient mongoClient) {
         // allows us to use POJO, inserting objects directly instead of manually
+        // test
         CodecProvider pojoCodecProvider = fromProviders(PojoCodecProvider.builder().automatic(true).build());
         CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
 
