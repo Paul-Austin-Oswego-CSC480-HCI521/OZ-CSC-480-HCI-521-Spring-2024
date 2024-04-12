@@ -14,8 +14,18 @@ import "./PetDetails.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { useEffect } from "react";
 
 export const PetDetails = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch("")
+      .then((response) => response.json())
+      .then((data) => setItems(data))
+      .catch((error) => console.error("There was an error!", error));
+  }, []);
+
   const data = [
     {
       statement: "Adoption Process",
