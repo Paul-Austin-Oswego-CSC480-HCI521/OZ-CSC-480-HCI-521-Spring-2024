@@ -23,10 +23,7 @@ const Navbar = () => {
 
   const handleLinkClick = (path) => {
     // Check if the current page is the home page and the path includes an in-page link
-    if (
-      location.pathname === "/" &&
-      (path === "/#how_it_works" || path === "/#FAQ")
-    ) {
+    if (location.pathname === "/" && path === "/#FAQ") {
       const sectionId = path.substring(2); // Extracts 'how_it_works' or 'FAQ' from the path
       const section = document.getElementById(sectionId);
       if (section) {
