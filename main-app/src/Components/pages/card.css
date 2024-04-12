@@ -5,7 +5,8 @@
 }
 
 .pet-card {
-  position: relative; /* Added for positioning the edit and delete buttons */
+  position: relative;
+  /* Added for positioning the edit and delete buttons */
   border-radius: 16px;
   box-shadow: 0px 8px 40px 0px rgba(24, 18, 7, 0.08);
   background-color: var(--White, #fff);
@@ -13,11 +14,14 @@
   flex-direction: column;
   color: #000;
   text-align: center;
-  flex-basis: calc(33.33% - 20px); /* 3 pets in one line */
-  max-width: calc(33.33%- 20px); /* 3 pets in one line */
+  flex-basis: calc(33.33% - 20px);
+  /* 3 pets in one line */
+  max-width: calc(33.33%- 20px);
+  /* 3 pets in one line */
   box-sizing: border-box;
   transition: all 0.3s ease;
-  cursor: pointer; /* Added to indicate clickable */
+  cursor: pointer;
+  /* Added to indicate clickable */
 }
 
 .pet-card:hover {
@@ -77,45 +81,51 @@
 
 @media (max-width: 991px) {
   .pet-card {
-    flex-basis: calc(50% - 20px); /* 2 pets in one line on smaller screens */
-    max-width: calc(50% - 20px); /* 2 pets in one line on smaller screens */
+    flex-basis: calc(50% - 20px);
+    /* 2 pets in one line on smaller screens */
+    max-width: calc(50% - 20px);
+    /* 2 pets in one line on smaller screens */
   }
 }
 
-.pet-card .edit-button{
-position: absolute;
-top: 10px;
-right: 10px;
-background: none;
-border: none;
-cursor: pointer;
-opacity: 0;
-transition: opacity 0.3s ease;
-}
-.pet-card .delete-button{
+.pet-card .edit-button {
   position: absolute;
-top: 10px;
-left: 10px;
-background: none;
-border: none;
-cursor: pointer;
-opacity: 0;
-transition: opacity 0.3s ease;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pet-card .delete-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .pet-card:hover .edit-button,
 .pet-card:hover .delete-button {
-opacity: 1; /* Show on hover */
+  opacity: 1;
+  /* Show on hover */
 }
 
 .edit-button {
-color: black;
-z-index: 1; /* Ensure button is above image */
+  color: black;
+  z-index: 1;
+  /* Ensure button is above image */
 }
 
 .delete-button {
-color: black;
-z-index: 1; /* Ensure button is above image */
+  color: black;
+  z-index: 1;
+  /* Ensure button is above image */
 }
 
 .popup {
@@ -139,8 +149,10 @@ z-index: 1; /* Ensure button is above image */
   width: 90%;
   position: relative;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Add scroll when content overflows */
-  max-height: 80vh; /* Limit the height of the popup */
+  overflow-y: auto;
+  /* Add scroll when content overflows */
+  max-height: 80vh;
+  /* Limit the height of the popup */
 }
 
 .close-popup {
@@ -149,8 +161,10 @@ z-index: 1; /* Ensure button is above image */
   right: 10px;
   font-size: 24px;
   cursor: pointer;
-  color: #f44336; /* Red color for the cross */
-  z-index: 1001; /* Ensure the close button is above the popup */
+  color: #f44336;
+  /* Red color for the cross */
+  z-index: 1001;
+  /* Ensure the close button is above the popup */
 }
 
 .close-popup:hover {
@@ -191,12 +205,15 @@ z-index: 1; /* Ensure button is above image */
   background-color: #ff9f43;
   color: #fff;
   border: none;
-  padding: 15px 30px; /* Larger padding for bigger button */
+  padding: 15px 30px;
+  /* Larger padding for bigger button */
   border-radius: 10px;
   cursor: pointer;
-  font-size: 18px; /* Larger font size */
+  font-size: 18px;
+  /* Larger font size */
   display: block;
-  margin: 20px auto 0; /* Center the button with margin top */
+  margin: 20px auto 0;
+  /* Center the button with margin top */
 }
 
 .popup form button:hover {
@@ -205,8 +222,8 @@ z-index: 1; /* Ensure button is above image */
 
 .pet-card-options {
   position: absolute;
-  top: 2px;
-  right: 5px;
+  top: 1px;
+  right: 1px;
   z-index: 1;
 }
 
@@ -218,14 +235,21 @@ z-index: 1; /* Ensure button is above image */
 }
 
 .vertical-dots {
-  font-size: 24px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #000000; /* Adjust the color of the dots */
   font-weight: 600;
+  font-size: 20px;
+  border-radius: 50%;
+  padding: 3px;
+  height: 30px; /* Adjust the size as needed */
+  width: 30px; /* Adjust the size as needed */
+  align-items: center;
 }
 
 .pet-options-dropdown {
   position: absolute;
-  top: 3px;
-  right: 0;
+  top: 50px;
+  left: 15px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -255,7 +279,7 @@ z-index: 1; /* Ensure button is above image */
   color: #dd0426;
 }
 
-.pet-options-dropdown{
+.pet-options-dropdown {
   font-size: 16px;
   line-height: 120%;
   font-weight: 600;

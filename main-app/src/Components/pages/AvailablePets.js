@@ -85,9 +85,10 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
           <div className="pet-card-options" >
             {showOptions === pet.id && (
               <div className="pet-options-dropdown" ref={optionsRef}>
-                <button onClick={() => handleEditClick(pet)}>Edit Pet</button>
-                <button onClick={() => handleDeleteClick(pet.id)} className='deletePet'>Delete Pet</button>
+                <button onClick={() => handleEditClick(pet)}>Edit Pet Details</button>
                 <button onClick={() => handleMarkAdopted(pet.id)}>Mark as Adopted</button>
+                <button onClick={() => handleDeleteClick(pet.id)} className='deletePet'>Delete Pet</button>
+                
               </div>
             )}
             <button className="options-button" onClick={(e) => handleOptionsClick(e, pet.id)}>
