@@ -1,5 +1,6 @@
 import Select from 'react-select';
 import React, { useEffect, useState } from "react";
+import FilterBackground from "../../Assets/Doggusearch1.png";
 import { items } from "./items"
 import "./MultiFilters.css";
 import { Link } from 'react-router-dom';
@@ -22,7 +23,7 @@ export default function MultiFilters() {
   const [filteredItems, setFilteredItems] = useState(items);
 
   // Category options
-  let filters = ["Dog", "Cat", "Other"];
+  let filters = ["Dog", "Cat", "Bird", "Small Critter"];
 
   // Dropdown options
   const uniqueItems = (key) => {
@@ -105,14 +106,18 @@ export default function MultiFilters() {
     filterItems();
     // eslint-disable-next-line
   }, [selectedFilters, selectedSex, selectedColor, selectedBreed, selectedAge]);
-
+<style>{(document.body.style.backgroundColor = "#E3EAE7")}</style>;
+  
   return (
-    <div>
+    <div className='DoYou'>
+      <h1>Your Furr-ever Friend Awaits</h1>
+      <img className="filter-bannerDog" src={FilterBackground} alt="" />
+    <div className="custom-container">
       <div className="buttons-container" id='filters-button'>
         {filters.map((category, idx) => (
           <button
             onClick={() => handleFilterButtonClick(category)}
-            className={`button ${
+            className={`button-top ${
               selectedFilters?.includes(category) ? "active" : ""
             }`}
             key={`filters-${idx}`}
@@ -196,24 +201,23 @@ export default function MultiFilters() {
         />
       </div>
 
-      <div className="buttons-container">
-        {filteredItems.map((item, idx) => (
-          <Link to="/PetDetails" style={{textDecoration:"none"}}>
-          <div key={`items-${idx}`} className="button">
-            
-              <p className="name">{item.name}</p>
-          
-            <img className="image" src= {item.image} alt ="Null"/>
-            <p className="category">{item.category}</p>
-            <p className="sex">{item.sex}</p>
-            <p className="color">{item.color}</p>
-            <p className="breed">{item.breed}</p>
-            <p className="age">{item.age}</p>
-          </div>
-          </Link>
-        ))}
+      <div className="cards-container">
+  {filteredItems.map((item, idx) => (
+    <Link to="/PetDetails" style={{ textDecoration: "none" }}>
+      <div key={`items-${idx}`} className="card">
+        <img className="image" src={item.image} alt="Null" />
+        <p className="name">{item.name}</p>
+        <p className="breed">{item.breed}</p>
+        {/* <p className="category">{item.category}</p> */}
+        {/* <p className="sex">{item.sex}</p> */}
+        {/* <p className="color">{item.color}</p> */}
+        <p className="age">{item.age}</p>
       </div>
+    </Link>
+  ))}
+</div>
 
+    </div>
     </div>
   );
 }
