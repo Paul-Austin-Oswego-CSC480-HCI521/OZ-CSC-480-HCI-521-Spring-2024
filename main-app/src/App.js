@@ -31,11 +31,11 @@ function App() {
     location.pathname === "/shelter" ||
     location.pathname === "/login" ||
     location.pathname === "/signup"
-  ) {
-    navbarComponent = <ShelterNavbar />;
-  } else if (location.pathname === "/dashboard") {
-    navbarComponent = <ShelterDashNavbar />;
-  }
+   ) //{
+  //   navbarComponent = <ShelterNavbar />;
+  // } else if (location.pathname === "/dashboard") {
+  //   navbarComponent = <ShelterDashNavbar />;
+  // }
 
   return (
     <div>
