@@ -151,3 +151,80 @@
     max-height: 9999px;   
     transition: all 0.5s cubic-bezier(1,0,1,0);
 }
+
+.about-meet-teamss {
+  max-width: 1500px;
+  margin: 0 auto; /* Center the carousel */
+  padding: 20px;
+}
+
+.about-meet-teamss h1 {
+  text-align: left;
+  margin-top: 40px;
+  font-size: 24px;
+  font-family: 'Grandstander', cursive; /* Changed font to Grandstander */
+}
+
+.about-team-sections {
+  margin-bottom: 50px; /* Add space between each team's carousel */
+}
+
+.about-team-sections h2 {
+  text-align: left;
+  margin-bottom: 20px; /* Space between the team name and the carousel */
+  font-size: 24px;
+}
+
+.about-meet-teamss .about-team-members {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 0px 0px 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.about-meet-teamss .about-team-members img {
+  width: 100%;
+  height: 75%; /* Adjust image height to half of the container's height */
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Increase the z-index to bring the image in front of the text */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.about-meet-teamss .about-team-members h3{
+  font-family: "Grandstander", cursive;
+}
+.about-meet-teamss .about-team-members p{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  /* change this shit!!! */
+}
+
+.about-meet-teamss .about-team-members h3,
+.about-meet-teamss .about-team-members p {
+
+    position: absolute; /* Position text absolutely */
+    z-index: 2; /* Ensure text is in front of the image */
+    width: calc(100% - 40px); /* Subtract padding from container width */
+    left: 20px; /* Move text to the side */
+    text-align: center; /* Center the text horizontally */
+
+}
+
+.about-meet-teamss .about-team-members h3 {
+    font-size: 18px;
+    top: 80%; /* Position text at the center vertically */
+    transform: translateY(-50%); /* Adjust vertically to center text */
+}
+
+.about-meet-teamss .about-team-members p {
+    font-size: 14px;
+    color: #000;
+    top: 85%; /* Position text below the h3 with additional space */
+}

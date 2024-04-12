@@ -7,7 +7,7 @@ import { About } from "./Components/pages/About";
 import { Contact } from "./Components/pages/Contact";
 import { PetDetails } from "./Components/pages/PetDetails";
 import MultiFilters from "./Components/pages/MultiFilters";
-import {RehomePage} from "./Components/pages/Rehome";
+import { RehomePage } from "./Components/pages/Rehome";
 import Footer from "./Components/Footer";
 import Login from "./Components/pages/Login";
 import ShelterDashboard from "./Components/pages/ShelterDashboard";
@@ -50,7 +50,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="#FAQ" element={<Home />} />
         <Route path="/ExplorePets" element={<MultiFilters />} />
-        <Route path="PetDetails" element={<PetDetails />} />
+        <Route path="/PetDetails/:id" element={<PetDetails />} />
         <Route path="/shelter" element={<RehomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Onboarding />} />
