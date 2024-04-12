@@ -1,0 +1,12 @@
+include:
+  - path:
+      - Backend/docker-compose.yml
+
+services:
+  proxy:
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./Proxy/Dockerfile
+    ports:
+      - 48020:48020
