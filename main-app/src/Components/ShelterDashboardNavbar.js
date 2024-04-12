@@ -1,30 +1,15 @@
 import React, { useState, useEffect } from "react";
-import "./NavStyles.css";
+import "./DashNavStyles.css";
 import logo from "../Assets/PawsnClawsWords.svg";
 import { NavLink as Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { CgProfile } from "react-icons/cg";
 
-const ShelterNavbar = () => {
+const ShelterDashNavbar = () => {
   const location = useLocation();
-
-  const handleLinkClick = (path) => {
-    // Check if the current page is the home page and the path includes an in-page link
-    if (
-      location.pathname === "/" &&
-      (path === "/#how_it_works" || path === "/#FAQ")
-    ) {
-      const sectionId = path.substring(2); // Extracts 'how_it_works' or 'FAQ' from the path
-      const section = document.getElementById(sectionId);
-      if (section) {
-        window.scrollTo({
-          top: section.offsetTop,
-          behavior: "smooth",
-        });
-      }
-    }
-  };
 
   //Track dropdown visibility state
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -85,11 +70,19 @@ const ShelterNavbar = () => {
           </Link>
         </div>
         <ul className="nav-links ">
-          <li>
-            <Link to="/login">Log In</Link>
-          </li>
-          <li>
-            <Link to="signup"> Sign Up</Link>
+          <li className="dropdown">
+            <button type="button" className="dropbtn" onClick={showDropdown}>
+              {<CgProfile />}
+              {<GiHamburgerMenu />}
+            </button>
+            {dropdownVisible && (
+              <div className="dropdown-content">
+                <Link to="/dashboard"> View Dashboard</Link>
+                <Link to="/ExplorePets"> Edit Profile</Link>
+                <Link to="/ExplorePets"> Log Out</Link>
+                <Link to="/ExplorePets"> Delete My Account</Link>
+              </div>
+            )}
           </li>
         </ul>
       </nav>
@@ -97,4 +90,4 @@ const ShelterNavbar = () => {
   );
 };
 
-export default ShelterNavbar;
+export default ShelterDashNavbar;
