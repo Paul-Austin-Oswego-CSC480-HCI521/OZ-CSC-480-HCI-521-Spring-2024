@@ -31,12 +31,47 @@ const AdoptionFAQ = () => {
       answer:
         "Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it's a perfect match for both you and the pet.",
     },
+    {
+      question: 'How can I adopt a pet from your shelter?',
+      answer:
+        'Adopting a pet is easy! Simply browse through our available pets, choose the one that steals your heart, and fill out our adoption application. Our adoption counselors will guide you through the rest of the process.',
+    },
+    {
+      question: 'What are the adoption fees?',
+      answer:
+        'Adoption fees vary based on the type of pet and their age. These fees typically cover vaccinations, spaying/neutering, microchipping, and other essential medical procedures. Rest assured, every penny goes towards the well-being of our animals.',
+    },
+    {
+      question: 'Can I meet the pet before adopting?',
+      answer:
+        'Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it\'s a perfect match for both you and the pet.',
+    },
+    // Add more FAQ items as needed
+  ];
+
+  const faqItem = [
+    {
+      question: 'How can I adopt a pet from your shelter?',
+      answer:
+        'Adopting a pet is easy! Simply browse through our available pets, choose the one that steals your heart, and fill out our adoption application. Our adoption counselors will guide you through the rest of the process.',
+    },
+    {
+      question: 'What are the adoption fees?',
+      answer:
+        'Adoption fees vary based on the type of pet and their age. These fees typically cover vaccinations, spaying/neutering, microchipping, and other essential medical procedures. Rest assured, every penny goes towards the well-being of our animals.',
+    },
+    {
+      question: 'Can I meet the pet before adopting?',
+      answer:
+        'Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it\'s a perfect match for both you and the pet.',
+    },
     // Add more FAQ items as needed
   ];
 
   return (
     <div className="adoption-faq" id="FAQ">
       <h1>Adoption FAQ</h1>
+      <p>Find answers to commonly asked questions about the pet adoption process, pet care and support.</p>
       <div className="faq-list">
         {faqItems.map((item, index) => (
           <div key={index} className="faq-item">
@@ -55,8 +90,11 @@ const AdoptionFAQ = () => {
           </div>
         ))}
       </div>
+
     </div>
+    
   );
 };
 
 export default AdoptionFAQ;
+
