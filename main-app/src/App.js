@@ -33,9 +33,10 @@ function App() {
     location.pathname === "/signup"
   ) {
     navbarComponent = <ShelterNavbar />;
-  } else if (location.pathname === "/dashboard") {
-    navbarComponent = <ShelterDashNavbar />;
   }
+  //  else if (location.pathname === "/dashboard") {
+  //   navbarComponent = <ShelterDashNavbar />;
+  // } 
 
   return (
     <div>
