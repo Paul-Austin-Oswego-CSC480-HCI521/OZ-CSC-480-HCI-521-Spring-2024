@@ -1,11 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 
 /* TOP NAV BAR CSS */
 
-body{
-  font-family: Quicksand;
-}
 .top-nav-container{
     display: flex;
     justify-content: center;
@@ -66,7 +63,7 @@ body{
     color: #000; 
     font-weight: bold;
     padding: .5em 1em; 
-    border-radius: 5px; 
+    border-radius: 30px; 
     transition: background-color 0.3s;
     cursor: pointer;
     border: none;
@@ -79,6 +76,7 @@ body{
   .dropdown {
     position: relative;
     display: inline-block;
+    border-radius: 300px;
   }
 
 .dropdown-content {
