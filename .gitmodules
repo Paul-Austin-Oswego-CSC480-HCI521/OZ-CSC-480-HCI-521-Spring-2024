@@ -1,8 +1,8 @@
 [submodule "Backend"]
 	path = Backend
-	url = git@github.com:Paul-Austin-Oswego-CSC480-HCI521/OZ-CSC-480-HCI-521-Spring-2024.git
+	url = https://github.com/Paul-Austin-Oswego-CSC480-HCI521/OZ-CSC-480-HCI-521-Spring-2024.git
 	branch = Engine
 [submodule "Frontend"]
 	path = Frontend
-	url = git@github.com:Paul-Austin-Oswego-CSC480-HCI521/OZ-CSC-480-HCI-521-Spring-2024.git
+	url = https://github.com/Paul-Austin-Oswego-CSC480-HCI521/OZ-CSC-480-HCI-521-Spring-2024.git
 	branch = GUI
