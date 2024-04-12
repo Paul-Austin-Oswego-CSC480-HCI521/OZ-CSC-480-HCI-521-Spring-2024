@@ -1,0 +1,10 @@
+.subfooter-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.subfooter-section-two{
+    display: flex;
+}

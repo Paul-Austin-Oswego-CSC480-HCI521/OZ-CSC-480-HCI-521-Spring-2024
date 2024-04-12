@@ -58,7 +58,7 @@ function App() {
         <Route path="/dashboard" element={<ShelterDashboard />} />
       </Routes>
       <Footer />
-      {/* <Subfooter /> */}
+      <Subfooter />
     </div>
   );
 }
