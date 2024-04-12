@@ -74,56 +74,60 @@ export const PetDetails = () => {
     ],
   };
 
-  const pets = [
+  const workInfoData = [
     {
-      name: "",
-      members: [
-        {
-          name: "Smoothie, M",
-          image: Luke,
-          info: "American Shorthair",
-        },
-        {
-          name: "Watson, M",
-          image: Finn,
-          info: "American Shorthair",
-        },
-        {
-          name: "Victor, M",
-          image: Brownie,
-          info: "American Shorthair",
-        },
-        {
-          name: "Aofie, F",
-          image: Jaxon,
-          info: "American Shorthair",
-        },
-        {
-          name: "Smoothie F",
-          image: Chloe,
-          info: "American Shorthair",
-        },
-        {
-          name: "Jerry",
-          image: Chloe,
-          info: "American Shorthair",
-        },
-        {
-          name: "Jerry",
-          image: Ginger,
-          info: "American Shorthair",
-        },
-        {
-          name: "Jerry",
-          image: Rascal,
-          info: "American Shorthair",
-        },
-        {
-          name: "Jerry",
-          image: Danii,
-          info: "American Shorthair",
-        },
-      ],
+      image: Luke,
+      title: "Luke, M",
+      text: "American Shorthair",
+      age: "9-month old",
+    },
+    {
+      image: Finn,
+      title: "Finn, M",
+      text: "American Shorthair",
+      age: "9-month old",
+    },
+    {
+      image: Brownie,
+      title: "Brownie, F",
+      text: "American Shorthair",
+      age: "9-month old",
+    },
+    {
+      image: Jaxon,
+      title: "Jaxon, M",
+      text: "American Shorthair",
+      age: "9-month old",
+    },
+    {
+      image: Danii,
+      title: "Chloe, M",
+      text: "American Shorthair",
+      age: "9-month old",
+    },
+    {
+      image: Luke,
+      title: "Asame, F",
+      text: "American Shorthair",
+      age: "9-month old",
+    },
+    {
+      image: Finn,
+      title: "Ginger, F",
+      text: "American Shorthair",
+      age: "9-month old",
+    },
+    {
+      image: Jaxon,
+      title: "Rascal, M",
+      text: "American Shorthair",
+      age: "9-month old",
+    },
+    {
+      image: Brownie,
+      title: "Danii, F",
+      text: "American Shorthair",
+      age: "9-month old",
     },
   ];
 
@@ -174,22 +178,33 @@ export const PetDetails = () => {
 
       <div className="about-meet-teamss">
         <h1>Furr-Ever friends near you</h1>
-        {pets.map((pets, index) => (
-          <div key={index} className="about-team-sections">
-            <h2>{pets.name}</h2>
-            <Slider {...sliderSettings}>
-              {pets.members.map((member, memberIndex) => (
-                <Link to="/PetDetails/:d">
-                  <div key={memberIndex} className="about-team-members">
-                    <img src={member.image} alt={member.name} />
-                    <h3>{member.name}</h3>
-                    <p>{member.info}</p>
-                  </div>
-                </Link>
-              ))}
-            </Slider>
-          </div>
-        ))}
+        <div className="about-team-sections">
+          <Slider>
+            {[0, 3, 6].map((startIndex, groupIndex) => (
+              <div className="work-section-info-container" key={groupIndex}>
+                {/* Map over each group of three items */}
+                {workInfoData
+                  .slice(startIndex, startIndex + 5)
+                  .map((data, index) => (
+                    <a key={index} href={`/PetDetails`}>
+                      <div className="work-section-info">
+                        <div className="info-boxes-img-container">
+                          <img
+                            src={data.image}
+                            alt=""
+                            style={{ maxWidth: "80%", height: "auto" }}
+                          />
+                        </div>
+                        <h2>{data.title}</h2>
+                        <p>{data.text}</p>
+                        <span>{data.age}</span>
+                      </div>
+                    </a>
+                  ))}
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   );

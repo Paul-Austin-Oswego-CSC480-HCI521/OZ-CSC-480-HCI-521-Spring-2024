@@ -9,6 +9,18 @@ import { BsHouseHeartFill } from "react-icons/bs";
 const Navbar = () => {
   const location = useLocation();
 
+  const [zipCode, setZipCode] = useState("13126"); // Define zipCode state
+
+  const handleZipCodeChange = (e) => {
+    setZipCode(e.target.value);
+  };
+
+  const handleSubmitZipCode = (e) => {
+    e.preventDefault();
+
+    console.log("Hello World");
+  };
+
   const handleLinkClick = (path) => {
     // Check if the current page is the home page and the path includes an in-page link
     if (
@@ -103,6 +115,7 @@ const Navbar = () => {
           <li>
             <Link to="/"> Contact Us</Link>
           </li>
+          <li></li>
         </ul>
       </nav>
     </>

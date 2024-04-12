@@ -228,3 +228,12 @@
     color: #000;
     top: 85%; /* Position text below the h3 with additional space */
 }
+
+.info-boxes-img-container {
+  position: absolute; /* Position the container absolutely */
+  top: 0; /* Align the container to the top */
+  left: 0; /* Align the container to the left */
+  width: 125%; /* Ensure container spans the entire width */
+  height: 100%; /* Set height to 50% of the parent's height */
+  overflow: hidden; /* Hide overflow content */
+}

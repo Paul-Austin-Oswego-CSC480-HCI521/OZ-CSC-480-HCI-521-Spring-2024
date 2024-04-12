@@ -24,13 +24,17 @@ function Login() {
       console.log(jsonObject);
 
       //   Send JSON object to backend
-      fetch("http://localhost:9080/database-controller/api/shelter/login?" + new URLSearchParams(jsonObject), {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(jsonObject),
-      })
+      fetch(
+        "http://localhost:9080/database-controller/api/shelter/login?" +
+          new URLSearchParams(jsonObject),
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(jsonObject),
+        }
+      )
         .then((response = 200) => {
           if (response.ok) {
             //   if (1) {
@@ -61,7 +65,6 @@ function Login() {
       }
     };
   }, [navigate]);
-
 
   return (
     <div
