@@ -1,7 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import ShelterNavbar from "./Components/ShelterNavbar";
 import { Home } from "./Components/pages/Home";
 import { About } from "./Components/pages/About";
 import { Contact } from "./Components/pages/Contact";
@@ -29,8 +28,8 @@ function App() {
   } else if (
     location.pathname === "/shelter" ||
     location.pathname === "/login" ||
-    location.pathname === "/signup" ||
-    location.pathname === "/dashboard"
+    location.pathname === "/signup"
+    
   ) {
     // navbarComponent = <ShelterNavbar />;
     navbarComponent = <Navbar />;

@@ -4,9 +4,14 @@ import UploadPetForm from './UploadPetForm';
 import AvailablePets from './AvailablePets';
 import CategoryFilter from './CategoryFilter';
 import './ShelterDashboard.css';
+import { NavLink as Link } from "react-router-dom";
+import { IoPawSharp } from "react-icons/io5";
+import { BsHouseHeartFill } from "react-icons/bs";
+import { AiOutlineMenu } from 'react-icons/ai';
+import { BsPersonCircle } from 'react-icons/bs';
+import EditProfileModal from './EditProfileModal';
 
 const ShelterDashboard = () => {
-
   const [data, setData] = useState({
     shelter: {
       name: '',
@@ -18,10 +23,30 @@ const ShelterDashboard = () => {
     pets: [],
   });
 
-
-  const [editMode, setEditMode] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [expanded, setExpanded] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleLogout = () => {
+    // Clear authentication token or session cookie here
+
+    // Redirect to logout route or homepage
+    window.location.href = '/shelter';
+  };
+
+  const handleDeleteAccount = () => {
+    const confirmDelete = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
+    if (confirmDelete) {
+      // Send a DELETE request to your backend API to delete the account
+
+
+    }
+  };
 
 
   useEffect(() => {
@@ -64,11 +89,6 @@ const ShelterDashboard = () => {
     // setData(updatedData);
     // updateDataJson(updatedData);
   };
-
-  const toggleEditMode = () => {
-    setEditMode(!editMode);
-  };
-
   const toggleDescription = () => {
     setExpanded(!expanded);
   };
@@ -109,36 +129,6 @@ const ShelterDashboard = () => {
     updateDataJson(updatedData);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setData((prevData) => ({
-      ...prevData,
-      shelter: {
-        ...prevData.shelter,
-        [name]: value,
-      },
-    }));
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setData((prevData) => ({
-        ...prevData,
-        shelter: {
-          ...prevData.shelter,
-          image: reader.result,
-        },
-      }));
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const saveChanges = () => {
-    setEditMode(false);
-  };
-
   const filterPetsByCategory = (category) => {
     setSelectedCategory(category);
   };
@@ -147,17 +137,64 @@ const ShelterDashboard = () => {
     ? data.pets.filter((pet) => pet.type === selectedCategory)
     : data.pets;
 
+  const openEditModal = () => {
+    setShowEditModal(true);
+  };
+
+  const closeEditModal = () => {
+    setShowEditModal(false);
+  };
+
+  const saveProfileChanges = (editedProfileData) => {
+    // Update the profile data
+    const updatedData = {
+      ...data,
+      shelter: {
+        ...data.shelter,
+        ...editedProfileData,
+      },
+    };
+    setData(updatedData);
+    updateDataJson(updatedData);
+    setShowEditModal(false);
+  };
+
+
   return (
     <div className="wholepage">
+      <div className="top-nav-container">
+        <div className="top-nav">
+          <Link to="/" className={({ isActive }) => (isActive ? "active" : "inactive")}>
+            <IoPawSharp /> Adopt
+          </Link>
+          <Link to="/shelter" className='active'>
+            <BsHouseHeartFill /> Shelter
+          </Link>
+        </div>
+      </div>
       <div className="topnav">
-        <div>
-          <a href="/" className="logo-link">
-            <div className="logo-container"></div>
+        <div className="logo-container">
+          <a href="/your-link-here" className="logo-link">
+            
           </a>
         </div>
-        <div>
-
+        <div className="upload-pet">
           <UploadPetForm addNewPet={addNewPet} />
+        </div>
+        <div className="user-profile-dropdown">
+          <button onClick={toggleDropdown} className="profile-button">
+            <div className="profile-icon">
+              <BsPersonCircle /> {/* Circular profile picture icon */}
+              <AiOutlineMenu /> {/* Three bars icon */}
+            </div>
+          </button>
+        {showDropdown && (
+            <div className="dropdown-content">
+              <button className='edit' onClick={openEditModal}>Edit Profile</button>
+              <button onClick={handleLogout}>Logout</button>
+              <button onClick={handleDeleteAccount} className='deleteAccount'>Delete My Account</button>
+            </div>
+          )}
         </div>
       </div>
       <CategoryFilter
@@ -167,70 +204,29 @@ const ShelterDashboard = () => {
       <div className="main-content">
         <div className="shelter-profile">
           <div>
-            {editMode ? (
-              <>
-                <img src={data.shelter.image} alt={data.shelter.name} className='edit-image' />
-                <input
-                  type="file"
-                  accept="image/*"
-                  name="image"
-                  onChange={handleImageChange}
-                  class="custom-file-input"
-                />
+            <img
+              src={data.shelter.image}
+              alt={data.shelter.name}
+              className="shelter-image"
+            />
 
-              </>
-            ) : (
-              <img
-                src={data.shelter.image}
-                alt={data.shelter.name}
-                className="shelter-image"
-              />
-            )}
           </div>
-          <div className="shelteredit">
-            {editMode ? (
-              <>
-                <input
-                  type="text"
-                  name="name"
-                  value={data.shelter.name}
-                  onChange={handleInputChange}
-                />
-                <input
-                  type="text"
-                  name="location"
-                  value={data.shelter.location}
-                  onChange={handleInputChange}
-                />
-                <input
-                  type="text"
-                  name="contact"
-                  value={data.shelter.contact}
-                  onChange={handleInputChange}
-                />
-                <textarea
-                  name="description"
-                  value={data.shelter.description}
-                  onChange={handleInputChange}
-                />
-                <button onClick={saveChanges}>Save Changes</button>
-              </>
-            ) : (
-              <>
-                <h2 className="shelter-name">{data.shelter.name}<img className='verified' src='./images/verified.png'></img></h2>
-                <p className="shelter-location">{data.shelter.location}</p>
-                <p className="shelter-description">
-                  {expanded ? data.shelter.description : `${data.shelter.description.slice(0, 125)}...`}
-                  {!expanded && <span onClick={toggleDescription}>See More</span>}
-                </p>
-              </>
-            )}
+
+          <div>
+            <h2 className="shelter-name">{data.shelter.name}<img className='verified' src='./Images/verified.png' alt=""></img></h2>
+            <p className="shelter-location">{data.shelter.location}</p>
+            <p className="shelter-description">
+              {expanded ? data.shelter.description : `${data.shelter.description.slice(0, 125)}...`}
+              {!expanded && <span onClick={toggleDescription}>See More</span>}
+            </p>
           </div>
           <div className='upload'>
             <UploadPetForm />
           </div>
-          <div className='edit' onClick={toggleEditMode}>
-            <FaPencilAlt /> Edit Profile
+          <div className="shelteredit">
+            <div className='edit' onClick={openEditModal}>
+              <FaPencilAlt /> Edit Profile
+            </div>
           </div>
 
         </div>
@@ -238,8 +234,16 @@ const ShelterDashboard = () => {
         <div className="availablepets">
           <AvailablePets pets={filteredPets} onEdit={handleEdit} onDelete={handleDelete} />
         </div>
+        {showEditModal && (
+
+          <EditProfileModal
+            profileData={data.shelter}
+            onSave={saveProfileChanges}
+            onCancel={closeEditModal}
+          />
+        )}
       </div>
-    </div>
+    </div >
   );
 };
 
