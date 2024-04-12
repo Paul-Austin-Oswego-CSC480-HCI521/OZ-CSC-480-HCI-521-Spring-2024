@@ -66,13 +66,13 @@ const Navbar = () => {
       <div className="top-nav-container">
         <div className="top-nav">
           <Link
-            to=""
+            to="/"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
             <IoPawSharp /> Adopt
           </Link>
           <Link
-            to="shelter"
+            to="/shelter"
             className={({ isActive }) => (isActive ? "active" : "inactive")}
           >
             <BsHouseHeartFill /> Shelter
@@ -107,7 +107,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="about"> About Us</Link>
+            <Link to="/about"> About Us</Link>
           </li>
           <li>
             <Link to="/"> Contact Us</Link>
