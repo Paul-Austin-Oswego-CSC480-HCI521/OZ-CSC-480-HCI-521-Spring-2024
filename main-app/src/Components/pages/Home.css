@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -129,7 +130,7 @@ body {
   /* min-width:vw; */
 }
 .home-bannerDog {
-  width: 1800px;
+  width: 3000px;
   height: 500px;
 }
 .home-image-section {
@@ -151,10 +152,9 @@ body {
   font-size: 2rem;
   color: black;
   /* line-height: 5rem; */
-  max-width: 600px;
   position: relative; /* Set position to relative */
   margin-top: -70px;
-  left: 580px; /* Adjust left positioning as needed to move the heading more to the left */
+  margin-left: 480px; /* Adjust left positioning as needed to move the heading more to the left */
   font-family: "Grandstander", cursive;
   font-optical-sizing: auto;
   font-style: normal;
@@ -182,7 +182,7 @@ body {
   margin-left: 24%;
   justify-content: center; /* Center items horizontally */
   align-items: center; /* Center items vertically */
-  width: 54%; /* Make the container full width */
+  width: 60%; /* Make the container full width */
   height: 300px;
 }
 
@@ -211,6 +211,7 @@ body {
 
 .button-container a span {
   margin-top: 10px; /* Adjust this value as needed */
+  font-family: "Grandstander", cursive;
 }
 
 /* Hover styling for links */
@@ -414,63 +415,52 @@ body {
 
 .work-section-info-container {
   display: flex;
-  justify-content: center; /* Center the items horizontally */
+  justify-content: center !important; /* Center the items horizontally */
   flex-wrap: wrap; /* Ensure items wrap to the next line if they exceed the container width */
+  margin-left: 45px;
 }
 
 
 .work-section-info {
-  width: 20rem; /* Adjust the width as needed */
-  height: 27rem;
-  align-items: center;
-  margin-right: 20px; /* Adjust the spacing between items */
+  position: relative; /* Ensure proper positioning of children */
+  width: 16.5rem; /* Adjust the width as needed */
+  height: 23rem; /* Adjust the height as needed */
+  align-items: center !important;
+  margin-right: 3px; /* Adjust the spacing between items */
   margin-top: 40px;
-  margin-left: 90px; /* Move it to the right */
+  margin-left: 3px; /* Move it to the right */
   background-color: white;
-  padding: 1rem 2rem;
+  padding: 2rem; /* Increase padding to move text down */
   border-radius: 1rem;
   color: #505050;
   display: inline-block; /* Display inline-block to make them appear horizontally */
   vertical-align: top; /* Align them to the top */
 }
-.work-section-infos {
-  width: 275px;
-  min-height: 300px;
-  top:50%;
-  background-color: #112570;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 1rem;
-  color: white;
-  margin: 1rem 2rem;
-  margin-top: -40px;
-}
+
 .work-section-info .info-boxes-img-container {
-  width: 100%; /* Ensure container spans the entire width */
-  height: 50%; /* Adjust as needed */
+  position: absolute; /* Position the container absolutely */
+  top: 0; /* Align the container to the top */
+  left: 0; /* Align the container to the left */
+  width: 125%; /* Ensure container spans the entire width */
+  height: 100%; /* Set height to 50% of the parent's height */
   overflow: hidden; /* Hide overflow content */
 }
 
 .work-section-info .info-boxes-img-container img {
   width: 100%; /* Ensure images fill their containers horizontally */
-  height: auto; /* Maintain aspect ratio */
+  height: 100%; /* Ensure images fill 100% of the container's height */
+  object-fit: cover; /* Cover the entire container with the image */
   display: block; /* Remove any default spacing or alignment */
-  margin: 0 auto; /* Center the images horizontally within their containers */
 }
 /* Keep your existing styles */
 .work-section-info h2 {
-  margin: 1rem 0rem;
+  margin: 0rem 3.8rem; /* Adjust top margin as needed */
   text-align: center; /* Center the text horizontally */
-}
-.work-section-bottom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  margin-top: 110%;
+  font-size: large !important; /* Changed font size to smaller */
+  font-weight: 600;
+  color: #000;
+  font-family: 'Grandstander', cursive; /* Changed font to Grandstander */
 }
 
 .work-section-info p {
@@ -478,7 +468,47 @@ body {
   display: flex;
   text-align: center; 
   align-items: center;
-  font-weight: 600;
+  font-size: medium;
+  font-weight: 500;
+  margin: -1rem 1.5rem;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.work-section-info span{
+  flex: 1;
+  display: flex;
+  text-align: center; 
+  align-items: center;
+  font-size: small;
+  font-weight: 500;
+  margin: 1.6rem 4rem;
+  background-color: #cceddf;
+  border-radius: 30px;
+  font-family: Manrope, sans-serif;
+  height: 20px;
+}
+
+/* .work-section-info span p {
+  flex: 1;
+  display: flex;
+  text-align: center; 
+  align-items: center;
+  font-size: small;
+  font-weight: 500;
+  margin: 1.6rem .8rem;
+  background-color: #ffeecd;
+  border-radius: 30px;
+  font-family: Manrope, sans-serif;
+  height: 20px;
+} */
+
+.work-section-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 1000px) {
@@ -655,6 +685,7 @@ body {
   text-align: left;
   margin-top: 40px;
   font-size: 24px;
+  font-family: 'Grandstander', cursive; /* Changed font to Grandstander */
 }
 
 .about-team-sections {
@@ -721,9 +752,9 @@ body {
     top: 85%; /* Position text below the h3 with additional space */
 }
 
-.adoption-faq {
+/* .adoption-faq { */
     /* background-color: red; */
-    width: 80%;
+    /* width: 80%;
     margin: 40px auto;
     padding: 20px 0;
 }
@@ -759,7 +790,7 @@ body {
 
 .open .toggle-icon {
     transform: rotate(180deg);
-}
+} */
 
 .zip-form {
   position: fixed;
@@ -768,11 +799,10 @@ body {
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  background-color: #b0b1b1;
+  background-color: white;
   padding: 10px;
-  /* border-radius: 10px; */
-  border-radius: 20px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  box-shadow: 0px 2px 5px orange;
   z-index: 1000;
 
 }
@@ -781,22 +811,19 @@ body {
   margin-left: 10px;
   padding: 8px;
   border-radius: 10px;
-  border: none;
   width: 55px;
 }
 
 .zip-submit {
-  /* background-color: #b0b1b1; */
-  background-color: orange;
-  /* color: #ffffff; */
+  background-color: white;
+  color: black;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: bolder;
 }
 
 .zip-submit:hover {
-  background-color: rgb(247, 178, 50);
-  /* color:black; */
-  /* color:black; */
-  color:rgb(70, 69, 69);
+  color:black;
+  background-color: orange;
 }
