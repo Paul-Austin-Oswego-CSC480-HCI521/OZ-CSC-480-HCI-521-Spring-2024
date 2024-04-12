@@ -11,11 +11,27 @@ import Ginger from "../../Assets/Screenshot2029.jpg";
 import Rascal from "../../Assets/Screenshot2011.jpg";
 import Danii from "../../Assets/Screenshot2013.JPG";
 import "./PetDetails.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { items } from "./items";
+import Navbar from "../Navbar";
 
 export const PetDetails = () => {
+  let { id } = useParams();
+  const [pet, setPet] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const petId = Number(id);
+    const petDetails = items.find((item) => item.id === petId);
+    console.log("Pet ID:", id);
+    console.log("Pet Details:", petDetails);
+    setPet(petDetails);
+    setLoading(false);
+  }, [id]);
+
   const data = [
     {
       statement: "Adoption Process",
@@ -111,13 +127,17 @@ export const PetDetails = () => {
     },
   ];
 
+  if (loading || !pet) {
+    return <div>Loading or pet not found...</div>;
+  }
   return (
     <div>
+      <Navbar />
       <div className="displayImages">
-        <img src={Jax} alt="Jak Jax"></img>
+        <img src={pet.image} alt="Jak Jax"></img>
 
-        <div className="heading-one">Hello, My name is Jax!</div>
-        <div className="details">Male, 1 year old</div>
+        <div className="heading-one">Hello, My name is {pet.name}</div>
+        <div className="details">Male, {pet.age} </div>
 
         <div className="heading-two">My Story...</div>
 
@@ -159,7 +179,7 @@ export const PetDetails = () => {
             <h2>{pets.name}</h2>
             <Slider {...sliderSettings}>
               {pets.members.map((member, memberIndex) => (
-                <Link to="/PetDetails">
+                <Link to="/PetDetails/:d">
                   <div key={memberIndex} className="about-team-members">
                     <img src={member.image} alt={member.name} />
                     <h3>{member.name}</h3>

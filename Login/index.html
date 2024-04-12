@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Lilita+One&family=Madimi+One&family=Pacifico&display=swap" rel="stylesheet">    
     <title>Login Page</title>
 </head>
 
@@ -12,19 +13,45 @@
     <div class="container">
         <div class="hero-image" alt="Hero Image"></div>
         <div class="login-container">
-            <h2>User Login</h2>
-            <form action="login" method="post" class="login-form" id="loginForm">
-                <label for="username">Username:</label> 
-                <input type="text" name="username" id="username" required><br>
 
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required><br>
-                
-                <input type="submit" id="submitBtn" value="Submit">
-            </form>
+                <div class="back-button">
+                    <a href="#">
+                        <img src="./images/arrow_circle_left.svg" alt="Back" width="24" height="24"/>
+                        <p>Back</p>
+                    </a>
+                </div>
+                    
+                <div class="logo">
+                    <img src=".\images\Logo.svg" alt="PawsnClaws Logo">
+                </div>
+
+                <h1> Find your furr-ever friend <br> today!</h1>
+
+                <div class="sign-in">
+                    <a href="index.html" class="nav-link">Login </a>
+                    <a href="..\Sign up\index.html" class="nav-link">Sign Up </a>
+                </div>
+                <form action="login" method="post" class="login-form" id="loginForm">
+                    <label for="username"></label> 
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+
+                    <label for="password"></label>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    
+                    <!-- <a href="#" class="forgot-password">Forgot Password?</a><br> -->
+
+                    <button type="submit" id="submitBtn" class="login-button">
+                        Login
+                        <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"> 
+                            <path d="M16.175 13H4V11H16.175L10.575 5.4L12 4L20 12L12 20L10.575 18.6L16.175 13Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    
+                </form>
         </div>
     </div>
-    <script src="index.js"></script>
+    <script src="index.js">
+    </script>
 </body>
 
 </html>
