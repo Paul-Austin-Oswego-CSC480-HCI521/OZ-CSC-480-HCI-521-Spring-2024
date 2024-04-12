@@ -23,7 +23,7 @@ const Footer = () => {
 
       <div className="footer-section-two">
         <div className="footer-section-columns">
-          <a href="hello@pawsnclaws.com">
+          <a href="mailto:hello@pawsnclaws.com">
             <email>hello@pawsnclaws.com</email>
           </a>
           <div className="footer-section-columns">

@@ -6,6 +6,7 @@
     height: 50%;
     margin: 40px 20px; /* Adjust the margin to move the FAQ section to the left */
     padding: 20px; /* Add padding for spacing */
+    margin-bottom: 10px;
 }
 
 .adoption-faq h1 {
