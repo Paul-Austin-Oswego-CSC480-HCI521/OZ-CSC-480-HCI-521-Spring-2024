@@ -1,47 +1,48 @@
 .category-buttons {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: 60px;
+  margin-top: 15px;
+}
+
+.category-button {
+  position: relative;
+  font-family: Manrope, sans-serif;
+  padding: 12px 36px 12px 24px; /* Adjust padding for bigger size */
+  border-radius: 500px;
+  background-color: var(--Lightest-Grey, #ffff);
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 18px; /* Adjust font size for bigger size */
+}
+
+.category-button.active {
+  background-color: var(--Yellow, #ffa903);
+  color: var(--Black, #181207);
+}
+
+.deselect {
+  position: absolute;
+  top: 50%;
+  right: 12px; /* Adjust right position */
+  transform: translateY(-50%);
+  font-size: 16px; /* Adjust font size for bigger size */
+  color: var(--Black, #181207);
+  cursor: pointer;
+  margin-left: 8px; /* Adjust margin */
+}
+
+@media (max-width: 991px) {
+  .category-buttons {
+    flex-wrap: wrap;
+    padding-right: 20px;
   }
-  
+
   .category-button {
-    position: relative;
-    font-family: Manrope, sans-serif;
-    padding: 12px 36px 12px 24px; /* Adjust padding for bigger size */
-    border-radius: 500px;
-    background-color: var(--Lightest-Grey, #ffff);
-    white-space: nowrap;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 18px; /* Adjust font size for bigger size */
+    white-space: initial;
   }
-  
-  .category-button.active {
-    background-color: var(--Yellow, #ffa903);
-    color: var(--Black, #181207);
-  }
-  
-  .deselect {
-    position: absolute;
-    top: 50%;
-    right: 12px; /* Adjust right position */
-    transform: translateY(-50%);
-    font-size: 16px; /* Adjust font size for bigger size */
-    color: var(--Black, #181207);
-    cursor: pointer;
-    margin-left: 8px; /* Adjust margin */
-  }
-  
-  @media (max-width: 991px) {
-    .category-buttons {
-      flex-wrap: wrap;
-      padding-right: 20px;
-    }
-  
-    .category-button {
-      white-space: initial;
-    }
-  }
-  
+}

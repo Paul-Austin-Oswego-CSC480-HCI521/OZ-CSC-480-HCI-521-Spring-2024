@@ -17,37 +17,42 @@ const AdoptionFAQ = () => {
   // Array of FAQ items with questions and answers
   const faqItems = [
     {
-      question: "How can I adopt a pet from your shelter?",
+      question: "What are the requirements for adopting a pet?",
       answer:
-        "Adopting a pet is easy! Simply browse through our available pets, choose the one that steals your heart, and fill out our adoption application. Our adoption counselors will guide you through the rest of the process.",
+        "Each shelter that lists its pets on PawsNClaws has its own rules and requirements for adopting pets. If you’re interested in a specific pet, please reach out to the shelter that created the pet listing to find out what their policies are. This is in addition to any requirements given by New York State [hyperlink to adoption process page].",
     },
     {
-      question: "What are the adoption fees?",
+      question: "How can I adopt a pet listed on PawsNClaws?",
       answer:
-        "Adoption fees vary based on the type of pet and their age. These fees typically cover vaccinations, spaying/neutering, microchipping, and other essential medical procedures. Rest assured, every penny goes towards the well-being of our animals.",
+        "PawsNClaws acts as a centralized hub where you can see pets listed for adoption by a multitude of adoption agencies. While PawsNClaws provides a web-based adoption platform, we act only as a middleman serving to connect adopters to shelters. When you complete an adoption application for a pet, it is sent to the shelter housing the pet. It is then the shelter’s job to process the documentation and decide based on their own policies whether you are a good fit for the pet.",
     },
     {
-      question: "Can I meet the pet before adopting?",
+      question: "Am I applying to PawsNClaws?",
       answer:
-        "Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it's a perfect match for both you and the pet.",
+        "No. Once you’ve submitted an inquiry to an adoption agency, the shelter or rescue group with the pet you’re interested in will be sent your information. It is then up to the shelter or rescue group to determine whether it’s a match.",
     },
     {
-      question: 'How can I adopt a pet from your shelter?',
+      question: "How will I know If I've been approved to adopt a pet?",
       answer:
-        'Adopting a pet is easy! Simply browse through our available pets, choose the one that steals your heart, and fill out our adoption application. Our adoption counselors will guide you through the rest of the process.',
+        "After submitting an adoption inquiry, the shelter or rescue group with the pet you’re interested in will contact you. You may also reach out to the shelter or rescue group directly to follow up.",
     },
     {
-      question: 'What are the adoption fees?',
+      question: "I’m not sure if I want to adopt a pet, can I meet them before I decide?",
       answer:
-        'Adoption fees vary based on the type of pet and their age. These fees typically cover vaccinations, spaying/neutering, microchipping, and other essential medical procedures. Rest assured, every penny goes towards the well-being of our animals.',
+        "Yes, you can! On each pet's information page, there is a button located at [insert location] that will allow you to schedule a visit with the shelter housing the pet.",
     },
     {
-      question: 'Can I meet the pet before adopting?',
+      question: "How do I search for a pet?",
       answer:
-        'Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it\'s a perfect match for both you and the pet.',
+        "To find pets available for adoption, you can begin your search by clicking on the “Browse Pets” button located on our homepage. Since our site is updated regularly, we recommend checking back frequently to see any changes to available pets.",
     },
-    // Add more FAQ items as needed
+    {
+      question: "How often is PawsNClaws updated?",
+      answer:
+        "Since each shelter is responsible for updating information for their own pet listings, our site is constantly updating.",
+    },
   ];
+  
 
   const faqItem = [
     {
@@ -70,6 +75,7 @@ const AdoptionFAQ = () => {
 
   return (
     <div className="adoption-faq" id="FAQ">
+    <div className="adoption-faq" id="FAQ2">
       <h1>Adoption FAQ</h1>
       <p>Find answers to commonly asked questions about the pet adoption process, pet care and support.</p>
       <div className="faq-list">
@@ -91,6 +97,7 @@ const AdoptionFAQ = () => {
         ))}
       </div>
 
+    </div>
     </div>
     
   );

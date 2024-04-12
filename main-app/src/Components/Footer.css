@@ -1,8 +1,9 @@
 .footer-wrapper {
-    margin: 6rem 6rem;
+    margin: .5rem .5rem;
     display: flex;
-    margin-top: 10rem;
+    margin-top: 1rem;
     padding: 5%;
+    
   }
   .footer-logo-container {
     max-width: 110px;

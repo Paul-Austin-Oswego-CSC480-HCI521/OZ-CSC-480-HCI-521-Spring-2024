@@ -130,6 +130,7 @@ body {
   font-weight: 600;
   color: #000;
   font-family: 'Grandstander', cursive; /* Changed font to Grandstander */
+  margin-top: 10px !important;
 }
 
 .category {
@@ -158,6 +159,8 @@ body {
 
 .breed {
   margin: 0;
+  margin-top: 5px !important ;
+  font-family: "Raleway", sans-serif;
 }
 
 .age {
@@ -166,7 +169,8 @@ body {
   font-family: Manrope, sans-serif;
   padding: 2px 5px;
   width: 35%;
-  margin-left: auto; /* Move to the right */
+  margin-left: 95px !important; /* Move to the right */
+  margin-top: 5px !important;
   display: block; /* or display: inline-block; */
 }
 #filters-button .active{

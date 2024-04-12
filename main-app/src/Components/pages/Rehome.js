@@ -1,16 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BannerBackground from "../../Assets/Cat Hero Banner.png";
+import PersonIcon from "../../Assets/Icons/person.svg"; // Import the person icon SVG
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FAQs from "./AdoptionFAQ";
 
 export const RehomePage = () => {
   return (
-    <div className="rehome-container">
-      <div className="rehome-banner-container" style={{ position: "relative" }}>
-        <div className="rehome-bannerImage-container">
-          <img className="rehome-bannerDog" src={BannerBackground} alt="" />
+    <div>
+      <div
+        className="rehome-banner-container"
+        style={{ position: "relative", width: "100%" }}
+      >
+        <div
+          className="rehome-bannerImage-container"
+          style={{ position: "relative", width: "100%" }}
+        >
+          <img
+            className="rehome-bannerDog"
+            src={BannerBackground}
+            alt=""
+            style={{ width: "100%" }}
+          />
           <div
             style={{
               color: "black",
@@ -21,46 +33,85 @@ export const RehomePage = () => {
               fontSize: "2rem",
               fontWeight: "900",
               fontFamily: "'Grandstander', cursive",
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            Find a home for your furr-ever friend!
+            <span
+              style={{
+                fontFamily: "'Grandstander', cursive",
+              }}
+            >
+              Find a home for your furr-ever friend!
+            </span>
           </div>
           <div
             style={{
               position: "absolute",
-              top: "50%",
+              top: "60%",
               right: "20%",
               transform: "translateY(-50%)",
               display: "flex",
               alignItems: "center",
             }}
           >
-            <div>
-              <Link to="/login">
+            <div style={{ display: "flex" }}>
+              <Link to="/login" style={{ textDecoration: "none" }}>
                 <button
                   style={{
-                    padding: "10px 20px",
-                    backgroundColor: "#fe9e0d",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "15px 30px",
+                    color: "black",
+                    border: "2px solid white",
+                    borderRadius: "20px",
                     marginRight: "10px",
+                    backgroundColor: "transparent",
+                    fontWeight: "bold",
+                    transition: "background-color 0.3s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = "transparent";
                   }}
                 >
-                  Login
+                  <span style={{ marginRight: "5px" }}>Login</span>
+                  <img
+                    src={PersonIcon}
+                    alt="Person"
+                    style={{ width: "auto" }}
+                  />
                 </button>
               </Link>
-              <Link to="/signup">
+              <Link to="/signup" style={{ textDecoration: "none" }}>
                 <button
                   style={{
-                    padding: "10px 20px",
-                    backgroundColor: "#fe9e0d",
-                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "15px 30px",
+                    color: "black",
                     border: "none",
-                    borderRadius: "5px",
+                    borderRadius: "20px",
+                    backgroundColor: "white",
+                    fontWeight: "bold",
+                    transition: "background-color 0.3s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+                    e.target.style.border = "2px solid white"; // Corrected line
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = "white";
                   }}
                 >
-                  Signup
+                  <span style={{ marginRight: "5px" }}>Sign-Up</span>
+                  <img
+                    src={PersonIcon}
+                    alt="Person"
+                    style={{ width: "auto" }}
+                  />
                 </button>
               </Link>
             </div>
