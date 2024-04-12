@@ -1,11 +1,76 @@
+/*FOR SIGN UP PAGE */
+.hero-image {
+    background-image: url('./images/sign-in_image.png');
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 100%;
+    image-rendering: optimizeQuality;
+
+}
+
+.back-button{
+    align-self: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 6em;
+    padding: 0;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.back-button a{
+    color: black;
+    font-size:medium;
+    font-weight: bold;
+    text-decoration: none;
+    display:flex;
+    align-items: center;
+
+}
+
+.back-button a p{
+    margin-left: 5px;
+}
+
+.logo {
+    align-self: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0em;
+    padding-left: 6em;
+    margin: right 0%;;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.logo img{
+    width: 150px ;
+    height: 150px ;
+    
+}
+
+h1 {
+    /* font-family: "Pacifico", cursive; */
+     font-family: "Madimi One", sans-serif; 
+      /*font-family: "Concert One", sans-serif; Another font option */
+      /* font-family: "Lilita One", sans-serif; Another font option */
+    font-weight: 500;
+    font-style: normal;
+    font-size: 50px;
+    margin-left: 1em;
+    padding:0;
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fff;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
@@ -18,15 +83,53 @@ body {
 .login-container {
     background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 50%;
-    margin-right: 20px;
+    margin-right: 0px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
+    align-items: center; 
+    justify-content: center; 
 }
+
+.sign-in {
+    align-self: flex-start; /* Aligns to the left side, assuming flex-direction is column */
+    padding-left: 105px; 
+    padding-bottom: 5px;
+    display: flex;
+}
+
+.nav-link{
+    text-align: left; /* Ensures text within the paragraph tags is left-aligned */
+    margin-left: 10px; /* Removes margin to align with the edge if needed */
+    font-size: 15px;
+    color:#bcb9b9;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+
+
+.nav-link:hover {
+    color: #000;
+}
+
+.nav-link::after{
+    content: ''; /* Necessary for the pseudo-element to display */
+    display: block; /* Treat the pseudo-element like a block for positioning */
+    width: 0; /* Start with a width of 0 and expand on hover */
+    height: 2px; /* The height of your 'underline' */
+    background: #FFA903; /* The color of your 'underline' */
+    transition: width .3s; /* Smooth transition for the underline */
+    position: absolute; /* Position absolutely within the relative parent */
+    bottom: -3px; /* Position at the bottom of the link */
+    left: 0;
+}
+
+.nav-link:hover::after {
+    width: 100%; /* Expand the pseudo-element to the full width on hover */
+}
+
 
 .login-form {
     display: flex;
@@ -47,21 +150,60 @@ input {
     border-radius: 4px;
 }
 
-input[type="submit"] {
-    background-color: #4caf50;
-    color: #fff;
+#submitBtn {
+    background-color: #FFA903;
+    color: black;
     cursor: pointer;
     transition: background-color 0.3s;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    width: 200px;
+    height: 45px;
+    padding: 10px 20px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    display: flex;  
+    box-shadow: 0 0 10px rgba(255, 169, 3, 0.5);
 }
 
-input[type="submit"]:hover {
-    background-color: #45a049;
+#submitBtn:hover {
+    background-color: rgb(158, 90, 221);
+    color:white;
+    box-shadow: 0 0 15px rgba(158, 90, 221, 0.7);  
 }
 
-.hero-image {
-    background-image: url('https://source.unsplash.com/random?dog,cat,pets');
-    background-size: cover;
-    background-position: center;
-    width: 50%;
-    border-radius: 8px;
+#submitBtn .arrow-icon {
+    fill: black; 
 }
+
+#submitBtn:hover .arrow-icon {
+    fill: white; 
+}
+
+input[type="text"], input[type="password"] {
+    background-color: #f4f4f4;
+    border-color:#f4f4f4;
+    border-radius: 10px;
+}
+
+input[type="text"]:hover, input[type="password"]:hover {
+    background-color: white;
+    border-color:#FFA903;
+    border-width: 2px;
+}
+
+.terms-conditions {
+    display: block; /* To put the link on its own line */
+    margin-top: 10px; /* Adjust the space above the link as needed */
+    color: #000; /* Choose a hyperlink color */
+    font-size: 0.9em; /* Smaller font size for the link */
+    text-decoration: none;
+    margin-left:5px;
+}
+
+.highlight {
+    color: rgb(158, 90, 221); /* Choose your preferred color */
+}
+

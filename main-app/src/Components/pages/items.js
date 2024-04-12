@@ -1,21 +1,51 @@
 export const items = [
+
+  {
+    name: "Bubbles",
+    category: "Dog",
+    sex: "Male",
+    color: "Golden",
+    breed: "Shih tzu",
+    age: "2-month old",
+    image: "../images/Pet photo1.png"
+  },
+  {
+    name: "Reesee",
+    category: "Cat",
+    sex: "Female",
+    color: "Brown",
+    breed: "Short Hair",
+    age: "2-month old",
+    image: "../images/Pet photo.png"
+  },
   {
     name: "Prada",
     category: "Dog",
     sex: "Female",
     color: "White",
     breed: "Chihuaha",
-    age: "8",
+    age: "8-month old",
     image: "../images/Screenshot2024.png"
   },
+
   {
     name: "Hex",
     category: "Dog",
     sex: "Male",
     color: "Brown",
     breed: "Pitbull",
-    age: "6",
+    age: "6-month old",
     image: "../images/Screenshot2025.png"
+  },
+
+  {
+    name: "Toddler",
+    category: "Cat",
+    sex: "Female",
+    color: "Black",
+    breed: "Short Hair",
+    age: "7-month old",
+    image: "../images/Pet photo2.png"
   },
   {
     name: "Lucy",
@@ -23,8 +53,17 @@ export const items = [
     sex: "Female",
     color: "Brown",
     breed: "Terrier",
-    age: "7",
+    age: "7-month old",
     image: "../images/Screenshot2012.webp"
+  },
+  {
+    name: "Mack",
+    category: "Cat",
+    sex: "Male",
+    color: "Brown",
+    breed: "Short Hair",
+    age: "7-month old",
+    image: "../images/Furr-Ever friends near you_4.png"
   },
   {
     name: "Danii",
@@ -32,7 +71,7 @@ export const items = [
     sex: "Female",
     color: "Brown",
     breed: "Short Hair",
-    age: "3",
+    age: "3-month old",
     image: "../images/Screenshot2023.png"
   },
   {
@@ -41,16 +80,16 @@ export const items = [
     sex: "Female",
     color: "Black",
     breed: "Short Hair",
-    age: "10",
+    age: "10-month old",
     image: "../images/Screenshot2021.png"
   },
   {
     name: "Chloe",
-    category: "Other",
+    category: "Small Critter",
     sex: "Female",
     color: "Grey",
     breed: "Chinchilla",
-    age: "5",
+    age: "5-year old",
     image: "../images/Screenshot2022.jpg"
   },
   {
@@ -59,7 +98,7 @@ export const items = [
     sex: "Male",
     color: "Brown",
     breed: "Spaniel",
-    age: "5",
+    age: "5-year old",
     image: "../images/Screenshot2028.jpg"
   },
   {
@@ -68,7 +107,7 @@ export const items = [
     sex: "Male",
     color: "Black",
     breed: "Short Hair",
-    age: "3",
+    age: "3-year old",
     image: "../images/Screenshot2027.png"
   },
   {
@@ -77,7 +116,7 @@ export const items = [
     sex: "Female",
     color: ["Black","White"],
     breed: "Long Hair",
-    age: "8",
+    age: "8-year old",
     image: "../images/Screenshot2020.png"
   },
   {
@@ -86,7 +125,7 @@ export const items = [
     sex: "Male",
     color: ["White", "Grey"],
     breed: "Long Hair",
-    age: "11",
+    age: "11-year old",
     image: "../images/Screenshot2029.jpg"
   },
   {
@@ -95,7 +134,7 @@ export const items = [
     sex: "Male",
     color: "Black",
     breed: "German Shepard",
-    age: "5",
+    age: "5-month old",
     image: "../images/Screenshot2016.jpg"
   },
 
@@ -105,7 +144,7 @@ export const items = [
     sex: "Male",
     color: ["Black", "White"],
     breed: "Tuxedo",
-    age: "11",
+    age: "11-month old",
     image: "../images/Screenshot2017.webp"
   },
 
@@ -115,7 +154,7 @@ export const items = [
     sex: "Female",
     color: "Brown",
     breed: "Pitbull",
-    age: "1",
+    age: "1-month old",
     image: "../images/Screenshot2015.jpg"
   },
   {
@@ -124,8 +163,18 @@ export const items = [
     sex: "Male",
     color: ["Orange"],
     breed: "Short Hair",
-    age: "2",
+    age: "2-month old",
     image: "../images/Screenshot2014.jpg"
+  },
+
+  {
+    name: "Paint",
+    category: "Cat",
+    sex: "Male",
+    color: ["Orange"],
+    breed: "Shorthair",
+    age: "3-year old",
+    image: "../images/Furr-Ever friends near you_1.png"
   },
 
   {
@@ -134,7 +183,7 @@ export const items = [
     sex: "Female",
     color: "Ginger",
     breed: "Retriever",
-    age: "5",
+    age: "5-month old",
     image: "../images/Screenshot2013.JPG"
   },
 
@@ -144,27 +193,36 @@ export const items = [
     sex: "Male",
     color: ["Black", "White"],
     breed: "Tuxedo",
-    age: "1",
+    age: "1-year old",
     image: "../images/Screenshot2012.jpg"
+  },
+  {
+    name: "Connie",
+    category: "Dog",
+    sex: "Female",
+    color: "Black",
+    breed: "Retriever",
+    age: "5-month old",
+    image: "../images/Furr-Ever friends near you_3.png"
   },
 
   {
     name: "Asame",
-    category: "Other",
+    category: "Small Critter",
     sex: "Male",
     color: ["Brown"],
     breed: "Ferret",
-    age: "3",
+    age: "3-year old",
     image: "../images/Screenshot2011.jpg"
   },
 
   {
-    name: "Cookie",
+    name: "June",
     category: "Dog",
     sex: "Male",
     color: ["Brown"],
-    breed: "idk",
-    age: "3",
+    breed: "German Shepard",
+    age: "3-year old",
     image: "../images/Screenshot2030.JPG"
   },
   {
@@ -172,18 +230,28 @@ export const items = [
     category: "Dog",
     sex: "Male",
     color: ["Brown"],
-    breed: "idk",
-    age: "3",
+    breed: "Retriver",
+    age: "3-year old",
     image: "../images/Screenshot2040.JPG"
   },
   {
-    name: "June",
+    name: "Cookie",
     category: "Dog",
     sex: "Male",
     color: ["Brown"],
-    breed: "idk",
-    age: "3",
+    breed: "Doodle",
+    age: "3-year old",
     image: "../images/Screenshot2031.JPG"
+  },
+
+  {
+    name: "Honey",
+    category: "Dog",
+    sex: "Male",
+    color: ["Grey"],
+    breed: "American Shorthair",
+    age: "3-year old",
+    image: "../images/Furr-Ever friends near you_2.png"
   },
 
 ];
