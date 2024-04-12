@@ -1,49 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaPencilAlt } from 'react-icons/fa';
 import UploadPetForm from './UploadPetForm';
 import Carousel from './Carousel';
 import './ShelterDashboard.css';
 
 const ShelterDashboard = () => {
-  const [shelter, setShelter] = useState({
-    name: 'Pawsome Shelter',
-    image: process.env.PUBLIC_URL + '/Images/Shelter/s2.jfif',
-    location: '123 Street, Pawsome City, NY',
-    contact: 'Email: pawsome@gmail.com | Phone: +3151234567',
-    description: `Welcome to Our Pet Shelter! We are dedicated to providing a safe 
-      and loving environment for animals in need. Our shelter is home to a variety 
-      of furry friends waiting to find their forever homes. Whether you're looking 
-      for a playful pup or a cuddly kitten, we have pets of all ages, sizes, and 
-      breeds. Our team of dedicated staff and volunteers work tirelessly to ensure 
-      that each animal receives the care, attention, and love they deserve.`,
-    pets: [
-      {
-        id: 1,
-        name: 'Googoo',
-        image: process.env.PUBLIC_URL + '/Images/Pets/p1.webp',
-      },
-      {
-        id: 2,
-        name: 'Kimchi',
-        image: process.env.PUBLIC_URL + '/Images/Pets/p3.webp',
-      },
-      {
-        id: 3,
-        name: 'Otis',
-        image: process.env.PUBLIC_URL + '/Images/Pets/p6.webp',
-      },
-      {
-        id: 4,
-        name: 'Snowball',
-        image: process.env.PUBLIC_URL + '/Images/Pets/p4.webp',
-      },
-    ],
+  const [data, setData] = useState({
+    shelter: {
+      name: '',
+      image: '',
+      location: '',
+      contact: '',
+      description: '',
+    },
+    pets: [],
   });
 
+  useEffect(() => {
+    fetchShelterData();
+  }, []);
+
+  const fetchShelterData = () => {
+    fetch(process.env.PUBLIC_URL + '/data.json')
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData(jsonData);
+      })
+      .catch((error) => {
+        console.error('Error fetching shelter data:', error);
+      });
+  };
+
   const addNewPet = (newPet) => {
-    setShelter({
-      ...shelter,
-      pets: [...shelter.pets, newPet],
-    });
+
+    delete newPet.images;
+
+    newPet.currentShelterId = "123";
+
+    console.log(JSON.stringify(newPet));
+
+
+    // const updatedPets = [...data.pets, { id: Date.now(), ...newPet }];
+    // const updatedData = { ...data, pets: updatedPets };
+    // console.log("making new pet")
+    // console.log(JSON.stringify(updatedPets));
+
+    // setData(updatedData);
+
+    // Update data.json file with the new data
+    fetch("http://0.0.0.0:9080/database-controller/api/pet", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newPet),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.log(response);
+          throw new Error('Failed to update data');
+        }
+        console.log('Data updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating data:', error);
+      });
   };
 
   const [editMode, setEditMode] = useState(false);
@@ -52,11 +73,71 @@ const ShelterDashboard = () => {
     setEditMode(!editMode);
   };
 
+  const updateDataJson = (updatedData) => {
+    console.log(updateDataJson);
+
+    fetch("http://0.0.0.0:9080/database-controller/api/shelter", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to update data');
+        }
+        console.log('Data updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating data:', error);
+      });
+  };
+
+  const handleDelete = (petId) => {
+    const updatedPets = data.pets.filter((pet) => pet.id !== petId);
+    const updatedData = { ...data, pets: updatedPets };
+
+    setData(updatedData);
+
+    // Update data.json file with the updated data
+    updateDataJson(updatedData);
+  };
+
+  const handleEdit = (editedPet) => {
+    const updatedPets = data.pets.map((pet) =>
+      pet.id === editedPet.id ? editedPet : pet
+    );
+    const updatedData = { ...data, pets: updatedPets };
+    setData(updatedData);
+
+    // Update data.json file with the new data
+    fetch("0.0.0.0:9080" + '/pet', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to update data');
+        }
+        console.log('Data updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating data:', error);
+      });
+  };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setShelter((prevShelter) => ({
-      ...prevShelter,
-      [name]: value,
+    setData((prevData) => ({
+      ...prevData,
+      shelter: {
+        ...prevData.shelter,
+        [name]: value,
+      },
     }));
   };
 
@@ -64,9 +145,12 @@ const ShelterDashboard = () => {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
-      setShelter((prevShelter) => ({
-        ...prevShelter,
-        image: reader.result,
+      setData((prevData) => ({
+        ...prevData,
+        shelter: {
+          ...prevData.shelter,
+          image: reader.result,
+        },
       }));
     };
     reader.readAsDataURL(file);
@@ -80,10 +164,13 @@ const ShelterDashboard = () => {
   return (
     <div className="shelter-dashboard">
       <div className="shelter-info">
+        <div className="edit-icon" onClick={toggleEditMode}>
+          <FaPencilAlt />
+        </div>
         <div className="shelter-image">
           {editMode ? (
             <>
-              <img src={shelter.image} alt={shelter.name} /><br></br><br></br>
+              <img src={data.shelter.image} alt={data.shelter.name} /><br></br><br></br>
               <input
                 type="file"
                 accept="image/*"
@@ -92,7 +179,7 @@ const ShelterDashboard = () => {
               />
             </>
           ) : (
-            <img src={shelter.image} alt={shelter.name} />
+            <img src={data.shelter.image} alt={data.shelter.name} />
           )}
         </div>
         <div className="shelter-details">
@@ -101,54 +188,54 @@ const ShelterDashboard = () => {
               <input
                 type="text"
                 name="name"
-                value={shelter.name}
+                value={data.shelter.name}
                 onChange={handleInputChange}
               />
               <input
                 type="text"
                 name="location"
-                value={shelter.location}
+                value={data.shelter.location}
                 onChange={handleInputChange}
               />
               <input
                 type="text"
                 name="contact"
-                value={shelter.contact}
+                value={data.shelter.contact}
                 onChange={handleInputChange}
               />
               {/* Add more input fields for other details */}
               <textarea
                 name="description"
-                value={shelter.description}
+                value={data.shelter.description}
                 onChange={handleInputChange}
               />
               <button onClick={saveChanges}>Save Changes</button>
             </>
           ) : (
             <>
-              <h2>{shelter.name}</h2>
+              <h2>{data.shelter.name}</h2>
               <p>
-                <strong>Location:</strong> {shelter.location}
+                <strong>Location:</strong> {data.shelter.location}
               </p>
               <p>
-                <strong>Contact:</strong> {shelter.contact}
+                <strong>Contact:</strong> {data.shelter.contact}
               </p>
               <p>
-                <strong>About Us<br></br></strong>{shelter.description}
-                </p>
-              <button onClick={toggleEditMode}>Edit Details</button>
+                <strong>About Us<br></br></strong>{data.shelter.description}
+              </p>
             </>
           )}
         </div>
         <br></br>
       </div>
       <UploadPetForm
-          addNewPet={addNewPet}
-          onClose={() => setEditMode(false)}
-        /><br></br>
+        addNewPet={addNewPet}
+        onClose={() => setEditMode(false)}
+      /><br></br>
       <div className="pet-carousel">
         <h3>Available Pets</h3>
-        <Carousel pets={shelter.pets} />
+        <Carousel pets={data.pets} onEdit={handleEdit} onDelete={handleDelete} />
+
       </div>
     </div>
   );

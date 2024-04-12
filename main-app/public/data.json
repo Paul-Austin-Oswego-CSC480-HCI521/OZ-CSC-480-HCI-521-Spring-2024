@@ -1,0 +1,76 @@
+{
+  "shelter": {
+    "name": "Pawsome Shelter",
+    "image": "/Images/Shelter/shelter.png",
+    "location": "123 Street, Pawsome City, NY",
+    "contact": "pawsome@gmail.com",
+    "description": "Welcome to Our Pet Shelter! We are dedicated to providing a safe and loving environment for animals in need. Our shelter is home to a variety of furry friends waiting to find their forever homes. "
+  },
+  "pets": [
+    {
+      "id": 1,
+      "name": "Dexter, M",
+      "type": "Dog",
+      "breed": "American Shorthair",
+      "color": "Golden",
+      "sex": "Male",
+      "size": "Medium",
+      "age": "2 years",
+      "distance":"9 miles",
+      "images": ["/Images/Pets/Dexter 01.jpg"],
+      "description": "Friendly and playful Labrador looking for a loving home."
+    },
+    {
+      "id": "2",
+      "name": "Smoothie, M",
+      "type": "Cat",
+      "breed": "American Shorthair",
+      "color": "White",
+      "sex": "Female",
+      "size": "Small",
+      "age": "1 year",
+      "distance":"9 miles",
+      "images": ["/Images/Pets/p13.webp"],
+      "description": "Sweet and affectionate Siamese cat ready to be your new companion."
+    },
+    {
+      "id": 3,
+      "name": "Max",
+      "type": "Dog",
+      "breed": "Labrador Retriever",
+      "color": "Golden",
+      "sex": "Male",
+      "size": "Medium",
+      "age": "2 years",
+      "distance":"9 miles",
+      "images": ["/Images/Pets/dog.png"],
+      "description": "Friendly and playful Labrador looking for a loving home."
+    },
+    {
+      "id": 4,
+      "name": "Neo",
+      "type": "Cat",
+      "breed": "Siamese",
+      "color": "White",
+      "sex": "Female",
+      "size": "Small",
+      "age": "1 year",
+      "distance":"9 miles",
+      "images": ["/Images/Pets/cat.png"],
+      "description": "Sweet and affectionate Siamese cat ready to be your new companion."
+    },
+    {
+      "id": 5,
+      "name": "Googoo",
+      "type": "Cat",
+      "breed": "Labrador Retriever",
+      "color": "Golden",
+      "sex": "Male",
+      "size": "Medium",
+      "age": "2 years",
+      "distance":"9 miles",
+      "images": ["/Images/Pets/cat1.png"],
+      "description": "Friendly and playful Labrador looking for a loving home."
+    }
+  ]
+}

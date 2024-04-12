@@ -25,9 +25,13 @@ body {
   background-color: #d2f6dc;
 }
 
-.pet-detail-inner-container {
-  position: relative;
+.pets-container {
+  position: absolute;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  top: 200px;
+  left: 600px;
   padding-top: 3rem;
 }
 
@@ -35,10 +39,6 @@ body {
   padding: 0.8rem 0.2rem;
   border-radius: 0.5rem;
   border-color: #fdfdfc;
-  align-items: center;
-  position: absolute;
-  top: 220px;
-  left: 610px;
   max-width: 200px;
 }
 
@@ -46,10 +46,6 @@ body {
   padding: 0.8rem 0.2rem;
   border-radius: 0.5rem;
   border-color: #fdfdfc;
-  align-items: center;
-  position: absolute;
-  top: 220px;
-  left: 860px;
   max-width: 200px;
 }
 
@@ -57,86 +53,47 @@ body {
   padding: 0.8rem 0.2rem;
   border-radius: 0.5rem;
   border-color: #fdfdfc;
-  align-items: center;
-  position: absolute;
-  top: 220px;
-  left: 1110px;
   max-width: 200px;
 }
+
+
+.primary-text4 {
+  position: absoulte;
+  display: flex;
+  align-content: flex-start;
+  top: 300px;
+  left: 680px;
+}
+
+.profile-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: flex-start;
+  top: 250px;
+  left: 100px;
+  padding-top: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 3rem;
+  background-color:  rgb(255, 255, 255);;
+  border-radius: 40px;
+}
+
 
 .profile-img {
   padding: 0.2rem 0.2rem;
   border-radius: 0.5rem;
   border-color: #fdfdfc;
-  align-items: center;
-  position: absolute;
-  top: 200px;
-  left: 210px;
   max-width: 200px;
 }
 
-
-.profile-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: absolute;
-  background-color:  rgb(255, 255, 255);;
-  border-radius: 40px;
-  top: 150px;
-  left: 100px;
-  height: 700px;
-}
-
-
-
-.home-link-section {
-  flex: 1;
-}
-.home-text-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: right;
-  align-items: flex-start;
-}
-.primary-heading {
-  font-size: clamp(1rem, 3vw, 4rem);
-  color: #4c4c4c;
-  /* line-height: 5rem; */
-  max-width: 600px;
-  position: absolute;
-  top: 210px;
-  left: 10px;
-}
-
-.primary-heading2 {
-  font-size: clamp(1rem, 3vw, 4rem);
-  color: #4c4c4c;
-  /* line-height: 5rem; */
-  max-width: 600px;
-  position: absolute;
-  top: 350px;
-  left: 10px;
-}
-
-.primary-heading3 {
-  font-size: clamp(1rem, 3vw, 4rem);
-  color: #4c4c4c;
-  /* line-height: 5rem; */
-  max-width: 600px;
-  position: absolute;
-  top: 490px;
-  left: 10px;
-}
 .primary-text {
   font-size: clamp(1rem, 3vw, 1.5rem);
   max-width: 500px;
   color: #000000;
   margin: 1.5rem 0rem;
-  position: absolute;
-  top: 390px;
-  left: 235px;
 }
 
 .primary-text2 {
@@ -144,10 +101,8 @@ body {
   max-width: 500px;
   color: #6a6a6a;
   margin: 1.5rem 0rem;
-  position: absolute;
   font-size: smaller;
-  top: 430px;
-  left: 270px;
+
 }
 
 .primary-text3 {
@@ -155,26 +110,8 @@ body {
   max-width: 350px;
   color: #020202;
   margin: 1.5rem 0rem;
-  position: absolute;
   font-size: smaller;
-  top: 480px;
-  left: 150px;
 }
-
-.primary-text4 {
-  font-size: 1.1rem;
- 
-  font-weight: 600;
-  color: black;
-  transition: 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 150px;
-  left: 610px;
-}
-
 
 .secondary-button {
   padding: 1rem 2.5rem;
@@ -187,12 +124,7 @@ body {
   font-weight: 600;
   color: black;
   transition: 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 650px;
-  left: 220px;
+ 
 }
 .secondary-button2 {
   padding: 1rem 2.5rem;
@@ -205,12 +137,7 @@ body {
   font-weight: 600;
   color: black;
   transition: 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 730px;
-  left: 220px;
+  
 }
 .secondary-button svg {
   margin-left: 0.75rem;

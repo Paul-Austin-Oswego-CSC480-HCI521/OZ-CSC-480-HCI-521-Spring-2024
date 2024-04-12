@@ -1,215 +1,277 @@
 import React from "react";
-import BannerBackground from "../../Assets/home-banner-background.png"
-import BannerImage from "../../Assets/home-banner-image.png"
-import "slick-carousel/slick/slick.css"
+import BannerBackground from "../../Assets/Hero2.png";
+import dogImage from '../../Assets/dog.png';
+import catImage from '../../Assets/cat.png';
+import birdImage from '../../Assets/bird.png';
+import bunnyImage from '../../Assets/bunny.png';
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Luke from "../../Assets/Screenshot2028.jpg"
-import Finn from "../../Assets/Screenshot2014.jpg"
-import Brownie from "../../Assets/Screenshot2015.jpg";
-import Jaxon from "../../Assets/Screenshot2016.jpg";
-import Chloe from "../../Assets/Screenshot2022.jpg";
-import Asame from "../../Assets/Screenshot2023.png";
-import Ginger from "../../Assets/Screenshot2029.jpg";
-import Rascal from "../../Assets/Screenshot2011.jpg";
-import Danii from "../../Assets/Screenshot2013.JPG";
+import Luke from "../../Assets/Furr-Ever friends near you_1.png";
+import Finn from "../../Assets/Furr-Ever friends near you_2.png";
+import Brownie from "../../Assets/Furr-Ever friends near you_3.png";
+import Jaxon from "../../Assets/Purrrr - Cat friends near you_1.png";
+import Chloe from "../../Assets/Purrrr - Cat friends near you_2.png";
+import Asame from "../../Assets/Purrrr - Cat friends near you_4.png";
+import Ginger from "../../Assets/Pet photo2.png";
+import Rascal from "../../Assets/Pet photo.png";
+import Danii from "../../Assets/Pet photo1.png";
 import Slider from "react-slick";
-import { FaDog } from "react-icons/fa6";
-import { FaCat } from "react-icons/fa";
-import { FaPaw } from "react-icons/fa6";
-import { PiBirdFill } from "react-icons/pi";
-import { GiRabbit } from "react-icons/gi";
-import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import "./Home.css"
+import "./Home.css";
+import FAQs from './AdoptionFAQ';
+import Background from '../../Assets/BG pattern.png';
+import { useState } from "react";
+
 
 export const Home = () => {
+  const scrollToHowItWorks = (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    const howItWorksSection = document.getElementById("how_it_works"); // Get the section element
 
-    const scrollToHowItWorks = (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
-        const howItWorksSection = document.getElementById('how_it_works'); // Get the section element
+    if (howItWorksSection) {
+      howItWorksSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+    const [zipCode, setZipCode] = useState('13126'); // Define zipCode state
+  
+    const handleZipCodeChange = (e) => {
+      setZipCode(e.target.value);
+    };
+
+  const handleSubmitZipCode = (e) => {
+    e.preventDefault();
     
-        if (howItWorksSection) {
-          howItWorksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      };
-
-      const workInfoData = [
-        {
-          image: Luke,
-          title: "LUKE",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et",
-        },
-        {
-          image: Finn,
-          title: "FINN",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
-        },
-        {
-          image: Brownie,
-          title: "BROWNIE",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
-        },
-        {
-          image: Jaxon,
-          title: "JAXON",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
-        },
-        {
-          image: Chloe,
-          title: "CHLOE",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
-        },
-        {
-          image: Asame,
-          title: "ASAME",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
-        },
-        {
-          image: Ginger,
-          title: "GINGER",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
-        },
-        {
-          image: Rascal,
-          title: "RASCAL",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
-        },
-        {
-          image: Danii,
-          title: "DANII",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
-        },
-      ];
-
+    console.log("Hello World");
+  };
+  
+    const workInfoData = [
+    
+      {
+        image: Luke,
+        title: "Luke, M",
+        text: "American Shorthair",
+        age:"9-month old",
       
+        
+      },
+      {
+        image: Finn,
+        title: "Finn, M",
+        text: "American Shorthair",
+        age:"9-month old",
+        
+      },
+      {
+        image: Brownie,
+        title: "Brownie, F",
+        text:"American Shorthair",
+        age:"9-month old",
+       
+      },
+      {
+        image: Jaxon,
+        title: "Jaxon, M",
+        text: "American Shorthair",
+        age:"9-month old",
+        
+      },
+      {
+        image: Danii,
+        title: "Chloe, M",
+        text: "American Shorthair",
+        age:"9-month old",
+        
+      },
+      {
+        image: Luke,
+        title: "Asame, F",
+        text: "American Shorthair",
+        age:"9-month old",
+       
+      },
+      {
+        image: Finn,
+        title: "Ginger, F",
+        text: "American Shorthair",
+        age:"9-month old",
+      
+      },
+      {
+        image: Jaxon,
+        title: "Rascal, M",
+        text: "American Shorthair",
+        age:"9-month old",
+       
+      },
+      {
+        image: Brownie,
+        title: "Danii, F",
+        text: "American Shorthair",
+        age:"9-month old"
+      
+      },
 
-      const workInfoDatas = [
-        {
-          title: "Browse Pets",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et sagittis duis elementum interdum facilisi bibendum.",
-        },
-        {
-          title: "Apply For Adoption",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et ",
-        },
-        {
-          title: "Meet Your Match",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
-        },
-        {
-          title: "Finalize Adoption",
-          text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
-        },
-      ];
 
-      const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      };
-    <style>
-      {document.body.style.backgroundColor = '#D2E5F6'}
-    </style>
+    ];
+
+    const workInfoDatas = [
     
-    return(
-        <div className="home-container">
-            <div className="home-banner-container">
-                <div className="home-bannerImage-container">
-                    <img src={BannerBackground} alt="Banner Background" />
-                </div>
-                <div className="home-text-section">
-                    <h1 className="primary-heading">
-                        Find Your Furr-Ever Friend Today
-                    </h1>
-                    <p className="primary-text">
+      {
+        image: Luke,
+        title: "Luke, M",
+        text: "American Shorthair",
+        age:"9-month old",
+        
+      },
 
-                    </p>
-                    <button className="secondary-button" id="how_it_works_button" onClick={scrollToHowItWorks}>
-                        How It Works <FiArrowRight />
-                    </button>
-                    <div className="button-container">
-                        <Link to="/ExplorePets" className="third-button">
-                            <FaDog />
-                            <span>Dog</span>
-                        </Link>
-                        <Link to="ExplorePets" className="fourth-button">
-                            <FaCat />
-                            <span>Cat</span>
-                        </Link>
-                        <Link to="/ExplorePets" className="fifth-button">
-                            <PiBirdFill />
-                            Birds
-                        </Link>
-                        <Link to="/ExplorePets" className="fifth-buton">
-                            <GiRabbit />
-                              Small <br></br>
-                            Critters
-                        </Link>
-                    </div>
-                </div>
-                <div className="home-image-section">
-                    <img src={BannerImage} alt="Cute Cat" />
-                </div>
-            </div>
-            <div className="work-section-top">
-                <p className="primary-subheading">
-                    Furry Friend For You
-                </p>
-            </div>
-            <Slider {...settings}>
-                {[0, 3, 6].map((startIndex, groupIndex) => (
-                    <div className="work-section-info-container" key={groupIndex}>
-                        {workInfoData.slice(startIndex,startIndex + 3).map((data, index) => 
-                        <div className="work-section-info" key={index}>
-                            <div className="info-boxes-img-container">
-                                <img src={data.image} alt="" style={{maxWidth:'80%', height:'auto'}} />
-                            </div>
-                            <h2>{data.title}</h2>
-                            <p>{data.text}</p>
-                        </div>)}
-                    </div>
-                ))}
-            </Slider>
-            <div className="work-section-wrapper">
-                <div className="work-section-top">
-                    <h1 className="primary-headings" id="how_it_works">
-                        How It Works
-                    </h1>
-                </div>
-                <div className="work-section-bottom">
-                    {workInfoDatas.map((data) =>(
-                        <div className="work-section-infos" key={data.title}>
-                            <div className="info-boxes-img-container">
-                                <img src={data.image} alt=""/>
-                            </div>
-                            <h2>{data.title}</h2>
-                            <p>{data.text}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div className="adoption-faq-container" id="FAQ">
-                <h1>Adoption FAQ</h1>
-                <div className="faq-item">
-                    <h2>Question 1</h2>
-                    <p>Answer</p>
-                </div>
-                <div className="faq-item">
-                    <h2>Question 2?</h2>
-                    <p>Answer to question 2.</p>
-                </div>
-                <div className="faq-item">
-                    <h2>Question 3?</h2>
-                    <p>Answer to question 3.</p>
-                </div>
-            </div>
-            <div className="contact-page-wrapper">
-                <h1 className="primary-headingg">Have Question In Mind</h1>
-                <h1 className="primary-headingg">Let Us Help You</h1>
-                <button className="secondary-buttonn">Contact Us</button>
-            </div>
+      {
+        image: Jaxon,
+        title: "Jaxon, M",
+        text: "American Shorthair",
+        age:"9-month old",
+        
+      },
+      {
+        image: Chloe,
+        title: "Chloe, M",
+        text: "American Shorthair",
+        age:"9-month old",
+        
+      },
+      {
+        image: Rascal ,
+        title: "Asame, F",
+        text: "American Shorthair",
+        age:"9-month old",
+       
+      },
+
+      {
+        image: Ginger,
+        title: "Rascal, M",
+        text: "American Shorthair",
+        age:"9-month old",
+       
+      },
+      {
+        image: Asame,
+        title: "Chloe, M",
+        text: "American Shorthair",
+        age:"9-month old",
+        
+      },
+
+
+
+    ];
+    
+
+
+  <style>{(document.body.style.backgroundColor = "#E3EAE7")}</style>;
+
+  return (
+    <div className="home-container">
+      <div className="home-banner-container">
+        <div className="home-bannerImage-container">
+          <img className="home-bannerDog" src={BannerBackground} alt="" />
         </div>
-    )
-}
+        {/* Sejal's code */}
+        <form onSubmit={handleSubmitZipCode} className="zip-form">
+            <input
+                type="text"
+                placeholder="Zip Code"
+                value={zipCode}
+                onChange={handleZipCodeChange}
+                className="zip-input"
+            />
+            <button type="submit" className="zip-submit"> Go! </button>
+        </form>
+        {/*  End of Sejal's Code*/}
+
+        <div className="home-text-section">
+        <div className="button-container">
+  {/* Navigate to Multifilters page when this button is clicked */}
+  <Link to="/ExplorePets" className="third-button">
+  <img src={dogImage} alt="Dog" />
+  <span>Dog</span>
+</Link>
+
+  {/* Navigate to Multifilters page when this button is clicked */}
+  <Link to="/ExplorePets" className="third-button">
+  <img src={catImage} alt="Cat" />
+  <span>Cat</span>
+</Link>
+
+  {/* Navigate to Multifilters page when this button is clicked */}
+  <Link to="/ExplorePets" className="third-button">
+  <img src={birdImage} alt="Bird" />
+  <span>Bird</span>
+</Link>
+
+  {/* Navigate to Multifilters page when this button is clicked */}
+  <Link to="/ExplorePets" className="fifth-button">
+  <img src={bunnyImage} alt="Small Critters" />
+    Small Critters
+  </Link>
+</div>
+    <h1 className="primary-heading">
+            Find your furr-ever friend today!
+          </h1>
+        </div> 
+      </div>
+
+<div className="about-meet-teamss">
+    <h1>Furr-Ever friends near you</h1>
+        <div className="about-team-sections">
+            <Slider>
+    {[0, 3, 6].map((startIndex, groupIndex) => (
+    <div className="work-section-info-container" key={groupIndex}>
+    {/* Map over each group of three items */}
+    {workInfoData.slice(startIndex, startIndex + 5).map((data, index) => (
+      <a key={index} href={`/PetDetails`}>
+        <div className="work-section-info">
+          <div className="info-boxes-img-container">
+            <img src={data.image} alt="" style={{ maxWidth: "80%", height: "auto" }} />
+          </div>
+          <h2>{data.title}</h2>
+          <p>{data.text}</p>
+          <span>{data.age}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+    ))}
+  </Slider>
+        </div>
+  
+</div>
+
+<div className="about-meet-teamss">
+    <h1>Purr-Cat friends near you</h1>
+        <div className="about-team-sections">
+            <Slider>
+    {[0, 3, 6].map((startIndex, groupIndex) => (
+      <div className="work-section-info-container" key={groupIndex}>
+        {/* Map over each group of three items */}
+        {workInfoDatas.slice(startIndex, startIndex + 5).map((data, index) => (
+          <div className="work-section-info" key={index}>
+            <div className="info-boxes-img-container">
+              <img src={data.image} alt="" style={{ maxWidth: "80%", height: "auto" }} />
+            </div>
+            <h2>{data.title}</h2>
+            <p>{data.text}</p>
+            <span>{data.age} </span>
+          </div>
+        ))}
+      </div>
+    ))}
+  </Slider>
+        </div>
+  
+</div>
+      <FAQs />
+
+    </div>
+  );
+};

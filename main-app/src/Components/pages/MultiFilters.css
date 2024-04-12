@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 body {
   font-family: "IBM Plex Sans", sans-serif;
@@ -7,13 +11,19 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* background-color: red ; */
+}
+.DoYou h1{
+  margin-top: 3%;
+  margin-left: 15%;
+  font-family: "Grandstander", cursive;
+  font-size: 2.5rem;
 }
 
-h1,
-p {
-  margin: 0;
-  padding: 0;
+.filter-bannerDog {
+  margin-top: -6%;
+  margin-left: 70%;
+  width: 340px; /* Adjust the width to make the image smaller */
+  height: auto; /* Maintain aspect ratio */
 }
 .container {
   display: flex;
@@ -31,18 +41,51 @@ p {
   justify-content: center;
   margin-top: 20px;
 }
+
+.buttons-container .button{
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add faint box shadow */
+}
+
+.filter-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
 .button {
-  border: 1px solid #000;
+  border: 1px solid rgb(194, 194, 194);
+  background-color: rgb(218, 218, 218);
   background: transparent;
   margin: 5px 5px;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  
+}
+.button-top {
+  border: 1px solid rgb(194, 194, 194);
+  background-color: rgb(218, 218, 218);
+  background: transparent;
+  margin: 20px 5px;
+  border-radius: 30px;
+  padding: 10px 30px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
-.button:hover {
-  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0);
+.custom-container{
+  background-color: white;
+  width: 90%;
+  margin-left: 5%; 
+  margin-top: -5.5%;
+  border-radius: 10px;
+}
+
+.button-top:hover {
+  box-shadow: 3px 3px 0px 0px orange;
 }
 
 .dropdowns-container {
@@ -61,12 +104,6 @@ p {
   justify-content: space-between;
 }
 
-.image {
-  height: 200px;
-  width: 200px;
-  border-radius: 5px;
-  object-fit: cover;
-}
 
 .items-container {
   display: flex;
@@ -77,21 +114,22 @@ p {
 }
 
 .item {
-  padding: 4px 10px;
-  min-width: 100px;
-  min-height: 50px;
+  width: 250px; /* Set a fixed width for all items */
+  height: 250px; /* Set a fixed height for all items */
   margin: 4px 10px;
   border: 1px solid #000;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  border-radius: 20px;
+  position: relative; /* Positioning for the image */
+  overflow: hidden; /* Hide overflow to ensure images are contained */
 }
 
 .name {
-  color: #2e2e2e;
-  font-size: 16px;
-  font-weight: 500;
+  margin: 10px 0; /* Adjust top and bottom margin */
+  text-align: center; /* Center the text horizontally */
+  font-size: large !important; /* Changed font size to smaller */
+  font-weight: 600;
+  color: #000;
+  font-family: 'Grandstander', cursive; /* Changed font to Grandstander */
 }
 
 .category {
@@ -100,26 +138,83 @@ p {
 }
 
 .sex {
-  color: #515151;
-  font-size: 10px;
+  color: #000;
+  background-color: #cceddf;
+  border-radius: 30px;
+  font-family: Manrope, sans-serif;
+  width: 27%;
+  margin-left:10%;
 }
 
 .color {
-  color: #515151;
-  font-size: 10px;
+  color: #000;
+  background-color: #ffeecd;
+  border-radius: 30px;
+  font-family: Manrope, sans-serif;
+  width: 27%;
+  margin-left:40%;
+  margin-top: -6.5%;
 }
 
 .breed {
-  color: #515151;
-  font-size: 10px;
+  margin: 0;
 }
 
 .age {
-  color: #515151;
-  font-size: 10px;
+  background-color: #cceddf;
+  border-radius: 30px;
+  font-family: Manrope, sans-serif;
+  padding: 2px 5px;
+  width: 35%;
+  margin-left: auto; /* Move to the right */
+  display: block; /* or display: inline-block; */
+}
+#filters-button .active{
+    background-color: orange;
+    color: black;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#filters-button .active{
-    background-color: #0d0d0d;
-    color: #fff;
+.card {
+  position: relative; /* Added for positioning the edit and delete buttons */
+  border-radius: 16px;
+  box-shadow: 0px 8px 40px 0px rgba(24, 18, 7, 0.08);
+  background-color: var(--White, #fff);
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  text-align: center;
+  flex-basis: calc(33.33% - 20px); /* 3 pets in one line */
+  max-width: calc(33.33%- 20px); /* 3 pets in one line */
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  cursor: pointer; /* Added to indicate clickable */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin: 10px;
+  height: 400px;
+
+}
+.card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.image {
+  width: 300px;
+  height: 300px; /* Set a fixed height for all images */
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.breed,
+.age {
+  margin: 5px 0;
 }
