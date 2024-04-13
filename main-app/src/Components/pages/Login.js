@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from '../../Assets/purple_paw_Logo.svg';
 import "./Login.css"
@@ -7,10 +7,12 @@ import "./Login.css"
 function Login() {
   const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
+  
 
   // Set background color when component renders
   React.useEffect(() => {
     document.body.style.backgroundColor = "#FFE5CC";
+    // document.body.style.backgroundColor = "#EADBF7";
 
     const handleSubmit = (event) => {
       event.preventDefault(); // Prevent the default form submission
@@ -83,6 +85,7 @@ function Login() {
       }
     };
   }, [navigate]);
+  
 
   return (
     <div className="container">

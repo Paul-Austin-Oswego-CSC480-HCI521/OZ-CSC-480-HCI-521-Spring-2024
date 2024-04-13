@@ -1,12 +1,23 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import BannerBackground from "../../Assets/Cat Hero Banner.png";
 import PersonIcon from "../../Assets/Icons/person.svg"; // Import the person icon SVG
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FAQs from "./AdoptionFAQ";
+import "./Rehome.css"
 
 export const RehomePage = () => {
+  useEffect(() => {
+    // Set body style when the component mounts
+    // document.body.style.backgroundColor = "#EADBF7";
+    document.body.style.backgroundColor = "#FFE5CC";
+
+    // Clear body style when the component unmounts
+    return () => {
+      document.body.style.backgroundColor = "";
+    };
+  }, []); // Empty dependency array means this effect runs once on mount
   return (
     <div>
       <div

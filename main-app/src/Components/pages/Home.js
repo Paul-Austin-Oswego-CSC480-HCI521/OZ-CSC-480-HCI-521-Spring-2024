@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import BannerBackground from "../../Assets/Hero2.png";
 import dogImage from "../../Assets/dog.png";
 import catImage from "../../Assets/cat.png";
@@ -134,6 +134,15 @@ export const Home = () => {
   ];
 
   <style>{(document.body.style.backgroundColor = "#E3EAE7")}</style>;
+  useEffect(() => {
+    // Set body style when the component mounts
+    document.body.style.backgroundColor = "#E3EAE7";
+
+    // Clear body style when the component unmounts
+    return () => {
+      document.body.style.backgroundColor = "";
+    };
+  }, []); // Empty dependency array means this effect runs once on mount
 
   return (
     <div className="home-container">

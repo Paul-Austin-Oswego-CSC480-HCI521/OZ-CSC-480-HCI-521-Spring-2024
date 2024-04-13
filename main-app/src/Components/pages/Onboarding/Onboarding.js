@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -76,6 +76,16 @@ const Onboarding = () => {
   const getProgressBarWidth = () => {
     return `${(step - 1) * 33.33}%`; // Each step represents 33.33% of progress
   };
+  useEffect(() => {
+    // Set body style when the component mounts
+    // document.body.style.backgroundColor = "#EADBF7";
+    document.body.style.backgroundColor = "#FFE5CC";
+
+    // Clear body style when the component unmounts
+    return () => {
+      document.body.style.backgroundColor = "";
+    };
+  }, []); // Empty dependency array means this effect runs once on mount
 
   return (
     <div className="onboarding-container">

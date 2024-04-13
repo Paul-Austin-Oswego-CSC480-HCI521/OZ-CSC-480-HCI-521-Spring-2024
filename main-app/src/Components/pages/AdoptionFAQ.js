@@ -37,7 +37,8 @@ const AdoptionFAQ = () => {
         "After submitting an adoption inquiry, the shelter or rescue group with the pet you’re interested in will contact you. You may also reach out to the shelter or rescue group directly to follow up.",
     },
     {
-      question: "I’m not sure if I want to adopt a pet, can I meet them before I decide?",
+      question:
+        "I’m not sure if I want to adopt a pet, can I meet them before I decide?",
       answer:
         "Yes, you can! On each pet's information page, there is a button located at [insert location] that will allow you to schedule a visit with the shelter housing the pet.",
     },
@@ -52,32 +53,33 @@ const AdoptionFAQ = () => {
         "Since each shelter is responsible for updating information for their own pet listings, our site is constantly updating.",
     },
   ];
-  
 
   const faqItem = [
     {
-      question: 'How can I adopt a pet from your shelter?',
+      question: "How can I adopt a pet from your shelter?",
       answer:
-        'Adopting a pet is easy! Simply browse through our available pets, choose the one that steals your heart, and fill out our adoption application. Our adoption counselors will guide you through the rest of the process.',
+        "Adopting a pet is easy! Simply browse through our available pets, choose the one that steals your heart, and fill out our adoption application. Our adoption counselors will guide you through the rest of the process.",
     },
     {
-      question: 'What are the adoption fees?',
+      question: "What are the adoption fees?",
       answer:
-        'Adoption fees vary based on the type of pet and their age. These fees typically cover vaccinations, spaying/neutering, microchipping, and other essential medical procedures. Rest assured, every penny goes towards the well-being of our animals.',
+        "Adoption fees vary based on the type of pet and their age. These fees typically cover vaccinations, spaying/neutering, microchipping, and other essential medical procedures. Rest assured, every penny goes towards the well-being of our animals.",
     },
     {
-      question: 'Can I meet the pet before adopting?',
+      question: "Can I meet the pet before adopting?",
       answer:
-        'Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it\'s a perfect match for both you and the pet.',
+        "Absolutely! We encourage meet-and-greet sessions with your potential new companion. This allows you to interact, bond, and ensure that it's a perfect match for both you and the pet.",
     },
     // Add more FAQ items as needed
   ];
 
   return (
     <div className="adoption-faq" id="FAQ">
-    <div className="adoption-faq" id="FAQ2">
       <h1>Adoption FAQ</h1>
-      <p>Find answers to commonly asked questions about the pet adoption process, pet care and support.</p>
+      <p>
+        Find answers to commonly asked questions about the pet adoption process,
+        pet care and support.
+      </p>
       <div className="faq-list">
         {faqItems.map((item, index) => (
           <div key={index} className="faq-item">
@@ -96,12 +98,8 @@ const AdoptionFAQ = () => {
           </div>
         ))}
       </div>
-
     </div>
-    </div>
-    
   );
 };
 
 export default AdoptionFAQ;
-

@@ -21,6 +21,20 @@ const Navbar = () => {
     console.log("Hello World");
   };
 
+  // const handleLinkClick = (path) => {
+  //   // Check if the current page is the home page and the path includes an in-page link
+  //   if (location.pathname === "/" && path === "/#FAQ") {
+  //     const sectionId = path.substring(2); // Extracts 'how_it_works' or 'FAQ' from the path
+  //     const section = document.getElementById(sectionId);
+  //     if (section) {
+  //       window.scrollTo({
+  //         top: section.offsetTop,
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   }
+  // };
+
   const handleLinkClick = (path) => {
     // Check if the current page is the home page and the path includes an in-page link
     if (location.pathname === "/" && path === "/#FAQ") {
@@ -32,8 +46,24 @@ const Navbar = () => {
           behavior: "smooth",
         });
       }
+    } else if (path === "/#contact") {
+      const sectionId = path.substring(2); // Extracts 'contact' from the path
+      const section = document.getElementById(sectionId);
+      if (section) {
+        let offset = 0;
+        // If it's the contact section, consider the height of the navbar
+        const navbar = document.querySelector(".navbar");
+        if (navbar) {
+          offset = navbar.offsetHeight;
+        }
+        window.scrollTo({
+          top: section.offsetTop - offset, // Subtract the height of the navbar
+          behavior: "smooth",
+        });
+      }
     }
   };
+
 
   //Track dropdown visibility state
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -110,9 +140,9 @@ const Navbar = () => {
             <Link to="/about"> About Us</Link>
           </li>
           <li>
-            <Link to="/"> Contact Us</Link>
+            <Link to="/#contact"onClick={() => handleLinkClick("/#contact")}> Contact Us</Link>
           </li>
-          <li></li>
+          {/* <li></li> */}
         </ul>
       </nav>
     </>

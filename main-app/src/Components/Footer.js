@@ -21,7 +21,7 @@ const Footer = () => {
         </div> */}
       </div>
 
-      <div className="footer-section-two">
+      <div className="footer-section-two" id="contact">
         <div className="footer-section-columns">
           <a href="mailto:hello@pawsnclaws.com">
             <email>hello@pawsnclaws.com</email>
