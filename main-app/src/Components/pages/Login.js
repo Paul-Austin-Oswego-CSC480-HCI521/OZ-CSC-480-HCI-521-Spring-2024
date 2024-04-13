@@ -17,6 +17,7 @@ function Login() {
 
       // Get form data
       const formData = new FormData(event.target);
+      const email = formData.get("emailAddress");
 
       // Create JSON object
       const jsonObject = {};
@@ -38,10 +39,24 @@ function Login() {
           body: JSON.stringify(jsonObject),
         }
       )
-        .then((response = 200) => {
+        .then(async (response = 200) => {
           if (response.ok) {
-            //   if (1) {
-            // Redirect to another component upon successful login
+            
+            const responseText = await response.text();
+
+            // Extract both the JWT and the Shelter ID from the Response
+            const jwt = responseText.substring(0, responseText.indexOf(":"));
+            const shelter_id = responseText.substring(responseText.indexOf(":") + 1);
+
+            // Calculate the expiration date of the JWT
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 1);
+
+            // Create three cookies: One that represents the current user logged in, one that represents the current user's JWT, and one that represents the current user's ID
+            document.cookie = "currentUser=" + email + "; expires=" + expirationDate + "; path=/";
+            document.cookie = email + "JWT=" + jwt + "; expires=" + expirationDate + "; path=/";
+            document.cookie = email + "ID=" + shelter_id + "; expires=" + expirationDate + "; path=/";
+
             navigate("/dashboard");
           } else {
             // Handle unsuccessful login
