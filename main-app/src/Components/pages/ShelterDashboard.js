@@ -213,7 +213,7 @@ const ShelterDashboard = () => {
           </div>
 
           <div>
-            <h2 className="shelter-name">{data.shelter.name}<img className='verified' src='./Images/verified.png' alt=""></img></h2>
+            <h2 className="shelter-name">{data.shelter.name}<img className='verified' src='./images/verified.png' alt=""></img></h2>
             <p className="shelter-location">{data.shelter.location}</p>
             <p className="shelter-description">
               {expanded ? data.shelter.description : `${data.shelter.description.slice(0, 125)}...`}
