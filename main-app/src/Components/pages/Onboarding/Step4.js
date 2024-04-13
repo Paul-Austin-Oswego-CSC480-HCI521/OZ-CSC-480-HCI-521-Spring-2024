@@ -40,9 +40,51 @@ const Step4 = ({ prevStep, formData }) => {
       if (!response.ok) {
         throw new Error('Failed to submit form data');
       } else {
-        //   if (1) {
-        // Redirect to another component upon successful login
-        navigate("/dashboard");
+        const jsonObject = {};
+        jsonObject['emailAddress'] = formDataToSend.emailAddress;
+        jsonObject['password'] = formDataToSend.password;
+
+        console.log(jsonObject);
+        fetch(
+          "http://localhost:9080/database-controller/api/shelter/login?" +
+          new URLSearchParams(jsonObject),
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(jsonObject),
+          }
+        )
+          .then(async (response = 200) => {
+            if(response.ok){
+              const responseText = await response.text();
+
+              // Extract both the JWT and the Shelter ID from the Response
+              const jwt = responseText.substring(0, responseText.indexOf(":"));
+              const shelter_id = responseText.substring(responseText.indexOf(":") + 1);
+  
+              // Calculate the expiration date of the JWT
+              const expirationDate = new Date();
+              expirationDate.setDate(expirationDate.getDate() + 1);
+  
+              // Create three cookies: One that represents the current user logged in, one that represents the current user's JWT, and one that represents the current user's ID
+              document.cookie = "currentUser=" + emailAddress + "; expires=" + expirationDate + "; path=/";
+              document.cookie = emailAddress + "JWT=" + jwt + "; expires=" + expirationDate + "; path=/";
+              document.cookie = emailAddress + "ID=" + shelter_id + "; expires=" + expirationDate + "; path=/";
+  
+              navigate("/dashboard");
+            } else {
+              // Handle unsuccessful login
+              console.log("here");
+              //setLoginError(true);
+            }             
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+
+            //setLoginError(true);
+          });
       }
 
       // alert('Form submitted successfully!');

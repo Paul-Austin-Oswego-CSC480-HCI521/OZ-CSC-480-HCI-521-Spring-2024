@@ -3,6 +3,7 @@ import { FaPencilAlt } from 'react-icons/fa';
 import UploadPetForm from './UploadPetForm';
 import AvailablePets from './AvailablePets';
 import CategoryFilter from './CategoryFilter';
+import { JWTAuth } from './JWTAuth';
 import './ShelterDashboard.css';
 import { NavLink as Link } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";
@@ -13,13 +14,15 @@ import EditProfileModal from './EditProfileModal';
 
 const ShelterDashboard = () => {
   const [data, setData] = useState({
-    shelter: {
-      name: '',
-      image: '',
-      location: '',
-      contact: '',
+      id: '',
+      city: '',
       description: '',
-    },
+      emailAddress: '',
+      name: '',
+      password: '',
+      phoneNumber: '',
+      state: '',
+      zipcode: '',
     pets: [],
   });
 
@@ -54,9 +57,14 @@ const ShelterDashboard = () => {
   }, []);
 
   const fetchShelterData = () => {
-    fetch(process.env.PUBLIC_URL + '/data.json')
+    const jwt = new JWTAuth();
+    var currentUser = jwt.getCookie("currentUser");
+    var currentUserId = jwt.getCookie(currentUser + "ID");
+
+    fetch("http://localhost:9080/database-controller/api/shelter/" + currentUserId)
       .then((response) => response.json())
       .then((jsonData) => {
+        console.log(jsonData);
         setData(jsonData);
       })
       .catch((error) => {
@@ -205,18 +213,18 @@ const ShelterDashboard = () => {
         <div className="shelter-profile">
           <div>
             <img
-              src={data.shelter.image}
-              alt={data.shelter.name}
+              src={data.image}
+              alt={data.name}
               className="shelter-image"
             />
 
           </div>
 
           <div>
-            <h2 className="shelter-name">{data.shelter.name}<img className='verified' src='./Images/verified.png' alt=""></img></h2>
-            <p className="shelter-location">{data.shelter.location}</p>
+            <h2 className="shelter-name">{data.name}<img className='verified' src='./Images/verified.png' alt=""></img></h2>
+            <p className="shelter-location">{data.location}</p>
             <p className="shelter-description">
-              {expanded ? data.shelter.description : `${data.shelter.description.slice(0, 125)}...`}
+              {expanded ? data.shelter.description : `${data.description.slice(0, 125)}...`}
               {!expanded && <span onClick={toggleDescription}>See More</span>}
             </p>
           </div>
@@ -237,7 +245,7 @@ const ShelterDashboard = () => {
         {showEditModal && (
 
           <EditProfileModal
-            profileData={data.shelter}
+            profileData={data}
             onSave={saveProfileChanges}
             onCancel={closeEditModal}
           />
