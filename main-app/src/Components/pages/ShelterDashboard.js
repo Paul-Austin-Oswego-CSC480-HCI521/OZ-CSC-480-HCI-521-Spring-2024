@@ -163,7 +163,7 @@ const ShelterDashboard = () => {
   return (
     <div className="wholepage">
       <div className="top-nav-container">
-        <div className="top-nav">
+        <div className="top-navbar">
           <Link to="/" className={({ isActive }) => (isActive ? "active" : "inactive")}>
             <IoPawSharp /> Adopt
           </Link>

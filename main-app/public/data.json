@@ -1,7 +1,7 @@
 {
   "shelter": {
     "name": "Pawsome Shelter",
-    "image": "/Images/Shelter/shelter.png",
+    "image": "/images/Shelter/shelter.png",
     "location": "123 Street, Pawsome City, NY",
     "contact": "pawsome@gmail.com",
     "description": "Welcome to Our Pet Shelter! We are dedicated to providing a safe and loving environment for animals in need. Our shelter is home to a variety of furry friends waiting to find their forever homes. "
@@ -17,7 +17,7 @@
       "size": "Medium",
       "age": "2 years",
       "distance":"9 miles",
-      "images": ["/Images/Pets/Dexter 01.jpg"],
+      "images": ["/images/Pets/Dexter 01.jpg"],
       "description": "Friendly and playful Labrador looking for a loving home."
     },
     {
@@ -30,7 +30,7 @@
       "size": "Small",
       "age": "1 year",
       "distance":"9 miles",
-      "images": ["/Images/Pets/p13.webp"],
+      "images": ["/images/Pets/p13.webp"],
       "description": "Sweet and affectionate Siamese cat ready to be your new companion."
     },
     {
@@ -43,7 +43,7 @@
       "size": "Medium",
       "age": "2 years",
       "distance":"9 miles",
-      "images": ["/Images/Pets/dog.png"],
+      "images": ["/images/Pets/dog.png"],
       "description": "Friendly and playful Labrador looking for a loving home."
     },
     {
@@ -56,7 +56,7 @@
       "size": "Small",
       "age": "1 year",
       "distance":"9 miles",
-      "images": ["/Images/Pets/cat.png"],
+      "images": ["/images/Pets/cat.png"],
       "description": "Sweet and affectionate Siamese cat ready to be your new companion."
     },
     {
@@ -69,7 +69,7 @@
       "size": "Medium",
       "age": "2 years",
       "distance":"9 miles",
-      "images": ["/Images/Pets/cat1.png"],
+      "images": ["/images/Pets/cat1.png"],
       "description": "Friendly and playful Labrador looking for a loving home."
     }
   ]
