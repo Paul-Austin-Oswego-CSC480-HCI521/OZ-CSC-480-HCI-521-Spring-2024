@@ -13,7 +13,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
         setShowOptions(null);
       }
     };
-
+    
     document.addEventListener('mousedown', handleOutsideClick);
 
     return () => {
@@ -77,6 +77,10 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
     event.stopPropagation(); // Prevents closing the options when clicking inside the dropdown
     handleToggleOptions(petId);
   };
+
+  if (pets.length === 0) {
+    return <div className="no-pets-message">No pets available at the moment.</div>;
+  }
 
   return (
     <div className="pet-list">

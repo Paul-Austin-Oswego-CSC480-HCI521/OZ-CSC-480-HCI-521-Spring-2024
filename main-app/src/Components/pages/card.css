@@ -4,6 +4,13 @@
   gap: 20px;
 }
 
+.no-pets-message {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px;
+  padding: 20px;
+}
+
 .pet-card {
   position: relative;
   /* Added for positioning the edit and delete buttons */
