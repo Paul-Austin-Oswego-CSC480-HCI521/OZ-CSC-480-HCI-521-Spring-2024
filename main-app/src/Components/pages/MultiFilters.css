@@ -193,7 +193,7 @@ body {
   color: #000;
   text-align: center;
   flex-basis: calc(33.33% - 20px); /* 3 pets in one line */
-  max-width: calc(33.33%- 20px); /* 3 pets in one line */
+  width: 300px;
   box-sizing: border-box;
   transition: all 0.3s ease;
   cursor: pointer; /* Added to indicate clickable */
