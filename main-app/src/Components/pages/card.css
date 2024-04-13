@@ -222,8 +222,8 @@
 
 .pet-card-options {
   position: absolute;
-  top: 1px;
-  right: 1px;
+  top: 5px;
+  right: 5px;
   z-index: 1;
 }
 
@@ -240,16 +240,16 @@
   font-weight: 600;
   font-size: 20px;
   border-radius: 50%;
-  padding: 3px;
+
   height: 30px; /* Adjust the size as needed */
   width: 30px; /* Adjust the size as needed */
-  align-items: center;
+  
 }
 
 .pet-options-dropdown {
   position: absolute;
-  top: 50px;
-  left: 15px;
+  top: 30px;
+  right: -110px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
