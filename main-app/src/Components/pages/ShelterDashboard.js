@@ -174,7 +174,7 @@ const ShelterDashboard = () => {
       </div>
       <div className="topnav">
         <div className="logo-container">
-          <a href="/your-link-here" className="logo-link">
+          <a href="/" className="logo-link">
             
           </a>
         </div>
