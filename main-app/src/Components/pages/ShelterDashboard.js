@@ -174,9 +174,9 @@ const ShelterDashboard = () => {
       </div>
       <div className="topnav">
         <div className="logo-container">
-          <a href="/" className="logo-link">
-            
-          </a>
+        <Link to="/" className='logo-link'>
+            <img src='./images/loho.png' alt="logo" />
+          </Link>
         </div>
         <div className="upload-pet">
           <UploadPetForm addNewPet={addNewPet} />

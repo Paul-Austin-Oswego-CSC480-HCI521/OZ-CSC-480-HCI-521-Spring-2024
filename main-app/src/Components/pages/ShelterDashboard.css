@@ -67,15 +67,14 @@ margin: 0 20px;
 }
 
 .logo-container {
-  
-  background-image: url('/public/images/loho.png');
-  background-size: contain;
-  border-radius: 60px;
   cursor: pointer;
-  height: 65px;
-  width: 200px;
   
-  
+}
+
+.logo-container img{
+  border-radius: 60px;
+  height: 55px;
+  width: 180px;
 }
 
 .main-content {
