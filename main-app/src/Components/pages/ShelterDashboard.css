@@ -1,3 +1,6 @@
+body {
+  background-color: rgb(227, 234, 231);
+}
 .wholepage {
   display: flex;
   flex-direction: column;
@@ -283,6 +286,7 @@ margin: 0 20px;
 
 .user-profile-dropdown:hover .dropdown-content {
   display: block;
+  padding: 8px;
 }
 
 .user-profile-dropdown .dropdown-content a,
@@ -304,6 +308,7 @@ margin: 0 20px;
 .user-profile-dropdown .dropdown-content a:hover,
 .user-profile-dropdown .dropdown-content button:hover {
   background-color: #f5f5f5;
+  
 }
 
 .deleteAccount, .logout {

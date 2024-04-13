@@ -239,6 +239,7 @@
   border: none;
   cursor: pointer;
   color: black;
+  
 }
 
 .vertical-dots {
@@ -247,7 +248,7 @@
   font-weight: 600;
   font-size: 20px;
   border-radius: 50%;
-
+  padding-top: 5px;
   height: 30px; /* Adjust the size as needed */
   width: 30px; /* Adjust the size as needed */
   
@@ -276,6 +277,7 @@
   cursor: pointer;
   padding: 5px;
   font-size: 14px;
+  padding: 10px;
 }
 
 .pet-options-dropdown button:hover {
