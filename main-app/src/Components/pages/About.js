@@ -23,32 +23,32 @@ export const About = () => {
         members: [
             {
                 name: "Rick",
-                image: `${process.env.PUBLIC_URL}/teams/engine/engine_1.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Engine/engine_1.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Morty",
-                image: `${process.env.PUBLIC_URL}/teams/engine/engine_2.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Engine/engine_2.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Beth",
-                image: `${process.env.PUBLIC_URL}/teams/engine/engine_3.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Engine/engine_3.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Summer",
-                image: `${process.env.PUBLIC_URL}/teams/engine/engine_4.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Engine/engine_4.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Noob Noob",
-                image: `${process.env.PUBLIC_URL}/teams/engine/engine_5.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Engine/engine_5.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Jerry",
-                image: `${process.env.PUBLIC_URL}/teams/engine/engine_6.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Engine/engine_6.jpg`,
                 info: "...To Be Added"
             }
             ]
@@ -58,32 +58,32 @@ export const About = () => {
         members: [
             {
                 name: "Benson",
-                image: `${process.env.PUBLIC_URL}/teams/gui/gui_1.png`,
+                image: `${process.env.PUBLIC_URL}/teams/Gui/gui_1.png`,
                 info: "...To Be Added"
             },
             {
                 name: "Mordecai",
-                image: `${process.env.PUBLIC_URL}/teams/gui/gui_2.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Gui/gui_2.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Muscle Man",
-                image: `${process.env.PUBLIC_URL}/teams/gui/gui_3.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Gui/gui_3.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Pops",
-                image: `${process.env.PUBLIC_URL}/teams/gui/gui_4.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Gui/gui_4.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Rigby",
-                image: `${process.env.PUBLIC_URL}/teams/gui/gui_5.png`,
+                image: `${process.env.PUBLIC_URL}/teams/Gui/gui_5.png`,
                 info: "...To Be Added"
             },
             {
                 name: "Skips",
-                image: `${process.env.PUBLIC_URL}/teams/gui/gui_6.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Gui/gui_6.jpg`,
                 info: "...To Be Added"
             }
             // ... member objects
@@ -94,32 +94,32 @@ export const About = () => {
             members: [
             {
                 name: "Marcelline",
-                image: `${process.env.PUBLIC_URL}/teams/qa/qa_1.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Qa/qa_1.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Finn",
-                image: `${process.env.PUBLIC_URL}/teams/qa/qa_2.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Qa/qa_2.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Jake",
-                image: `${process.env.PUBLIC_URL}/teams/qa/qa_3.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Qa/qa_3.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Ice King",
-                image: `${process.env.PUBLIC_URL}/teams/qa/qa_4.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Qa/qa_4.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Lemongrab",
-                image: `${process.env.PUBLIC_URL}/teams/qa/qa_5.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Qa/qa_5.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "BMO",
-                image: `${process.env.PUBLIC_URL}/teams/qa/qa_6.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Qa/qa_6.jpg`,
                 info: "...To Be Added"
             }
             // ... member objects
@@ -130,32 +130,32 @@ export const About = () => {
             members: [
             {
                 name: "Steven",
-                image: `${process.env.PUBLIC_URL}/teams/requirements/requirements_1.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Requirements/requirements_1.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Connie",
-                image: `${process.env.PUBLIC_URL}/teams/requirements/requirements_2.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Requirements/requirements_2.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Garnet",
-                image: `${process.env.PUBLIC_URL}/teams/requirements/requirements_3.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Requirements/requirements_3.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Mr.Universe",
-                image: `${process.env.PUBLIC_URL}/teams/requirements/requirements_4.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Requirements/requirements_4.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Lapis Lazuli",
-                image: `${process.env.PUBLIC_URL}/teams/requirements/requirements_5.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Requirements/requirements_5.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Pearl",
-                image: `${process.env.PUBLIC_URL}/teams/requirements/requirements_6.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Requirements/requirements_6.jpg`,
                 info: "...To Be Added"
             }
             // ... member objects
@@ -166,32 +166,32 @@ export const About = () => {
             members: [
             {
                 name: "Gumball",
-                image: `${process.env.PUBLIC_URL}/teams/usability/usability_1.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Usability/usability_1.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Darwin",
-                image: `${process.env.PUBLIC_URL}/teams/usability/usability_2.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Usability/usability_2.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Anais",
-                image: `${process.env.PUBLIC_URL}/teams/usability/usability_3.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Usability/usability_3.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Tobias",
-                image: `${process.env.PUBLIC_URL}/teams/usability/usability_4.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Usability/usability_4.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Penny",
-                image: `${process.env.PUBLIC_URL}/teams/usability/usability_5.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Usability/usability_5.jpg`,
                 info: "...To Be Added"
             },
             {
                 name: "Larry",
-                image: `${process.env.PUBLIC_URL}/teams/usability/usability_6.jpg`,
+                image: `${process.env.PUBLIC_URL}/teams/Usability/usability_6.jpg`,
                 info: "...To Be Added"
             }
             // ... member objects
