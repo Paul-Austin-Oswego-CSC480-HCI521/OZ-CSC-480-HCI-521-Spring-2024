@@ -1,75 +1,168 @@
+.onboarding-hero-image {
+  background-image: url('../../../Assets/signup_bg_image.png');
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  height: 100%;
+  image-rendering: optimizeQuality;
+}
+
+.onboarding-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  padding: 0.5;
+  margin-top: 20px;
+  color: black;
+  background-color: #fff;
+}
+
+.signup-container h2 {
+  /* font-family: "Pacifico", cursive; */
+   font-family: "Madimi One", sans-serif; 
+    /*font-family: "Concert One", sans-serif; Another font option */
+    /* font-family: "Lilita One", sans-serif; Another font option */
+  font-weight: 500;
+  font-style: normal;
+  font-size: 45px;
+  padding:0;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 4px;
+  margin: 5%;
+  height: 5px
+}
+
+.progress {
+  height: 5px;
+  background-color: #FFA903;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
 
 
+  
+.signup-container {
+  padding: 20px;
+  width: 50%;
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+}
   
-  .onboarding-container {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-  }
-  
-  .onboarding-hero-image {
-    background-image: url('https://source.unsplash.com/random?dog,cat,pets');
-    background-size: cover;
-    background-position: center;
-    width: 50%;
-    border-radius: 8px;
-  }
-  
-  .signup-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 500px;
-  }
-  
-  .progress-bar {
-    width: 100%;
-    background-color: #ddd;
-    border-radius: 8px;
-    margin: 5%;
-  }
-  
-  .progress {
-    height: 20px;
-    background-color: #4caf50;
-    border-radius: 8px;
-  }
-  
-  button {
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="number"],
+.signup-form input[type="tel"],
+.signup-form input[type="password"] {
     padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  input {
-    padding: 10px;
-    margin: 5px;
+    margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  .error {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  .error-message {
-    color: red;
-  }
+    width:100%;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    border-color:#f4f4f4;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.signup-form input[type="text"]:focus,
+.signup-form input[type="email"]:focus,
+.signup-form input[type="number"]:focus,
+.signup-form input[type="tel"]:focus,
+.signup-form input[type="password"]:focus {
+  outline: none;
+  border-color: #FFA903;
+  border-width: 2px;
+  background-color: #fff;
+}
+
+
+.signup-form input[type="text"]:hover,
+.signup-form input[type="email"]:hover,
+.signup-form input[type="number"]:hover,
+.signup-form input[type="tel"]:hover,
+.signup-form input[type="password"]:hover {
+  background-color: white;
+  border-color:#FFA903;
+  border-width: 2px;
+}
+
+.signup-buttons-container {
+  display: flex;
+  justify-content: flex-start; 
+  gap: 20px;
+}
+
+.signup-buttons-container button {
+  background-color: #FFA903;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  width: 80px;
+  height: 45px;
+  padding: 10px 20px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  display: flex;  
+  box-shadow: 0 0 10px rgba(255, 169, 3, 0.5);
+}
+
+.signup-buttons-container button:hover {
+  background-color: rgb(158, 90, 221);
+  color:white;
+  box-shadow: 0 0 15px rgba(158, 90, 221, 0.7);  
+}
+
+.signup-form input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.error-message {
+  color: #D8000C; /* A softer shade of red */
+  background-color: #FFD2D2; /* Light red/pink background for contrast */
+  border: 1px solid #D8000C;
+  padding: 10px;
+  font-weight: bold;
+  margin: 10px 0; /* Adjust based on your form's spacing */
+  border-radius: 5px; /* Soft rounded corners */
+  font-size: 0.9em; /* Slightly smaller font size */
+  text-align: center; /* Centered text can sometimes look cleaner */
+}
+
+
+
+
   /* Remove up and down arrows from input type number */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

@@ -21,41 +21,45 @@ const Step1 = ({ nextStep, formData, setForm }) => {
 
   return (
     <form onSubmit={handleSubmit} className="signup-form">
-      <label htmlFor="shelter-name">Shelter Name:</label>
+      <label htmlFor="shelter-name"></label>
       <input
         type="text"
         name="name"
         id="shelter-name"
+        placeholder="Shelter Name"
         value={name}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="email">Email:</label>
+      <label htmlFor="email"></label>
       <input
         type="email"
         name="emailAddress"
         id="email"
+        placeholder="Email"
         value={emailAddress}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="password">Password:</label>
+      <label htmlFor="password"></label>
       <input
         type="password"
         name="password"
         id="password"
+        placeholder="Password"
         value={password}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="password2">Re-enter Password:</label>
+      <label htmlFor="password2"></label>
       <input
         type="password"
         name="password2"
         id="password2"
+        placeholder="Retype Password"
         value={password2}
         onChange={handleChange}
         required
@@ -63,7 +67,7 @@ const Step1 = ({ nextStep, formData, setForm }) => {
 
       {passwordError && <p className="error-message">{passwordError}</p>} {/* Display error message */}
 
-      <div>
+      <div className="signup-buttons-container">
         <button type="submit">Next</button>
       </div>
     </form>

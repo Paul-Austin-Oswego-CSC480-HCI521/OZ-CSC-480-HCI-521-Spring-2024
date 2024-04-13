@@ -33,7 +33,7 @@ const Step3 = ({ nextStep, prevStep, formData, setForm }) => {
         required
       />
 
-      <div>
+      <div className="signup-buttons-container">
         <button onClick={prevStep}>Back</button>
         <button type="submit">Next</button>
       </div>

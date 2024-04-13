@@ -39,7 +39,7 @@
     padding-right: 0%;
 }
 
-h1 {
+.login-container h1 {
     /* font-family: "Pacifico", cursive; */
      font-family: "Madimi One", sans-serif; 
       /*font-family: "Concert One", sans-serif; Another font option */
@@ -51,7 +51,7 @@ h1 {
     padding:0;
 }
 
-body{
+.login-container body{
     font-family: 'Arial', sans-serif;
     background-color: #fff;
     justify-content: center;
@@ -65,13 +65,13 @@ body{
     max-width: 500px;
 }
 
-label {
+.login-form label {
     margin-bottom: 8px;
     font-weight: bold;
 }
 
 
-#submitBtn {
+.login-form button {
     background-color: #FFA903;
     color: black;
     cursor: pointer;
@@ -89,7 +89,7 @@ label {
     box-shadow: 0 0 10px rgba(255, 169, 3, 0.5);
 }
 
-#submitBtn:hover {
+.login-form button:hover {
     background-color: rgb(158, 90, 221);
     color:white;
     box-shadow: 0 0 15px rgba(158, 90, 221, 0.7);  

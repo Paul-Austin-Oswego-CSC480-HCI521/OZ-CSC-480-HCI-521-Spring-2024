@@ -70,8 +70,7 @@ function Login() {
   }, [navigate]);
 
   return (
-    <div
-      className="container">
+    <div className="container">
       <div className="hero-image" alt="Hero Image"></div>
         <div className="login-container">
 
