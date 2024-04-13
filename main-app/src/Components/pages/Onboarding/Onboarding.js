@@ -81,12 +81,10 @@ const Onboarding = () => {
     <div className="onboarding-container">
       <div className="onboarding-hero-image"></div>
       <div className="signup-container">
-        <h2>Pet Shelter Signup</h2>
+        <h2>Find your furr-ever friend <br/> today!</h2>
         <div className="progress-bar">
-          <div
-            className="progress"
-            style={{ width: getProgressBarWidth() }}
-          ></div>
+          <div className="progress" 
+          style={{ width: getProgressBarWidth() }}></div>
         </div>
         {renderStep()}
       </div>

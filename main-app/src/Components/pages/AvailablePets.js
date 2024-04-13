@@ -1,16 +1,50 @@
-import React, { useState } from 'react';
-import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from 'react';
 import './card.css';
 
-
-const AvailablePets = ({ pets, onEdit, onDelete }) => {
+const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
   const [editingPet, setEditingPet] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  
+  const [showOptions, setShowOptions] = useState(null);
+  const optionsRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (optionsRef.current && !optionsRef.current.contains(event.target)) {
+        setShowOptions(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
 
   const handleEditClick = (pet) => {
     setEditingPet({ ...pet });
     setShowPopup(true);
+    setShowOptions(null);
+  };
+
+  const handleDeleteClick = (petId) => {
+    if (window.confirm('Are you sure you want to delete this pet?')) {
+      onDelete(petId);
+    }
+  };
+
+  const handleMarkAdopted = (petId) => {
+    if (window.confirm('Are you sure you want to mark this pet as adopted?')) {
+      onAdopt(petId);
+    }
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
+  const handleToggleOptions = (petId) => {
+    setShowOptions(showOptions === petId ? null : petId);
   };
 
   const handleFormChange = (e) => {
@@ -39,29 +73,26 @@ const AvailablePets = ({ pets, onEdit, onDelete }) => {
     setShowPopup(false);
   };
 
-  const handleDeleteClick = (petId) => {
-    if (window.confirm('Are you sure you want to delete this pet?')) {
-      onDelete(petId);
-    }
+  const handleOptionsClick = (event, petId) => {
+    event.stopPropagation(); // Prevents closing the options when clicking inside the dropdown
+    handleToggleOptions(petId);
   };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
-
-  
 
   return (
-
     <div className="pet-list">
       {pets.map((pet) => (
         <div key={pet.id} className="pet-card">
-          <div className="pet-card-hover">
-            <button className="edit-button" onClick={() => handleEditClick(pet)}>
-              <FaPencilAlt />
-            </button>
-            <button className="delete-button" onClick={() => handleDeleteClick(pet.id)}>
-              <FaTrashAlt />
+          <div className="pet-card-options" >
+            {showOptions === pet.id && (
+              <div className="pet-options-dropdown" ref={optionsRef}>
+                <button onClick={() => handleEditClick(pet)}>Edit Pet Details</button>
+                <button onClick={() => handleMarkAdopted(pet.id)}>Mark as Adopted</button>
+                <button onClick={() => handleDeleteClick(pet.id)} className='deletePet'>Delete Pet</button>
+                
+              </div>
+            )}
+            <button className="options-button" onClick={(e) => handleOptionsClick(e, pet.id)}>
+              <div className="vertical-dots">&#8942;</div>
             </button>
           </div>
           {pet.images.length > 0 && (
@@ -76,7 +107,7 @@ const AvailablePets = ({ pets, onEdit, onDelete }) => {
             <p className="pet-breed">{pet.breed}</p>
             <div className="pet-info">
               <span className="pet-age">{pet.age}</span>
-              <span className="pet-distance">{pet.distance} away</span>
+              
             </div>
           </div>
         </div>

@@ -1,199 +1,281 @@
 .wholepage {
-    display: flex;
-    flex-direction: column;
-    padding-left: 60px;
-    padding-right: 40px;
-    padding-bottom: 40px;
-  
+  display: flex;
+  flex-direction: column;
+  padding-left: 60px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+
 }
 
 .topnav {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    
-    
-  }
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 10px;
+
+}
+.logo-container {
+margin-right: auto; /* Pushes the logo to the left */
+}
+
+.upload-pet {
+margin: 0 20px;
+}
 
 .logo-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .logo-container {
-    
-    background-image: url('/public/images/loho.png');
-    background-size: contain;
-    border-radius: 60px;
-    cursor: pointer;
-    height: 70px;
-    width: 220px;
-    
+  
+  background-image: url('/public/images/loho.png');
+  background-size: contain;
+  border-radius: 60px;
+  cursor: pointer;
+  height: 65px;
+  width: 200px;
+  
+  
 }
 
-
 .main-content {
-    display: flex;
-    
+  display: flex;
+  
 }
 
 .shelter-profile {
-    padding-top: 100px;
-    flex: 1;
-    display: flex;
-    background-color: #fff;
-    border-radius: 20px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-right: 20px;
+  padding-top: 100px;
+  flex: 1;
+  display: flex;
+  background-color: #fff;
+  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-right: 20px;
+  
+  
 }
 
 
 
 .shelter-image {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .shelteredit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .shelter-name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .verified {
-    margin: -5px;
-    margin-left: 10px;
-    height: 30px;
-    width: 30px;
+  margin: -5px;
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
 }
 
 .shelter-location {
-    font-size: 16px;
-    color: #888;
-    margin-bottom: 10px;
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 10px;
 }
 
 .shelter-description {
-    padding-left: 50px;
-    padding-right: 50px;
-    font-size: 16px;
-    margin-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .shelter-description span {
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .shelteredit {
-    padding: 20px;
-    border-radius: 8px;
-    
-  }
-  .edit-image{
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    align-items: center;
-  }
+  padding: 20px;
+  border-radius: 8px;
   
-  .shelteredit input[type="text"],
-  .shelteredit textarea {
-    width: 200%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: Georgia, 'Times New Roman', Times, serif
 }
-  
-  .shelteredit textarea {
-    resize: vertical;
-  }
-  
-  .shelteredit button {
-    display: block;
-    width: 70%;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #81edba; /* Yellow button color */
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .shelteredit button:hover {
-    background-color: #79cfad; /* Darker yellow on hover */
-  }
-  
+.edit-image{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.shelteredit input[type="text"],
+.shelteredit textarea {
+  width: 200%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+.shelteredit textarea {
+  resize: vertical;
+}
+
+.shelteredit button {
+  display: block;
+  width: 70%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #81edba; /* Yellow button color */
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.shelteredit button:hover {
+  background-color: #79cfad; /* Darker yellow on hover */
+}
+
 
 .upload{
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .edit{
-    margin-top: 25px;
-    margin-bottom: 25px;
-    font-weight: 500;
-    
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  
 }
 
 .availablepets {
-    flex: 2;
+  flex: 2;
 }
 
 .availablepets h3 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .custom-file-input {
-    display: inline-block;
-    position: relative;
-    width: 350px;
-    height: 50px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    background-color: #e1e1e1;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-    padding: 10px;
-  }
+  display: inline-block;
+  position: relative;
+  width: 350px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background-color: #e1e1e1;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  padding: 10px;
+}
 
-  .custom-file-input:hover {
-    background-color: #f0f0f0;
-  }
+.custom-file-input:hover {
+  background-color: #f0f0f0;
+}
+
+.custom-file-input:focus {
+  outline: none;
+}
+
+
+.custom-file-input::after {
+  content: 'Drop Your Photo or Browse';
+  display: block;
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.user-profile-dropdown {
+  position: relative;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
   
-  .custom-file-input:focus {
-    outline: none;
-  }
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  padding: 10px;
   
+}
+
+.user-profile-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 2;
+  font-size: 14px;
   
-  .custom-file-input::after {
-    content: 'Drop Your Photo or Browse';
-    display: block;
-    font-size: 14px;
-    color: #777;
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  
+  width: 160px; /* Adjust width as needed */
+  white-space: nowrap;
+  flex-direction: column;
+  left: -75px;
+  top: 40px; /* Adjust top position as needed */
+  margin-top: 15px;
+}
+
+.user-profile-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.user-profile-dropdown .dropdown-content a,
+.user-profile-dropdown .dropdown-content button {
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  font-family: Manrope, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  display: block;
+  margin: 0;
+  border: none;
+  background: none;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+}
+
+.user-profile-dropdown .dropdown-content a:hover,
+.user-profile-dropdown .dropdown-content button:hover {
+  background-color: #f5f5f5;
+}
+
+.deleteAccount, .logout {
+  color: #dd0426; /* Red color for "Delete My Account" */
+}
+
+.profile-icon {
+  text-align: center;
+}
+
+.profile-icon svg {
+  font-size: 30px;
+  color: rgb(78, 78, 78);
+}

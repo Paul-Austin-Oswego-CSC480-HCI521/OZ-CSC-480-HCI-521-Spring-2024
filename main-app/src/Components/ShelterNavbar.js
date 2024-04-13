@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./NavStyles.css";
-import logo from "../Assets/logo.png";
+import logo from "../Assets/PawsnClawsWords.svg";
 import { NavLink as Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";

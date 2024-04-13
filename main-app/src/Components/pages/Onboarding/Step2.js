@@ -27,64 +27,69 @@ const Step2 = ({ nextStep, prevStep, formData, setForm }) => {
 
   return (
     <form onSubmit={handleSubmit} className="signup-form">
-      <label htmlFor="streetAddress">Address:</label>
+      <label htmlFor="streetAddress"></label>
       <input
         type="text"
         name="streetAddress"
         id="streetAddress"
+        placeholder="Street Address"
         value={streetAddress}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="city">City:</label>
+      <label htmlFor="city"></label>
       <input
         type="text"
         name="city"
         id="city"
+        placeholder="City"
         value={city}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="state">State:</label>
+      <label htmlFor="state"></label>
       <input
         type="text"
         name="state"
         id="state"
+        placeholder="State"
         value={state}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="zipcode">Zipcode:</label>
+      <label htmlFor="zipcode"></label>
       <input
         type="number"
         name="zipcode"
         id="zipcode"
+        placeholder="Zipcode"
         value={zipcode}
         onChange={handleChange}
         required
       />
 
-      <label htmlFor="phoneNumber">Phone Number:</label>
+      <label htmlFor="phoneNumber"></label>
       <InputMask
         mask="+1 (999) 999-9999"
         maskChar="_"
         type="tel"
         name="phoneNumber"
         id="phoneNumber"
+        placeholder="Phone Number"
         value={phoneNumber}
         onChange={handleChange}
         required
       />
       {phoneError && (
-        <p style={{ color: 'red', fontSize: '0.8em', marginTop: '5px' }}>
+        <p className="error-message">
           Please enter a valid phone number in the format +1 (123) 456-7890
         </p>
       )}
 
-      <div>
+      <div className="signup-buttons-container">
         <button onClick={prevStep}>Back</button>
         <button type="submit">Next</button>
       </div>
