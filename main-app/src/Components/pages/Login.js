@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from '../../Assets/purple_paw_Logo.svg';
-
-
 import "./Login.css"
 
 

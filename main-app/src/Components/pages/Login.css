@@ -70,12 +70,6 @@ label {
     font-weight: bold;
 }
 
-input {
-    padding: 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 
 #submitBtn {
     background-color: #FFA903;
@@ -101,13 +95,30 @@ input {
     box-shadow: 0 0 15px rgba(158, 90, 221, 0.7);  
 }
 
-input[type="text"], input[type="password"] {
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width:100%;
+    box-sizing: border-box;
     background-color: #f4f4f4;
     border-color:#f4f4f4;
     border-radius: 10px;
+    font-family: 'Arial', sans-serif;
 }
 
-input[type="text"]:hover, input[type="password"]:hover {
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus{
+    outline: none;
+    border-color: #FFA903;
+    border-width: 2px;
+    background-color: #fff;
+}
+
+.login-form input[type="text"]:hover,
+.login-form input[type="password"]:hover {
     background-color: white;
     border-color:#FFA903;
     border-width: 2px;
