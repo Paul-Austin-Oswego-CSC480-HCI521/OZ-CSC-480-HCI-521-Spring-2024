@@ -31,40 +31,28 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImages = [];
-    const fileNames = [];
-
+  
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const reader = new FileReader();
-
+  
       reader.onload = (e) => {
         newImages.push({ url: e.target.result, file });
-        fileNames.push(file.name);
-
-        if (newImages.length === files.length) {
+  
+        if (newImages.length === 1) {
           setEditingPet((prevPet) => ({
             ...prevPet,
-            images: [...prevPet.images, ...newImages],
-            fileNames: [...(prevPet.fileNames || []), ...fileNames], // Use default empty array if fileNames is null
+            displayedImage: e.target.result, // Save the first image as 'displayedImage'
           }));
         }
       };
-
+  
       reader.readAsDataURL(file);
     }
   };
-
-  const removeImage = (index) => {
-    const updatedImages = [...editingPet.images];
-    updatedImages.splice(index, 1);
-    const updatedFileNames = [...editingPet.fileNames];
-    updatedFileNames.splice(index, 1);
-    setEditingPet((prevPet) => ({
-      ...prevPet,
-      images: updatedImages,
-      fileNames: updatedFileNames,
-    }));
-  };
+  
+  
+  
 
   const handleEditClick = (pet) => {
     setEditingPet({ ...pet });
@@ -93,45 +81,63 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
   };
 
   const handleFormChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'image') {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setEditingPet((prevPet) => ({
-          ...prevPet,
-          image: reader.result,
-        }));
-      };
-      reader.readAsDataURL(files[0]);
-    } else {
-      setEditingPet((prevPet) => ({
-        ...prevPet,
-        [name]: value,
-      }));
-    }
+    const { name, value } = e.target;
+    setEditingPet((prevPet) => ({
+      ...prevPet,
+      [name]: value,
+    }));
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     onEdit(editingPet);
+
+    // Check if any required field is empty
+    if (
+      editingPet.name.trim() === '' ||
+      editingPet.type.trim() === '' ||
+      editingPet.sex.trim() === '' ||
+      editingPet.age.trim() === '' ||
+      editingPet.breed.trim() === '' ||
+      editingPet.color.trim() === '' ||
+      editingPet.description.trim() === '' ||
+      editingPet.images.length === 0 // Check if images array is empty
+    ) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    setEditingPet({
+      name: '',
+      type: 'Dog',
+      breed: '',
+      color: '',
+      sex: 'Male',
+      images: [],
+      size: 'Small',
+      age: '',
+      description: '',
+      fileNames: [],
+    });
+    fileInputRef.current.value = ''; // Clear the file input
+    setShowPopup(false); // Close the popup after submission
     setEditingPet(null);
     setShowPopup(false);
   };
 
   const handleOptionsClick = (event, petId) => {
-    event.stopPropagation(); // Prevents closing the options when clicking inside the dropdown
+    event.stopPropagation();
     handleToggleOptions(petId);
   };
 
-  if (pets.length === 0) {
+  if (!pets || pets.length === 0) {
     return <div className="no-pets-message">No pets available at the moment.</div>;
   }
 
   return (
     <div className="pet-list">
-      {pets.map((pet) => (
-        <div key={pet.id} className="pet-card">
-          <div className="pet-card-options" >
+    {pets.map((pet) => (
+      <div key={pet.id} className="pet-card">
+        <div className="pet-card-options">
             {showOptions === pet.id && (
               <div className="pet-options-dropdown" ref={optionsRef}>
                 <button onClick={() => handleEditClick(pet)}>Edit Pet Details</button>
@@ -143,12 +149,12 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
               <div className="vertical-dots">&#8942;</div>
             </button>
           </div>
-          {pet.images.length > 0 && (
-            <img
-              src={process.env.PUBLIC_URL + pet.images[0]}
-              alt={pet.name}
-              className="pet-image"
-            />
+          {pet.images && pet.images.length > 0 && (
+            <div className="pet-images">
+              {pet.images.map((image, index) => (
+                <img key={index} src={image} alt={`Pet ${index}`} className="pet-image" />
+              ))}
+            </div>
           )}
           <div className="pet-details">
             <h3 className="pet-name">{pet.name}</h3>
@@ -173,7 +179,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                 </div>
                 <div className="dropzone" onClick={handleDropzoneClick}>
                   <div className="dropzone-icon"><FaPlusSquare></FaPlusSquare></div>
-                  <p>Drag and drop an image here or click to browse</p>
+                  <p>Drop your pet's photos or browse</p>
                   <input
                     type="file"
                     accept="image/*"
@@ -184,11 +190,11 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     required
                   />
                 </div>
+
                 <div className="pet-details">
-                  <h4>Pet Details</h4><br></br>
                   <input
                     type="text"
-                    placeholder="What’s your pet’s name?"
+                    placeholder="Pet Name"
                     name="name"
                     value={editingPet.name}
                     onChange={handleFormChange}
@@ -251,10 +257,10 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     onChange={handleFormChange}
                     required
                   />
-                </div>
-                <div className='ds-buttons'>
-                  <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                  <button className="save-button" type="submit" onClick={handleFormSubmit}><FaCheck></FaCheck>&nbsp;Save</button>
+                  <div className='ds-buttons'>
+                    <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
+                    <button className="save-button" type="submit" onClick={handleFormSubmit}><FaCheck></FaCheck>&nbsp;Save</button>
+                  </div>
                 </div>
               </div>
             </div>

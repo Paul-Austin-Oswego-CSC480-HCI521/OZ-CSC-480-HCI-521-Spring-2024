@@ -1,9 +1,15 @@
 {
   "shelter": {
     "name": "Pawsome Shelter",
-    "image": "/images/Shelter/shelter.png",
-    "location": "123 Street, Pawsome City, NY",
-    "contact": "pawsome@gmail.com",
+  "image": "/images/Shelter/shelter.png",
+  "location": {
+    "addressLine1": "123 Street",
+    "addressLine2": "",
+    "city": "Oswego",
+    "state": "NY",
+    "zipcode": "13126"
+  },
+  "contact":"3151234123",
     "description": "Welcome to Our Pet Shelter! We are dedicated to providing a safe and loving environment for animals in need. Our shelter is home to a variety of furry friends waiting to find their forever homes. "
   },
   "pets": [

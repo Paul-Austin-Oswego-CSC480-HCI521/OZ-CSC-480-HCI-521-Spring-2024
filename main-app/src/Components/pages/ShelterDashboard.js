@@ -11,6 +11,7 @@ import { AiOutlineMenu, AiOutlineHome } from 'react-icons/ai';
 import { BsPersonCircle } from 'react-icons/bs';
 import { useNavigate } from "react-router-dom";
 import EditProfileModal from './EditProfileModal';
+import {FaUser } from 'react-icons/fa';
 import { getCookie } from '../../Utils/CookieUtils';
 
 const ShelterDashboard = () => {
@@ -20,7 +21,13 @@ const ShelterDashboard = () => {
     shelter: {
       name: '',
       image: '',
-      location: '',
+      location: {
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        zipcode: ''
+      },
       contact: '',
       description: '',
     },
@@ -329,6 +336,8 @@ const ShelterDashboard = () => {
             </button>
             {showDropdown && (
               <div className="dropdown-content">
+                <Link to="/shelter">View Dashboard
+                </Link>
                 <button className='edit' onClick={openEditModal}>Edit Profile</button>
                 <button onClick={handleLogout}>Logout</button>
                 <button onClick={handleDeleteAccount} className='deleteAccount'>Delete My Account</button>
@@ -344,17 +353,30 @@ const ShelterDashboard = () => {
       <div className="main-content">
         <div className="shelter-profile">
           <div>
-            <img
-              src={data.shelter.image}
-              alt={data.shelter.name}
-              className="shelter-image"
-            />
+          {data.shelter.image ? (
+        <img
+          src={data.shelter.image}
+          alt="Shelter"
+          className="shelter-image"
+        />
+      ) : (
+        <FaUser className="shelter-image default-icon" />
+      )}
 
           </div>
 
           <div>
             <h2 className="shelter-name">{data.shelter.name}<img className='verified' src='./images/verified.png' alt=""></img></h2>
-            <p className="shelter-location">{data.shelter.location}</p>
+            <p className="shelter-location">
+              {data.shelter.location.addressLine1}{' '}
+              {data.shelter.location.addressLine2 && (
+                <React.Fragment>
+                  {data.shelter.location.addressLine2}{' '}
+                </React.Fragment>
+              )}
+              {data.shelter.location.city}, {data.shelter.location.state}
+            </p>
+              <br></br>
             <p className="shelter-description">
               {expanded ? data.shelter.description : `${data.shelter.description.slice(0, 125)}...`}
               {!expanded && <span onClick={toggleDescription}>See More</span>}

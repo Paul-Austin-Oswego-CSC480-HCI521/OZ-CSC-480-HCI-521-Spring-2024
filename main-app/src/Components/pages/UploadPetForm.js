@@ -156,12 +156,12 @@ const UploadPetForm = ({ addNewPet }) => {
                   <h2 className="upload-pet-title">Upload a Pet</h2>
                   <div className='ds-buttons'>
                     <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                    <button className="save-button" type="submit" onClick={handleSubmit}><FaCheck></FaCheck>&nbsp;Upload</button>
+                    <button className="upload-button" type="submit" onClick={handleSubmit}><FaCheck></FaCheck>&nbsp;Upload</button>
                   </div>
                 </div>
                 <div className="dropzone" onClick={handleDropzoneClick}>
                   <div className="dropzone-icon"><FaPlusSquare></FaPlusSquare></div>
-                  <p>Drag and drop an image here or click to browse</p>
+                  <p>Drop your pet's photos or browse</p>
                   <input
                     type="file"
                     accept="image/*"
@@ -258,7 +258,7 @@ const UploadPetForm = ({ addNewPet }) => {
 
                 <div className='ds-buttons'>
                   <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                  <button className="save-button" type="submit" onClick={handleSubmit}><FaCheck></FaCheck>&nbsp;Upload</button>
+                  <button className="upload-button" type="submit" onClick={handleSubmit}><FaCheck></FaCheck>&nbsp;Upload</button>
                 </div>
               </div>
             </div>

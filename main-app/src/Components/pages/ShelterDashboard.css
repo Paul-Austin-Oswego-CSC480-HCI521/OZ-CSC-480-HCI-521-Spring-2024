@@ -96,10 +96,9 @@ padding: 10px;
   stroke-width: 50px;
 }
 
-.upload-pet {
-margin: 0 20px;
+.upload button{
+margin-top: 30px;
 }
-
 .logo-link {
   text-decoration: none;
 }
@@ -137,10 +136,17 @@ margin: 0 20px;
 
 
 .shelter-image {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 50%;
+  width: 300px; /* Adjust to your needs */
+  height: 300px; /* Adjust to your needs */
+  border-radius: 50%; /* Makes the image round, adjust or remove as needed */
+  margin-bottom: 30px;
+}
+
+.default-icon {
+  width: 300px; /* Adjust to your needs */
+  height: 300px; /* Adjust to your needs */
+  color: #ccc; /* Color for the default icon */
+  margin-bottom: 30px;
 }
 
 .shelteredit {
