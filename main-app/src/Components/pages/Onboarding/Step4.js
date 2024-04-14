@@ -42,6 +42,26 @@ const Step4 = ({ prevStep, formData }) => {
       } else {
         //   if (1) {
         // Redirect to another component upon successful login
+        const responseJson = await response.json();
+        // console.log(responseText);
+
+        document.cookie = JSON.stringify(responseJson);
+
+        console.log(document.cookie);
+
+        // Extract both the JWT and the Shelter ID from the Response
+        // const jwt = responseText.substring(0, responseText.indexOf(":"));
+        // const shelter_id = responseText.substring(responseText.indexOf(":") + 1);
+
+        // // Calculate the expiration date of the JWT
+        // const expirationDate = new Date();
+        // expirationDate.setDate(expirationDate.getDate() + 1);
+
+        // Create three cookies: One that represents the current user logged in, one that represents the current user's JWT, and one that represents the current user's ID
+        // document.cookie = "currentUser=" + email + "; expires=" + expirationDate + "; path=/";
+        // document.cookie = email + "JWT=" + jwt + "; expires=" + expirationDate + "; path=/";
+        // document.cookie = email + "ID=" + shelter_id + "; expires=" + expirationDate + "; path=/";
+
         navigate("/dashboard");
       }
 
@@ -68,8 +88,8 @@ const Step4 = ({ prevStep, formData }) => {
         <button onClick={prevStep}>Back</button>
         <button type="submit">
           Finish
-          <svg class="checkmark" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"> 
-            <path d="M9.54961 18L3.84961 12.3L5.27461 10.875L9.54961 15.15L18.7246 5.97498L20.1496 7.39998L9.54961 18Z" fill="currentColor"/>
+          <svg class="checkmark" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M9.54961 18L3.84961 12.3L5.27461 10.875L9.54961 15.15L18.7246 5.97498L20.1496 7.39998L9.54961 18Z" fill="currentColor" />
           </svg>
         </button>
       </div>

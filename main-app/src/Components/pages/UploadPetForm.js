@@ -1,14 +1,14 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { checkJWT } from '../../Utils/JWTAuth';
 import { FaUpload, FaCheck, FaPlusSquare } from 'react-icons/fa';
-import { JWTAuth } from './JWTAuth';
 import './UploadPetForm.css';
 
 const UploadPetForm = ({ addNewPet }) => {
   const [showPopup, setShowPopup] = useState(false);
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
-  const jwtAuth = new JWTAuth();
+  // const jwtAuth = new JWTAuth();
   var response;
 
   const [pet, setPet] = useState({
@@ -121,25 +121,26 @@ const UploadPetForm = ({ addNewPet }) => {
   return (
     <>
       <button className="upload-pet-btn" onClick={() => {
-        response = jwtAuth.checkJWT();
+        response = checkJWT();
 
-        response.then(function(responseResult) {
-          
+        response.then(function (responseResult) {
+
+
+          setShowPopup(true);
+          // TODO: MAKE JWTS WORK
           // If the JWT is valid
-          if(responseResult.ok)
-          {
-              setShowPopup(true)
-          }
-      
-          // If the JWT is invalid
-          else
-          {
-              // Redirect user back to login page to refresh their JWT
-              alert("Your session has expired.\n\nPlease log back in to continue.");
-              navigate("/login");
-          }
+          // if (responseResult.ok) {
+          //   setShowPopup(true)
+          // }
+
+          // // If the JWT is invalid
+          // else {
+          //   // Redirect user back to login page to refresh their JWT
+          //   alert("Your session has expired.\n\nPlease log back in to continue.");
+          //   navigate("/login");
+          // }
         }
-      )
+        )
       }}>
         <FaUpload className="upload-icon" />&nbsp;
         Upload a Pet
