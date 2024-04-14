@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Success Page</title>
+</head>
+
+<body>
+    <h2>Hey, you made it!</h2>
+        <input type="submit" id="submitBtn" value="Click here to see if the JWT Stuff works">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() 
+        {
+            var button = document.getElementById("submitBtn");
+            button.addEventListener("click", async function(event) 
+            {
+                console.log("Logged In!");
+                console.log(document.cookie);
+
+                // Retrieve the current user that is logged in and the cookies associated with them
+                var currentUser = getCookie("currentUser");
+                var currentUserJWT = getCookie(currentUser + "JWT");
+                var currentUserID = getCookie(currentUser + "ID");
+
+                // Make a call to the backend that includes the current user, their JWT, and their Shelter ID
+                const response = await fetch("http://localhost:9080/database-controller/api/shelter/auth?jwt=" + currentUserJWT + "&user=" + currentUser + "&userID=" + currentUserID, {
+                method: "GET",
+                })
+                .catch(error => 
+                {
+                    console.error('Error:', error);
+                });
+
+                // If the JWT is valid
+                if(response.ok)
+                {
+                    // Do something the user wants
+                    alert("If you're seeing this message, you've been successfully authenticated! :)")
+                }
+
+                // If the JWT is invalid
+                else
+                {
+                    // Redirect user back to login page to refresh their JWT
+                    alert("Something went wrong with the authentication process :(\nYou'll need to log back in again")
+                    window.location.href = '/database-controller/login/index.html';
+                }
+            });
+        });
+
+        // Function to retrieve a specific cookie
+        function getCookie(cname) 
+        {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+
+            for(var i = 0; i <ca.length; i++) 
+            {
+                var c = ca[i];
+
+                while (c.charAt(0) == ' ') 
+                {
+                    c = c.substring(1);
+                }
+
+                if (c.indexOf(name) == 0) 
+                {
+                    return c.substring(name.length, c.length);
+                }
+            }
+
+            return "";
+        }
+    </script>
+</body>
+
+</html>
