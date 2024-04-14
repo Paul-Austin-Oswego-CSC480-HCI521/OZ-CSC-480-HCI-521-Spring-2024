@@ -9,9 +9,13 @@ import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
 import { AiOutlineMenu } from 'react-icons/ai';
 import { BsPersonCircle } from 'react-icons/bs';
+import { useNavigate } from "react-router-dom";
 import EditProfileModal from './EditProfileModal';
+import { getCookie } from '../../Utils/CookieUtils';
 
 const ShelterDashboard = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     shelter: {
       name: '',
@@ -34,17 +38,35 @@ const ShelterDashboard = () => {
 
   const handleLogout = () => {
     // Clear authentication token or session cookie here
-
+    document.cookie = null;
     // Redirect to logout route or homepage
-    window.location.href = '/shelter';
+    navigate("/shelter");
   };
 
-  const handleDeleteAccount = () => {
+  const handleDeleteAccount = async () => {
     const confirmDelete = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
     if (confirmDelete) {
       // Send a DELETE request to your backend API to delete the account
+      // console.log(document.cookie);
+      const cookie = JSON.parse(document.cookie);
+      // console.log(cookie.shelterID);
 
+      // TODO: also needs to delete all pets in shelter; currently only deleting the shelter entry.
+      const response = await fetch("http://localhost:9080/database-controller/api/shelter/" + cookie.shelterID, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify(getCookie("shelterID")),
+      });
 
+      if (response.ok) {
+        // console.log(response)
+        alert("successfully deleted account")
+        handleLogout();
+      } else {
+        // TODO: handle else
+      }
     }
   };
 
@@ -53,22 +75,81 @@ const ShelterDashboard = () => {
     fetchShelterData();
   }, []);
 
-  const fetchShelterData = () => {
-    fetch(process.env.PUBLIC_URL + '/data.json')
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setData(jsonData);
-      })
-      .catch((error) => {
-        console.error('Error fetching shelter data:', error);
-      });
+  const fetchShelterData = async () => {
+    // fetch(process.env.PUBLIC_URL + '/data.json')
+    //   .then((response) => response.json())
+    //   .then((jsonData) => {
+    //     setData(jsonData);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching shelter data:', error);
+    //   });
+
+    // TODO: check that this works... 
+    if (getCookie("shelterID").length == 0) {
+      alert("You are not signed in as a shelter user.");
+      navigate("/shelter");
+      return;
+    }
+
+    const currentShelterId = JSON.parse(document.cookie).shelterID;
+
+    const shelterData = await fetch("http://localhost:9080/database-controller/api/shelter/" + currentShelterId, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const params = new URLSearchParams();
+    params.set("current_shelter_id", currentShelterId);
+    params.set("page_size", 2000);
+    const petsData = await fetch("http://localhost:9080/database-controller/api/pet?" + params, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+
+    if (shelterData.ok) {
+      var finalData = {};
+
+      const shelterJson = await shelterData.json();
+
+      finalData.shelter = shelterJson;
+      finalData.pets = [];
+
+      if (petsData.ok) {
+        const petsJson = await petsData.json();
+
+        for (var pet of petsJson) {
+          // TODO: I THINK THIS WILL NEED TO BE DONE DIFFERENTLY ONCE MORE THAN ONE PET IS ALLOWED IN DATABASE 
+          pet.images = [pet.images];
+          finalData.pets.push(pet);
+        }
+
+        // finalData.pets = petsJson;
+      } else {
+        finalData.pets = [];
+      }
+
+      console.log(finalData);
+      setData(finalData);
+    }
   };
 
   const addNewPet = (newPet) => {
     // const updatedPets = [...data.pets, { id: Date.now(), ...newPet }];
     // const updatedData = { ...data, pets: updatedPets };
 
+    // console.log(newPet);
+    // console.log(JSON.parse(document.cookie).shelterID);
+    const shelterID = JSON.parse(document.cookie).shelterID;
+    console.log(shelterID);
+    newPet.currentShelterId = shelterID;
     console.log(newPet);
+    // console.log(getCookie("shelterID"));
     fetch("http://0.0.0.0:9080/database-controller/api/pet", {
       method: 'POST',
       headers: {
@@ -76,17 +157,23 @@ const ShelterDashboard = () => {
       },
       body: JSON.stringify(newPet),
     })
-      .then((response) => {
+      .then(async (response) => {
         if (!response.ok) {
           throw new Error('Failed to update data');
+        } else {
+          // const json = await response.json();
+          const updatedPets = [...data.pets, newPet];
+          const updatedData = { ...data, pets: updatedPets };
+          setData(updatedData);
+          console.log('Data updated successfully');
         }
-        console.log('Data updated successfully');
       })
 
       .catch((error) => {
         console.error('Error updating data:', error);
       });
-    // setData(updatedData);
+
+
     // updateDataJson(updatedData);
   };
   const toggleDescription = () => {
@@ -94,12 +181,16 @@ const ShelterDashboard = () => {
   };
 
   const updateDataJson = (updatedData) => {
-    fetch("http://0.0.0.0:9080/database-controller/api/pet", {
+    delete updatedData.shelter.id;
+    console.log(updatedData.shelter);
+    const cookie = JSON.parse(document.cookie);
+    fetch("http://0.0.0.0:9080/database-controller/api/shelter/" + cookie.shelterID, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedData),
+      // ONLY SET THE SHELTER TO UPDATE HERE
+      body: JSON.stringify(updatedData.shelter),
     })
       .then((response) => {
         if (!response.ok) {
@@ -113,11 +204,33 @@ const ShelterDashboard = () => {
       });
   };
 
-  const handleDelete = (petId) => {
+  const handleDelete = async (petId) => {
     const updatedPets = data.pets.filter((pet) => pet.id !== petId);
     const updatedData = { ...data, pets: updatedPets };
-    setData(updatedData);
-    updateDataJson(updatedData);
+
+    // const shelterID = JSON.parse(document.cookie).shelterID;
+
+    console.log(petId);
+
+    const response = await fetch("http://localhost:9080/database-controller/api/pet/" + petId, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // body: JSON.stringify(getCookie("shelterID")),
+    });
+
+    if (response.ok) {
+      setData(updatedData);
+
+      // console.log(response)
+    } else {
+      // TODO: handle else
+    }
+
+
+
+    // updateDataJson(updatedData);
   };
 
   const handleEdit = (editedPet) => {
@@ -125,8 +238,27 @@ const ShelterDashboard = () => {
       pet.id === editedPet.id ? editedPet : pet
     );
     const updatedData = { ...data, pets: updatedPets };
+
+    // needs to not send id in request, so make temp and delete
+    const editedPetClone = structuredClone(editedPet);
+    delete editedPetClone.id;
+    editedPetClone.images = editedPet.images[0];
+
+    // const cookie = JSON.parse(document.cookie);
+    console.log(JSON.stringify(editedPetClone))
+    // console.log("my edited pet" + editedPet.id);
+    fetch("http://0.0.0.0:9080/database-controller/api/pet/" + editedPet.id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(editedPetClone),
+    })
+
     setData(updatedData);
-    updateDataJson(updatedData);
+
+
+    // updateDataJson(updatedData);
   };
 
   const filterPetsByCategory = (category) => {
@@ -174,7 +306,7 @@ const ShelterDashboard = () => {
       </div>
       <div className="topnav">
         <div className="logo-container">
-        <Link to="/" className='logo-link'>
+          <Link to="/" className='logo-link'>
             <img src='./images/loho.png' alt="logo" />
           </Link>
         </div>
@@ -188,7 +320,7 @@ const ShelterDashboard = () => {
               <AiOutlineMenu /> {/* Three bars icon */}
             </div>
           </button>
-        {showDropdown && (
+          {showDropdown && (
             <div className="dropdown-content">
               <button className='edit' onClick={openEditModal}>Edit Profile</button>
               <button onClick={handleLogout}>Logout</button>

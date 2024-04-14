@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { FaUpload} from 'react-icons/fa';
-import { JWTAuth } from './JWTAuth';
+import { FaUpload } from 'react-icons/fa';
+import { checkJWT } from '../../Utils/JWTAuth';
 import './UploadPetForm.css';
 
 const UploadPetForm = ({ addNewPet }) => {
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
-  const jwtAuth = new JWTAuth();
+  // const jwtAuth = new JWTAuth();
   var response;
   const [pet, setPet] = useState({
     name: '',
@@ -89,27 +89,28 @@ const UploadPetForm = ({ addNewPet }) => {
   return (
     <>
       <button className="upload-pet-btn" onClick={() => {
-        response = jwtAuth.checkJWT();
+        response = checkJWT();
 
-        response.then(function(responseResult) {
-          
+        response.then(function (responseResult) {
+
+
+          setShowPopup(true);
+          // TODO: MAKE JWTS WORK
           // If the JWT is valid
-          if(responseResult.ok)
-          {
-              setShowPopup(true)
-          }
-      
-          // If the JWT is invalid
-          else
-          {
-              // Redirect user back to login page to refresh their JWT
-              alert("Your session has expired.\n\nPlease log back in to continue.");
-              navigate("/login");
-          }
+          // if (responseResult.ok) {
+          //   setShowPopup(true)
+          // }
+
+          // // If the JWT is invalid
+          // else {
+          //   // Redirect user back to login page to refresh their JWT
+          //   alert("Your session has expired.\n\nPlease log back in to continue.");
+          //   navigate("/login");
+          // }
         }
-      )
+        )
       }}>
-      <FaUpload className="upload-icon" />&nbsp;
+        <FaUpload className="upload-icon" />&nbsp;
         Upload a Pet
       </button>
 
@@ -117,7 +118,7 @@ const UploadPetForm = ({ addNewPet }) => {
         <div className="popup">
           <div className="popup-content">
             <span className="close-popup" onClick={handleClosePopup}>
-            x 
+              x
             </span>
             <h2>Upload a Pet</h2>
             <form onSubmit={handleSubmit}>
