@@ -7,7 +7,7 @@ import './ShelterDashboard.css';
 import { NavLink as Link } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
-import { AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineMenu, AiOutlineHome } from 'react-icons/ai';
 import { BsPersonCircle } from 'react-icons/bs';
 import EditProfileModal from './EditProfileModal';
 
@@ -173,22 +173,30 @@ const ShelterDashboard = () => {
         </div>
       </div>
       <div className="topnav">
+      <div className="left-container">
         <div className="logo-container">
-        <Link to="/" className='logo-link'>
-            <img src='./images/loho.png' alt="logo" />
+          <Link to="/" className="logo-link">
+            <img src="./images/loho.png" alt="logo" />
           </Link>
         </div>
+        <div className="home-container">
+          <Link to="/shelter" className="home-icon">
+            <AiOutlineHome />
+          </Link>
+        </div>
+      </div>
+      <div className="right-container">
         <div className="upload-pet">
           <UploadPetForm addNewPet={addNewPet} />
         </div>
         <div className="user-profile-dropdown">
           <button onClick={toggleDropdown} className="profile-button">
             <div className="profile-icon">
-              <BsPersonCircle /> {/* Circular profile picture icon */}
-              <AiOutlineMenu /> {/* Three bars icon */}
+              <span  className="profile-icon-p"><BsPersonCircle /></span> {/* Circular profile picture icon */}
+              <span className="profile-icon-b"><AiOutlineMenu /></span> {/* Three bars icon */}
             </div>
           </button>
-        {showDropdown && (
+          {showDropdown && (
             <div className="dropdown-content">
               <button className='edit' onClick={openEditModal}>Edit Profile</button>
               <button onClick={handleLogout}>Logout</button>
@@ -197,6 +205,7 @@ const ShelterDashboard = () => {
           )}
         </div>
       </div>
+</div>
       <CategoryFilter
         onSelectCategory={filterPetsByCategory}
         selectedCategory={selectedCategory}
