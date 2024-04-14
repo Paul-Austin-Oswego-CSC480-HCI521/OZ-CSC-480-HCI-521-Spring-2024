@@ -4,10 +4,12 @@ import FilterBackground from "../../Assets/Doggusearch1.png";
 import { items } from "./items";
 import "./MultiFilters.css";
 import { Link } from "react-router-dom";
+import { useCategory } from "../CategoryContext";
 
 export default function MultiFilters() {
   <style>{(document.body.style.backgroundColor = "#ffffff")}</style>;
   // Category button states
+  const { selectedCategory } = useCategory();
   const [selectedFilters, setSelectedFilters] = useState([]);
 
   // Dropdown states
@@ -18,6 +20,17 @@ export default function MultiFilters() {
 
   // Filtered items states
   const [filteredItems, setFilteredItems] = useState(items);
+
+  useEffect(() => {
+    if (selectedCategory) {
+      setSelectedFilters((prevFilters) => {
+        return prevFilters.includes(selectedCategory)
+          ? prevFilters
+          : [...prevFilters, selectedCategory];
+      });
+    }
+  }, [selectedCategory]);
+  // Handles changing Category buttons
 
   // Category options
   let filters = ["Dog", "Cat", "Bird", "Small Critter"];
@@ -39,13 +52,13 @@ export default function MultiFilters() {
   };
 
   // Handles changing category buttons
-  const handleFilterButtonClick = (selectedCategory) => {
-    if (selectedFilters.includes(selectedCategory)) {
-      let filters = selectedFilters.filter((el) => el !== selectedCategory);
-      setSelectedFilters(filters);
-    } else {
-      setSelectedFilters([...selectedFilters, selectedCategory]);
-    }
+  const handleFilterButtonClick = (category) => {
+    setSelectedFilters((prevFilters) => {
+      // Toggle category on or off
+      return prevFilters.includes(category)
+        ? prevFilters.filter((f) => f !== category)
+        : [...prevFilters, category];
+    });
   };
 
   // Handle dropdown options changing

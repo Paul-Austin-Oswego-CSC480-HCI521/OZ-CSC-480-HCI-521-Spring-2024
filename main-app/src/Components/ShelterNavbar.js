@@ -79,7 +79,7 @@ const ShelterNavbar = () => {
       </div>
 
       <nav className="navbar">
-        <div className="logo ">
+        <div className="nav-logo ">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>

@@ -49,7 +49,7 @@ const ShelterNavbar2 = () => {
       </div>
 
       <nav className="navbar">
-        <div className="logo ">
+        <div className="nav-logo ">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
@@ -64,7 +64,10 @@ const ShelterNavbar2 = () => {
             <Link to="/about"> About Us</Link>
           </li>
           <li>
-            <Link to="/shelter#contact" onClick={() => handleLinkClick("/#contact")}>
+            <Link
+              to="/shelter#contact"
+              onClick={() => handleLinkClick("/#contact")}
+            >
               Contact Us
             </Link>
           </li>

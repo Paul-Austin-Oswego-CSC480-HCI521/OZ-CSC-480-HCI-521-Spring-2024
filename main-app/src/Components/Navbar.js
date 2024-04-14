@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./NavStyles.css";
+import { useCategory } from "./CategoryContext";
 import logo from "../Assets/PawsnClawsWords.svg";
 import { NavLink as Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -7,33 +8,8 @@ import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
 
 const Navbar = () => {
+  const { setSelectedCategory } = useCategory();
   const location = useLocation();
-
-  const [zipCode, setZipCode] = useState("13126"); // Define zipCode state
-
-  const handleZipCodeChange = (e) => {
-    setZipCode(e.target.value);
-  };
-
-  const handleSubmitZipCode = (e) => {
-    e.preventDefault();
-
-    console.log("Hello World");
-  };
-
-  // const handleLinkClick = (path) => {
-  //   // Check if the current page is the home page and the path includes an in-page link
-  //   if (location.pathname === "/" && path === "/#FAQ") {
-  //     const sectionId = path.substring(2); // Extracts 'how_it_works' or 'FAQ' from the path
-  //     const section = document.getElementById(sectionId);
-  //     if (section) {
-  //       window.scrollTo({
-  //         top: section.offsetTop,
-  //         behavior: "smooth",
-  //       });
-  //     }
-  //   }
-  // };
 
   const handleLinkClick = (path) => {
     // Check if the current page is the home page and the path includes an in-page link
@@ -64,7 +40,9 @@ const Navbar = () => {
     }
   };
 
-
+  const handleSelectedCategory = (category) => {
+    setSelectedCategory(category);
+  };
   //Track dropdown visibility state
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -111,7 +89,7 @@ const Navbar = () => {
       </div>
 
       <nav className="navbar">
-        <div className="logo ">
+        <div className="nav-logo ">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
@@ -123,10 +101,34 @@ const Navbar = () => {
             </button>
             {dropdownVisible && (
               <div className="dropdown-content">
-                <Link to="/ExplorePets"> Dogs</Link>
-                <Link to="/ExplorePets"> Cats</Link>
-                <Link to="/ExplorePets"> Birds</Link>
-                <Link to="/ExplorePets"> Other Pets</Link>
+                <Link
+                  to="/ExplorePets"
+                  onClick={() => handleSelectedCategory("Dog")}
+                >
+                  {" "}
+                  Dogs
+                </Link>
+                <Link
+                  to="/ExplorePets"
+                  onClick={() => handleSelectedCategory("Cat")}
+                >
+                  {" "}
+                  Cats
+                </Link>
+                <Link
+                  to="/ExplorePets"
+                  onClick={() => handleSelectedCategory("Bird")}
+                >
+                  {" "}
+                  Birds
+                </Link>
+                <Link
+                  to="/ExplorePets"
+                  onClick={() => handleSelectedCategory("Small Critter")}
+                >
+                  {" "}
+                  Small Critter
+                </Link>
               </div>
             )}
           </li>
@@ -140,7 +142,10 @@ const Navbar = () => {
             <Link to="/about"> About Us</Link>
           </li>
           <li>
-            <Link to="/#contact"onClick={() => handleLinkClick("/#contact")}> Contact Us</Link>
+            <Link to="/#contact" onClick={() => handleLinkClick("/#contact")}>
+              {" "}
+              Contact Us
+            </Link>
           </li>
           {/* <li></li> */}
         </ul>
