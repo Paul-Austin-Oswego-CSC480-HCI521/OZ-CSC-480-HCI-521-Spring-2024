@@ -39,6 +39,8 @@ public class Pet extends AbstractModel {
 
     private String currentShelterId;
 
+    private String images;
+
     // @Pattern(regexp = "(Dog|Cat|Other)")
     private String type;
 
@@ -72,6 +74,14 @@ public class Pet extends AbstractModel {
 
     public void setCurrentShelterId(String currentShelterId) {
         this.currentShelterId = currentShelterId;
+    }
+
+    public String getImages() {
+        return images;
+    }
+
+    public void setImages(String images) {
+        this.images = images;
     }
 
     public String getType() {

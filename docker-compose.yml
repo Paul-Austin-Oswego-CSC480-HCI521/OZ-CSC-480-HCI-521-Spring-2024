@@ -5,8 +5,8 @@ services:
     restart: always
     # once setup, dont expose ports; simply connect inter-service
 
-    #ports:
-    #  - 27017:27017
+    ports:
+      - 27017:27017
     volumes:
       - mongodb_data:/data/db
     environment:

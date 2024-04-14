@@ -10,7 +10,10 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
+import com.ibm.websphere.security.jwt.InvalidBuilderException;
+import com.ibm.websphere.security.jwt.InvalidClaimException;
 import com.ibm.websphere.security.jwt.JwtBuilder;
+import com.ibm.websphere.security.jwt.JwtException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.result.InsertOneResult;
 import com.mongodb.client.result.UpdateResult;
@@ -75,10 +78,29 @@ public class ShelterService extends AbstractService<Shelter> {
 
         newEntry.setId(oid);
 
-        return Response
-                .status(Response.Status.OK)
-                .entity(newEntry.toJson())
-                .build();
+        // Create the JWT for the Shelter
+        String shelterJWT;
+        try {
+            shelterJWT = JwtBuilder.create("shelter_token")
+                    .claim("iss", "http://localhost:9080")
+                    .claim("aud", "paws_and_claws")
+                    .claim("sub", "paws_and_claws")
+                    // .claim("shelter", newEntry.getEmailAddress())
+                    .claim("shelter_id", newEntry.getId())
+                    .buildJwt()
+                    .compact();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(500).build();
+        }
+
+        var json = new Document();
+        json.put("JWT", shelterJWT);
+        json.put("shelterID", newEntry.getId().toString());
+
+        var jsonb = JsonbBuilder.create();
+
+        return Response.ok(jsonb.toJson(json)).build();
     }
 
     @Produces(MediaType.APPLICATION_JSON)
@@ -246,7 +268,8 @@ public class ShelterService extends AbstractService<Shelter> {
             @APIResponse(responseCode = "200", description = "Login was successful"),
             @APIResponse(responseCode = "401", description = "Login failed")
     })
-    public Response login(@QueryParam(value = "emailAddress") String emailAddress, @QueryParam(value = "password") String password) throws Exception {
+    public Response login(@QueryParam(value = "emailAddress") String emailAddress,
+            @QueryParam(value = "password") String password) throws Exception {
         MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
@@ -260,15 +283,21 @@ public class ShelterService extends AbstractService<Shelter> {
 
         // Create the JWT for the Shelter
         String shelterJWT = JwtBuilder.create("shelter_token")
-            .claim("iss", "http://localhost:9080")
-            .claim("aud", "paws_and_claws")
-            .claim("sub", "paws_and_claws")
-            .claim("shelter", record.getEmailAddress())
-            .claim("shelter_id", record.getId())
-            .buildJwt()
-            .compact();
+                .claim("iss", "http://localhost:9080")
+                .claim("aud", "paws_and_claws")
+                .claim("sub", "paws_and_claws")
+                // .claim("shelter", record.getEmailAddress())
+                .claim("shelter_id", record.getId())
+                .buildJwt()
+                .compact();
 
-        return Response.ok(shelterJWT + ":" + record.getId()).build();
+        var json = new Document();
+        json.put("JWT", shelterJWT);
+        json.put("shelterID", record.getId().toString());
+
+        var jsonb = JsonbBuilder.create();
+
+        return Response.ok(jsonb.toJson(json)).build();
     }
 
     @Path("/auth")
@@ -276,14 +305,13 @@ public class ShelterService extends AbstractService<Shelter> {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Endpoint to authenticate a JWT")
     @APIResponses({
-        @APIResponse(responseCode = "200", description = "Authentication was successful"),
-        @APIResponse(responseCode = "401", description = "Authentication failed")
+            @APIResponse(responseCode = "200", description = "Authentication was successful"),
+            @APIResponse(responseCode = "401", description = "Authentication failed")
     })
-    public Response authenticateJWT(@QueryParam(value = "jwt") String jwt, @QueryParam(value = "user") String user, @QueryParam(value = "userID") String userID) 
-    {
+    public Response authenticateJWT(@QueryParam(value = "jwt") String jwt, @QueryParam(value = "user") String user,
+            @QueryParam(value = "userID") String userID) {
         // If the user had a JWT created
-        if(jwt != null)
-        {
+        if (jwt != null) {
             String[] userCookieComponents = jwt.split("\\.", 3);
 
             // Extract the encoded JWT Header
@@ -294,12 +322,13 @@ public class ShelterService extends AbstractService<Shelter> {
             String decodedHeader = new String(headerBytes);
 
             // Extract the token type and algorithm used from the header
-            String type = decodedHeader.substring(decodedHeader.indexOf("\"typ\":\"") + 7, decodedHeader.indexOf("\",\"alg\":\""));
-            String algorithm = decodedHeader.substring(decodedHeader.indexOf("\",\"alg\":\"") + 9, decodedHeader.indexOf("\"}"));
+            String type = decodedHeader.substring(decodedHeader.indexOf("\"typ\":\"") + 7,
+                    decodedHeader.indexOf("\",\"alg\":\""));
+            String algorithm = decodedHeader.substring(decodedHeader.indexOf("\",\"alg\":\"") + 9,
+                    decodedHeader.indexOf("\"}"));
 
             // If the token type and algorithm are the ones to be expected
-            if(type.equals("JWT") && algorithm.equals("RS512"))
-            {
+            if (type.equals("JWT") && algorithm.equals("RS512")) {
                 // Extract the JWT Payload
                 String userCookiePayload = userCookieComponents[1];
 
@@ -308,33 +337,33 @@ public class ShelterService extends AbstractService<Shelter> {
                 String decodedPayload = new String(payloadBytes);
 
                 // Extract the user string, user ID, and expiration time from the payload
-                String currentUser = decodedPayload.substring(decodedPayload.indexOf("\"shelter\":\"") + 11, decodedPayload.indexOf("\",\"shelter_id\":"));
-                String currentUserID = decodedPayload.substring(decodedPayload.indexOf("\"shelter_id\":\"") + 14, decodedPayload.indexOf("\",\"iss\":"));
-                String expiryTime = decodedPayload.substring(decodedPayload.indexOf("\"exp\":") + 6, decodedPayload.indexOf(",\"iat\":"));
-                
+                String currentUser = decodedPayload.substring(decodedPayload.indexOf("\"shelter\":\"") + 11,
+                        decodedPayload.indexOf("\",\"shelter_id\":"));
+                String currentUserID = decodedPayload.substring(decodedPayload.indexOf("\"shelter_id\":\"") + 14,
+                        decodedPayload.indexOf("\",\"iss\":"));
+                String expiryTime = decodedPayload.substring(decodedPayload.indexOf("\"exp\":") + 6,
+                        decodedPayload.indexOf(",\"iat\":"));
+
                 Date expirationDate = new Date(Long.parseLong(expiryTime));
                 Date currentDate = new Date(System.currentTimeMillis());
 
-                // If the current user is the one to be expected and the expiration date comes after the current date
-                if(currentUser.equals(user) && currentUserID.equals(userID) && currentDate.after(expirationDate))
-                {
+                // If the current user is the one to be expected and the expiration date comes
+                // after the current date
+                if (currentUser.equals(user) && currentUserID.equals(userID) && currentDate.after(expirationDate)) {
                     return Response.ok("JWT is Valid").build();
                 }
 
-                else
-                {
+                else {
                     return Response.status(401).build();
                 }
             }
 
-            else
-            {
+            else {
                 return Response.status(401).build();
             }
         }
 
-        else
-        {
+        else {
             return Response.status(401).build();
         }
     }

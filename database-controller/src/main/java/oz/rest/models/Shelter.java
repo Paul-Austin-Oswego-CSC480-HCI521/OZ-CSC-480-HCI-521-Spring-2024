@@ -31,6 +31,8 @@ public class Shelter extends AbstractModel {
     // @BsonProperty("phone_number")
     // private String phoneNumber;
 
+    private String image;
+
     private String description;
 
     @Email
@@ -56,6 +58,14 @@ public class Shelter extends AbstractModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getName() {
