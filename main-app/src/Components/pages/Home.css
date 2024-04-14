@@ -451,12 +451,16 @@ body {
   height: 100%; /* Ensure images fill 100% of the container's height */
   object-fit: cover; /* Cover the entire container with the image */
   display: block; /* Remove any default spacing or alignment */
+  border-radius: 1rem;
 }
 /* Keep your existing styles */
 .work-section-info h2 {
   margin: 0rem 3.8rem; /* Adjust top margin as needed */
   text-align: center; /* Center the text horizontally */
-  margin-top: 110%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin-top: 120%;
   font-size: large !important; /* Changed font size to smaller */
   font-weight: 600;
   color: #000;
@@ -468,8 +472,11 @@ body {
   display: flex;
   text-align: center; 
   align-items: center;
+  align-content: center;
+  justify-content: center;
   font-size: medium;
   font-weight: 500;
+  
   margin: -1rem 1.5rem;
   font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
@@ -481,6 +488,7 @@ body {
   display: flex;
   text-align: center; 
   align-items: center;
+  flex-direction: row;
   font-size: small;
   font-weight: 500;
   margin: 1.6rem 4rem;

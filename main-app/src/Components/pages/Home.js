@@ -22,6 +22,7 @@ import "./Home.css";
 import FAQs from "./AdoptionFAQ";
 import Background from "../../Assets/BG pattern.png";
 import { useState } from "react";
+import { items } from "./items";
 
 export const Home = () => {
   const { setSelectedCategory } = useCategory();
@@ -224,24 +225,22 @@ export const Home = () => {
             {[0, 3, 6].map((startIndex, groupIndex) => (
               <div className="work-section-info-container" key={groupIndex}>
                 {/* Map over each group of three items */}
-                {workInfoData
-                  .slice(startIndex, startIndex + 5)
-                  .map((data, index) => (
-                    <a key={index} href={`/PetDetails`}>
-                      <div className="work-section-info">
-                        <div className="info-boxes-img-container">
-                          <img
-                            src={data.image}
-                            alt=""
-                            style={{ maxWidth: "80%", height: "auto" }}
-                          />
-                        </div>
-                        <h2>{data.title}</h2>
-                        <p>{data.text}</p>
-                        <span>{data.age}</span>
+                {items.slice(startIndex, startIndex + 5).map((item, index) => (
+                  <a key={index} href={`/PetDetails/${item.id}`}>
+                    <div className="work-section-info">
+                      <div className="info-boxes-img-container">
+                        <img
+                          src={item.image}
+                          alt=""
+                          style={{ maxWidth: "80%", height: "70%" }}
+                        />
                       </div>
-                    </a>
-                  ))}
+                      <h2>{item.name}</h2>
+                      <p>{item.category}</p>
+                      <span>{item.age}</span>
+                    </div>
+                  </a>
+                ))}
               </div>
             ))}
           </Slider>
@@ -255,22 +254,20 @@ export const Home = () => {
             {[0, 3, 6].map((startIndex, groupIndex) => (
               <div className="work-section-info-container" key={groupIndex}>
                 {/* Map over each group of three items */}
-                {workInfoDatas
-                  .slice(startIndex, startIndex + 5)
-                  .map((data, index) => (
-                    <div className="work-section-info" key={index}>
-                      <div className="info-boxes-img-container">
-                        <img
-                          src={data.image}
-                          alt=""
-                          style={{ maxWidth: "80%", height: "auto" }}
-                        />
-                      </div>
-                      <h2>{data.title}</h2>
-                      <p>{data.text}</p>
-                      <span>{data.age} </span>
+                {items.slice(startIndex, startIndex + 5).map((item, index) => (
+                  <div className="work-section-info" key={index}>
+                    <div className="info-boxes-img-container">
+                      <img
+                        src={item.image}
+                        alt=""
+                        style={{ maxWidth: "80%", height: "70%" }}
+                      />
                     </div>
-                  ))}
+                    <h2>{item.name}</h2>
+                    <p>{item.category}</p>
+                    <span>{item.age} </span>
+                  </div>
+                ))}
               </div>
             ))}
           </Slider>

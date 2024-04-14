@@ -5,7 +5,6 @@ import ShelterNavbar from "./Components/ShelterNavbar";
 import ShelterNavbar2 from "./Components/ShelterNavbar2";
 import { Home } from "./Components/pages/Home";
 import { About } from "./Components/pages/About";
-import { Contact } from "./Components/pages/Contact";
 import { PetDetails } from "./Components/pages/PetDetails";
 import MultiFilters from "./Components/pages/MultiFilters";
 import { RehomePage } from "./Components/pages/Rehome";
@@ -48,7 +47,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" />
           <Route path="#FAQ" element={<Home />} />
           <Route path="/ExplorePets" element={<MultiFilters />} />
           <Route path="/PetDetails/:id" element={<PetDetails />} />

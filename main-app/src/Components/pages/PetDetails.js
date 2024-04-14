@@ -151,7 +151,7 @@ export const PetDetails = () => {
 
       <div className="introduction">Hello, My name is {pet.name}!</div>
 
-      <div className="pet-details">
+      <div className="pet-details1">
         {pet.sex}, {pet.age}
       </div>
 
@@ -326,22 +326,31 @@ export const PetDetails = () => {
 
       <div className="pet-about-meet-teamss">
         <h1>Furr-Ever friends near you</h1>
-        {teams.map((team, index) => (
-          <div key={index} className="pet-about-team-sections">
-            <h2>{team.name}</h2>
-            <Slider {...sliderSettings}>
-              {team.members.map((member, memberIndex) => (
-                <div className="pet-work-section-info">
-                  <div key={memberIndex} className="pet-about-team-members">
-                    <img src={member.image} alt={member.name} />
-                    <h3>{member.name}</h3>
-                    <p>{member.info}</p>
-                  </div>
-                </div>
-              ))}
-            </Slider>
-          </div>
-        ))}
+        <div className="pet-about-team-sections">
+          <Slider>
+            {[0, 3, 6].map((startIndex, groupIndex) => (
+              <div className="pet-work-section-info-container" key={groupIndex}>
+                {/* Map over each group of three items */}
+                {items.slice(startIndex, startIndex + 5).map((item, index) => (
+                  <a key={index} href={`/PetDetails/${item.id}`}>
+                    <div className="work-section-info">
+                      <div className="info-boxes-img-container">
+                        <img
+                          src={item.image}
+                          alt=""
+                          style={{ maxWidth: "80%", height: "70%" }}
+                        />
+                      </div>
+                      <h2>{item.name}</h2>
+                      <p>{item.category}</p>
+                      <span>{item.age}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   );

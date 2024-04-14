@@ -76,14 +76,14 @@
   font-weight: 600;
 }
 
-.pet-detailss {
+.pet-details1 {
   font-size: clamp(1rem, 1vw, 1rem);
   font-family: Grandstander, sans-serif;
   color: black;
   position: absolute;
   max-width: 600px;
-  top: 390px;
-  left: 755px;
+  top: 400px;
+  left: 770px;
 }
 
 .pet-type {
