@@ -12,7 +12,6 @@ body {
 
 .topnav {
 display: flex;
-align-items: center;
 justify-content: space-between;
 padding: 10px;
 
@@ -57,8 +56,44 @@ padding: 10px;
   background-color: orange;
 }
 
+.left-container {
+  display: flex;
+  align-items: center;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+}
+
 .logo-container {
-margin-right: auto; /* Pushes the logo to the left */
+  margin-right: 20px;
+}
+
+.home-container {
+  margin-right: 20px;
+}
+
+.upload-pet {
+  margin-right: 20px;
+}
+
+.home-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes the button rounded */
+  background-color: #ffffff; /* White background color */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for a raised effect */
+}
+
+/* Style the icon inside the button */
+.home-icon svg {
+  font-size: 18px; /* Adjust icon size as needed */
+  color: #333;
+  stroke-width: 50px;
 }
 
 .upload-pet {
@@ -263,7 +298,10 @@ margin: 0 20px;
   border: none;
   cursor: pointer;
   color: black;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   
 }
 
@@ -280,7 +318,7 @@ margin: 0 20px;
   white-space: nowrap;
   flex-direction: column;
   left: -75px;
-  top: 40px; /* Adjust top position as needed */
+  top: 45px; /* Adjust top position as needed */
   margin-top: 15px;
 }
 
@@ -319,7 +357,19 @@ margin: 0 20px;
   text-align: center;
 }
 
-.profile-icon svg {
-  font-size: 30px;
-  color: rgb(78, 78, 78);
+.profile-icon {
+  padding: 4px;
 }
+
+.profile-icon-p svg{
+  font-size: 30px;
+  color: rgb(109, 1, 163);
+}
+
+.profile-icon-b svg{
+  font-size: 20px;
+  color:rgb(53, 53, 53);
+  margin-bottom: 4.5px;
+  
+}
+
