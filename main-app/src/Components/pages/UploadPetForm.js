@@ -1,72 +1,103 @@
-import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { FaUpload} from 'react-icons/fa';
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaUpload, FaCheck, FaPlusSquare } from 'react-icons/fa';
 import { JWTAuth } from './JWTAuth';
 import './UploadPetForm.css';
 
 const UploadPetForm = ({ addNewPet }) => {
   const [showPopup, setShowPopup] = useState(false);
+  const fileInputRef = useRef(null);
   const navigate = useNavigate();
   const jwtAuth = new JWTAuth();
   var response;
+
   const [pet, setPet] = useState({
     name: '',
     type: 'Dog',
     breed: '',
     color: '',
     sex: 'Male',
-    images: [], // Array to store uploaded images
+    images: [],
     size: 'Small',
     age: '',
     description: '',
+    fileNames: [],
   });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPet((prevPet) => ({
-      ...prevPet,
-      [name]: value,
-    }));
+  const handleDropzoneClick = () => {
+    fileInputRef.current.click();
   };
 
-  const handleImageChange = (event) => {
-    const files = event.target.files;
-    const imageArray = [];
+  const handleImageChange = (e) => {
+    const files = e.target.files;
+    const newImages = [];
+    const fileNames = [];
 
     for (let i = 0; i < files.length; i++) {
+      const file = files[i];
       const reader = new FileReader();
-      reader.onloadend = () => {
-        imageArray.push(reader.result);
-        if (imageArray.length === files.length) {
+
+      reader.onload = (e) => {
+        newImages.push({ url: e.target.result, file });
+        fileNames.push(file.name);
+
+        if (newImages.length === files.length) {
           setPet((prevPet) => ({
             ...prevPet,
-            images: imageArray,
+            images: [...prevPet.images, ...newImages],
+            fileNames: [...prevPet.fileNames, ...fileNames],
           }));
         }
       };
-      reader.readAsDataURL(files[i]);
+
+      reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!pet.name || pet.images.length === 0) {
-      alert('Please enter the pet name and upload at least one image.');
+  const removeImage = (index) => {
+    const updatedImages = [...pet.images];
+    updatedImages.splice(index, 1);
+    const updatedFileNames = [...pet.fileNames];
+    updatedFileNames.splice(index, 1);
+    setPet((prevPet) => ({
+      ...prevPet,
+      images: updatedImages,
+      fileNames: updatedFileNames,
+    }));
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    const capitalizedValue = capitalizeFirstLetter(value); // Capitalize the input value
+    setPet((prevPet) => ({
+      ...prevPet,
+      [name]: capitalizedValue,
+    }));
+  };
+
+  const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Check if any required field is empty
+    if (
+      pet.name.trim() === '' ||
+      pet.type.trim() === '' ||
+      pet.sex.trim() === '' ||
+      pet.age.trim() === '' ||
+      pet.breed.trim() === '' ||
+      pet.color.trim() === '' ||
+      pet.description.trim() === '' ||
+      pet.images.length === 0 // Check if images array is empty
+    ) {
+      alert('Please fill in all required fields and upload at least one image.');
       return;
     }
 
-    addNewPet({
-      name: pet.name,
-      type: pet.type,
-      breed: pet.breed,
-      color: pet.color,
-      sex: pet.sex,
-      images: pet.images,
-      size: pet.size,
-      age: pet.age,
-      description: pet.description,
-    });
-
+    addNewPet(pet);
     setPet({
       name: '',
       type: 'Dog',
@@ -77,9 +108,10 @@ const UploadPetForm = ({ addNewPet }) => {
       size: 'Small',
       age: '',
       description: '',
+      fileNames: [],
     });
-
-    setShowPopup(false); // Close the popup after submitting
+    fileInputRef.current.value = ''; // Clear the file input
+    setShowPopup(false); // Close the popup after submission
   };
 
   const handleClosePopup = () => {
@@ -109,101 +141,128 @@ const UploadPetForm = ({ addNewPet }) => {
         }
       )
       }}>
-      <FaUpload className="upload-icon" />&nbsp;
+        <FaUpload className="upload-icon" />&nbsp;
         Upload a Pet
       </button>
 
       {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <span className="close-popup" onClick={handleClosePopup}>
-            x 
-            </span>
-            <h2>Upload a Pet</h2>
-            <form onSubmit={handleSubmit}>
-              <label>
-                Pet Name:
-                <input
-                  type="text"
-                  name="name"
-                  value={pet.name}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Pet Type:
-                <select name="type" value={pet.type} onChange={handleInputChange}>
-                  <option value="Dog">Dog</option>
-                  <option value="Cat">Cat</option>
-                  <option value="Bird">Bird</option>
-                  <option value="Fish">Small Critter</option>
-                  {/* Add more options for other pet types */}
-                </select>
-              </label>
-              <label>
-                Breed:
-                <input
-                  type="text"
-                  name="breed"
-                  value={pet.breed}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Color:
-                <input
-                  type="text"
-                  name="color"
-                  value={pet.color}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Sex:
-                <select name="sex" value={pet.sex} onChange={handleInputChange}>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </label>
-              <label>
-                Size:
-                <select name="size" value={pet.size} onChange={handleInputChange}>
-                  <option value="Small">Small</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Large">Large</option>
-                </select>
-              </label>
-              <label>
-                Age:
-                <input
-                  type="text"
-                  name="age"
-                  value={pet.age}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                Pet Images:
-                <input
-                  type="file"
-                  accept="image/*"
-                  name="images"
-                  onChange={handleImageChange}
-                  multiple // Allow multiple file selection
-                />
-              </label>
-              <label>
-                Description:
-                <textarea
-                  name="description"
-                  value={pet.description}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <button type="submit">Upload Pet</button>
-            </form>
-          </div>
-        </div>
+        <>
+          <form onSubmit={handleSubmit}>
+            <div className="popup-background" onClick={handleClosePopup}></div>
+            <div className="popup">
+              <div className="popup-content">
+                <div className='title-buttons-row'>
+                  <h2 className="upload-pet-title">Upload a Pet</h2>
+                  <div className='ds-buttons'>
+                    <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
+                    <button className="save-button" type="submit"><FaCheck></FaCheck>&nbsp;Upload</button>
+                  </div>
+                </div>
+                <div className="dropzone" onClick={handleDropzoneClick}>
+                  <div className="dropzone-icon"><FaPlusSquare></FaPlusSquare></div>
+                  <p>Drag and drop an image here or click to browse</p>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    ref={fileInputRef}
+                    style={{ display: 'none' }}
+                    onChange={handleImageChange}
+                    required
+                  />
+                </div>
+                <div className="selected-images">
+                  {pet.fileNames.map((fileName, index) => (
+                    <div key={index} className="selected-image">
+                      <span>{fileName}</span>
+                      <button
+                        type="button"
+                        onClick={() => removeImage(index)}
+                        className="remove-image-button"
+                      >
+                        x
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pet-details">
+                  <h4>Pet Details</h4><br></br>
+                  <input
+                    type="text"
+                    placeholder="What’s your pet’s name?"
+                    name="name"
+                    value={pet.name}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <div className="pet-details-row">
+                    <select
+                      name="type"
+                      placeholder="Pet Type"
+                      value={pet.type}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="">Select Pet Type</option>
+                      <option value="Dog">Dog</option>
+                      <option value="Cat">Cat</option>
+                      <option value="Bird">Bird</option>
+                      <option value="Fish">Small Critter</option>
+                    </select>
+                    <select
+                      name="sex"
+                      placeholder="Pet Sex"
+                      value={pet.sex}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="">Select Pet Sex</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Pet Age"
+                    name="age"
+                    value={pet.age}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Pet Breed"
+                    name="breed"
+                    value={pet.breed}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Pet Color"
+                    name="color"
+                    value={pet.color}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <textarea
+                    name="description"
+                    placeholder="Tell us more about your pet"
+                    value={pet.description}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+
+                <div className='ds-buttons'>
+                  <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
+                  <button className="save-button" type="submit"><FaCheck></FaCheck>&nbsp;Upload</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </>
       )}
     </>
   );
