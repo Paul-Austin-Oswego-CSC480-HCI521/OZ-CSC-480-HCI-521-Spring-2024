@@ -85,8 +85,7 @@ const ShelterDashboard = () => {
     //     console.error('Error fetching shelter data:', error);
     //   });
 
-    // TODO: check that this works... 
-    if (getCookie("shelterID").length == 0) {
+    if (JSON.parse(document.cookie) == null) {
       alert("You are not signed in as a shelter user.");
       navigate("/shelter");
       return;
