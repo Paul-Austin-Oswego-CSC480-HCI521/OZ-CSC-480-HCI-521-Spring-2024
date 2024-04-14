@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { FaUpload, FaCheck, FaPlusSquare } from 'react-icons/fa';
+import './UploadPetForm.css';
 import './card.css';
 
 const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
@@ -6,6 +8,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [showOptions, setShowOptions] = useState(null);
   const optionsRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -13,13 +16,55 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
         setShowOptions(null);
       }
     };
-    
+
     document.addEventListener('mousedown', handleOutsideClick);
 
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
+
+  const handleDropzoneClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleImageChange = (e) => {
+    const files = e.target.files;
+    const newImages = [];
+    const fileNames = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        newImages.push({ url: e.target.result, file });
+        fileNames.push(file.name);
+
+        if (newImages.length === files.length) {
+          setEditingPet((prevPet) => ({
+            ...prevPet,
+            images: [...prevPet.images, ...newImages],
+            fileNames: [...(prevPet.fileNames || []), ...fileNames], // Use default empty array if fileNames is null
+          }));
+        }
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = (index) => {
+    const updatedImages = [...editingPet.images];
+    updatedImages.splice(index, 1);
+    const updatedFileNames = [...editingPet.fileNames];
+    updatedFileNames.splice(index, 1);
+    setEditingPet((prevPet) => ({
+      ...prevPet,
+      images: updatedImages,
+      fileNames: updatedFileNames,
+    }));
+  };
 
   const handleEditClick = (pet) => {
     setEditingPet({ ...pet });
@@ -92,7 +137,6 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                 <button onClick={() => handleEditClick(pet)}>Edit Pet Details</button>
                 <button onClick={() => handleMarkAdopted(pet.id)}>Mark as Adopted</button>
                 <button onClick={() => handleDeleteClick(pet.id)} className='deletePet'>Delete Pet</button>
-                
               </div>
             )}
             <button className="options-button" onClick={(e) => handleOptionsClick(e, pet.id)}>
@@ -111,103 +155,111 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
             <p className="pet-breed">{pet.breed}</p>
             <div className="pet-info">
               <span className="pet-age">{pet.age}</span>
-              
             </div>
           </div>
         </div>
       ))}
-
       {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <span className="close-popup" onClick={handleClosePopup}>
-              x 
-            </span>
-            <form onSubmit={handleFormSubmit}>
-              <label htmlFor="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={editingPet.name}
-                onChange={handleFormChange}
-              />
-              <label htmlFor="type">Type:</label>
-              <select
-                id="type"
-                name="type"
-                value={editingPet.type}
-                onChange={handleFormChange}
-              >
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
-                <option value="Bird">Bird</option>
-                <option value="Fish">Small Scritter</option>
-              </select>
-              <label htmlFor="breed">Breed:</label>
-              <input
-                type="text"
-                id="breed"
-                name="breed"
-                value={editingPet.breed}
-                onChange={handleFormChange}
-              />
-              <label htmlFor="color">Color:</label>
-              <input
-                type="text"
-                id="color"
-                name="color"
-                value={editingPet.color}
-                onChange={handleFormChange}
-              />
-              <label htmlFor="sex">Sex:</label>
-              <select
-                id="sex"
-                name="sex"
-                value={editingPet.sex}
-                onChange={handleFormChange}
-              >
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-              <label htmlFor="size">Size:</label>
-              <select
-                id="size"
-                name="size"
-                value={editingPet.size}
-                onChange={handleFormChange}
-              >
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-              </select>
-              <label htmlFor="age">Age:</label>
-              <input
-                type="text"
-                id="age"
-                name="age"
-                value={editingPet.age}
-                onChange={handleFormChange}
-              />
-              <label htmlFor="image">Picture:</label>
-              <input
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                onChange={handleFormChange}
-              />
-              <label htmlFor="description">Description:</label>
-              <textarea
-                id="description"
-                name="description"
-                value={editingPet.description}
-                onChange={handleFormChange}
-              />
-              <button type="submit">Save</button>
-            </form>
-          </div>
-        </div>
+        <>
+          <form onSubmit={handleFormSubmit}>
+            <div className="popup">
+              <div className="popup-content">
+                <div className='title-buttons-row'>
+                  <h2 className="upload-pet-title">Edit Pet Details</h2>
+                  <div className='ds-buttons'>
+                    <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
+                    <button className="save-button" type="submit" onClick={handleFormSubmit}><FaCheck></FaCheck>&nbsp;Save</button>
+                  </div>
+                </div>
+                <div className="dropzone" onClick={handleDropzoneClick}>
+                  <div className="dropzone-icon"><FaPlusSquare></FaPlusSquare></div>
+                  <p>Drag and drop an image here or click to browse</p>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    ref={fileInputRef}
+                    style={{ display: 'none' }}
+                    onChange={handleImageChange}
+                    required
+                  />
+                </div>
+                <div className="pet-details">
+                  <h4>Pet Details</h4><br></br>
+                  <input
+                    type="text"
+                    placeholder="What’s your pet’s name?"
+                    name="name"
+                    value={editingPet.name}
+                    onChange={handleFormChange}
+                    required
+                  />
+                  <div className="pet-details-row">
+                    <select
+                      name="type"
+                      placeholder="Pet Type"
+                      value={editingPet.type}
+                      onChange={handleFormChange}
+                      required
+                    >
+                      <option value="">Select Pet Type</option>
+                      <option value="Dog">Dog</option>
+                      <option value="Cat">Cat</option>
+                      <option value="Bird">Bird</option>
+                      <option value="Fish">Small Critter</option>
+                    </select>
+                    <select
+                      name="sex"
+                      placeholder="Pet Sex"
+                      value={editingPet.sex}
+                      onChange={handleFormChange}
+                      required
+                    >
+                      <option value="">Select Pet Sex</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Pet Age"
+                    name="age"
+                    value={editingPet.age}
+                    onChange={handleFormChange}
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Pet Breed"
+                    name="breed"
+                    value={editingPet.breed}
+                    onChange={handleFormChange}
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Pet Color"
+                    name="color"
+                    value={editingPet.color}
+                    onChange={handleFormChange}
+                    required
+                  />
+                  <textarea
+                    name="description"
+                    placeholder="Tell us more about your pet"
+                    value={editingPet.description}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+                <div className='ds-buttons'>
+                  <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
+                  <button className="save-button" type="submit" onClick={handleFormSubmit}><FaCheck></FaCheck>&nbsp;Save</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </>
       )}
     </div>
   );

@@ -149,14 +149,14 @@ const UploadPetForm = ({ addNewPet }) => {
       {showPopup && (
         <>
           <form onSubmit={handleSubmit}>
-            <div className="popup-background" onClick={handleClosePopup}></div>
+
             <div className="popup">
               <div className="popup-content">
                 <div className='title-buttons-row'>
                   <h2 className="upload-pet-title">Upload a Pet</h2>
                   <div className='ds-buttons'>
                     <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                    <button className="save-button" type="submit"><FaCheck></FaCheck>&nbsp;Upload</button>
+                    <button className="save-button" type="submit" onClick={handleSubmit}><FaCheck></FaCheck>&nbsp;Upload</button>
                   </div>
                 </div>
                 <div className="dropzone" onClick={handleDropzoneClick}>
@@ -258,7 +258,7 @@ const UploadPetForm = ({ addNewPet }) => {
 
                 <div className='ds-buttons'>
                   <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                  <button className="save-button" type="submit"><FaCheck></FaCheck>&nbsp;Upload</button>
+                  <button className="save-button" type="submit" onClick={handleSubmit}><FaCheck></FaCheck>&nbsp;Upload</button>
                 </div>
               </div>
             </div>
