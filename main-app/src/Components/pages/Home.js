@@ -1,4 +1,5 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+import { useCategory } from "../CategoryContext";
 import BannerBackground from "../../Assets/Hero2.png";
 import dogImage from "../../Assets/dog.png";
 import catImage from "../../Assets/cat.png";
@@ -23,6 +24,7 @@ import Background from "../../Assets/BG pattern.png";
 import { useState } from "react";
 
 export const Home = () => {
+  const { setSelectedCategory } = useCategory();
   const [zipCode, setZipCode] = useState("13126"); // Define zipCode state
 
   const handleZipCodeChange = (e) => {
@@ -35,6 +37,9 @@ export const Home = () => {
     console.log("Hello World");
   };
 
+  const handleSelectedCategory = (category) => {
+    setSelectedCategory(category);
+  };
   const workInfoData = [
     {
       image: Luke,
@@ -169,25 +174,41 @@ export const Home = () => {
         <div className="home-text-section">
           <div className="button-container">
             {/* Navigate to Multifilters page when this button is clicked */}
-            <Link to="/ExplorePets" className="third-button">
+            <Link
+              to="/ExplorePets"
+              onClick={() => handleSelectedCategory("Dog")}
+              className="third-button"
+            >
               <img src={dogImage} alt="Dog" />
               <span>Dog</span>
             </Link>
 
             {/* Navigate to Multifilters page when this button is clicked */}
-            <Link to="/ExplorePets" className="third-button">
+            <Link
+              to="/ExplorePets"
+              onClick={() => handleSelectedCategory("Cat")}
+              className="third-button"
+            >
               <img src={catImage} alt="Cat" />
               <span>Cat</span>
             </Link>
 
             {/* Navigate to Multifilters page when this button is clicked */}
-            <Link to="/ExplorePets" className="third-button">
+            <Link
+              to="/ExplorePets"
+              onClick={() => handleSelectedCategory("Bird")}
+              className="third-button"
+            >
               <img src={birdImage} alt="Bird" />
               <span>Bird</span>
             </Link>
 
             {/* Navigate to Multifilters page when this button is clicked */}
-            <Link to="/ExplorePets" className="fifth-button">
+            <Link
+              to="/ExplorePets"
+              onClick={() => handleSelectedCategory("Small Critter")}
+              className="fifth-button"
+            >
               <img src={bunnyImage} alt="Small Critters" />
               Small Critters
             </Link>
