@@ -118,7 +118,6 @@ public class ShelterService extends AbstractService<Shelter> {
                     .entity("[\"Invalid object id!\"]")
                     .build();
         }
-
         MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                 Shelter.class);
 
