@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import UserPets from './UserPets.js';
 import CategoryFilter from './CategoryFilter.js';
-import Navbar from '../Navbar.js'
 import './ShelterDashboard.css';
 
 const UserBoard = () => {
@@ -59,8 +58,7 @@ const UserBoard = () => {
 
   return (
     <div className='wholepage'>
-        <Navbar></Navbar>
-        <br></br><br></br>
+        <br></br>
       <CategoryFilter
         onSelectCategory={filterPetsByCategory}
         selectedCategory={selectedCategory}

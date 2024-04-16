@@ -31,6 +31,7 @@ function App() {
   } else if (
     location.pathname === "/shelter" ||
     location.pathname === "/login" ||
+    location.pathname === "/userboard" ||
     location.pathname === "/signup"
   ) {
     navbarComponent = <ShelterNavbar2 />;
