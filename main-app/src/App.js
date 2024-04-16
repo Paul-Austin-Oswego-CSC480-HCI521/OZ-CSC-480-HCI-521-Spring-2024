@@ -15,6 +15,7 @@ import Onboarding from "./Components/pages/Onboarding/Onboarding";
 import { Helmet } from "react-helmet";
 import Subfooter from "./Components/Subfooter";
 import { CategoryProvider } from "./Components/CategoryContext";
+import UserBoard from "./Components/pages/UserBoard";
 // import RehomePage from './Components/pages/Rehome';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Onboarding />} />
           <Route path="/dashboard" element={<ShelterDashboard />} />
+          <Route path="/userboard" element={<UserBoard/>} />
         </Routes>
         <Footer />
       </CategoryProvider>
