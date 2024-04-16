@@ -383,7 +383,7 @@ const ShelterDashboard = () => {
             </p>
           </div>
           <div className='upload'>
-            <UploadPetForm />
+            <UploadPetForm addNewPet={addNewPet} />
           </div>
           <div className="shelteredit">
             <div className='edit' onClick={openEditModal}>
