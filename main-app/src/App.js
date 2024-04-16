@@ -25,13 +25,13 @@ function App() {
     location.pathname === "/" ||
     location.pathname === "/about" ||
     location.pathname === "/ExplorePets" ||
+    location.pathname === "/userboard" ||
     location.pathname === "/PetDetails"
   ) {
     navbarComponent = <Navbar />;
   } else if (
     location.pathname === "/shelter" ||
     location.pathname === "/login" ||
-    location.pathname === "/userboard" ||
     location.pathname === "/signup"
   ) {
     navbarComponent = <ShelterNavbar2 />;
