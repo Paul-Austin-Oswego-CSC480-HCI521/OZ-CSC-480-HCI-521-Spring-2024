@@ -84,76 +84,77 @@ export const PetDetails = () => {
           <div className="health-title">Health: Vaccinated</div>
         </div>
       </div>
-
-      <div className="div">
-        <div className="div-2">
-          <div className="column-2">
-            <div className="div-5">
-              <div className="div-6">
-                <img
-                  loading="lazy"
-                  srcSet={ShelterLogo}
-                  className="img-2"
-                  alt=""
-                />
-                <div className="div-7">
-                  <div className="div-8">Pulaski County Shelter</div>
-                  <i>
-                    <IoIosCheckmarkCircle />
-                  </i>
+      <Link to="/userboard">
+        <div className="div">
+          <div className="div-2">
+            <div className="column-2">
+              <div className="div-5">
+                <div className="div-6">
+                  <img
+                    loading="lazy"
+                    srcSet={ShelterLogo}
+                    className="img-2"
+                    alt=""
+                  />
+                  <div className="div-7">
+                    <div className="div-8">Pulaski County Shelter</div>
+                    <i>
+                      <IoIosCheckmarkCircle />
+                    </i>
+                  </div>
                 </div>
-              </div>
-              <div className="div-9">
-                <div className="div-10">Email:</div>
-                <div className="div-11">hello@pcs.com</div>
-              </div>
-              <div className="div-12">
-                <div className="div-13">Phone:</div>
-                <div className="div-14">+1 (315) 766 9933</div>
-              </div>
-              <div className="div-15">
-                <div className="div-16">Address:</div>
-                <div className="div-17">
-                  235 Adopt Me Ln, Somerset, KY 42501
+                <div className="div-9">
+                  <div className="div-10">Email:</div>
+                  <div className="div-11">hello@pcs.com</div>
                 </div>
-              </div>
-              <div className="div-18">
-                <div className="div-19">Hours:</div>
-                <div className="div-20">
-                  Mon
-                  <br />
-                  Tues
-                  <br />
-                  Wed
-                  <br />
-                  Thurs
-                  <br />
-                  Fri
-                  <br />
-                  Sat
-                  <br />
-                  Sun
+                <div className="div-12">
+                  <div className="div-13">Phone:</div>
+                  <div className="div-14">+1 (315) 766 9933</div>
                 </div>
-                <div className="div-21">
-                  12–6 PM
-                  <br />
-                  12–6 PM
-                  <br />
-                  12-6 PM
-                  <br />
-                  12–6 PM
-                  <br />
-                  12–6 PM
-                  <br />
-                  Closed
-                  <br />
-                  Closed
+                <div className="div-15">
+                  <div className="div-16">Address:</div>
+                  <div className="div-17">
+                    235 Adopt Me Ln, Somerset, KY 42501
+                  </div>
+                </div>
+                <div className="div-18">
+                  <div className="div-19">Hours:</div>
+                  <div className="div-20">
+                    Mon
+                    <br />
+                    Tues
+                    <br />
+                    Wed
+                    <br />
+                    Thurs
+                    <br />
+                    Fri
+                    <br />
+                    Sat
+                    <br />
+                    Sun
+                  </div>
+                  <div className="div-21">
+                    12–6 PM
+                    <br />
+                    12–6 PM
+                    <br />
+                    12-6 PM
+                    <br />
+                    12–6 PM
+                    <br />
+                    12–6 PM
+                    <br />
+                    Closed
+                    <br />
+                    Closed
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Link>
 
       <div>
         <Link to="/ExplorePets">
