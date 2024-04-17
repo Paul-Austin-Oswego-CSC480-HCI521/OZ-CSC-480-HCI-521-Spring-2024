@@ -150,7 +150,7 @@ const ShelterDashboard = () => {
     newPet.currentShelterId = shelterID;
     console.log(newPet);
     // console.log(getCookie("shelterID"));
-    fetch("http://0.0.0.0:9080/database-controller/api/pet", {
+    fetch("http://localhost:9080/database-controller/api/pet", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
