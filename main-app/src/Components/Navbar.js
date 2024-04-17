@@ -6,6 +6,7 @@ import { NavLink as Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
+import { getCookie } from "../Utils/CookieUtils";
 
 const Navbar = () => {
   const { setSelectedCategory } = useCategory();
@@ -85,12 +86,22 @@ const Navbar = () => {
           >
             <IoPawSharp /> Adopt
           </Link>
-          <Link
-            to="/shelter"
-            className={({ isActive }) => (isActive ? "active" : "inactive")}
-          >
-            <BsHouseHeartFill /> Shelter
-          </Link>
+          {/* BELOW CHECKS IF SHELTER COOKIE IS SET, SENDING USER TO DASHBOARD IF LOGGED IN AND GENERIC SHELTER PAGE OTHERWISE */}
+          {getCookie("shelterID") == "" ? (
+            <Link
+              to="/shelter"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              <BsHouseHeartFill /> Shelter
+            </Link>
+          ) : (
+            <Link
+              to="/dashboard"
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              <BsHouseHeartFill /> Shelter
+            </Link>
+          )}
         </div>
       </div>
 
