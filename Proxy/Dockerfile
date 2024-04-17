@@ -1,8 +1,11 @@
 FROM node as build
 
-COPY Frontend/main-app . 
+COPY Frontend/main-app/package.json .
+COPY Frontend/main-app/package-lock.json .
 
 RUN npm install
+
+COPY Frontend/main-app . 
 
 RUN npm run build
 
