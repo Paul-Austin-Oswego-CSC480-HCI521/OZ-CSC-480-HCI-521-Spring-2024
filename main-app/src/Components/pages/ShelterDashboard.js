@@ -94,7 +94,7 @@ const ShelterDashboard = () => {
 
     //const currentShelterId = getCookie("shelterID");
     console.log(currentShelterId)
-    const shelterData = await fetch("/database-controller/api/shelter/" + currentShelterId, {
+    const shelterData = await fetch("http://localhost:9080/database-controller/api/shelter/" + currentShelterId, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
