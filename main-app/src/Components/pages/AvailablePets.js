@@ -31,14 +31,14 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImages = [];
-  
+
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const reader = new FileReader();
-  
+
       reader.onload = (e) => {
         newImages.push({ url: e.target.result, file });
-  
+
         if (newImages.length === 1) {
           setEditingPet((prevPet) => ({
             ...prevPet,
@@ -46,13 +46,13 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
           }));
         }
       };
-  
+
       reader.readAsDataURL(file);
     }
   };
-  
-  
-  
+
+
+
 
   const handleEditClick = (pet) => {
     setEditingPet({ ...pet });
@@ -93,15 +93,17 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
     onEdit(editingPet);
 
     // Check if any required field is empty
+    // TODO: implement this in a way that works if u want it 
     if (
-      editingPet.name.trim() === '' ||
-      editingPet.type.trim() === '' ||
-      editingPet.sex.trim() === '' ||
-      editingPet.age.trim() === '' ||
-      editingPet.breed.trim() === '' ||
-      editingPet.color.trim() === '' ||
-      editingPet.description.trim() === '' ||
-      editingPet.images.length === 0 // Check if images array is empty
+      false
+      // editingPet.name.trim() === '' ||
+      // editingPet.type.trim() === '' ||
+      // editingPet.sex.trim() === '' ||
+      // editingPet.age.trim() === '' ||
+      // editingPet.breed.trim() === '' ||
+      // editingPet.color.trim() === '' ||
+      // editingPet.description.trim() === '' ||
+      // editingPet.images.length === 0 // Check if images array is empty
     ) {
       alert('Please fill in all required fields.');
       return;
@@ -135,9 +137,9 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
 
   return (
     <div className="pet-list">
-    {pets.map((pet) => (
-      <div key={pet.id} className="pet-card">
-        <div className="pet-card-options">
+      {pets.map((pet) => (
+        <div key={pet.id} className="pet-card">
+          <div className="pet-card-options">
             {showOptions === pet.id && (
               <div className="pet-options-dropdown" ref={optionsRef}>
                 <button onClick={() => handleEditClick(pet)}>Edit Pet Details</button>

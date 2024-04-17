@@ -162,6 +162,10 @@ const ShelterDashboard = () => {
           throw new Error('Failed to update data');
         } else {
           // const json = await response.json();
+          const newPet = await response.json();
+          // const newPet = 
+          // console.log(response);
+          // console.log(newPet)
           const updatedPets = [...data.pets, newPet];
           const updatedData = { ...data, pets: updatedPets };
           setData(updatedData);
@@ -206,6 +210,13 @@ const ShelterDashboard = () => {
   };
 
   const handleDelete = async (petId) => {
+    console.log("pet id" + petId);
+    console.log(petId.id);
+
+    // dumb hack because entire pet object is petId before refresh, and petId after (something about setData/fetch?)
+    // if (petId.id != undefined) {
+    //   petId = petId.id;
+    // }
     const updatedPets = data.pets.filter((pet) => pet.id !== petId);
     const updatedData = { ...data, pets: updatedPets };
 

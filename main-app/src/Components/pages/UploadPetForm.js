@@ -17,11 +17,10 @@ const UploadPetForm = ({ addNewPet }) => {
     breed: '',
     color: '',
     sex: 'Male',
-    images: [],
+    images: [], // Array to store uploaded images
     size: 'Small',
     age: '',
     description: '',
-    // fileNames: [],
   });
 
   const handleDropzoneClick = () => {
@@ -38,13 +37,13 @@ const UploadPetForm = ({ addNewPet }) => {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        newImages.push({ url: e.target.result, file });
+        newImages.push(e.target.result);
         // fileNames.push(file.name);
 
         if (newImages.length === files.length) {
           setPet((prevPet) => ({
             ...prevPet,
-            images: [...prevPet.images, ...newImages],
+            images: [...newImages],
             // fileNames: [...prevPet.fileNames, ...fileNames],
           }));
         }
