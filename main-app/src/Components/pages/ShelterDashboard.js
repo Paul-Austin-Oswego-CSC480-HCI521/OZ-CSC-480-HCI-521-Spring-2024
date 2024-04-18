@@ -254,7 +254,7 @@ const ShelterDashboard = () => {
     // needs to not send id in request, so make temp and delete
     const editedPetClone = structuredClone(editedPet);
     delete editedPetClone.id;
-    editedPetClone.images = editedPet.images[0];
+    // editedPetClone.images = editedPet.images[0];
 
     // const cookie = JSON.parse(document.cookie);
     console.log(JSON.stringify(editedPetClone))
