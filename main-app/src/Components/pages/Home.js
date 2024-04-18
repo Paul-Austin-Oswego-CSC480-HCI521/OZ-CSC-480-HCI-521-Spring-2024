@@ -7,20 +7,10 @@ import birdImage from "../../Assets/bird.png";
 import bunnyImage from "../../Assets/bunny.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Luke from "../../Assets/Furr-Ever friends near you_1.png";
-import Finn from "../../Assets/Furr-Ever friends near you_2.png";
-import Brownie from "../../Assets/Furr-Ever friends near you_3.png";
-import Jaxon from "../../Assets/Purrrr - Cat friends near you_1.png";
-import Chloe from "../../Assets/Purrrr - Cat friends near you_2.png";
-import Asame from "../../Assets/Purrrr - Cat friends near you_4.png";
-import Ginger from "../../Assets/Pet photo2.png";
-import Rascal from "../../Assets/Pet photo.png";
-import Danii from "../../Assets/Pet photo1.png";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import FAQs from "./AdoptionFAQ";
-import Background from "../../Assets/BG pattern.png";
 import { useState } from "react";
 import { items } from "./items";
 
@@ -41,103 +31,6 @@ export const Home = () => {
   const handleSelectedCategory = (category) => {
     setSelectedCategory(category);
   };
-  const workInfoData = [
-    {
-      image: Luke,
-      title: "Luke, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Finn,
-      title: "Finn, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Brownie,
-      title: "Brownie, F",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Jaxon,
-      title: "Jaxon, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Danii,
-      title: "Chloe, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Luke,
-      title: "Asame, F",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Finn,
-      title: "Ginger, F",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Jaxon,
-      title: "Rascal, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Brownie,
-      title: "Danii, F",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-  ];
-
-  const workInfoDatas = [
-    {
-      image: Luke,
-      title: "Luke, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-
-    {
-      image: Jaxon,
-      title: "Jaxon, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Chloe,
-      title: "Chloe, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Rascal,
-      title: "Asame, F",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-
-    {
-      image: Ginger,
-      title: "Rascal, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-    {
-      image: Asame,
-      title: "Chloe, M",
-      text: "American Shorthair",
-      age: "9-month old",
-    },
-  ];
 
   <style>{(document.body.style.backgroundColor = "#E3EAE7")}</style>;
   useEffect(() => {
@@ -247,7 +140,6 @@ export const Home = () => {
         </div>
       </div>
 
-  
       <FAQs />
     </div>
   );

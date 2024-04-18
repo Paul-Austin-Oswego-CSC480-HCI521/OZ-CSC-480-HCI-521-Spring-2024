@@ -3,14 +3,12 @@ import "./NavStyles.css";
 import { useCategory } from "./CategoryContext";
 import logo from "../Assets/PawsnClawsWords.svg";
 import { NavLink as Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
 import { getCookie } from "../Utils/CookieUtils";
 
 const Navbar = () => {
   const { setSelectedCategory } = useCategory();
-  const location = useLocation();
 
   const handleLinkClick = (path) => {
     // Check if the current page is the home page and the path includes an in-page link
@@ -87,7 +85,7 @@ const Navbar = () => {
             <IoPawSharp /> Adopt
           </Link>
           {/* BELOW CHECKS IF SHELTER COOKIE IS SET, SENDING USER TO DASHBOARD IF LOGGED IN AND GENERIC SHELTER PAGE OTHERWISE */}
-          {getCookie("shelterID") == "" ? (
+          {getCookie("shelterID") === "" ? (
             <Link
               to="/shelter"
               className={({ isActive }) => (isActive ? "active" : "inactive")}
