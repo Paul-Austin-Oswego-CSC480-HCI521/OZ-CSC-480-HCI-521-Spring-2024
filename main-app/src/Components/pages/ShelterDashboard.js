@@ -11,7 +11,7 @@ import { AiOutlineMenu, AiOutlineHome } from 'react-icons/ai';
 import { BsPersonCircle } from 'react-icons/bs';
 import { useNavigate } from "react-router-dom";
 import EditProfileModal from './EditProfileModal';
-import {FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { getCookie } from '../../Utils/CookieUtils';
 
 const ShelterDashboard = () => {
@@ -55,17 +55,18 @@ const ShelterDashboard = () => {
     if (confirmDelete) {
       // Send a DELETE request to your backend API to delete the account
       // console.log(document.cookie);
-      const cookie = JSON.parse(document.cookie);
+      const shelterID = getCookie("shelterID");
       // console.log(cookie.shelterID);
 
       // TODO: also needs to delete all pets in shelter; currently only deleting the shelter entry.
-      const response = await fetch("http://localhost:9080/database-controller/api/shelter/" + cookie.shelterID, {
+      const response = await fetch("http://localhost:9080/database-controller/api/shelter/" + shelterID, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
         // body: JSON.stringify(getCookie("shelterID")),
       });
+
 
       if (response.ok) {
         // console.log(response)
@@ -83,23 +84,16 @@ const ShelterDashboard = () => {
   }, []);
 
   const fetchShelterData = async () => {
-    // fetch(process.env.PUBLIC_URL + '/data.json')
-    //   .then((response) => response.json())
-    //   .then((jsonData) => {
-    //     setData(jsonData);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error fetching shelter data:', error);
-    //   });
-
-    if (JSON.parse(document.cookie) == null) {
+    if (getCookie("shelterID") == "") {
       alert("You are not signed in as a shelter user.");
       navigate("/shelter");
       return;
     }
 
-    const currentShelterId = JSON.parse(document.cookie).shelterID;
+    const currentShelterId = getCookie("shelterID");
 
+    //const currentShelterId = getCookie("shelterID");
+    console.log(currentShelterId)
     const shelterData = await fetch("http://localhost:9080/database-controller/api/shelter/" + currentShelterId, {
       method: 'GET',
       headers: {
@@ -151,12 +145,12 @@ const ShelterDashboard = () => {
 
     // console.log(newPet);
     // console.log(JSON.parse(document.cookie).shelterID);
-    const shelterID = JSON.parse(document.cookie).shelterID;
+    const shelterID = getCookie("shelterID");
     console.log(shelterID);
     newPet.currentShelterId = shelterID;
     console.log(newPet);
     // console.log(getCookie("shelterID"));
-    fetch("http://0.0.0.0:9080/database-controller/api/pet", {
+    fetch("http://localhost:9080/database-controller/api/pet", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -168,6 +162,10 @@ const ShelterDashboard = () => {
           throw new Error('Failed to update data');
         } else {
           // const json = await response.json();
+          const newPet = await response.json();
+          // const newPet = 
+          // console.log(response);
+          // console.log(newPet)
           const updatedPets = [...data.pets, newPet];
           const updatedData = { ...data, pets: updatedPets };
           setData(updatedData);
@@ -189,8 +187,9 @@ const ShelterDashboard = () => {
   const updateDataJson = (updatedData) => {
     delete updatedData.shelter.id;
     console.log(updatedData.shelter);
-    const cookie = JSON.parse(document.cookie);
-    fetch("http://0.0.0.0:9080/database-controller/api/shelter/" + cookie.shelterID, {
+    const shelterID = getCookie("shelterID");
+    //const cookie = JSON.parse(document.cookie);
+    fetch("http://localhost:9080/database-controller/api/shelter/" + shelterID, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -211,6 +210,13 @@ const ShelterDashboard = () => {
   };
 
   const handleDelete = async (petId) => {
+    console.log("pet id" + petId);
+    console.log(petId.id);
+
+    // dumb hack because entire pet object is petId before refresh, and petId after (something about setData/fetch?)
+    // if (petId.id != undefined) {
+    //   petId = petId.id;
+    // }
     const updatedPets = data.pets.filter((pet) => pet.id !== petId);
     const updatedData = { ...data, pets: updatedPets };
 
@@ -253,7 +259,7 @@ const ShelterDashboard = () => {
     // const cookie = JSON.parse(document.cookie);
     console.log(JSON.stringify(editedPetClone))
     // console.log("my edited pet" + editedPet.id);
-    fetch("http://0.0.0.0:9080/database-controller/api/pet/" + editedPet.id, {
+    fetch("http://localhost:9080/database-controller/api/pet/" + editedPet.id, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -353,15 +359,15 @@ const ShelterDashboard = () => {
       <div className="main-content">
         <div className="shelter-profile">
           <div>
-          {data.shelter.image ? (
-        <img
-          src={data.shelter.image}
-          alt="Shelter"
-          className="shelter-image"
-        />
-      ) : (
-        <FaUser className="shelter-image default-icon" />
-      )}
+            {data.shelter.image ? (
+              <img
+                src={data.shelter.image}
+                alt="Shelter"
+                className="shelter-image"
+              />
+            ) : (
+              <FaUser className="shelter-image default-icon" />
+            )}
 
           </div>
 
@@ -376,7 +382,7 @@ const ShelterDashboard = () => {
               )}
               {data.shelter.location.city}, {data.shelter.location.state}
             </p>
-              <br></br>
+            <br></br>
             <p className="shelter-description">
               {expanded ? data.shelter.description : `${data.shelter.description.slice(0, 125)}...`}
               {!expanded && <span onClick={toggleDescription}>See More</span>}

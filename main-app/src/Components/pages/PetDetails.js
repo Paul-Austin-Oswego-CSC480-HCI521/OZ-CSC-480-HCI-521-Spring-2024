@@ -248,7 +248,7 @@ export const PetDetails = () => {
                         />
                       </div>
                       <h2>{item.name}</h2>
-                      <p>{item.category}</p>
+                      <p>{item.breed}</p>
                       <span>{item.age}</span>
                     </div>
                   </a>

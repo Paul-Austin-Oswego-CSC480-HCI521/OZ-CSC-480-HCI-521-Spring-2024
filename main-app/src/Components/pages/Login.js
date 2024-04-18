@@ -43,11 +43,13 @@ function Login() {
       )
         .then(async (response) => {
           if (response.ok) {
-
             const responseJson = await response.json();
-            // console.log("response json = " + responseJson);
+            const cookieJsonKeys = Object.entries(responseJson)
 
-            document.cookie = JSON.stringify(responseJson);
+            for (const entry of cookieJsonKeys) {
+              const suffix = "path=/;";
+              document.cookie = entry[0] + "=" + entry[1] + ";" + suffix;
+            };
 
             console.log(document.cookie);
 

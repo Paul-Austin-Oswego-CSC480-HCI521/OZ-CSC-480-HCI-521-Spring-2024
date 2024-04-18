@@ -17,11 +17,10 @@ const UploadPetForm = ({ addNewPet }) => {
     breed: '',
     color: '',
     sex: 'Male',
-    images: [],
+    images: [], // Array to store uploaded images
     size: 'Small',
     age: '',
     description: '',
-    fileNames: [],
   });
 
   const handleDropzoneClick = () => {
@@ -31,21 +30,21 @@ const UploadPetForm = ({ addNewPet }) => {
   const handleImageChange = (e) => {
     const files = e.target.files;
     const newImages = [];
-    const fileNames = [];
+    // const fileNames = [];
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        newImages.push({ url: e.target.result, file });
-        fileNames.push(file.name);
+        newImages.push(e.target.result);
+        // fileNames.push(file.name);
 
         if (newImages.length === files.length) {
           setPet((prevPet) => ({
             ...prevPet,
-            images: [...prevPet.images, ...newImages],
-            fileNames: [...prevPet.fileNames, ...fileNames],
+            images: [...newImages],
+            // fileNames: [...prevPet.fileNames, ...fileNames],
           }));
         }
       };
@@ -57,12 +56,12 @@ const UploadPetForm = ({ addNewPet }) => {
   const removeImage = (index) => {
     const updatedImages = [...pet.images];
     updatedImages.splice(index, 1);
-    const updatedFileNames = [...pet.fileNames];
-    updatedFileNames.splice(index, 1);
+    // const updatedFileNames = [...pet.fileNames];
+    // updatedFileNames.splice(index, 1);
     setPet((prevPet) => ({
       ...prevPet,
       images: updatedImages,
-      fileNames: updatedFileNames,
+      // fileNames: updatedFileNames,
     }));
   };
 
@@ -108,7 +107,7 @@ const UploadPetForm = ({ addNewPet }) => {
       size: 'Small',
       age: '',
       description: '',
-      fileNames: [],
+      // fileNames: [],
     });
     fileInputRef.current.value = ''; // Clear the file input
     setShowPopup(false); // Close the popup after submission
@@ -172,7 +171,7 @@ const UploadPetForm = ({ addNewPet }) => {
                     required
                   />
                 </div>
-                <div className="selected-images">
+                {/* <div className="selected-images">
                   {pet.fileNames.map((fileName, index) => (
                     <div key={index} className="selected-image">
                       <span>{fileName}</span>
@@ -185,7 +184,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       </button>
                     </div>
                   ))}
-                </div>
+                </div> */}
 
                 <div className="pet-details">
                   <h4>Pet Details</h4><br></br>

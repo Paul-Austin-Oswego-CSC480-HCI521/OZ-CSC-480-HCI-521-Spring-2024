@@ -14,10 +14,16 @@ const Step4 = ({ prevStep, formData }) => {
     const formDataToSend = {
       name,
       emailAddress,
-      streetAddress,
-      city,
-      state,
-      zipcode,
+      location: {
+        addressLine1: streetAddress,
+        city,
+        state,
+        zipcode
+      },
+      // streetAddress,
+      // city,
+      // state,
+      // zipcode,
       phoneNumber,
       description,
       password,
@@ -28,6 +34,7 @@ const Step4 = ({ prevStep, formData }) => {
     try {
       // TODO: implement actual location
       delete formDataToSend.streetAddress;
+      console.log(formDataToSend);
       // Send the form data as JSON to the endpoint
       const response = await fetch('http://localhost:9080/database-controller/api/shelter', {
         method: 'POST',
@@ -45,7 +52,13 @@ const Step4 = ({ prevStep, formData }) => {
         const responseJson = await response.json();
         // console.log(responseText);
 
-        document.cookie = JSON.stringify(responseJson);
+        const cookieJsonKeys = Object.entries(responseJson)
+
+        for (const entry of cookieJsonKeys) {
+          const suffix = "path=/;";
+          document.cookie = entry[0] + "=" + entry[1] + ";" + suffix;
+        };
+
 
         console.log(document.cookie);
 

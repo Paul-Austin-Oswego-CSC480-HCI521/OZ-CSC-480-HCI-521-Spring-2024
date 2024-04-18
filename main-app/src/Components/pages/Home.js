@@ -236,7 +236,7 @@ export const Home = () => {
                         />
                       </div>
                       <h2>{item.name}</h2>
-                      <p>{item.category}</p>
+                      <p>{item.breed}</p>
                       <span>{item.age}</span>
                     </div>
                   </a>
@@ -247,32 +247,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className="about-meet-teamss">
-        <h1>Purr-Cat friends near you</h1>
-        <div className="about-team-sections">
-          <Slider>
-            {[0, 3, 6].map((startIndex, groupIndex) => (
-              <div className="work-section-info-container" key={groupIndex}>
-                {/* Map over each group of three items */}
-                {items.slice(startIndex, startIndex + 5).map((item, index) => (
-                  <div className="work-section-info" key={index}>
-                    <div className="info-boxes-img-container">
-                      <img
-                        src={item.image}
-                        alt=""
-                        style={{ maxWidth: "80%", height: "70%" }}
-                      />
-                    </div>
-                    <h2>{item.name}</h2>
-                    <p>{item.category}</p>
-                    <span>{item.age} </span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </div>
+  
       <FAQs />
     </div>
   );
