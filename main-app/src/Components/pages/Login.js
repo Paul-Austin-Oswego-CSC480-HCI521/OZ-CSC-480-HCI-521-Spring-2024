@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ReactComponent as Logo } from '../../Assets/purple_paw_Logo.svg';
 import "./Login.css"
 
@@ -111,6 +111,11 @@ function Login() {
         </div>
 
         <h1> Find your furr-ever friend <br /> today! </h1>
+
+        <div className="login-action-links">
+          <Link to="/login" className="login-links">Login</Link>
+          <Link to="/signup" className="login-links">Sign Up</Link>
+        </div>
 
         <div class="invalid-error">
           {loginError && (

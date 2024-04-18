@@ -51,6 +51,34 @@
     padding:0;
 }
 
+.login-action-links {
+    align-self: flex-start; /* Aligns to the left side, assuming flex-direction is column */
+    padding-left: 105px; 
+    padding-bottom: 5px;
+    display: flex;
+}
+
+.login-links {
+    text-align: left; /* Ensures text within the paragraph tags is left-aligned */
+    margin-right: 10px; /* Removes margin to align with the edge if needed */
+    margin-top: 10px;
+    font-size: 15px;
+    color:#000;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.login-links:hover{
+    color: rgb(158, 90, 221);
+}
+
+.login-links a.active{
+    color: white;
+    background-color: orange;
+  }
+
 .login-container body{
     font-family: 'Arial', sans-serif;
     background-color: #fff;

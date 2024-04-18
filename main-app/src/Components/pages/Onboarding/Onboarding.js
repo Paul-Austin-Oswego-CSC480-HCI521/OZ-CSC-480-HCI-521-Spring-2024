@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -95,6 +96,10 @@ const Onboarding = () => {
         <div className="progress-bar">
           <div className="progress" 
           style={{ width: getProgressBarWidth() }}></div>
+          <div className="signup-action-links">
+          <Link to="/login" className="signup-links">Login</Link>
+          <Link to="/signup" className="signup-links">Sign Up</Link>
+        </div>
         </div>
         {renderStep()}
       </div>

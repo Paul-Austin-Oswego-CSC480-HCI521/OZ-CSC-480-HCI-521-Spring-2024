@@ -30,6 +30,29 @@
   padding:0;
 }
 
+.signup-action-links {
+  align-self: flex-start; /* Aligns to the left side, assuming flex-direction is column */
+  padding-left: 105px; 
+  padding-bottom: 5px;
+  display: flex;
+}
+
+.signup-links {
+  text-align: left; /* Ensures text within the paragraph tags is left-aligned */
+  margin-right: 10px; /* Removes margin to align with the edge if needed */
+  margin-top: 10px;
+  font-size: 15px;
+  color:#000;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.signup-links:hover{
+  color: rgb(158, 90, 221);
+}
+
 .progress-bar {
   width: 100%;
   background-color: #ddd;
