@@ -12,7 +12,7 @@ import { BsPersonCircle } from 'react-icons/bs';
 import { useNavigate } from "react-router-dom";
 import EditProfileModal from './EditProfileModal';
 import { FaUser } from 'react-icons/fa';
-import { getCookie } from '../../Utils/CookieUtils';
+import { deleteCookies, getCookie } from '../../Utils/CookieUtils';
 
 const ShelterDashboard = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const ShelterDashboard = () => {
 
   const handleLogout = () => {
     // Clear authentication token or session cookie here
-    document.cookie = null;
+    deleteCookies();
     // Redirect to logout route or homepage
     navigate("/shelter");
   };
