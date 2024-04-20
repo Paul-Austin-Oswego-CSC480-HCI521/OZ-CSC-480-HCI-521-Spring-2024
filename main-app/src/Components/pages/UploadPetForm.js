@@ -256,7 +256,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       name="breed"
                       placeholder="Pet Breed"
                       value={pet.breed}
-                      onChange={handleInputChange}
+                      onChange={handleTypeChange}
                       required
                     >
                       <option value="">Select Pet Breed</option>
@@ -276,7 +276,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       placeholder="Pet Breed"
                       name="breed"
                       value={pet.breed}
-                      onChange={handleInputChange}
+                      onChange={handleTypeChange}
                       required
                     />
                   )}
