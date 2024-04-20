@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
+import { checkJWT } from '../../Utils/JWTAuth';
 import { FaCheck, FaUser } from 'react-icons/fa';
 import InputMask from 'react-input-mask';
 import './EditProfileModal.css';
@@ -8,6 +10,8 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
   const [imageFile, setImageFile] = useState(null);
   const fileInputRef = useRef(null);
   const [phoneError, setPhoneError] = useState(false);
+  const navigate = useNavigate();
+  var response;
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -92,7 +96,24 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
           <h2 className="upload-pet-title">Edit Shelter</h2>
           <div className='ds-buttons'>
             <button className="discard-button" onClick={handleCancel}>x Discard</button>
-            <button className="save-button" type="submit" onClick={handleSave}><FaCheck></FaCheck>&nbsp;Save</button>
+            <button className="save-button" type="submit" onClick={() => {
+              response = checkJWT();
+
+              response.then(function (responseResult) {
+                // If the JWT is valid
+                if (responseResult.ok) {
+                  handleSave();
+                }
+      
+                // If the JWT is invalid
+                else {
+                  // Redirect user back to login page to refresh their JWT
+                  alert("Your session has expired.\n\nPlease log back in to continue.");
+                  navigate("/login");
+                }
+              }
+              )
+            }}><FaCheck></FaCheck>&nbsp;Save</button>
           </div>
         </div>
 
@@ -123,8 +144,24 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
 
               <button
                 className="remove-image-button"
-                onClick={() => setEditedData((prevData) => ({ ...prevData, image: null }))}
-              >
+                onClick={() => {
+              response = checkJWT();
+
+              response.then(function (responseResult) {
+                // If the JWT is valid
+                if (responseResult.ok) {
+                  setEditedData((prevData) => ({ ...prevData, image: null }));
+                }
+      
+                // If the JWT is invalid
+                else {
+                  // Redirect user back to login page to refresh their JWT
+                  alert("Your session has expired.\n\nPlease log back in to continue.");
+                  navigate("/login");
+                }
+              }
+              )
+            }}>
                 <div className='remove-pp'>Remove Profile Picture</div>
               </button>
             </div>
@@ -214,7 +251,24 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
 
         <div className='ds-buttons'>
           <button className="discard-button" onClick={handleCancel}>x Discard</button>
-          <button className="save-button" type="submit" onClick={handleSave}><FaCheck></FaCheck>&nbsp;Save</button>
+          <button className="save-button" type="submit" onClick={() => {
+            response = checkJWT();
+
+            response.then(function (responseResult) {
+              // If the JWT is valid
+              if (responseResult.ok) {
+                handleSave();
+              }
+    
+              // If the JWT is invalid
+              else {
+                // Redirect user back to login page to refresh their JWT
+                alert("Your session has expired.\n\nPlease log back in to continue.");
+                navigate("/login");
+              }
+            }
+            )
+          }}><FaCheck></FaCheck>&nbsp;Save</button>
         </div>
       </div>
     </div>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { checkJWT } from '../../Utils/JWTAuth';
 import { FaPencilAlt } from 'react-icons/fa';
 import UploadPetForm from './UploadPetForm';
 import AvailablePets from './AvailablePets';
@@ -9,13 +11,13 @@ import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
 import { AiOutlineMenu, AiOutlineHome } from 'react-icons/ai';
 import { BsPersonCircle } from 'react-icons/bs';
-import { useNavigate } from "react-router-dom";
 import EditProfileModal from './EditProfileModal';
 import { FaUser } from 'react-icons/fa';
 import { deleteCookies, getCookie } from '../../Utils/CookieUtils';
 
 const ShelterDashboard = () => {
   const navigate = useNavigate();
+  var response;
 
   const [data, setData] = useState({
     shelter: {
@@ -344,9 +346,43 @@ const ShelterDashboard = () => {
               <div className="dropdown-content">
                 <Link to="/shelter">View Dashboard
                 </Link>
-                <button className='edit' onClick={openEditModal}>Edit Profile</button>
+                <button className='edit' onClick={() => {
+                  response = checkJWT();
+
+                  response.then(function (responseResult) {
+                    // If the JWT is valid
+                    if (responseResult.ok) {
+                      openEditModal();
+                    }
+          
+                    // If the JWT is invalid
+                    else {
+                      // Redirect user back to login page to refresh their JWT
+                      alert("Your session has expired.\n\nPlease log back in to continue.");
+                      navigate("/login");
+                    }
+                  }
+                  )
+                }}>Edit Profile</button>
                 <button onClick={handleLogout}>Logout</button>
-                <button onClick={handleDeleteAccount} className='deleteAccount'>Delete My Account</button>
+                <button onClick={() => {
+                  response = checkJWT();
+
+                  response.then(function (responseResult) {
+                    // If the JWT is valid
+                    if (responseResult.ok) {
+                      handleDeleteAccount();
+                    }
+          
+                    // If the JWT is invalid
+                    else {
+                      // Redirect user back to login page to refresh their JWT
+                      alert("Your session has expired.\n\nPlease log back in to continue.");
+                      navigate("/login");
+                    }
+                  }
+                  )
+                }} className='deleteAccount'>Delete My Account</button>
               </div>
             )}
           </div>
@@ -392,7 +428,24 @@ const ShelterDashboard = () => {
             <UploadPetForm addNewPet={addNewPet} />
           </div>
           <div className="shelteredit">
-            <div className='edit' onClick={openEditModal}>
+            <div className='edit' onClick={() => {
+              response = checkJWT();
+
+              response.then(function (responseResult) {
+                // If the JWT is valid
+                if (responseResult.ok) {
+                  openEditModal();
+                }
+      
+                // If the JWT is invalid
+                else {
+                  // Redirect user back to login page to refresh their JWT
+                  alert("Your session has expired.\n\nPlease log back in to continue.");
+                  navigate("/login");
+                }
+              }
+              )
+            }}>
               <FaPencilAlt /> Edit Profile
             </div>
           </div>

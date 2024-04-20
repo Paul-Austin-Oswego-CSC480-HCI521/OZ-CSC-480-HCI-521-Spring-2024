@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
+import { checkJWT } from '../../Utils/JWTAuth';
 import { FaUpload, FaCheck, FaPlusSquare } from 'react-icons/fa';
 import './UploadPetForm.css';
 import './card.css';
@@ -9,6 +11,8 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
   const [showOptions, setShowOptions] = useState(null);
   const optionsRef = useRef(null);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
+  var response;
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -120,7 +124,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
       description: '',
       fileNames: [],
     });
-    fileInputRef.current.value = ''; // Clear the file input
+    //fileInputRef.current.value = ''; // Clear the file input
     setShowPopup(false); // Close the popup after submission
     setEditingPet(null);
     setShowPopup(false);
@@ -142,9 +146,62 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
           <div className="pet-card-options">
             {showOptions === pet.id && (
               <div className="pet-options-dropdown" ref={optionsRef}>
-                <button onClick={() => handleEditClick(pet)}>Edit Pet Details</button>
-                <button onClick={() => handleMarkAdopted(pet.id)}>Mark as Adopted</button>
-                <button onClick={() => handleDeleteClick(pet.id)} className='deletePet'>Delete Pet</button>
+                <button onClick={() => {
+                  response = checkJWT();
+
+                  response.then(function (responseResult) {
+                    // If the JWT is valid
+                    if (responseResult.ok) {
+                      handleEditClick(pet);
+                    }
+          
+                    // If the JWT is invalid
+                    else {
+                      // Redirect user back to login page to refresh their JWT
+                      alert("Your session has expired.\n\nPlease log back in to continue.");
+                      navigate("/login");
+                    }
+                  }
+                  )
+                }}>
+                Edit Pet Details</button>
+                <button onClick={() => {
+                  response = checkJWT();
+
+                  response.then(function (responseResult) {
+                    // If the JWT is valid
+                    if (responseResult.ok) {
+                      handleMarkAdopted(pet.id);
+                    }
+          
+                    // If the JWT is invalid
+                    else {
+                      // Redirect user back to login page to refresh their JWT
+                      alert("Your session has expired.\n\nPlease log back in to continue.");
+                      navigate("/login");
+                    }
+                  }
+                  )
+                }}>
+                Mark as Adopted</button>
+                <button onClick={() => {
+                  response = checkJWT();
+
+                  response.then(function (responseResult) {
+                    // If the JWT is valid
+                    if (responseResult.ok) {
+                      handleMarkAdopted(pet.id);
+                    }
+          
+                    // If the JWT is invalid
+                    else {
+                      // Redirect user back to login page to refresh their JWT
+                      alert("Your session has expired.\n\nPlease log back in to continue.");
+                      navigate("/login");
+                    }
+                  }
+                  )
+                }} className='deletePet'>Delete Pet</button>
               </div>
             )}
             <button className="options-button" onClick={(e) => handleOptionsClick(e, pet.id)}>
@@ -176,7 +233,24 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   <h2 className="upload-pet-title">Edit Pet Details</h2>
                   <div className='ds-buttons'>
                     <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                    <button className="save-button" type="submit" onClick={handleFormSubmit}><FaCheck></FaCheck>&nbsp;Save</button>
+                    <button className="save-button" type="submit" onClick={(event) => {
+                      response = checkJWT();
+
+                      response.then(function (responseResult) {
+                        // If the JWT is valid
+                        if (responseResult.ok) {
+                          handleFormSubmit(event);
+                        }
+              
+                        // If the JWT is invalid
+                        else {
+                          // Redirect user back to login page to refresh their JWT
+                          alert("Your session has expired.\n\nPlease log back in to continue.");
+                          navigate("/login");
+                        }
+                      }
+                      )
+                    }}><FaCheck></FaCheck>&nbsp;Save</button>
                   </div>
                 </div>
                 <div className="dropzone" onClick={handleDropzoneClick}>
@@ -261,7 +335,24 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   />
                   <div className='ds-buttons'>
                     <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                    <button className="save-button" type="submit" onClick={handleFormSubmit}><FaCheck></FaCheck>&nbsp;Save</button>
+                    <button className="save-button" type="submit" onClick={(event) => {
+                      response = checkJWT();
+
+                      response.then(function (responseResult) {
+                        // If the JWT is valid
+                        if (responseResult.ok) {
+                          handleFormSubmit(event);
+                        }
+              
+                        // If the JWT is invalid
+                        else {
+                          // Redirect user back to login page to refresh their JWT
+                          alert("Your session has expired.\n\nPlease log back in to continue.");
+                          navigate("/login");
+                        }
+                      }
+                      )
+                    }}><FaCheck></FaCheck>&nbsp;Save</button>
                   </div>
                 </div>
               </div>

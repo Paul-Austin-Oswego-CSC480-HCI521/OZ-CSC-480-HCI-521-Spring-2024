@@ -103,7 +103,7 @@ const UploadPetForm = ({ addNewPet }) => {
       
       
     });
-    fileInputRef.current.value = ''; // Clear the file input
+    //fileInputRef.current.value = ''; // Clear the file input
     setShowPopup(false); // Close the popup after submission
   };
 
@@ -151,21 +151,17 @@ const UploadPetForm = ({ addNewPet }) => {
         response = checkJWT();
 
         response.then(function (responseResult) {
-
-
-          setShowPopup(true);
-          // TODO: MAKE JWTS WORK
           // If the JWT is valid
-          // if (responseResult.ok) {
-          //   setShowPopup(true)
-          // }
+          if (responseResult.ok) {
+            setShowPopup(true)
+          }
 
-          // // If the JWT is invalid
-          // else {
-          //   // Redirect user back to login page to refresh their JWT
-          //   alert("Your session has expired.\n\nPlease log back in to continue.");
-          //   navigate("/login");
-          // }
+          // If the JWT is invalid
+          else {
+            // Redirect user back to login page to refresh their JWT
+            alert("Your session has expired.\n\nPlease log back in to continue.");
+            navigate("/login");
+          }
         }
         )
       }}>
@@ -183,7 +179,25 @@ const UploadPetForm = ({ addNewPet }) => {
                   <h2 className="upload-pet-title">Upload a Pet</h2>
                   <div className='ds-buttons'>
                     <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                    <button className="upload-button" type="submit" onClick={handleSubmit}><FaCheck></FaCheck>&nbsp;Upload</button>
+                    <button className="upload-button" type="submit" onClick={(event) => {
+                      response = checkJWT();
+
+                      response.then(function (responseResult) {
+                        // If the JWT is valid
+                        if (responseResult.ok) {
+                          handleSubmit(event);
+                        }
+              
+                        // If the JWT is invalid
+                        else {
+                          // Redirect user back to login page to refresh their JWT
+                          alert("Your session has expired.\n\nPlease log back in to continue.");
+                          navigate("/login");
+                        }
+                      }
+                      )
+                    }}>
+                      <FaCheck></FaCheck>&nbsp;Upload</button>
                   </div>
                 </div>
                 <div className="dropzone" onClick={handleDropzoneClick}>
@@ -256,7 +270,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       name="breed"
                       placeholder="Pet Breed"
                       value={pet.breed}
-                      onChange={handleTypeChange}
+                      onChange={handleInputChange}
                       required
                     >
                       <option value="">Select Pet Breed</option>
@@ -276,7 +290,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       placeholder="Pet Breed"
                       name="breed"
                       value={pet.breed}
-                      onChange={handleTypeChange}
+                      onChange={handleInputChange}
                       required
                     />
                   )}
@@ -307,7 +321,25 @@ const UploadPetForm = ({ addNewPet }) => {
 
                 <div className='ds-buttons'>
                   <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
-                  <button className="upload-button" type="submit" onClick={handleSubmit}><FaCheck></FaCheck>&nbsp;Upload</button>
+                  <button className="upload-button" type="submit" onClick={(event) => {
+                    response = checkJWT();
+
+                    response.then(function (responseResult) {
+                      // If the JWT is valid
+                      if (responseResult.ok) {
+                        handleSubmit(event);
+                      }
+            
+                      // If the JWT is invalid
+                      else {
+                        // Redirect user back to login page to refresh their JWT
+                        alert("Your session has expired.\n\nPlease log back in to continue.");
+                        navigate("/login");
+                      }
+                    }
+                    )
+                  }}>
+                  <FaCheck></FaCheck>&nbsp;Upload</button>
                 </div>
               </div>
             </div>

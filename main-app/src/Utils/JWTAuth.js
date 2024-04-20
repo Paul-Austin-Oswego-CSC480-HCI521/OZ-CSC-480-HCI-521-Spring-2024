@@ -1,13 +1,12 @@
 import { getCookie } from './CookieUtils';
 
 export async function checkJWT() {
-    // Retrieve the current user that is logged in and the cookies associated with them
-    var currentUser = getCookie("currentUser");
-    var currentUserJWT = getCookie(currentUser + "JWT");
-    var currentUserID = getCookie(currentUser + "ID");
+    // Retrieve the ID of the Shelter that is logged in and the JWT associated with the shelter
+    var shelterID = getCookie("shelterID");
+    var jwt = getCookie("JWT");
 
-    // Make a call to the backend that includes the current user, their JWT, and their Shelter ID
-    const response = await fetch("http://localhost:9080/database-controller/api/shelter/auth?jwt=" + currentUserJWT + "&user=" + currentUser + "&userID=" + currentUserID, {
+    // Make a call to the backend that includes the Shelter ID and the Shelter's JWT
+    const response = await fetch("http://localhost:9080/database-controller/api/shelter/auth?id=" + shelterID + "&jwt=" + jwt, {
         method: "GET",
     })
         .catch(error => {
