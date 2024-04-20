@@ -3,7 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { ReactComponent as Logo } from '../../Assets/purple_paw_Logo.svg';
 import "./Login.css"
 
-
 function Login() {
   const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
@@ -28,10 +27,11 @@ function Login() {
       });
 
       console.log(jsonObject);
+      // console.log("public url" + process.env.REACT_APP_OPEN_LIBERTY_ROOT)
 
       //   Send JSON object to backend
       fetch(
-        "http://localhost:9080/database-controller/api/shelter/login?" +
+        process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/login?" +
         new URLSearchParams(jsonObject),
         {
           method: "POST",

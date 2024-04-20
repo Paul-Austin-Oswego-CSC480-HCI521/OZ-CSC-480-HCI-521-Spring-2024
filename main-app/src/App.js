@@ -42,7 +42,7 @@ function App() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Paws N Claws</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
       </Helmet>
       <CategoryProvider>
         {navbarComponent}
@@ -57,7 +57,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Onboarding />} />
           <Route path="/dashboard" element={<ShelterDashboard />} />
-          <Route path="/userboard" element={<UserBoard/>} />
+          <Route path="/userboard" element={<UserBoard />} />
         </Routes>
         <Footer />
       </CategoryProvider>

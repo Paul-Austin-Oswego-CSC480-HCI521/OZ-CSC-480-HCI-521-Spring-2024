@@ -59,7 +59,7 @@ const ShelterDashboard = () => {
       // console.log(cookie.shelterID);
 
       // TODO: also needs to delete all pets in shelter; currently only deleting the shelter entry.
-      const response = await fetch("http://localhost:9080/database-controller/api/shelter/" + shelterID, {
+      const response = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/" + shelterID, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const ShelterDashboard = () => {
 
     //const currentShelterId = getCookie("shelterID");
     console.log(currentShelterId)
-    const shelterData = await fetch("http://localhost:9080/database-controller/api/shelter/" + currentShelterId, {
+    const shelterData = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/" + currentShelterId, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ const ShelterDashboard = () => {
     newPet.currentShelterId = shelterID;
     console.log(newPet);
     // console.log(getCookie("shelterID"));
-    fetch("http://localhost:9080/database-controller/api/pet", {
+    fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ const ShelterDashboard = () => {
     console.log(updatedData.shelter);
     const shelterID = getCookie("shelterID");
     //const cookie = JSON.parse(document.cookie);
-    fetch("http://localhost:9080/database-controller/api/shelter/" + shelterID, {
+    fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/" + shelterID, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -224,7 +224,7 @@ const ShelterDashboard = () => {
 
     console.log(petId);
 
-    const response = await fetch("http://localhost:9080/database-controller/api/pet/" + petId, {
+    const response = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet/" + petId, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -259,7 +259,7 @@ const ShelterDashboard = () => {
     // const cookie = JSON.parse(document.cookie);
     console.log(JSON.stringify(editedPetClone))
     // console.log("my edited pet" + editedPet.id);
-    fetch("http://localhost:9080/database-controller/api/pet/" + editedPet.id, {
+    fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet/" + editedPet.id, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

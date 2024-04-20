@@ -36,7 +36,7 @@ const Step4 = ({ prevStep, formData }) => {
       delete formDataToSend.streetAddress;
       console.log(formDataToSend);
       // Send the form data as JSON to the endpoint
-      const response = await fetch('http://localhost:9080/database-controller/api/shelter', {
+      const response = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + 'database-controller/api/shelter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
