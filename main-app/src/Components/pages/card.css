@@ -5,10 +5,12 @@
 }
 
 .no-pets-message {
+ 
   font-size: 18px;
   font-weight: bold;
   margin: 20px;
   padding: 20px;
+ 
 }
 
 .pet-card {

@@ -136,8 +136,16 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
   };
 
   if (!pets || pets.length === 0) {
-    return <div className="no-pets-message">No pets available at the moment.</div>;
-  }
+    return (
+        <div className="no-pets-message">
+          <br></br> <br></br>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <img src="/images/Empty State - Shelter 1.png" alt="No pets available" />
+                <h1 style={{ textAlign: 'center' }}>No pets here yet. They are off on a mini- vacation. Check back soon!</h1>
+            </div>
+        </div>
+    );
+}
 
   return (
     <div className="pet-list">
