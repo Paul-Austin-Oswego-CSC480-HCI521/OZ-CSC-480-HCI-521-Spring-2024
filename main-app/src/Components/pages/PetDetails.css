@@ -10,12 +10,13 @@
     font-family: 'Quicksand';
     font-style: normal;
     /* border: black 5px solid; */
-
+ 
   }
 
   
   body {
-    background-color: #ebdcf7;
+    background-image: url('../../Assets/BG pattern.png');
+  background-color: rgb(227, 234, 231);
   }
   
 

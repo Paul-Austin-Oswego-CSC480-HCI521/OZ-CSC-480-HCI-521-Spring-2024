@@ -27,7 +27,7 @@ export const PetDetails = () => {
   if (loading || !pet) {
     return <div>Loading or pet not found...</div>;
   }
-  <style>{(document.body.style.backgroundColor = "#ebdcf7")}</style>;
+  <style>{(document.body.style.backgroundColor = "rgb(227, 234, 231)")}</style>;
   return (
     <div className="body">
       <Navbar />

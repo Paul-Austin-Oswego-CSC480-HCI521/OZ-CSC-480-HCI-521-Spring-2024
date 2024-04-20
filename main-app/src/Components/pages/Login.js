@@ -11,7 +11,7 @@ function Login() {
 
   // Set background color when component renders
   React.useEffect(() => {
-    document.body.style.backgroundColor = "#FFE5CC";
+    document.body.style.backgroundColor = "rgb(227, 234, 231)";
     // document.body.style.backgroundColor = "#EADBF7";
 
     const handleSubmit = (event) => {

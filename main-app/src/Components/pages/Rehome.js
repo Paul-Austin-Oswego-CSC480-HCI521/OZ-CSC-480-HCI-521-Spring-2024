@@ -11,7 +11,7 @@ export const RehomePage = () => {
   useEffect(() => {
     // Set body style when the component mounts
     // document.body.style.backgroundColor = "#EADBF7";
-    document.body.style.backgroundColor = "#FFE5CC";
+    document.body.style.backgroundColor = "rgb(227, 234, 231)";
 
     // Clear body style when the component unmounts
     return () => {
@@ -19,7 +19,7 @@ export const RehomePage = () => {
     };
   }, []); // Empty dependency array means this effect runs once on mount
   return (
-    <div>
+    <div className="body">
       <div
         className="rehome-banner-container"
         style={{ position: "relative", width: "100%" }}

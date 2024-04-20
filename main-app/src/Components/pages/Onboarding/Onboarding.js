@@ -80,7 +80,7 @@ const Onboarding = () => {
   useEffect(() => {
     // Set body style when the component mounts
     // document.body.style.backgroundColor = "#EADBF7";
-    document.body.style.backgroundColor = "#FFE5CC";
+    document.body.style.backgroundColor = "rgb(227, 234, 231)";
 
     // Clear body style when the component unmounts
     return () => {
