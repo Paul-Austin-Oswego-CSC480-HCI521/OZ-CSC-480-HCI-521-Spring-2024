@@ -80,7 +80,7 @@ const Navbar = () => {
         <div className="top-nav">
           <Link
             to="/"
-            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            className='active'
           >
             <IoPawSharp /> Adopt
           </Link>
@@ -88,7 +88,7 @@ const Navbar = () => {
           {getCookie("shelterID") === "" ? (
             <Link
               to="/shelter"
-              className={({ isActive }) => (isActive ? "active" : "inactive")}
+              
             >
               <BsHouseHeartFill /> Shelter
             </Link>

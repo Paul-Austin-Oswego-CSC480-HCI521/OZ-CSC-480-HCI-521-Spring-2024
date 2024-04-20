@@ -35,13 +35,13 @@ const ShelterNavbar2 = () => {
         <div className="top-nav">
           <Link
             to="/"
-            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            
           >
             <IoPawSharp /> Adopt
           </Link>
           <Link
             to="/shelter"
-            className={({ isActive }) => (isActive ? "active" : "inactive")}
+            className='active'
           >
             <BsHouseHeartFill /> Shelter
           </Link>
