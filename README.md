@@ -1,6 +1,7 @@
 # OZ-CSC-480-HCI-521-Spring-2024
 To pull submodules (backend/frontend), run:
 ```git submodule init```
+
 ```git submodule update --recurse```
 
 To deploy, run:
