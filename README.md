@@ -1,6 +1,14 @@
 # OZ-CSC-480-HCI-521-Spring-2024
+To pull submodules (backend/frontend), run:
+```git submodule init```
+```git submodule update --recurse```
+
 To deploy, run:
 ```docker compose up --build --force-recreate```
+
+## Additional Tips
+It is possible to run just the backend by running the above docker command from the 'Backend' directory.
+This allows developing the frontend using npm start, which tracks changed as they are made for easier and faster development.
 
 NOTE: if deploying to production, remember to set .env file in "Backend" folder (additional instructions in nested README.md)
 
