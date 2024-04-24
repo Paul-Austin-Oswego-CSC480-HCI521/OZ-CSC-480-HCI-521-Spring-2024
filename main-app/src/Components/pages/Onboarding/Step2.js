@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 
-const Step2 = ({ nextStep, prevStep, formData, setForm }) => {
+const Step2 = ({ nextStep, prevStep, formData, setForm, step, getProgressBarWidth  }) => {
   const { streetAddress, city, state, zipcode, phoneNumber } = formData;
   const [phoneError, setPhoneError] = useState(false);
 
@@ -26,7 +26,12 @@ const Step2 = ({ nextStep, prevStep, formData, setForm }) => {
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit} className="signup-form">
+      <div className="progress-bar">
+        <div className="progress" style={{ width: getProgressBarWidth() }}></div>
+      </div>
+
       <label htmlFor="streetAddress"></label>
       <input
         type="text"
@@ -94,6 +99,7 @@ const Step2 = ({ nextStep, prevStep, formData, setForm }) => {
         <button type="submit">Next</button>
       </div>
     </form>
+    </>
   );
 };
 

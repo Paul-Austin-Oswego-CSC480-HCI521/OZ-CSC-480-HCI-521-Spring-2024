@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const Step3 = ({ nextStep, prevStep, formData, setForm }) => {
+const Step3 = ({ nextStep, prevStep, formData, setForm,step, getProgressBarWidth }) => {
   const { description } = formData;
   const textareaRef = useRef(null);
 
@@ -21,7 +21,11 @@ const Step3 = ({ nextStep, prevStep, formData, setForm }) => {
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit} className="signup-form">
+      <div className="progress-bar">
+        <div className="progress" style={{ width: getProgressBarWidth() }}></div>
+      </div>
       <label htmlFor="description">Write a short description about your shelter:</label>
       <textarea
         ref={textareaRef}
@@ -38,6 +42,7 @@ const Step3 = ({ nextStep, prevStep, formData, setForm }) => {
         <button type="submit">Next</button>
       </div>
     </form>
+    </>
   );
 };
 

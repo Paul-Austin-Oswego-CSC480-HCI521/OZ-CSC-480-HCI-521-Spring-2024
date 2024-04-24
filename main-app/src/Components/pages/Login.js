@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from '../../Assets/purple_paw_Logo.svg';
 import "./Login.css"
 
@@ -115,8 +115,8 @@ function Login() {
         <h1> Find your furr-ever friend <br /> today! </h1>
 
         <div className="login-action-links">
-          <Link to="/login" className="login-links">Login</Link>
-          <Link to="/signup" className="login-links">Sign Up</Link>
+          <NavLink to="/login" className="login-links" activeClassName="active">Login</NavLink>
+          <NavLink to="/signup" className="login-links" activeClassName="active">Sign Up</NavLink>
         </div>
 
         <div class="invalid-error">

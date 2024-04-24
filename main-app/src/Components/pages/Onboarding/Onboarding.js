@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -47,6 +47,8 @@ const Onboarding = () => {
             formData={formData}
             setForm={setForm}
             setErrors={setErrors}
+            step={step}
+            getProgressBarWidth={getProgressBarWidth}
           />
         );
       case 2:
@@ -56,6 +58,8 @@ const Onboarding = () => {
             prevStep={prevStep}
             formData={formData}
             setForm={setForm}
+            step={step}
+            getProgressBarWidth={getProgressBarWidth}
           />
         );
       case 3:
@@ -65,10 +69,12 @@ const Onboarding = () => {
             prevStep={prevStep}
             formData={formData}
             setForm={setForm}
+            step={step}
+            getProgressBarWidth={getProgressBarWidth}
           />
         );
       case 4:
-        return <Step4 prevStep={prevStep} formData={formData} />;
+        return <Step4 prevStep={prevStep} formData={formData} step={step} getProgressBarWidth={getProgressBarWidth}  />;
       default:
         return null;
     }
@@ -93,14 +99,10 @@ const Onboarding = () => {
       <div className="onboarding-hero-image"></div>
       <div className="signup-container">
         <h2>Find your furr-ever friend <br/> today!</h2>
-        <div className="progress-bar">
-          <div className="progress" 
-          style={{ width: getProgressBarWidth() }}></div>
           <div className="signup-action-links">
-          <Link to="/login" className="signup-links">Login</Link>
-          <Link to="/signup" className="signup-links">Sign Up</Link>
-        </div>
-        </div>
+            <NavLink to="/login" className="signup-links">Login</NavLink>
+            <NavLink to="/signup" className="signup-links">Sign Up</NavLink>
+          </div>
         {renderStep()}
       </div>
     </div>

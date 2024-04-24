@@ -63,7 +63,7 @@
     margin-right: 10px; /* Removes margin to align with the edge if needed */
     margin-top: 10px;
     font-size: 15px;
-    color:#000;
+    color:#bcb9b9;
     text-decoration: none;
     position: relative;
     display: inline-block;
@@ -74,10 +74,25 @@
     color: rgb(158, 90, 221);
 }
 
-.login-links a.active{
-    color: white;
-    background-color: orange;
-  }
+.login-links::after{
+    content: ''; /* Necessary for the pseudo-element to display */
+    display: block; /* Treat the pseudo-element like a block for positioning */
+    width: 0; /* Start with a width of 0 and expand on hover */
+    height: 2px; /* The height of your 'underline' */
+    background: #FFA903; /* The color of your 'underline' */
+    transition: width .3s; /* Smooth transition for the underline */
+    position: absolute; /* Position absolutely within the relative parent */
+    bottom: -3px; /* Position at the bottom of the link */
+    left: 0;
+}
+
+.login-links:hover::after, .login-links.active::after {
+    width: 100%; /* Expand the pseudo-element to the full width on hover */
+}
+
+.login-links.active{
+    color: black;
+}
 
 .login-container body{
     font-family: 'Arial', sans-serif;

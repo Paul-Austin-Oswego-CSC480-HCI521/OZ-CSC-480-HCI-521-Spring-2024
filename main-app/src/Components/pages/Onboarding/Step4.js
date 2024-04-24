@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-const Step4 = ({ prevStep, formData }) => {
+const Step4 = ({ prevStep, formData, step, getProgressBarWidth }) => {
   const navigate = useNavigate();
 
   const { name, streetAddress, city, state, zipcode, emailAddress, phoneNumber, description, password } = formData;
@@ -86,7 +86,11 @@ const Step4 = ({ prevStep, formData }) => {
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit} className="signup-form">
+      <div className="progress-bar">
+        <div className="progress" style={{ width: getProgressBarWidth() }}></div>
+      </div>
       <h2>Review Your Information</h2>
       <p><strong>Shelter Name:</strong> {name}</p>
       <p><strong>Contact Email:</strong> {emailAddress}</p>
@@ -107,6 +111,7 @@ const Step4 = ({ prevStep, formData }) => {
         </button>
       </div>
     </form>
+    </>
   );
 };
 

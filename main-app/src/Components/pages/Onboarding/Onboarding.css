@@ -31,18 +31,18 @@
 }
 
 .signup-action-links {
-  align-self: flex-start; /* Aligns to the left side, assuming flex-direction is column */
+  align-self: flex-start; 
   padding-left: 105px; 
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   display: flex;
 }
 
 .signup-links {
-  text-align: left; /* Ensures text within the paragraph tags is left-aligned */
-  margin-right: 10px; /* Removes margin to align with the edge if needed */
+  text-align: left; 
+  margin-right: 10px; 
   margin-top: 10px;
   font-size: 15px;
-  color:#000;
+  color:#bcb9b9;
   text-decoration: none;
   position: relative;
   display: inline-block;
@@ -53,11 +53,33 @@
   color: rgb(158, 90, 221);
 }
 
+.signup-links::after{
+  content: ''; /* Necessary for the pseudo-element to display */
+  display: block; 
+  width: 0; 
+  height: 2px; 
+  background: #FFA903;
+  transition: width .3s; 
+  position: absolute; 
+  bottom: -3px; 
+  left: 0;
+}
+
+.signup-links:hover::after, .signup-links.active::after  {
+  width: 100%; /* Expand the pseudo-element to the full width on hover */
+}
+
+.signup-links.active{
+  color: black;
+}
+
 .progress-bar {
   width: 100%;
   background-color: #ddd;
   border-radius: 4px;
-  margin: 5%;
+  margin: 15px;
+  margin-left: 1px;
+  margin-right: 5px;
   height: 5px
 }
 
@@ -197,6 +219,7 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
 
   
   
