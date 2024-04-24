@@ -1,7 +1,7 @@
 import Select from "react-select";
 import React, { useEffect, useState } from "react";
 import FilterBackground from "../../Assets/Doggusearch1.png";
-import { items } from "./items";
+//import { items } from "./items";
 import "./MultiFilters.css";
 import { Link } from "react-router-dom";
 import { useCategory } from "../CategoryContext";
@@ -19,17 +19,74 @@ export default function MultiFilters() {
   const [selectedAge, setSelectedAge] = useState(null);
 
   // Filtered items states
-  const [filteredItems, setFilteredItems] = useState(items);
+  const [filteredItems, setFilteredItems] = useState(null);
+
+  const fetchData = async () => {
+    const params = new URLSearchParams();
+    //params.set("current_shelter_id", currentShelterId);
+    params.set("page_size", 50);
+    if(selectedFilters.length !== 0){
+      console.log("selectedFilters", selectedFilters);
+      console.log(selectedBreed);
+      console.log(selectedColor);
+      console.log(selectedAge);
+      if(selectedFilters[0] === "Small Critter"){
+        params.set("type", "Fish");
+      }
+      else{
+        params.set("type", selectedFilters[0]); 
+      }
+    }
+    if(selectedAge !== null && selectedAge[0] !== undefined){
+      //This is a mapped value? Has a label of 3 and a value of 3. Not sure how I would fix this and/or index it to send a GET request
+      console.log(selectedAge[0].value);
+      params.set("max_age", selectedAge[0].value);
+    }
+    if(selectedSex !== null && selectedSex[0] !== undefined){
+      console.log(selectedSex[0].value);
+      params.set("sex", selectedSex[0].value);
+    }
+    if(selectedColor !== null&& selectedColor[0] !== undefined){
+      console.log(selectedColor[0].value);
+      params.set("color", selectedColor[0].value);
+    }
+    if(selectedBreed !== null && selectedBreed[0] !== undefined){
+      console.log(selectedBreed[0].value);
+      params.set("breed", selectedBreed[0].value);
+    }
+    console.log(params);
+    const petsData = await fetch("http://localhost:9080/database-controller/api/pet?" + params, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (petsData.ok) {
+      var petData = []
+      const pets = await petsData.json();
+      console.log(pets);
+
+      //console.log("pet data")
+      //console.log(pets);
+      for (var pet of pets) {
+        //console.log(pet);
+        pet.image = pet.images;
+        petData.push(pet);
+      }
+      console.log(petData);
+      // setData((prevState => ({ ...prevState, pets: petData })));
+      setFilteredItems(pets);
+      // console.log("data");
+      // console.log(data);
+      //console.log("filteredItems");
+      //console.log(filteredItems);
+    }
+  }
 
   useEffect(() => {
-    if (selectedCategory) {
-      setSelectedFilters((prevFilters) => {
-        return prevFilters.includes(selectedCategory)
-          ? prevFilters
-          : [...prevFilters, selectedCategory];
-      });
-    }
-  }, [selectedCategory]);
+    fetchData();
+  }, [selectedFilters, selectedAge, selectedBreed, selectedColor, selectedSex]);
   // Handles changing Category buttons
 
   // Category options
@@ -38,14 +95,18 @@ export default function MultiFilters() {
   // Dropdown options
   const uniqueItems = (key) => {
     if (selectedFilters.length === 0) {
-      const uniqueSet = new Set(items.flatMap((item) => item[key]).flat());
-      return [...uniqueSet].map((value) => ({ value, label: value }));
+      if (filteredItems == null) {
+        return null;
+      } else {
+        const uniqueSet = new Set(filteredItems.flatMap((item) => item[key]).flat());
+        return [...uniqueSet].map((value) => ({ value, label: value }));
+      }
     } else {
-      let filteredItems = items.filter((item) =>
+      const filteredItemsByCategory = filteredItems.filter((item) =>
         selectedFilters.includes(item.category)
       );
       const uniqueSet = new Set(
-        filteredItems.flatMap((item) => item[key]).flat()
+        filteredItemsByCategory.flatMap((item) => item[key]).flat()
       );
       return [...uniqueSet].map((value) => ({ value, label: value }));
     }
@@ -58,84 +119,42 @@ export default function MultiFilters() {
       return prevFilters.includes(category)
         ? prevFilters.filter((f) => f !== category)
         : [...prevFilters, category];
-    });
+    }); 
+    console.log(category);
+    //DO A FETCH HERE 
+    //fetchData();
   };
 
   // Handle dropdown options changing
   const handleChangeSex = (selectedOption) => {
     setSelectedSex(selectedOption);
+    console.log(selectedFilters);
+    console.log(selectedOption);
+    //fetchData();
   };
 
   const handleChangeColor = (selectedOption) => {
     setSelectedColor(selectedOption);
+    console.log(selectedFilters);
+    console.log(selectedOption);
+    //fetchData();
   };
 
   const handleChangeBreed = (selectedOption) => {
     setSelectedBreed(selectedOption);
+    console.log(selectedFilters);
+    console.log(selectedOption);
+    //fetchData();
   };
 
   const handleChangeAge = (selectedOption) => {
     setSelectedAge(selectedOption);
+    console.log(selectedFilters);
+    console.log(selectedOption);
+    //fetchData();
   };
 
-  // Filter items based on categories and dropdowns
-  const filterItems = () => {
-    if (selectedFilters.length > 0) {
-      let tempItems = selectedFilters.map((selectedCategory) => {
-        let temp = items.filter((item) => item.category === selectedCategory);
-        if (selectedSex && selectedSex.length > 0) {
-          temp = temp.filter((item) =>
-            selectedSex.some((sex) => item.sex.includes(sex.value))
-          );
-        }
-        if (selectedColor && selectedColor.length > 0) {
-          temp = temp.filter((item) =>
-            selectedColor.some((color) => item.color.includes(color.value))
-          );
-        }
-        if (selectedBreed && selectedBreed.length > 0) {
-          temp = temp.filter((item) =>
-            selectedBreed.some((breed) => item.breed.includes(breed.value))
-          );
-        }
-        if (selectedAge && selectedAge.length > 0) {
-          temp = temp.filter((item) =>
-            selectedAge.some((age) => item.age.includes(age.value))
-          );
-        }
-        return temp;
-      });
-      setFilteredItems(tempItems.flat());
-    } else {
-      let tempItems = [...items];
-      if (selectedSex && selectedSex.length > 0) {
-        tempItems = tempItems.filter((item) =>
-          selectedSex.some((sex) => item.sex.includes(sex.value))
-        );
-      }
-      if (selectedColor && selectedColor.length > 0) {
-        tempItems = tempItems.filter((item) =>
-          selectedColor.some((color) => item.color.includes(color.value))
-        );
-      }
-      if (selectedBreed && selectedBreed.length > 0) {
-        tempItems = tempItems.filter((item) =>
-          selectedBreed.some((breed) => item.breed.includes(breed.value))
-        );
-      }
-      if (selectedAge && selectedAge.length > 0) {
-        tempItems = tempItems.filter((item) =>
-          selectedAge.some((age) => item.age.includes(age.value))
-        );
-      }
-      setFilteredItems(tempItems);
-    }
-  };
 
-  useEffect(() => {
-    filterItems();
-    // eslint-disable-next-line
-  }, [selectedFilters, selectedSex, selectedColor, selectedBreed, selectedAge]);
   <style>{(document.body.style.backgroundColor = "#E3EAE7")}</style>;
 
   return (
@@ -147,9 +166,8 @@ export default function MultiFilters() {
           {filters.map((category, idx) => (
             <button
               onClick={() => handleFilterButtonClick(category)}
-              className={`button-top ${
-                selectedFilters?.includes(category) ? "active" : ""
-              }`}
+              className={`button-top ${selectedFilters?.includes(category) ? "active" : ""
+                }`}
               key={`filters-${idx}`}
             >
               {category}
@@ -232,13 +250,13 @@ export default function MultiFilters() {
         </div>
 
         <div className="cards-container">
-          {filteredItems.map((item, idx) => (
+          {filteredItems != null ? filteredItems.map((item, idx) => (
             <Link
               to={`/PetDetails/${item.id}`}
               style={{ textDecoration: "none" }}
             >
               <div key={`items-${idx}`} className="card">
-                <img className="image" src={item.image} alt="Null" />
+                <img className="image" src={item.image[0]} alt="Null" />
                 <p className="name">{item.name}</p>
                 <p className="breed">{item.breed}</p>
                 {/* <p className="category">{item.category}</p> */}
@@ -247,7 +265,7 @@ export default function MultiFilters() {
                 <p className="age">{item.age}</p>
               </div>
             </Link>
-          ))}
+          )) : "No pets found :("}
         </div>
       </div>
     </div>
