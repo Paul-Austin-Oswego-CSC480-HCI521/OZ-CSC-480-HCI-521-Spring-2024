@@ -428,6 +428,7 @@ body {
   width: 16.5rem; /* Adjust the width as needed */
   height: 23rem; /* Adjust the height as needed */
   align-items: center !important;
+  justify-content: space-between;
   margin-right: 3px; /* Adjust the spacing between items */
   margin-top: 40px;
   margin-left: 3px; /* Move it to the right */
@@ -453,7 +454,7 @@ body {
   height: 100%; /* Ensure images fill 100% of the container's height */
   object-fit: cover; /* Cover the entire container with the image */
   display: block; /* Remove any default spacing or alignment */
-  border-radius: 1rem;
+  border-radius: 0rem;
 }
 /* Keep your existing styles */
 .work-section-info h2 {

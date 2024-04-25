@@ -1,5 +1,6 @@
 import React from "react";
 import { FiArrowLeft } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import ShelterLogo from "../images/Shelterlogo.svg";
 import "./PetDetails.css";
 import { Link } from "react-router-dom";
@@ -49,13 +50,22 @@ export const PetDetails = () => {
         <div className="distance">10.5 miles away</div>
       </div>
 
+      <div className="bubble-container">
+      <div className="pet-category1">
+            {pet.category}
+          </div>
       <div className="introduction">Hello, My name is {pet.name}!</div>
 
-      <div className="pet-details1">
-        {pet.sex}, {pet.age}
+        
+
+          <div className="pet-details1">
+            {pet.sex}, {pet.age}
+            </div>
       </div>
 
-      <div className="pet-type">{pet.category}</div>
+      
+
+     
 
       <div className="pet-details-container">
         <div className="heading-two">My Story</div>
@@ -67,26 +77,26 @@ export const PetDetails = () => {
         <div className="heading-three">Fun Facts About Me</div>
 
         <div className="details-container">
-          <div className="name-title">Name: {pet.name}</div>
+          <div className="name-title">Name: <b>{pet.name}</b></div>
 
-          <div className="age-title">Age: {pet.age}</div>
+          <div className="age-title">Age: <b>{pet.age}</b></div>
 
-          <div className="color-title">Color: {pet.color}</div>
+          <div className="color-title">Color: <b>{pet.color}</b></div>
 
-          <div className="type-title">Type: {pet.category}</div>
+          <div className="type-title">Type: <b>{pet.category}</b></div>
         </div>
 
         <div className="details-container2">
-          <div className="sex-title">Sex: {pet.sex}</div>
+          <div className="sex-title">Sex: <b>{pet.sex}</b></div>
 
-          <div className="breed-title">Breed: {pet.breed}</div>
+          <div className="breed-title">Breed: <b>{pet.breed}</b></div>
 
-          <div className="health-title">Health: Vaccinated</div>
+          <div className="health-title">Health: <b>Vaccinated</b></div>
         </div>
       </div>
       <Link to="/userboard">
         <div className="div">
-          <div className="div-2">
+          
             <div className="column-2">
               <div className="div-5">
                 <div className="div-6">
@@ -117,52 +127,23 @@ export const PetDetails = () => {
                     235 Adopt Me Ln, Somerset, KY 42501
                   </div>
                 </div>
-                <div className="div-18">
-                  <div className="div-19">Hours:</div>
-                  <div className="div-20">
-                    Mon
-                    <br />
-                    Tues
-                    <br />
-                    Wed
-                    <br />
-                    Thurs
-                    <br />
-                    Fri
-                    <br />
-                    Sat
-                    <br />
-                    Sun
-                  </div>
-                  <div className="div-21">
-                    12–6 PM
-                    <br />
-                    12–6 PM
-                    <br />
-                    12-6 PM
-                    <br />
-                    12–6 PM
-                    <br />
-                    12–6 PM
-                    <br />
-                    Closed
-                    <br />
-                    Closed
-                  </div>
-                </div>
+                
               </div>
             </div>
-          </div>
+          
         </div>
       </Link>
 
       <div>
         <Link to="/ExplorePets">
           <button className="back-arrow">
-            <FiArrowLeft />{" "}
+            <FiArrowLeft />{" "} 
+               Back
           </button>
         </Link>
       </div>
+
+      
 
       {/* <div className="accordian-container">
             <div className="dropdown1">
@@ -232,6 +213,13 @@ export const PetDetails = () => {
 
       <div className="pet-about-meet-teamss">
         <h1>Furr-Ever friends near you</h1>
+        <div>
+        <Link to="/ExplorePets">
+          <button className="see-more-arrow">
+            See more<FiArrowRight />{" "}
+          </button>
+        </Link>
+      </div>
         <div className="pet-about-team-sections">
           <Slider>
             {[0, 3, 6].map((startIndex, groupIndex) => (
