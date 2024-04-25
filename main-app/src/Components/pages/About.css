@@ -29,6 +29,7 @@
     flex: 1; 
     padding-right: 5px; /* Add padding between text and the second image */
     font-size:larger;
+    line-height: 1.5em;
   }
   
   .about-info-list {
@@ -46,6 +47,7 @@
   .about-mission-statement{
     margin-bottom: 60px;
     font-size:larger;
+    line-height: 1.5em;
   }
   
   /* Carousel */

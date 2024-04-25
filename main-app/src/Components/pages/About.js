@@ -1,20 +1,11 @@
-import React, {useEffect} from "react";
+import React from "react";
 import "./About.css";
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-export const About = () => {
-        useEffect(() => {
-            // Change the cursor for the entire document
-            document.body.style.cursor = `url('${process.env.PUBLIC_URL}/images/mouse_image.png'), auto`;
-
-            // Revert to the default cursor when the component unmounts
-            return () => {
-                document.body.style.cursor = 'default';
-            };
-        }, []);
+export const About = () => {   
 
 
     const teams = [
@@ -231,14 +222,6 @@ export const About = () => {
 
     return (
         <div className="about-container" >
-        {/* Main image on the page */}
-            <div className="header" >
-                <img 
-                    src={`${process.env.PUBLIC_URL}/images/main_banner.jpg`} 
-                    alt="Main Banner" 
-                    className="about-head-image"  
-                />
-            </div>
             
             {/*Our story and secondary image section on page*/}
             <div className="about-content-container">
