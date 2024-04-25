@@ -33,69 +33,68 @@
 }
 
 .displayImages img {
-    max-width: 600px;
+    max-width: 650px;
     border-radius: 1rem;
     
 }
 
 .bubble-container {
- 
-  position: relative;
-  float: right;
-  max-width: 50%;
-  top: -500px;
-}
-
-.bubble-container img {
-  max-width: 700px;
-  /* position: absolute; */
-  height: auto;
-  right: 30px;
-  top: -220px;
-
-}
-
-.bubble-text-container {
-
+  border-radius: 16px;
+  border-color: rgba(81, 77, 69, 1);
+  border-style: solid;
+  border-width: 1px;
+  background-color: var(--White, #fff);
   display: flex;
+  flex-direction: column;
+  line-height: 120%;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 20px;
+  padding-right: 50px;
   position: absolute;
-  right: 30px;
-  top: -20px;
-  
+  top: 250px;
+  left: 770px;
   
 }
-
-
+@media (max-width: 991px) {
+  .bubble-container {
+    padding: 0 20px;
+  }
+}
+.pet-category1 {
+  color: var(--Purple-Purple, #803cc7);
+  font: 600 16px Manrope, sans-serif;
+}
+@media (max-width: 991px) {
+  .pet-category1 {
+    max-width: 100%;
+  }
+}
 .introduction {
-  font-family: Grandstander, sans-serif;
-  font-size: clamp(1rem, 3vw, 4rem);
-  color: black;
-  position: absolute;
-  max-width: 600px;
-  top: 340px;
-  left: 770px;
-  font-weight: 600;
+  color: #000;
+  margin-top: 12px;
+  font: 700 40px Grandstander, -apple-system, Roboto, Helvetica,
+    sans-serif;
 }
-
+@media (max-width: 991px) {
+  .introduction {
+    max-width: 100%;
+  }
+}
 .pet-details1 {
-  font-size: clamp(1rem, 1vw, 1rem);
-  font-family: Grandstander, sans-serif;
-  color: black;
-  position: absolute;
-  max-width: 600px;
-  top: 400px;
-  left: 770px;
+  color: var(--Black, #181207);
+  margin-top: 4px;
+  font-size: large;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  font-weight: 500;
+}
+@media (max-width: 991px) {
+  .pet-details1 {
+    max-width: 100%;
+  }
 }
 
-.pet-type {
-  font-size: clamp(1rem, 1vw, 1rem);
-  font-family: Grandstander, sans-serif;
-  color: black;
-  position: absolute;
-  max-width: 600px;
-  top: 310px;
-  left: 772px;
-} 
 
 .pet-details-container {
   /* border: black 5px solid; */
@@ -163,16 +162,12 @@ top: 870px;
 
 
 .back-arrow {
-    padding: .5rem 1rem;
-  background-color: #fe9e0d;
-  outline: none;
-  border: none;
-  border-radius: 5rem;
   font-size: 1.1rem;
   cursor: pointer;
   font-weight: 600;
-  color: white;
-  transition: 0.2s;
+  color: rgb(0, 0, 0);
+  border: none;
+  background-color: #0000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,9 +175,23 @@ top: 870px;
   top: 200px;
   left:80px;
 }
-.back-arrow:hover {
-    background-color: #e48f0f;
-  }
+
+
+  .see-more-arrow {
+    
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  border: none;
+  background-color: #0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1349px;
+  left:1250px;
+}
 
 .accordian-container {
     display: flex;
@@ -348,6 +357,7 @@ color: black;
 /* line-height: 5rem; */
 max-width: 600px;
 padding-bottom: 5px;
+
 font-weight: 400;
 }
 
@@ -378,10 +388,10 @@ font-weight: 400;
   max-width: 532px;
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 110px;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+  padding-right: 250px;
+  align-items: left;
+  align-content: left;
+  justify-content:left;
   position: absolute;
   top: 925px;
   left: 770px;
@@ -391,10 +401,7 @@ font-weight: 400;
     padding-right: 20px;
   }
 }
-.div-2 {
-  gap: 0px;
-  display: flex;
-}
+
 
 /* .column {
   display: flex;
@@ -462,7 +469,8 @@ font-weight: 400;
   flex-direction: column;
   align-self: stretch;
   font-size: 16px;
-  margin: auto 0;
+  margin: 10px;
+  width: 200%;
 }
 @media (max-width: 991px) {
   .div-5 {
@@ -561,40 +569,17 @@ font-weight: 400;
   line-height: 19px;
   flex: 1;
 }
-.div-18 {
-  display: flex;
-  margin-top: 8px;
-  gap: 8px;
-  font-weight: 600;
-  line-height: 19px;
-}
-.div-19 {
-  color: #000;
-  font-family: Quicksand, sans-serif;
-  font-weight: 400;
-  line-height: 160%;
-  align-self: start;
-}
-.div-20 {
-  color: var(--Black, #181207);
-  font-family: Quicksand, sans-serif;
-  flex: 1;
-}
-.div-21 {
-  color: var(--Red, #dd0426);
-  font-family: Quicksand, sans-serif;
-  flex: 1;
-}
+
 
 .pet-about-meet-teamss {
   max-width: 1500px;
-  margin: 600px 0px auto; /* Center the carousel */
+  margin: 500px 0px auto; /* Center the carousel */
   padding: 40px;
 }
 
 .pet-about-meet-teamss h1 {
   text-align: left;
-  margin-top: 40px;
+  
   font-size: 24px;
   font-family: 'Grandstander', cursive; /* Changed font to Grandstander */
 }
