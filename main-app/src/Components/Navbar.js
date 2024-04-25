@@ -9,6 +9,17 @@ import { getCookie } from "../Utils/CookieUtils";
 
 const Navbar = () => {
   const { setSelectedCategory } = useCategory();
+  const [zipCode, setZipCode] = useState("13126"); // Define zipCode state
+
+  const handleZipCodeChange = (e) => {
+    setZipCode(e.target.value);
+  };
+
+  const handleSubmitZipCode = (e) => {
+    e.preventDefault();
+
+    console.log("Hello World");
+  };
 
   const handleLinkClick = (path) => {
     // Check if the current page is the home page and the path includes an in-page link
@@ -78,18 +89,12 @@ const Navbar = () => {
     <>
       <div className="top-nav-container">
         <div className="top-nav">
-          <Link
-            to="/"
-            className='active'
-          >
+          <Link to="/" className="active">
             <IoPawSharp /> Adopt
           </Link>
           {/* BELOW CHECKS IF SHELTER COOKIE IS SET, SENDING USER TO DASHBOARD IF LOGGED IN AND GENERIC SHELTER PAGE OTHERWISE */}
           {getCookie("shelterID") === "" ? (
-            <Link
-              to="/shelter"
-              
-            >
+            <Link to="/shelter">
               <BsHouseHeartFill /> Shelter
             </Link>
           ) : (
@@ -162,7 +167,17 @@ const Navbar = () => {
               Contact Us
             </Link>
           </li>
-          {/* <li></li> */}
+          <li id="nav-zipcode-container">
+            <form onSubmit={handleSubmitZipCode} className="">
+              <input
+                type="text"
+                placeholder="Zip Code"
+                value={zipCode}
+                onChange={handleZipCodeChange}
+                className="zip-input"
+              />
+            </form>
+          </li>
         </ul>
       </nav>
     </>
