@@ -26,7 +26,11 @@ export const PetDetails = () => {
   }, [id]);
 
   if (loading || !pet) {
-    return <div>Loading or pet not found...</div>;
+    return;
+    <div>
+      <Navbar />
+      Loading or pet not found...
+    </div>;
   }
   <style>{(document.body.style.backgroundColor = "rgb(227, 234, 231)")}</style>;
   return (
@@ -51,21 +55,13 @@ export const PetDetails = () => {
       </div>
 
       <div className="bubble-container">
-      <div className="pet-category1">
-            {pet.category}
-          </div>
-      <div className="introduction">Hello, My name is {pet.name}!</div>
+        <div className="pet-category1">{pet.category}</div>
+        <div className="introduction">Hello, My name is {pet.name}!</div>
 
-        
-
-          <div className="pet-details1">
-            {pet.sex}, {pet.age}
-            </div>
+        <div className="pet-details1">
+          {pet.sex}, {pet.age}
+        </div>
       </div>
-
-      
-
-     
 
       <div className="pet-details-container">
         <div className="heading-two">My Story</div>
@@ -77,73 +73,81 @@ export const PetDetails = () => {
         <div className="heading-three">Fun Facts About Me</div>
 
         <div className="details-container">
-          <div className="name-title">Name: <b>{pet.name}</b></div>
+          <div className="name-title">
+            Name: <b>{pet.name}</b>
+          </div>
 
-          <div className="age-title">Age: <b>{pet.age}</b></div>
+          <div className="age-title">
+            Age: <b>{pet.age}</b>
+          </div>
 
-          <div className="color-title">Color: <b>{pet.color}</b></div>
+          <div className="color-title">
+            Color: <b>{pet.color}</b>
+          </div>
 
-          <div className="type-title">Type: <b>{pet.category}</b></div>
+          <div className="type-title">
+            Type: <b>{pet.category}</b>
+          </div>
         </div>
 
         <div className="details-container2">
-          <div className="sex-title">Sex: <b>{pet.sex}</b></div>
+          <div className="sex-title">
+            Sex: <b>{pet.sex}</b>
+          </div>
 
-          <div className="breed-title">Breed: <b>{pet.breed}</b></div>
+          <div className="breed-title">
+            Breed: <b>{pet.breed}</b>
+          </div>
 
-          <div className="health-title">Health: <b>Vaccinated</b></div>
+          <div className="health-title">
+            Health: <b>Vaccinated</b>
+          </div>
         </div>
       </div>
       <Link to="/userboard">
         <div className="div">
-          
-            <div className="column-2">
-              <div className="div-5">
-                <div className="div-6">
-                  <img
-                    loading="lazy"
-                    srcSet={ShelterLogo}
-                    className="img-2"
-                    alt=""
-                  />
-                  <div className="div-7">
-                    <div className="div-8">Pulaski County Shelter</div>
-                    <i>
-                      <IoIosCheckmarkCircle />
-                    </i>
-                  </div>
+          <div className="column-2">
+            <div className="div-5">
+              <div className="div-6">
+                <img
+                  loading="lazy"
+                  srcSet={ShelterLogo}
+                  className="img-2"
+                  alt=""
+                />
+                <div className="div-7">
+                  <div className="div-8">Pulaski County Shelter</div>
+                  <i>
+                    <IoIosCheckmarkCircle />
+                  </i>
                 </div>
-                <div className="div-9">
-                  <div className="div-10">Email:</div>
-                  <div className="div-11">hello@pcs.com</div>
+              </div>
+              <div className="div-9">
+                <div className="div-10">Email:</div>
+                <div className="div-11">hello@pcs.com</div>
+              </div>
+              <div className="div-12">
+                <div className="div-13">Phone:</div>
+                <div className="div-14">+1 (315) 766 9933</div>
+              </div>
+              <div className="div-15">
+                <div className="div-16">Address:</div>
+                <div className="div-17">
+                  235 Adopt Me Ln, Somerset, KY 42501
                 </div>
-                <div className="div-12">
-                  <div className="div-13">Phone:</div>
-                  <div className="div-14">+1 (315) 766 9933</div>
-                </div>
-                <div className="div-15">
-                  <div className="div-16">Address:</div>
-                  <div className="div-17">
-                    235 Adopt Me Ln, Somerset, KY 42501
-                  </div>
-                </div>
-                
               </div>
             </div>
-          
+          </div>
         </div>
       </Link>
 
       <div>
         <Link to="/ExplorePets">
           <button className="back-arrow">
-            <FiArrowLeft />{" "} 
-               Back
+            <FiArrowLeft /> Back
           </button>
         </Link>
       </div>
-
-      
 
       {/* <div className="accordian-container">
             <div className="dropdown1">
@@ -214,12 +218,13 @@ export const PetDetails = () => {
       <div className="pet-about-meet-teamss">
         <h1>Furr-Ever friends near you</h1>
         <div>
-        <Link to="/ExplorePets">
-          <button className="see-more-arrow">
-            See more<FiArrowRight />{" "}
-          </button>
-        </Link>
-      </div>
+          <Link to="/ExplorePets">
+            <button className="see-more-arrow">
+              See more
+              <FiArrowRight />{" "}
+            </button>
+          </Link>
+        </div>
         <div className="pet-about-team-sections">
           <Slider>
             {[0, 3, 6].map((startIndex, groupIndex) => (
