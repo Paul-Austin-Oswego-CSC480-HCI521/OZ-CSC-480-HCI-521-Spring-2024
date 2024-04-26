@@ -5,18 +5,22 @@ import ShelterLogo from "../images/Shelterlogo.svg";
 import "./PetDetails.css";
 import { Link } from "react-router-dom";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import hex from "../images/hex.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { items } from "./items";
+import { shelterItems } from "./shelterItems";
+import { useNavigate } from "react-router";
 import Navbar from "../Navbar";
 
 export const PetDetails = () => {
   let { id } = useParams();
   const [pet, setPet] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const petId = Number(id);
@@ -25,19 +29,35 @@ export const PetDetails = () => {
     setLoading(false);
   }, [id]);
 
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   if (loading || !pet) {
-    return;
-    <div>
-      <Navbar />
-      Loading or pet not found...
-    </div>;
+    return (
+      <div>
+        <Navbar />
+        Loading or pet not found...
+      </div>
+    );
   }
   <style>{(document.body.style.backgroundColor = "rgb(227, 234, 231)")}</style>;
   return (
     <div className="body">
       <Navbar />
       <div className="displayImages">
-        <img src={pet.image} alt="Jak Jax" className="pet-image"></img>
+        <Slider {...settings}>
+          <div>
+            <img src={pet.image} alt="Jak Jax" className="pet-image"></img>
+          </div>
+          <div>
+            <img src={hex} alt="Jak Jax" className="pet-image"></img>
+          </div>
+        </Slider>
       </div>
 
       <div className="bubble-container">
@@ -55,7 +75,6 @@ export const PetDetails = () => {
       </div>
 
       <div className="bubble-container">
-        <div className="pet-category1">{pet.category}</div>
         <div className="introduction">Hello, My name is {pet.name}!</div>
 
         <div className="pet-details1">
@@ -83,10 +102,6 @@ export const PetDetails = () => {
 
           <div className="color-title">
             Color: <b>{pet.color}</b>
-          </div>
-
-          <div className="type-title">
-            Type: <b>{pet.category}</b>
           </div>
         </div>
 
@@ -142,11 +157,9 @@ export const PetDetails = () => {
       </Link>
 
       <div>
-        <Link to="/ExplorePets">
-          <button className="back-arrow">
-            <FiArrowLeft /> Back
-          </button>
-        </Link>
+        <button className="back-arrow" onClick={() => navigate(-1)}>
+          <FiArrowLeft /> Back
+        </button>
       </div>
 
       {/* <div className="accordian-container">

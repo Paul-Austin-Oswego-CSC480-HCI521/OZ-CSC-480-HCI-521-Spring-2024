@@ -572,7 +572,6 @@ font-weight: 400;
 
 
 .pet-about-meet-teamss {
-  max-width: 1500px;
   margin: 500px 0px auto; /* Center the carousel */
   padding: 40px;
 }
@@ -663,3 +662,8 @@ font-weight: 400;
   display: inline-block; /* Display inline-block to make them appear horizontally */
   vertical-align: top; /* Align them to the top */
 }
+
+.slick-next{
+  right: 25px;
+}
+
