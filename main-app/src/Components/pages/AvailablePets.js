@@ -184,7 +184,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   )
                 }}>
                   Edit Pet Details</button>
-                <button onClick={() => {
+                {/* <button onClick={() => {
                   response = checkJWT();
 
                   response.then(function (responseResult) {
@@ -202,7 +202,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   }
                   )
                 }}>
-                  Mark as Adopted</button>
+                  Mark as Adopted</button> */}
                 <button onClick={() => {
                   response = checkJWT();
 

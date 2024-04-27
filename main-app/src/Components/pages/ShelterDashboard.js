@@ -344,8 +344,8 @@ const ShelterDashboard = () => {
             </button>
             {showDropdown && (
               <div className="dropdown-content">
-                <Link to="/shelter">View Dashboard
-                </Link>
+                {/* <Link to="/shelter">View Dashboard
+                </Link> */}
                 <button className='edit' onClick={() => {
                   response = checkJWT();
 
