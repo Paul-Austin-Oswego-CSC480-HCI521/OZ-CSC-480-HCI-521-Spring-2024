@@ -6,7 +6,7 @@ export async function checkJWT() {
     var jwt = getCookie("JWT");
 
     // Make a call to the backend that includes the Shelter ID and the Shelter's JWT
-    const response = await fetch("http://localhost:9080/database-controller/api/shelter/auth?id=" + shelterID + "&jwt=" + jwt, {
+    const response = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/auth?id=" + shelterID + "&jwt=" + jwt, {
         method: "GET",
     })
         .catch(error => {

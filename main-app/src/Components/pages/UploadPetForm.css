@@ -1,27 +1,34 @@
 .upload-pet-btn {
-  
+
   background-color: #ffa903;
   color: Black;
   border: none;
-  padding: 15px 30px; /* Larger padding for bigger button */
+  padding: 15px 30px;
+  /* Larger padding for bigger button */
   border-radius: 10px;
   cursor: pointer;
   display: block;
-  margin: 0 auto; /* Center the button */
-  font-size: 18px; /* Larger font size */
+  margin: 0 auto;
+  /* Center the button */
+  font-size: 18px;
+  /* Larger font size */
 }
+
 .popup {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Darken background */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Darken background */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Ensure it's on top of everything */
-  overflow: hidden; /* Hide scrollbars */
+  z-index: 9999;
+  /* Ensure it's on top of everything */
+  overflow: hidden;
+  /* Hide scrollbars */
 }
 
 .popup-content {
@@ -31,7 +38,8 @@
   min-width: 30%;
   max-width: 50%;
   max-height: 100%;
-  overflow: auto; /* Enable scrolling if needed */
+  overflow: auto;
+  /* Enable scrolling if needed */
   box-sizing: border-box;
 }
 
@@ -82,8 +90,8 @@
   border-color: #ffcc00;
 }
 
-.dropzone-icon svg{
-  color:#ccc
+.dropzone-icon svg {
+  color: #ccc
 }
 
 .selected-images {
@@ -148,7 +156,7 @@
 .ds-buttons {
   order: 2;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   gap: 10px;
   padding-left: 10px;
   padding-right: 10px;

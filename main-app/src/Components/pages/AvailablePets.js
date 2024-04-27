@@ -41,12 +41,12 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        newImages.push({ url: e.target.result, file });
+        newImages.push(e.target.result);
 
-        if (newImages.length === 1) {
+        if (newImages.length === files.length) {
           setEditingPet((prevPet) => ({
             ...prevPet,
-            displayedImage: e.target.result, // Save the first image as 'displayedImage'
+            images: [...prevPet.images, ...newImages],
           }));
         }
       };
@@ -54,6 +54,17 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
       reader.readAsDataURL(file);
     }
   };
+
+
+  const removeImage = (index) => {
+    const updatedImages = [...editingPet.images];
+    updatedImages.splice(index, 1);
+    setEditingPet((prevPet) => ({
+      ...prevPet,
+      images: updatedImages,
+    }));
+  };
+
 
 
 
@@ -72,7 +83,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
 
   const handleMarkAdopted = (petId) => {
     if (window.confirm('Are you sure you want to mark this pet as adopted?')) {
-      onAdopt(petId);
+      onDelete(petId);
     }
   };
 
@@ -137,15 +148,15 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
 
   if (!pets || pets.length === 0) {
     return (
-        <div className="no-pets-message">
-          <br></br> <br></br>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <img src="/images/Empty State - Shelter 1.png" alt="No pets available" />
-                <h1 style={{ textAlign: 'center' }}>No pets here yet. They are off on a mini- vacation. Check back soon!</h1>
-            </div>
+      <div className="no-pets-message">
+        <br></br> <br></br>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <img src="/images/Empty State - Shelter 1.png" alt="No pets available" />
+          <h1 style={{ textAlign: 'center' }}>No pets here yet. They are off on a mini- vacation. Check back soon!</h1>
         </div>
+      </div>
     );
-}
+  }
 
   return (
     <div className="pet-list">
@@ -162,7 +173,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     if (responseResult.ok) {
                       handleEditClick(pet);
                     }
-          
+
                     // If the JWT is invalid
                     else {
                       // Redirect user back to login page to refresh their JWT
@@ -172,7 +183,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   }
                   )
                 }}>
-                Edit Pet Details</button>
+                  Edit Pet Details</button>
                 <button onClick={() => {
                   response = checkJWT();
 
@@ -181,7 +192,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     if (responseResult.ok) {
                       handleMarkAdopted(pet.id);
                     }
-          
+
                     // If the JWT is invalid
                     else {
                       // Redirect user back to login page to refresh their JWT
@@ -191,7 +202,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   }
                   )
                 }}>
-                Mark as Adopted</button>
+                  Mark as Adopted</button>
                 <button onClick={() => {
                   response = checkJWT();
 
@@ -200,7 +211,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     if (responseResult.ok) {
                       handleMarkAdopted(pet.id);
                     }
-          
+
                     // If the JWT is invalid
                     else {
                       // Redirect user back to login page to refresh their JWT
@@ -249,7 +260,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                         if (responseResult.ok) {
                           handleFormSubmit(event);
                         }
-              
+
                         // If the JWT is invalid
                         else {
                           // Redirect user back to login page to refresh their JWT
@@ -273,6 +284,23 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     onChange={handleImageChange}
                     required
                   />
+                </div>
+
+                {/* RIGHT HERE ALEX DON;T LOSE THIS */}
+
+                <div className="selected-images">
+                  {editingPet.images.map((image, index) => (
+                    <div style={{ objectFit: "contain", maxWidth: "10%", maxHeight: "10%" }} key={index} className="selected-image">
+                      <img key={index} src={image} alt={`Uploaded pet image #${index}`} className="pet-image" />
+                      <button
+                        type="button"
+                        onClick={() => removeImage(index)}
+                        className="remove-image-button"
+                      >
+                        x
+                      </button>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="pet-details">
@@ -351,7 +379,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                         if (responseResult.ok) {
                           handleFormSubmit(event);
                         }
-              
+
                         // If the JWT is invalid
                         else {
                           // Redirect user back to login page to refresh their JWT

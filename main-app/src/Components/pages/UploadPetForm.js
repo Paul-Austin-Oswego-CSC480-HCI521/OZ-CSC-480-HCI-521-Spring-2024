@@ -36,7 +36,7 @@ const UploadPetForm = ({ addNewPet }) => {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        newImages.push({ name: file.name, data: e.target.result });
+        newImages.push(e.target.result);
 
         if (newImages.length === files.length) {
           setPet((prevPet) => ({
@@ -100,8 +100,8 @@ const UploadPetForm = ({ addNewPet }) => {
       size: 'Small',
       age: '',
       description: '',
-      
-      
+
+
     });
     //fileInputRef.current.value = ''; // Clear the file input
     setShowPopup(false); // Close the popup after submission
@@ -185,9 +185,9 @@ const UploadPetForm = ({ addNewPet }) => {
                       response.then(function (responseResult) {
                         // If the JWT is valid
                         if (responseResult.ok) {
-                          handleSubmit(event);
+                          // handleSubmit(event);
                         }
-              
+
                         // If the JWT is invalid
                         else {
                           // Redirect user back to login page to refresh their JWT
@@ -215,8 +215,8 @@ const UploadPetForm = ({ addNewPet }) => {
                 </div>
                 <div className="selected-images">
                   {pet.images.map((image, index) => (
-                    <div key={index} className="selected-image">
-                      <span>{image.name}</span>
+                    <div style={{ objectFit: "contain", maxWidth: "10%", maxHeight: "10%" }} key={index} className="selected-image">
+                      <img key={index} src={image} alt={`Uploaded pet image #${index}`} className="pet-image" />
                       <button
                         type="button"
                         onClick={() => removeImage(index)}
@@ -226,7 +226,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       </button>
                     </div>
                   ))}
-                </div> 
+                </div>
 
                 <div className="pet-details">
                   <h4>Pet Details</h4><br></br>
@@ -264,7 +264,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       <option value="Female">Female</option>
                     </select>
                   </div>
-                  
+
                   {pet.type === 'Dog' || pet.type === 'Cat' ? (
                     <select
                       name="breed"
@@ -327,9 +327,9 @@ const UploadPetForm = ({ addNewPet }) => {
                     response.then(function (responseResult) {
                       // If the JWT is valid
                       if (responseResult.ok) {
-                        handleSubmit(event);
+                        // handleSubmit(event);
                       }
-            
+
                       // If the JWT is invalid
                       else {
                         // Redirect user back to login page to refresh their JWT
@@ -339,7 +339,7 @@ const UploadPetForm = ({ addNewPet }) => {
                     }
                     )
                   }}>
-                  <FaCheck></FaCheck>&nbsp;Upload</button>
+                    <FaCheck></FaCheck>&nbsp;Upload</button>
                 </div>
               </div>
             </div>

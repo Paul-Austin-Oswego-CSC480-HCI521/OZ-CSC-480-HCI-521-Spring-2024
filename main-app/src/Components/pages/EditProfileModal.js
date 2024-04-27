@@ -30,13 +30,13 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
           [locationField]: capitalizedValue,
         },
       }));
-    }  else if (name === 'phoneNumber') {
-    // Handle phone number separately
-    setEditedData((prevData) => ({
-      ...prevData,
-      contact: capitalizedValue,
-    }));
-  }else {
+    } else if (name === 'phoneNumber') {
+      // Handle phone number separately
+      setEditedData((prevData) => ({
+        ...prevData,
+        contact: capitalizedValue,
+      }));
+    } else {
       setEditedData((prevData) => ({
         ...prevData,
         [name]: capitalizedValue,
@@ -104,7 +104,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
                 if (responseResult.ok) {
                   handleSave();
                 }
-      
+
                 // If the JWT is invalid
                 else {
                   // Redirect user back to login page to refresh their JWT
@@ -145,23 +145,23 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
               <button
                 className="remove-image-button"
                 onClick={() => {
-              response = checkJWT();
+                  response = checkJWT();
 
-              response.then(function (responseResult) {
-                // If the JWT is valid
-                if (responseResult.ok) {
-                  setEditedData((prevData) => ({ ...prevData, image: null }));
-                }
-      
-                // If the JWT is invalid
-                else {
-                  // Redirect user back to login page to refresh their JWT
-                  alert("Your session has expired.\n\nPlease log back in to continue.");
-                  navigate("/login");
-                }
-              }
-              )
-            }}>
+                  response.then(function (responseResult) {
+                    // If the JWT is valid
+                    if (responseResult.ok) {
+                      setEditedData((prevData) => ({ ...prevData, image: null }));
+                    }
+
+                    // If the JWT is invalid
+                    else {
+                      // Redirect user back to login page to refresh their JWT
+                      alert("Your session has expired.\n\nPlease log back in to continue.");
+                      navigate("/login");
+                    }
+                  }
+                  )
+                }}>
                 <div className='remove-pp'>Remove Profile Picture</div>
               </button>
             </div>
@@ -259,7 +259,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
               if (responseResult.ok) {
                 handleSave();
               }
-    
+
               // If the JWT is invalid
               else {
                 // Redirect user back to login page to refresh their JWT
