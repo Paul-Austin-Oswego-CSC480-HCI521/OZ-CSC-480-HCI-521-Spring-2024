@@ -12,7 +12,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { items } from "./items";
-import { shelterItems } from "./shelterItems";
 import { useNavigate } from "react-router";
 import Navbar from "../Navbar";
 
@@ -45,122 +44,168 @@ export const PetDetails = () => {
       </div>
     );
   }
+
+
   <style>{(document.body.style.backgroundColor = "rgb(227, 234, 231)")}</style>;
+
+
   return (
     <div className="body">
       <Navbar />
-      <div className="displayImages">
-        <Slider {...settings}>
-          <div>
-            <img src={pet.image} alt="Jak Jax" className="pet-image"></img>
-          </div>
-          <div>
-            <img src={hex} alt="Jak Jax" className="pet-image"></img>
-          </div>
-        </Slider>
-      </div>
 
-      <div className="bubble-container">
-        <div className="bubble-text-container"></div>
-
-        {/* <img src={Bubble} alt=""></img> */}
-      </div>
-
-      <div className="categories-container">
-        <div className="type-of-pet">{pet.category}</div>
-
-        <div className="breed-type">{pet.breed}</div>
-
-        <div className="distance">10.5 miles away</div>
-      </div>
-
-      <div className="bubble-container">
-        <div className="introduction">Hello, My name is {pet.name}!</div>
-
-        <div className="pet-details1">
-          {pet.sex}, {pet.age}
-        </div>
-      </div>
-
-      <div className="pet-details-container">
-        <div className="heading-two">My Story</div>
-
-        <div className="details2">
-          My name is {pet.name} and I am very cute.
-        </div>
-
-        <div className="heading-three">Fun Facts About Me</div>
-
-        <div className="details-container">
-          <div className="name-title">
-            Name: <b>{pet.name}</b>
-          </div>
-
-          <div className="age-title">
-            Age: <b>{pet.age}</b>
-          </div>
-
-          <div className="color-title">
-            Color: <b>{pet.color}</b>
-          </div>
-        </div>
-
-        <div className="details-container2">
-          <div className="sex-title">
-            Sex: <b>{pet.sex}</b>
-          </div>
-
-          <div className="breed-title">
-            Breed: <b>{pet.breed}</b>
-          </div>
-
-          <div className="health-title">
-            Health: <b>Vaccinated</b>
-          </div>
-        </div>
-      </div>
-      <Link to="/userboard">
-        <div className="div">
-          <div className="column-2">
-            <div className="div-5">
-              <div className="div-6">
-                <img
-                  loading="lazy"
-                  srcSet={ShelterLogo}
-                  className="img-2"
-                  alt=""
-                />
-                <div className="div-7">
-                  <div className="div-8">Pulaski County Shelter</div>
-                  <i>
-                    <IoIosCheckmarkCircle />
-                  </i>
+    <div className="page">    
+    <div className="top-page">
+          <div className="left-side">
+            <div><button className="back-arrow" onClick={() => navigate(-1)}>
+              <FiArrowLeft /> Back
+                </button>
+            </div>
+              <div className="images-carousel">
+                <Slider {...settings}>
+                <div>
+                  <img src={pet.image} alt="Jak Jax" className="pet-image"></img>
                 </div>
+                  <div>
+                    <img src={hex} alt="Jak Jax" className="pet-image"></img>
+                  </div>
+                </Slider>
               </div>
-              <div className="div-9">
-                <div className="div-10">Email:</div>
-                <div className="div-11">hello@pcs.com</div>
+          </div>
+
+          <div className="right-side">
+
+            <div className="bubble-container">
+              <div className="text-introduction">Hi, My name is {pet.name}!
               </div>
-              <div className="div-12">
-                <div className="div-13">Phone:</div>
-                <div className="div-14">+1 (315) 766 9933</div>
+                <div className="text-pet-details">{pet.sex}, {pet.age}
+                </div>
+            </div>
+            
+            <div className="categories-container">
+              <div className="text-category-type">{pet.category}
               </div>
-              <div className="div-15">
-                <div className="div-16">Address:</div>
-                <div className="div-17">
-                  235 Adopt Me Ln, Somerset, KY 42501
+                <div className="text-category-breed">{pet.breed}
+                </div>
+                  <div className="text-category-distance">10.5 miles away
+                    </div>
+            </div>
+
+            <div className="pet-details-container">
+              <div className="text-heading">My Story
+              </div>
+                <div className="text-pet-introduction">My name is {pet.name} and I am very cute.
+                </div>
+                  <div className="text-facts">Facts About Me
+                  </div>
+            </div>
+
+            <div className="specifications-container">
+              <div className="specifications1">
+                <div className="name-title">Name: <b>{pet.name}</b>
+                </div>
+                  <div className="age-title">Age: <b>{pet.age}</b>
+                  </div>
+                    <div className="age-title">Color: <b>{pet.color}</b>
+                    </div>
+                      <div className="size-title">Size: <b>{pet.size}</b>
+                        </div>
+              </div>
+
+              <div className="specifications2">
+                <div className="temperament-title">Temperament: <b>{pet.temperament}</b>
+                  </div>
+                    <div className="sex-title">Sex: <b>{pet.sex}</b>
+                      </div>
+                        <div className="breed-title">Breed: <b>{pet.breed}</b>
+                          </div>
+                            <div className="health-title">Health: <b>Vaccinated</b>
+                            </div>
+              </div>
+            </div>
+          
+          <Link to="/userboard">
+            <div className="shelter-box">
+              <div className="left-alignment">
+                <div className="info-container">
+                  <div className="shelter-info">
+                    <img
+                      loading="lazy"
+                      srcSet={ShelterLogo}
+                      className="shelter-logo"
+                      alt=""
+                    />
+                    <div className="text-name-verification">
+                      <div className="text-shelter-name">Pulaski County Shelter
+                        </div>
+                      <i>
+                        <IoIosCheckmarkCircle />
+                      </i>
+                    </div>
+                  </div>
+                  <div className="email-info">
+                    <div className="text-email-title">Email:
+                      </div>
+                        <div className="text-email">hello@pcs.com
+                          </div>
+                  </div>
+                  <div className="phone-info">
+                    <div className="text-phone-title">Phone:
+                      </div>
+                        <div className="text-phone">+1 (315) 766 9933
+                          </div>
+                  </div>
+                  <div className="address-info">
+                    <div className="text-address-title">Address:
+                      </div>
+                        <div className="text-address">235 Adopt Me Ln, Somerset, KY 42501
+                          </div>
+                  </div>
                 </div>
               </div>
             </div>
+          </Link>
           </div>
         </div>
-      </Link>
 
-      <div>
-        <button className="back-arrow" onClick={() => navigate(-1)}>
-          <FiArrowLeft /> Back
-        </button>
-      </div>
+        <div className="bottom-page">
+          <div className="pet-details-carousel">
+            <h1>Furr-Ever friends near you</h1>
+            <div>
+              <Link to="/ExplorePets">
+                <button className="see-more-arrow">
+                  See more
+                  <FiArrowRight />{" "}
+                </button>
+              </Link>
+            </div>
+            <div className="pet-about-team-sections">
+              <Slider>
+                {[0, 3, 6].map((startIndex, groupIndex) => (
+                  <div className="pet-work-section-info-container" key={groupIndex}>
+                    {/* Map over each group of three items */}
+                    {items.slice(startIndex, startIndex + 5).map((item, index) => (
+                      <a key={index} href={`/PetDetails/${item.id}`}>
+                        <div className="work-section-info">
+                          <div className="info-boxes-img-container">
+                            <img
+                              src={item.image}
+                              alt=""
+                              style={{ maxWidth: "80%", height: "70%" }}
+                            />
+                          </div>
+                          <h2>{item.name}</h2>
+                          <p>{item.breed}</p>
+                          <span>{item.age}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </div>
+        </div>
+        </div>
 
       {/* <div className="accordian-container">
             <div className="dropdown1">
@@ -228,42 +273,6 @@ export const PetDetails = () => {
             </div>
         </div> */}
 
-      <div className="pet-about-meet-teamss">
-        <h1>Furr-Ever friends near you</h1>
-        <div>
-          <Link to="/ExplorePets">
-            <button className="see-more-arrow">
-              See more
-              <FiArrowRight />{" "}
-            </button>
-          </Link>
-        </div>
-        <div className="pet-about-team-sections">
-          <Slider>
-            {[0, 3, 6].map((startIndex, groupIndex) => (
-              <div className="pet-work-section-info-container" key={groupIndex}>
-                {/* Map over each group of three items */}
-                {items.slice(startIndex, startIndex + 5).map((item, index) => (
-                  <a key={index} href={`/PetDetails/${item.id}`}>
-                    <div className="work-section-info">
-                      <div className="info-boxes-img-container">
-                        <img
-                          src={item.image}
-                          alt=""
-                          style={{ maxWidth: "80%", height: "70%" }}
-                        />
-                      </div>
-                      <h2>{item.name}</h2>
-                      <p>{item.breed}</p>
-                      <span>{item.age}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </div>
-    </div>
-  );
-};
+        </div>  
+      );
+    };
