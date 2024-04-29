@@ -6,10 +6,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+import com.mongodb.client.MongoCollection;
+
+import oz.rest.models.Shelter;
+
 public class GeoEncodingTest {
 
     public static void main(String[] args) {
         try {
+
             Scanner addScanner = new Scanner(System.in);
             System.out.println("Please enter zipcode 1:");
             String zipCode1 = addScanner.nextLine();
@@ -20,6 +25,9 @@ public class GeoEncodingTest {
             System.out.println(distance(coords1,coords2));
 
 
+            
+
+                
         } catch (IOException e) {
             e.printStackTrace();
         }
