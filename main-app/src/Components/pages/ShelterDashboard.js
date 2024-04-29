@@ -326,7 +326,7 @@ const ShelterDashboard = () => {
             </Link>
           </div>
           <div className="home-container">
-            <Link to="/shelter" className="home-icon">
+            <Link to="/viewdash" className="home-icon">
               <AiOutlineHome />
             </Link>
           </div>
