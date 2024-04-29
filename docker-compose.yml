@@ -1,9 +1,9 @@
 services:
-
   mongo:
     image: mongo
     restart: always
     # once setup, dont expose ports; simply connect inter-service
+    
 
     ports:
       - 27017:27017
