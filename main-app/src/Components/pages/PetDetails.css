@@ -4,18 +4,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Quicksand';
-    font-style: normal;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand';
+  font-style: normal;
+}
 
 body {
   background-image: url('../../Assets/BG pattern.png');
   background-color: rgb(227, 234, 231);
 }
-  
+
 .page {
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@ body {
 
 .left-side {
   display: flex;
-  margin-right: 3%; 
+  margin-right: 3%;
   margin-left: 1%;
   width: 50%;
   flex-direction: column;
@@ -56,13 +56,14 @@ body {
   flex: auto;
 }
 
-.pet-image{
-  width: 1000px;
+.pet-image {
+  /* width: 1000px; */
+  width: 100%;
 }
 
 .right-side {
   display: flex;
-  margin-right: 2%; 
+  margin-right: 2%;
   margin-top: 2.5%;
   width: 100%;
   flex-direction: column;
@@ -100,12 +101,12 @@ body {
 }
 
 .categories-container {
-  display: flex; 
+  display: flex;
   position: relative;
   flex-direction: row;
   align-items: center;
   padding-top: 5%;
-  
+
 }
 
 .text-category-type {
@@ -199,7 +200,7 @@ body {
   width: vw;
   position: relative;
   flex-direction: column;
-  align-content:center;
+  align-content: center;
   justify-content: space-around;
   margin-right: 20%;
 }
@@ -240,7 +241,7 @@ body {
   width: vw;
   position: relative;
   flex-direction: column;
-  align-content:center;
+  align-content: center;
   justify-content: space-around;
   margin-right: 20%;
 }
@@ -286,7 +287,7 @@ body {
   padding-right: 250px;
   align-items: left;
   align-content: left;
-  justify-content:left;
+  justify-content: left;
   position: relative;
   margin-top: 10%;
 }
@@ -388,6 +389,7 @@ body {
   margin-top: 8px;
   gap: 8px;
 }
+
 .text-address-title {
   color: #000;
   font-family: Quicksand, sans-serif;
@@ -395,6 +397,7 @@ body {
   line-height: 160%;
   align-self: start;
 }
+
 .text-address {
   color: var(--Black, #181207);
   font-family: Quicksand, sans-serif;
@@ -404,15 +407,16 @@ body {
 }
 
 .bottom-page {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 3%;
-  position: relative;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* margin-top: 3%; */
+  /* position: relative; */
 }
 
 .pet-details-carousel {
   display: flex;
-  margin: 500px 0px auto; /* Center the carousel */
+  /* margin: 500px 0px auto; */
+  /* Center the carousel */
   padding: 40px;
   position: relative;
 }
@@ -420,16 +424,19 @@ body {
 .pet-details-carousel h1 {
   text-align: left;
   font-size: 24px;
-  font-family: 'Grandstander', cursive; /* Changed font to Grandstander */
+  font-family: 'Grandstander', cursive;
+  /* Changed font to Grandstander */
 }
 
 .pet-about-team-sections {
-  margin-bottom: 50px; /* Add space between each team's carousel */
+  /* margin-bottom: 50px; */
+  /* Add space between each team's carousel */
 }
 
 .pet-about-team-sections h2 {
   text-align: left;
-  margin-bottom: 20px; /* Space between the team name and the carousel */
+  margin-bottom: 20px;
+  /* Space between the team name and the carousel */
   font-size: 24px;
 }
 
@@ -447,67 +454,87 @@ body {
 
 .pet-about-meet-teamss .pet-about-team-members img {
   width: 100%;
-  height: 75%; /* Adjust image height to half of the container's height */
+  height: 75%;
+  /* Adjust image height to half of the container's height */
   object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1; /* Increase the z-index to bring the image in front of the text */
+  z-index: 1;
+  /* Increase the z-index to bring the image in front of the text */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.pet-about-meet-teamss .about-team-members h3{
+
+.pet-about-meet-teamss .about-team-members h3 {
   font-family: "Grandstander", cursive;
 }
-.pet-about-meet-teamss .about-team-members p{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+
+.pet-about-meet-teamss .about-team-members p {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* change this shit!!! */
 }
 
 .pet-about-meet-teamss .pet-about-team-members h3,
 .pet-about-meet-teamss .pet-about-team-members p {
 
-    position: absolute; /* Position text absolutely */
-    z-index: 2; /* Ensure text is in front of the image */
-    width: calc(100% - 40px); /* Subtract padding from container width */
-    left: 20px; /* Move text to the side */
-    text-align: center; /* Center the text horizontally */
+  position: absolute;
+  /* Position text absolutely */
+  z-index: 2;
+  /* Ensure text is in front of the image */
+  width: calc(100% - 40px);
+  /* Subtract padding from container width */
+  left: 20px;
+  /* Move text to the side */
+  text-align: center;
+  /* Center the text horizontally */
 
 }
 
 .pet-about-meet-teamss .pet-about-team-members h3 {
-    font-size: 18px;
-    top: 80%; /* Position text at the center vertically */
-    transform: translateY(-50%); /* Adjust vertically to center text */
+  font-size: 18px;
+  top: 80%;
+  /* Position text at the center vertically */
+  transform: translateY(-50%);
+  /* Adjust vertically to center text */
 }
 
 .pet-about-meet-teamss .pet-about-team-members p {
-    font-size: 14px;
-    color: #000;
-    top: 85%; /* Position text below the h3 with additional space */
+  font-size: 14px;
+  color: #000;
+  top: 85%;
+  /* Position text below the h3 with additional space */
 }
 
 .work-section-info {
-  position: relative; /* Ensure proper positioning of children */
-  width: 16.5rem; /* Adjust the width as needed */
-  height: 23rem; /* Adjust the height as needed */
+  position: relative;
+  /* Ensure proper positioning of children */
+  width: 16.5rem;
+  /* Adjust the width as needed */
+  height: 23rem;
+  /* Adjust the height as needed */
   align-items: center !important;
-  margin-right: 3px; /* Adjust the spacing between items */
+  margin-right: 3px;
+  /* Adjust the spacing between items */
   margin-top: 40px;
-  margin-left: 3px; /* Move it to the right */
+  margin-left: 3px;
+  /* Move it to the right */
   background-color: white;
-  padding: 2rem; /* Increase padding to move text down */
+  padding: 2rem;
+  /* Increase padding to move text down */
   border-radius: 1rem;
   color: #505050;
-  display: inline-block; /* Display inline-block to make them appear horizontally */
-  vertical-align: top; /* Align them to the top */
+  display: inline-block;
+  /* Display inline-block to make them appear horizontally */
+  vertical-align: top;
+  /* Align them to the top */
 }
 
-.slick-next{
+.slick-next {
   right: 25px;
 }
 
-.see-more-arrow {  
+.see-more-arrow {
   font-size: 1.1rem;
   cursor: pointer;
   font-weight: 600;
@@ -519,7 +546,7 @@ body {
   justify-content: center;
   position: absolute;
   top: 1349px;
-  left:1250px;
+  left: 1250px;
 }
 
 
@@ -546,4 +573,3 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
 } */
-

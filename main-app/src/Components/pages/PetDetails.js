@@ -36,22 +36,22 @@ export const PetDetails = () => {
     slidesToScroll: 1,
     responsive: [
       {
-          breakpoint: 1024,
-          settings: {
+        breakpoint: 1024,
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
           dots: true
-          }
+        }
       },
       {
-          breakpoint: 600,
-          settings: {
+        breakpoint: 600,
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1
-          }
+        }
       }
-      ]
+    ]
   };
 
   if (loading || !pet) {
@@ -71,23 +71,23 @@ export const PetDetails = () => {
     <div className="body">
       <Navbar />
 
-    <div className="page">    
-    <div className="top-page">
+      <div className="page">
+        <div className="top-page">
           <div className="left-side">
             <div><button className="back-arrow" onClick={() => navigate(-1)}>
               <FiArrowLeft /> Back
-                </button>
+            </button>
             </div>
-              <div className="images-carousel">
-                <Slider {...settings}>
+            <div className="images-carousel">
+              <Slider {...settings}>
                 <div>
                   <img src={pet.image} alt="Jak Jax" className="pet-image"></img>
                 </div>
-                  <div>
-                    <img src={hex} alt="Jak Jax" className="pet-image"></img>
-                  </div>
-                </Slider>
-              </div>
+                <div>
+                  <img src={hex} alt="Jak Jax" className="pet-image"></img>
+                </div>
+              </Slider>
+            </div>
           </div>
 
           <div className="right-side">
@@ -95,107 +95,100 @@ export const PetDetails = () => {
             <div className="bubble-container">
               <div className="text-introduction">Hi, My name is {pet.name}!
               </div>
-                <div className="text-pet-details">{pet.sex}, {pet.age}
-                </div>
+              <div className="text-pet-details">{pet.sex}, {pet.age}
+              </div>
             </div>
-            
+
             <div className="categories-container">
               <div className="text-category-type">{pet.category}
               </div>
-                <div className="text-category-breed">{pet.breed}
-                </div>
-                  <div className="text-category-distance">10.5 miles away
-                    </div>
+              <div className="text-category-breed">{pet.breed}
+              </div>
+              <div className="text-category-distance">10.5 miles away
+              </div>
             </div>
 
             <div className="pet-details-container">
               <div className="text-heading">My Story
               </div>
-                <div className="text-pet-introduction">My name is {pet.name} and I am very cute.
-                </div>
-                  <div className="text-facts">Facts About Me
-                  </div>
+              <div className="text-pet-introduction">My name is {pet.name} and I am very cute.
+              </div>
+              <div className="text-facts">Facts About Me
+              </div>
             </div>
 
             <div className="specifications-container">
               <div className="specifications1">
                 <div className="name-title">Name: <b>{pet.name}</b>
                 </div>
-                  <div className="age-title">Age: <b>{pet.age}</b>
-                  </div>
-                    <div className="age-title">Color: <b>{pet.color}</b>
-                    </div>
-                      <div className="size-title">Size: <b>{pet.size}</b>
-                        </div>
+                <div className="age-title">Age: <b>{pet.age}</b>
+                </div>
+                <div className="age-title">Color: <b>{pet.color}</b>
+                </div>
+                <div className="size-title">Size: <b>{pet.size}</b>
+                </div>
               </div>
 
               <div className="specifications2">
                 <div className="temperament-title">Temperament: <b>{pet.temperament}</b>
-                  </div>
-                    <div className="sex-title">Sex: <b>{pet.sex}</b>
-                      </div>
-                        <div className="breed-title">Breed: <b>{pet.breed}</b>
-                          </div>
-                            <div className="health-title">Health: <b>Vaccinated</b>
-                            </div>
-              </div>
-            </div>
-          
-          <Link to="/userboard">
-            <div className="shelter-box">
-              <div className="left-alignment">
-                <div className="info-container">
-                  <div className="shelter-info">
-                    <img
-                      loading="lazy"
-                      srcSet={ShelterLogo}
-                      className="shelter-logo"
-                      alt=""
-                    />
-                    <div className="text-name-verification">
-                      <div className="text-shelter-name">Pulaski County Shelter
-                        </div>
-                      <i>
-                        <IoIosCheckmarkCircle />
-                      </i>
-                    </div>
-                  </div>
-                  <div className="email-info">
-                    <div className="text-email-title">Email:
-                      </div>
-                        <div className="text-email">hello@pcs.com
-                          </div>
-                  </div>
-                  <div className="phone-info">
-                    <div className="text-phone-title">Phone:
-                      </div>
-                        <div className="text-phone">+1 (315) 766 9933
-                          </div>
-                  </div>
-                  <div className="address-info">
-                    <div className="text-address-title">Address:
-                      </div>
-                        <div className="text-address">235 Adopt Me Ln, Somerset, KY 42501
-                          </div>
-                  </div>
+                </div>
+                <div className="sex-title">Sex: <b>{pet.sex}</b>
+                </div>
+                <div className="breed-title">Breed: <b>{pet.breed}</b>
+                </div>
+                <div className="health-title">Health: <b>Vaccinated</b>
                 </div>
               </div>
             </div>
-          </Link>
+
+            <Link to="/userboard">
+              <div className="shelter-box">
+                <div className="left-alignment">
+                  <div className="info-container">
+                    <div className="shelter-info">
+                      <img
+                        loading="lazy"
+                        srcSet={ShelterLogo}
+                        className="shelter-logo"
+                        alt=""
+                      />
+                      <div className="text-name-verification">
+                        <div className="text-shelter-name">Pulaski County Shelter
+                        </div>
+                        <i>
+                          <IoIosCheckmarkCircle />
+                        </i>
+                      </div>
+                    </div>
+                    <div className="email-info">
+                      <div className="text-email-title">Email:
+                      </div>
+                      <div className="text-email">hello@pcs.com
+                      </div>
+                    </div>
+                    <div className="phone-info">
+                      <div className="text-phone-title">Phone:
+                      </div>
+                      <div className="text-phone">+1 (315) 766 9933
+                      </div>
+                    </div>
+                    <div className="address-info">
+                      <div className="text-address-title">Address:
+                      </div>
+                      <div className="text-address">235 Adopt Me Ln, Somerset, KY 42501
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
 
         <div className="bottom-page">
-          <div className="pet-details-carousel">
+
+          <div >
             <h1>Furr-Ever friends near you</h1>
-            <div>
-              <Link to="/ExplorePets">
-                <button className="see-more-arrow">
-                  See more
-                  <FiArrowRight />{" "}
-                </button>
-              </Link>
-            </div>
             <div className="pet-about-team-sections">
               <Slider>
                 {[0, 3, 6].map((startIndex, groupIndex) => (
@@ -221,9 +214,22 @@ export const PetDetails = () => {
                 ))}
               </Slider>
             </div>
+
+            <div>
+              <Link to="/ExplorePets">
+                <button className="see-more-arrow">
+                  See more
+                  <FiArrowRight />{" "}
+                </button>
+              </Link>
+            </div>
           </div>
+
+
         </div>
-        </div>
+      </div>
+
+
 
       {/* <div className="accordian-container">
             <div className="dropdown1">
@@ -291,6 +297,6 @@ export const PetDetails = () => {
             </div>
         </div> */}
 
-        </div>  
-      );
-    };
+    </div>
+  );
+};
