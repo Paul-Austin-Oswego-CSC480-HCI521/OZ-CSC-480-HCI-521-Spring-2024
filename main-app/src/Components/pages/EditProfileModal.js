@@ -200,6 +200,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             value={editedData.description}
             onChange={handleInputChange}
             placeholder="Tell us more about your shelter"
+            maxLength={4096} // Set your desired maximum character limit here
             required
           /><br></br>
           <h4>Shelter Address</h4><br></br>

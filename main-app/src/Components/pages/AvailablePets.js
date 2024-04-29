@@ -382,7 +382,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     placeholder="Tell us more about your pet"
                     value={editingPet.description}
                     onChange={handleFormChange}
-                    
+                    maxLength={4096} // Set your desired maximum character limit here
                   />
                   <div className='ds-buttons'>
                     <button className="discard-button" onClick={handleClosePopup}>x Discard</button>

@@ -329,6 +329,7 @@ const UploadPetForm = ({ addNewPet }) => {
                     placeholder="Tell us more about your pet"
                     value={pet.description}
                     onChange={handleInputChange}
+                    maxLength={4096} // Set your desired maximum character limit here
 
                   />
                 </div>
