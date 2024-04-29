@@ -44,6 +44,9 @@ Password: pass
 # RECOMMENDED DOCKER COMMAND FOR DEVELOPING:
 docker compose --profile dev up --force-recreate --build
 
+## TROUBLESHOOTING:
+* If you are getting an issue where you cannot authenticate to MongoDB, run: ``` docker compose down -v ```
+
 #### Development Tips:
 * If network issues occur, try ``` docker compose up ``` with the following flag at the end: ``` --force-recreate ```
 * If you would like to reset the database, do ``` docker volume ls``` and find the volume, then delete it with ``` docker volume rm <name of volume>```

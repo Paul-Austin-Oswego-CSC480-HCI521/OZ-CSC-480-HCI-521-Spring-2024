@@ -1,5 +1,7 @@
 package oz.rest.models;
 
+import java.util.ArrayList;
+
 import org.bson.codecs.pojo.annotations.BsonCreator;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
@@ -39,7 +41,7 @@ public class Pet extends AbstractModel {
 
     private String currentShelterId;
 
-    private String images;
+    private ArrayList<String> images;
 
     // @Pattern(regexp = "(Dog|Cat|Other)")
     private String type;
@@ -76,11 +78,11 @@ public class Pet extends AbstractModel {
         this.currentShelterId = currentShelterId;
     }
 
-    public String getImages() {
+    public ArrayList<String> getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(ArrayList<String> images) {
         this.images = images;
     }
 

@@ -40,9 +40,8 @@ public class Shelter extends AbstractModel {
 
     private String phoneNumber;
 
-    private String city;
-    private String state;
-    private String zipcode;
+    private Location location;
+
     private String latitude;
     private String longitude;
 
@@ -62,7 +61,6 @@ public class Shelter extends AbstractModel {
         this.password = password;
     }
 
-    
     public String getImage() {
         return image;
     }
@@ -70,7 +68,6 @@ public class Shelter extends AbstractModel {
     public void setImage(String image) {
         this.image = image;
     }
-
 
     public String getLatitude() {
         return latitude;
@@ -136,30 +133,13 @@ public class Shelter extends AbstractModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getCity() {
-        return city;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLocation(Location location) {
+        this.location = location;
     }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
 
     // likely not needed, i think we always add pets one at a time rather than in
     // bulk

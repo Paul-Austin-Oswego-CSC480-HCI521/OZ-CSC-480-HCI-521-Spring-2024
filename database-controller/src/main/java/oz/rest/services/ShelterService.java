@@ -36,6 +36,10 @@ import jakarta.ws.rs.core.Response;
 import oz.rest.models.Shelter;
 import static com.mongodb.client.model.Filters.eq;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
@@ -283,9 +287,8 @@ public class ShelterService extends AbstractService<Shelter> {
         // Create the JWT for the Shelter
         String shelterJWT = JwtBuilder.create("shelter_token")
                 .claim("iss", "http://localhost:9080")
-                .claim("aud", "paws_and_claws")
-                .claim("sub", "paws_and_claws")
-                // .claim("shelter", record.getEmailAddress())
+                .claim("aud", "paws_n_claws")
+                .claim("sub", "paws_n_claws")
                 .claim("shelter_id", record.getId())
                 .buildJwt()
                 .compact();
@@ -307,8 +310,7 @@ public class ShelterService extends AbstractService<Shelter> {
             @APIResponse(responseCode = "200", description = "Authentication was successful"),
             @APIResponse(responseCode = "401", description = "Authentication failed")
     })
-    public Response authenticateJWT(@QueryParam(value = "jwt") String jwt, @QueryParam(value = "user") String user,
-            @QueryParam(value = "userID") String userID) {
+    public Response authenticateJWT(@QueryParam(value = "id") String shelterID, @QueryParam(value = "jwt") String jwt) {
         // If the user had a JWT created
         if (jwt != null) {
             String[] userCookieComponents = jwt.split("\\.", 3);
@@ -335,20 +337,20 @@ public class ShelterService extends AbstractService<Shelter> {
                 byte[] payloadBytes = Base64.getDecoder().decode(userCookiePayload.getBytes());
                 String decodedPayload = new String(payloadBytes);
 
-                // Extract the user string, user ID, and expiration time from the payload
-                String currentUser = decodedPayload.substring(decodedPayload.indexOf("\"shelter\":\"") + 11,
-                        decodedPayload.indexOf("\",\"shelter_id\":"));
-                String currentUserID = decodedPayload.substring(decodedPayload.indexOf("\"shelter_id\":\"") + 14,
+                // Extract the shelter ID and expiration time from the payload
+                String currentShelterID = decodedPayload.substring(decodedPayload.indexOf("\"shelter_id\":\"") + 14,
                         decodedPayload.indexOf("\",\"iss\":"));
                 String expiryTime = decodedPayload.substring(decodedPayload.indexOf("\"exp\":") + 6,
                         decodedPayload.indexOf(",\"iat\":"));
 
-                Date expirationDate = new Date(Long.parseLong(expiryTime));
-                Date currentDate = new Date(System.currentTimeMillis());
+                ZoneId zoneID = ZoneId.of("America/New_York");
 
-                // If the current user is the one to be expected and the expiration date comes
-                // after the current date
-                if (currentUser.equals(user) && currentUserID.equals(userID) && currentDate.after(expirationDate)) {
+                LocalDateTime expirationDate = Instant.ofEpochSecond(Long.parseLong(expiryTime)).atZone(zoneID).toLocalDateTime();
+                LocalDateTime currentDate = Instant.ofEpochMilli(System.currentTimeMillis()).atZone(zoneID).toLocalDateTime();
+
+                // If the current shelter is the one to be expected and the current date comes
+                // before the expiration date
+                if (currentShelterID.equals(shelterID) && currentDate.isBefore(expirationDate)) {
                     return Response.ok("JWT is Valid").build();
                 }
 
