@@ -188,11 +188,21 @@ export const PetDetails = () => {
         <div className="bottom-page">
 
           <div >
+            <div className="carousel-heading">
             <h1>Furr-Ever friends near you</h1>
+            <div className="see-more-button">
+              <Link to="/ExplorePets">
+                <button className="see-more-arrow">
+                  See more
+                  <FiArrowRight />{" "}
+                </button>
+              </Link>
+            </div>
+            </div>
             <div className="pet-about-team-sections">
               <Slider>
                 {[0, 3, 6].map((startIndex, groupIndex) => (
-                  <div className="pet-work-section-info-container" key={groupIndex}>
+                  <div className="pet-work-section-info-container1" key={groupIndex}>
                     {/* Map over each group of three items */}
                     {items.slice(startIndex, startIndex + 5).map((item, index) => (
                       <a key={index} href={`/PetDetails/${item.id}`}>
@@ -215,14 +225,7 @@ export const PetDetails = () => {
               </Slider>
             </div>
 
-            <div>
-              <Link to="/ExplorePets">
-                <button className="see-more-arrow">
-                  See more
-                  <FiArrowRight />{" "}
-                </button>
-              </Link>
-            </div>
+            
           </div>
 
 

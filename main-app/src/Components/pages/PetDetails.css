@@ -31,6 +31,7 @@ body {
   width: 100%;
   margin-top: 3%;
   position: relative;
+  margin-bottom: 10%;
 }
 
 .left-side {
@@ -415,9 +416,9 @@ body {
 
 .pet-details-carousel {
   display: flex;
-  /* margin: 500px 0px auto; */
+  margin: 500px 0px auto; 
   /* Center the carousel */
-  padding: 40px;
+  padding-top: 100px;
   position: relative;
 }
 
@@ -429,7 +430,7 @@ body {
 }
 
 .pet-about-team-sections {
-  /* margin-bottom: 50px; */
+  margin-bottom: 50px;
   /* Add space between each team's carousel */
 }
 
@@ -531,7 +532,7 @@ body {
 }
 
 .slick-next {
-  right: 25px;
+  margin-left: 15%;
 }
 
 .see-more-arrow {
@@ -544,11 +545,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 1349px;
-  left: 1250px;
+  position: relative;
 }
 
+.pet-work-section-info-container1 {
+  display: flex;
+  flex: 1;
+
+}
+
+.info-boxes-img-container {
+  display: flex;
+  width: fit-content;
+}
+
+.carousel-heading{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.see-more-button {
+  margin-left: 60%;
+}
 
 /* .accordian-container {
   display: flex;
