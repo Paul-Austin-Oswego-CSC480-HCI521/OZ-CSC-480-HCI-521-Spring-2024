@@ -56,7 +56,7 @@ const ShelterNavbar2 = () => {
         </div>
         <ul className="nav-links ">
           <li>
-            <Link to="/shelter#FAQ" onClick={() => handleLinkClick("/#FAQ")}>
+            <Link to="/shelter/FAQs" onClick={() => handleLinkClick("/FAQs")}>
               FAQ
             </Link>
           </li>

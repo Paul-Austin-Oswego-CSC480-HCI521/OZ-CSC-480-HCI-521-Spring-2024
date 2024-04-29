@@ -153,7 +153,7 @@ const Navbar = () => {
             )}
           </li>
           <li>
-            <Link to="/#FAQ" onClick={() => handleLinkClick("/#FAQ")}>
+            <Link to="/FAQs" onClick={() => handleLinkClick("/FAQs")}>
               {" "}
               FAQ
             </Link>

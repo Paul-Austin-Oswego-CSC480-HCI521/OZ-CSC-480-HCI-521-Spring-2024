@@ -59,8 +59,6 @@ export const shelters = [
       },
       name: "Whisker Haven Rescue",
     },
-  ];
-  export const shelters = [
     {
       id: 6,
       phoneNumber: "+1(678)901-2345",

@@ -16,6 +16,10 @@ import { Helmet } from "react-helmet";
 import Subfooter from "./Components/Subfooter";
 import { CategoryProvider } from "./Components/CategoryContext";
 import UserBoard from "./Components/pages/UserBoard";
+import FAQs from "./Components/pages/FAQPage";
+import RehomePageViewDashboard from "./Components/pages/Rehome_ViewDashboard";
+import ShelterNavbar3 from "./Components/ShelterNavbar3";
+import ShelterNavbar4 from "./Components/ShelterNavbar4";
 // import RehomePage from './Components/pages/Rehome';
 
 function App() {
@@ -26,15 +30,26 @@ function App() {
     location.pathname === "/about" ||
     location.pathname === "/ExplorePets" ||
     location.pathname === "/userboard" ||
-    location.pathname === "/PetDetails"
+    location.pathname === "/PetDetails" ||
+    location.pathname === "/FAQs" 
   ) {
     navbarComponent = <Navbar />;
-  } else if (
-    location.pathname === "/shelter" ||
-    location.pathname === "/login" ||
-    location.pathname === "/signup"
+  } 
+  // else if (
+  //   location.pathname === "/shelter" ||
+  //   location.pathname === "/login" ||
+  //   location.pathname === "/signup" 
+  // ) {
+  //   navbarComponent = <ShelterNavbar2 />;
+  // }  
+  else if (
+    location.pathname === "/viewdash" 
   ) {
-    navbarComponent = <ShelterNavbar2 />;
+    navbarComponent = <ShelterNavbar3 />;
+  } else if (
+    location.pathname === "/shelter" 
+  ) {
+    navbarComponent = <ShelterNavbar4 />;
   }
 
   return (
@@ -58,6 +73,8 @@ function App() {
           <Route path="/signup" element={<Onboarding />} />
           <Route path="/dashboard" element={<ShelterDashboard />} />
           <Route path="/userboard" element={<UserBoard />} />
+          <Route path="/FAQs" element={<FAQs />} />
+          <Route path="/viewdash" element={<RehomePageViewDashboard />} />
         </Routes>
         <Footer />
       </CategoryProvider>
