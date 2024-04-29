@@ -80,9 +80,7 @@ const UploadPetForm = ({ addNewPet }) => {
       pet.type.trim() === '' ||
       pet.sex.trim() === '' ||
       pet.age.trim() === '' ||
-      pet.breed.trim() === '' ||
       pet.color.trim() === '' ||
-      pet.description.trim() === '' ||
       pet.images.length === 0 // Check if images array is empty
     ) {
       alert('Please fill in all required fields and upload at least one image.');
@@ -265,15 +263,15 @@ const UploadPetForm = ({ addNewPet }) => {
                     </select>
                   </div>
 
-                  {pet.type === 'Dog' || pet.type === 'Cat' ? (
+                  {/* {pet.type === 'Dog' || pet.type === 'Cat' ? ( 
                     <select
                       name="breed"
                       placeholder="Pet Breed"
                       value={pet.breed}
                       onChange={handleInputChange}
-                      required
+                      
                     >
-                      <option value="">Select Pet Breed</option>
+                       <option value="">Select Pet Breed</option>
                       {pet.type === 'Dog' ? (
                         dogBreeds.map((breed, index) => (
                           <option key={index} value={breed}>{breed}</option>
@@ -284,7 +282,8 @@ const UploadPetForm = ({ addNewPet }) => {
                         ))
                       )}
                     </select>
-                  ) : (
+                  ) : ( */}
+                  <div className="pet-details-row">
                     <input
                       type="text"
                       placeholder="Pet Breed"
@@ -293,7 +292,20 @@ const UploadPetForm = ({ addNewPet }) => {
                       onChange={handleInputChange}
                       required
                     />
-                  )}
+                    <select
+                      name="size"
+                      placeholder="Pet Size"
+                      value={pet.size}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="">Select Pet Size</option>
+                      <option value="Small">Small</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Large">Large</option>
+                    </select>
+
+                  </div>
                   <input
                     type="text"
                     placeholder="Pet Age"
@@ -302,6 +314,8 @@ const UploadPetForm = ({ addNewPet }) => {
                     onChange={handleInputChange}
                     required
                   />
+
+
                   <input
                     type="text"
                     placeholder="Pet Color"
@@ -315,7 +329,7 @@ const UploadPetForm = ({ addNewPet }) => {
                     placeholder="Tell us more about your pet"
                     value={pet.description}
                     onChange={handleInputChange}
-                    required
+
                   />
                 </div>
 

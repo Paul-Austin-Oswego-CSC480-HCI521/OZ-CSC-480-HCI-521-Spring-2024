@@ -65,9 +65,17 @@ padding: 10px;
   display: flex;
   align-items: center;
 }
+.nav-logo{
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+}
+
+
 
 .logo-container {
   margin-right: 20px;
+  
 }
 
 .home-container {

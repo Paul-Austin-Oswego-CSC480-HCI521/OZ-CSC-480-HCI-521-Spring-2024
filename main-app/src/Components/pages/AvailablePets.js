@@ -346,28 +346,43 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     onChange={handleFormChange}
                     required
                   />
+                  <div className="pet-details-row">
                   <input
                     type="text"
                     placeholder="Pet Breed"
                     name="breed"
                     value={editingPet.breed}
                     onChange={handleFormChange}
-                    required
+                    
                   />
+                  <select
+                      name="size"
+                      placeholder="Pet Size"
+                      value={editingPet.size}
+                      onChange={handleFormChange}
+                      required
+                    >
+                      <option value="">Select Pet Size</option>
+                      <option value="Small">Small</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Large">Large</option>
+                    </select>
+
+                  </div>
                   <input
                     type="text"
                     placeholder="Pet Color"
                     name="color"
                     value={editingPet.color}
                     onChange={handleFormChange}
-                    required
+                    
                   />
                   <textarea
                     name="description"
                     placeholder="Tell us more about your pet"
                     value={editingPet.description}
                     onChange={handleFormChange}
-                    required
+                    
                   />
                   <div className='ds-buttons'>
                     <button className="discard-button" onClick={handleClosePopup}>x Discard</button>
