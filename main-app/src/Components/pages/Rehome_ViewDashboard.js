@@ -101,7 +101,7 @@ export const RehomePageViewDashboard = () => {
           </div>
         </div>
       </div>
-      <FAQs />
+      {/* <FAQs /> */}
     </div>
   );
 };

@@ -140,7 +140,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <FAQs />
+      {/* <FAQs /> */}
     </div>
   );
 };

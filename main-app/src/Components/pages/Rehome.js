@@ -129,7 +129,7 @@ export const RehomePage = () => {
           </div>
         </div>
       </div>
-      <FAQs />
+      {/* <FAQs /> */}
     </div>
   );
 };
