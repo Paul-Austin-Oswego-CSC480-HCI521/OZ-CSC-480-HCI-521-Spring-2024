@@ -313,7 +313,7 @@ const ShelterDashboard = () => {
           <Link to="/" className={({ isActive }) => (isActive ? "active" : "inactive")}>
             <IoPawSharp /> Adopt
           </Link>
-          <Link to="/shelter" className='active'>
+          <Link to="/viewdash" className='active'>
             <BsHouseHeartFill /> Shelter
           </Link>
         </div>
