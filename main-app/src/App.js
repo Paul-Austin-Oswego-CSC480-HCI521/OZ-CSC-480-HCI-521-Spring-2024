@@ -67,7 +67,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Onboarding />} />
           <Route path="/dashboard" element={<ShelterDashboard />} />
-          <Route path="/userboard" element={<UserBoard />} />
+          <Route path="/userboard/:id" element={<UserBoard />} />
           <Route path="/FAQs" element={<FAQs />} />
           <Route path="/viewdash" element={<RehomePageViewDashboard />} />
         </Routes>

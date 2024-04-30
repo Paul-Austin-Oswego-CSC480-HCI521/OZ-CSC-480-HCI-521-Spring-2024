@@ -3,24 +3,46 @@ import UserPets from "./UserPets.js";
 import CategoryFilter from "./CategoryFilter.js";
 import "./ShelterDashboard.css";
 import { Helmet } from "react-helmet";
+import verified_shelter_image from "../images/verified.png";
+import { useParams } from "react-router";
 
 const UserBoard = () => {
+  let { id } = useParams();
+
   const [data, setData] = useState({
     shelter: {
-      name: "",
-      image: "",
+      name: '',
+      image: '',
       location: {
-        addressLine1: "",
-        addressLine2: "",
-        city: "",
-        state: "",
-        zipcode: "",
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        zipcode: ''
       },
-      contact: "",
-      description: "",
+      contact: '',
+      description: '',
     },
     pets: [],
   });
+
+  const [shelter, setShelter] = useState({
+    name: '',
+    image: '',
+    location: {
+      addressLine1: '',
+      addressLine2: '',
+      city: '',
+      state: '',
+      zipcode: ''
+    },
+    contact: '',
+    description: '',
+  });
+
+  const [pets, setPets] = useState(
+    []
+  )
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [expanded, setExpanded] = useState(false);
@@ -30,14 +52,30 @@ const UserBoard = () => {
   }, []);
 
   const fetchShelterData = async () => {
-    fetch(process.env.PUBLIC_URL + "/data.json")
+    fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/" + id)
       .then((response) => response.json())
       .then((jsonData) => {
-        setData(jsonData);
+        setShelter(jsonData);
       })
       .catch((error) => {
-        console.error("Error fetching shelter data:", error);
+        console.error('Error fetching shelter data:', error);
       });
+
+    const params = new URLSearchParams();
+    params.set("current_shelter_id", id);
+    params.set("page_size", 2000);
+    console.log(params)
+    fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet?" + params)
+      .then((response) => response.json())
+      .then((jsonData) => {
+        console.log(jsonData)
+        setPets(jsonData);
+      })
+      .catch((error) => {
+        console.error('Error fetching shelter data:', error);
+      });
+
+
   };
 
   const toggleDescription = () => {
@@ -49,8 +87,8 @@ const UserBoard = () => {
   };
 
   const filteredPets = selectedCategory
-    ? data.pets.filter((pet) => pet.type === selectedCategory)
-    : data.pets;
+    ? pets.filter((pet) => pet.type === selectedCategory)
+    : pets;
 
   return (
     <div className="wholepage">
@@ -68,7 +106,7 @@ const UserBoard = () => {
         <div className="shelter-profile">
           <div>
             <img
-              src={data.shelter.image}
+              src={shelter.image}
               alt="Shelter"
               className="shelter-image"
             />
@@ -76,27 +114,27 @@ const UserBoard = () => {
 
           <div>
             <h2 className="shelter-name">
-              {data.shelter.name}
+              {shelter.name}
               <img
                 className="verified"
-                src="./images/verified.png"
+                src={verified_shelter_image}
                 alt=""
               ></img>
             </h2>
             <p className="shelter-location">
-              {data.shelter.location.addressLine1}{" "}
-              {data.shelter.location.addressLine2 && (
+              {shelter.location.addressLine1}{" "}
+              {shelter.location.addressLine2 && (
                 <React.Fragment>
-                  {data.shelter.location.addressLine2}{" "}
+                  {shelter.location.addressLine2}{" "}
                 </React.Fragment>
               )}
-              {data.shelter.location.city}, {data.shelter.location.state}
+              {shelter.location.city}, {shelter.location.state}
             </p>
             <br></br>
             <p className="shelter-description">
               {expanded
-                ? data.shelter.description
-                : `${data.shelter.description.slice(0, 125)}...`}
+                ? shelter.description
+                : `${shelter.description.slice(0, 125)}...`}
               {!expanded && <span onClick={toggleDescription}>See More</span>}
             </p>
           </div>
