@@ -1,9 +1,8 @@
 import React from "react";
 import "./About.css";
-import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { Helmet } from "react-helmet";
 
 export const About = () => {   
 
@@ -226,7 +225,7 @@ export const About = () => {
             {/*Our story and secondary image section on page*/}
             <div className="about-content-container">
                 <div className="about-text-and-list">
-                    <h1 className="about-Header">Our Story</h1>
+                    <h1>Our Story</h1>
                     <ul className="about-info-list">
                         <li><b>Founded with Love:</b> Began as a small dream driven by a passion for animals.</li>
                         <li><b>Roots:</b> Established in the heart of our local community, earning trust and recognition.</li>
@@ -244,7 +243,7 @@ export const About = () => {
 
             {/*/Mission statement*/}
             <div className="about-mission-statement" >
-                <h1 className="about-Header">Our Mission</h1>
+                <h1>Our Mission</h1>
                 <p>At Furrytale, our mission is to bring a
                     splash of joy and companionship into
                     every home through our dedicated service

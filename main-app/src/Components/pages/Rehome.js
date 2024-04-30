@@ -1,11 +1,12 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import BannerBackground from "../../Assets/Cat Hero Banner.png";
 import PersonIcon from "../../Assets/Icons/person.svg"; // Import the person icon SVG
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FAQs from "./AdoptionFAQ";
-import "./Rehome.css"
+import "./Rehome.css";
+import { Helmet } from "react-helmet";
 
 export const RehomePage = () => {
   useEffect(() => {
@@ -20,6 +21,11 @@ export const RehomePage = () => {
   }, []); // Empty dependency array means this effect runs once on mount
   return (
     <div className="body">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Paws N Claws - Shelter</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <div
         className="rehome-banner-container"
         style={{ position: "relative", width: "100%" }}

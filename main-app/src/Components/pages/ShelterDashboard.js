@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkJWT } from '../../Utils/JWTAuth';
-import { FaPencilAlt } from 'react-icons/fa';
-import UploadPetForm from './UploadPetForm';
-import AvailablePets from './AvailablePets';
-import CategoryFilter from './CategoryFilter';
-import './ShelterDashboard.css';
+import { checkJWT } from "../../Utils/JWTAuth";
+import { FaPencilAlt } from "react-icons/fa";
+import UploadPetForm from "./UploadPetForm";
+import AvailablePets from "./AvailablePets";
+import CategoryFilter from "./CategoryFilter";
+import "./ShelterDashboard.css";
 import { NavLink as Link } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
-import { AiOutlineMenu, AiOutlineHome } from 'react-icons/ai';
-import { BsPersonCircle } from 'react-icons/bs';
-import EditProfileModal from './EditProfileModal';
-import { FaUser } from 'react-icons/fa';
-import { deleteCookies, getCookie } from '../../Utils/CookieUtils';
+import { AiOutlineMenu, AiOutlineHome } from "react-icons/ai";
+import { BsPersonCircle } from "react-icons/bs";
+import EditProfileModal from "./EditProfileModal";
+import { FaUser } from "react-icons/fa";
+import { deleteCookies, getCookie } from "../../Utils/CookieUtils";
+import { Helmet } from "react-helmet";
 
 const ShelterDashboard = () => {
   const navigate = useNavigate();
@@ -21,22 +22,22 @@ const ShelterDashboard = () => {
 
   const [data, setData] = useState({
     shelter: {
-      name: '',
-      image: '',
+      name: "",
+      image: "",
       location: {
-        addressLine1: '',
-        addressLine2: '',
-        city: '',
-        state: '',
-        zipcode: ''
+        addressLine1: "",
+        addressLine2: "",
+        city: "",
+        state: "",
+        zipcode: "",
       },
-      contact: '',
-      description: '',
+      contact: "",
+      description: "",
     },
     pets: [],
   });
 
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [expanded, setExpanded] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -53,7 +54,9 @@ const ShelterDashboard = () => {
   };
 
   const handleDeleteAccount = async () => {
-    const confirmDelete = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete your account? This action cannot be undone."
+    );
     if (confirmDelete) {
       // Send a DELETE request to your backend API to delete the account
       // console.log(document.cookie);
@@ -61,25 +64,28 @@ const ShelterDashboard = () => {
       // console.log(cookie.shelterID);
 
       // TODO: also needs to delete all pets in shelter; currently only deleting the shelter entry.
-      const response = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/" + shelterID, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        // body: JSON.stringify(getCookie("shelterID")),
-      });
-
+      const response = await fetch(
+        process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+          "database-controller/api/shelter/" +
+          shelterID,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // body: JSON.stringify(getCookie("shelterID")),
+        }
+      );
 
       if (response.ok) {
         // console.log(response)
-        alert("successfully deleted account")
+        alert("successfully deleted account");
         handleLogout();
       } else {
         // TODO: handle else
       }
     }
   };
-
 
   useEffect(() => {
     fetchShelterData();
@@ -95,24 +101,31 @@ const ShelterDashboard = () => {
     const currentShelterId = getCookie("shelterID");
 
     //const currentShelterId = getCookie("shelterID");
-    console.log(currentShelterId)
-    const shelterData = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/" + currentShelterId, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    console.log(currentShelterId);
+    const shelterData = await fetch(
+      process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+        "database-controller/api/shelter/" +
+        currentShelterId,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const params = new URLSearchParams();
     params.set("current_shelter_id", currentShelterId);
     params.set("page_size", 2000);
-    const petsData = await fetch("http://localhost:9080/database-controller/api/pet?" + params, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
+    const petsData = await fetch(
+      "http://localhost:9080/database-controller/api/pet?" + params,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (shelterData.ok) {
       var finalData = {};
@@ -126,7 +139,7 @@ const ShelterDashboard = () => {
         const petsJson = await petsData.json();
 
         for (var pet of petsJson) {
-          // TODO: I THINK THIS WILL NEED TO BE DONE DIFFERENTLY ONCE MORE THAN ONE PET IS ALLOWED IN DATABASE 
+          // TODO: I THINK THIS WILL NEED TO BE DONE DIFFERENTLY ONCE MORE THAN ONE PET IS ALLOWED IN DATABASE
           pet.images = [pet.images];
           finalData.pets.push(pet);
         }
@@ -152,33 +165,35 @@ const ShelterDashboard = () => {
     newPet.currentShelterId = shelterID;
     console.log(newPet);
     // console.log(getCookie("shelterID"));
-    fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newPet),
-    })
+    fetch(
+      process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newPet),
+      }
+    )
       .then(async (response) => {
         if (!response.ok) {
-          throw new Error('Failed to update data');
+          throw new Error("Failed to update data");
         } else {
           // const json = await response.json();
           const newPet = await response.json();
-          // const newPet = 
+          // const newPet =
           // console.log(response);
           // console.log(newPet)
           const updatedPets = [...data.pets, newPet];
           const updatedData = { ...data, pets: updatedPets };
           setData(updatedData);
-          console.log('Data updated successfully');
+          console.log("Data updated successfully");
         }
       })
 
       .catch((error) => {
-        console.error('Error updating data:', error);
+        console.error("Error updating data:", error);
       });
-
 
     // updateDataJson(updatedData);
   };
@@ -191,23 +206,28 @@ const ShelterDashboard = () => {
     console.log(updatedData.shelter);
     const shelterID = getCookie("shelterID");
     //const cookie = JSON.parse(document.cookie);
-    fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/" + shelterID, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // ONLY SET THE SHELTER TO UPDATE HERE
-      body: JSON.stringify(updatedData.shelter),
-    })
+    fetch(
+      process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+        "database-controller/api/shelter/" +
+        shelterID,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // ONLY SET THE SHELTER TO UPDATE HERE
+        body: JSON.stringify(updatedData.shelter),
+      }
+    )
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to update data');
+          throw new Error("Failed to update data");
         }
-        console.log('Data updated successfully');
+        console.log("Data updated successfully");
       })
 
       .catch((error) => {
-        console.error('Error updating data:', error);
+        console.error("Error updating data:", error);
       });
   };
 
@@ -226,13 +246,18 @@ const ShelterDashboard = () => {
 
     console.log(petId);
 
-    const response = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet/" + petId, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // body: JSON.stringify(getCookie("shelterID")),
-    });
+    const response = await fetch(
+      process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+        "database-controller/api/pet/" +
+        petId,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: JSON.stringify(getCookie("shelterID")),
+      }
+    );
 
     if (response.ok) {
       setData(updatedData);
@@ -241,8 +266,6 @@ const ShelterDashboard = () => {
     } else {
       // TODO: handle else
     }
-
-
 
     // updateDataJson(updatedData);
   };
@@ -259,18 +282,22 @@ const ShelterDashboard = () => {
     // editedPetClone.images = editedPet.images[0];
 
     // const cookie = JSON.parse(document.cookie);
-    console.log(JSON.stringify(editedPetClone))
+    console.log(JSON.stringify(editedPetClone));
     // console.log("my edited pet" + editedPet.id);
-    fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet/" + editedPet.id, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(editedPetClone),
-    })
+    fetch(
+      process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+        "database-controller/api/pet/" +
+        editedPet.id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editedPetClone),
+      }
+    );
 
     setData(updatedData);
-
 
     // updateDataJson(updatedData);
   };
@@ -305,15 +332,22 @@ const ShelterDashboard = () => {
     setShowEditModal(false);
   };
 
-
   return (
     <div className="wholepage">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Paws N Claws - Shelter Dashboard</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <div className="top-nav-container">
         <div className="top-navbar">
-          <Link to="/" className={({ isActive }) => (isActive ? "active" : "inactive")}>
+          <Link
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : "inactive")}
+          >
             <IoPawSharp /> Adopt
           </Link>
-          <Link to="/viewdash" className='active'>
+          <Link to="/viewdash" className="active">
             <BsHouseHeartFill /> Shelter
           </Link>
         </div>
@@ -338,51 +372,69 @@ const ShelterDashboard = () => {
           <div className="user-profile-dropdown">
             <button onClick={toggleDropdown} className="profile-button">
               <div className="profile-icon">
-                <span className="profile-icon-p"><BsPersonCircle /></span> {/* Circular profile picture icon */}
-                <span className="profile-icon-b"><AiOutlineMenu /></span> {/* Three bars icon */}
+                <span className="profile-icon-p">
+                  <BsPersonCircle />
+                </span>{" "}
+                {/* Circular profile picture icon */}
+                <span className="profile-icon-b">
+                  <AiOutlineMenu />
+                </span>{" "}
+                {/* Three bars icon */}
               </div>
             </button>
             {showDropdown && (
               <div className="dropdown-content">
                 {/* <Link to="/shelter">View Dashboard
                 </Link> */}
-                <button className='edit' onClick={() => {
-                  response = checkJWT();
+                <button
+                  className="edit"
+                  onClick={() => {
+                    response = checkJWT();
 
-                  response.then(function (responseResult) {
-                    // If the JWT is valid
-                    if (responseResult.ok) {
-                      openEditModal();
-                    }
-          
-                    // If the JWT is invalid
-                    else {
-                      // Redirect user back to login page to refresh their JWT
-                      alert("Your session has expired.\n\nPlease log back in to continue.");
-                      navigate("/login");
-                    }
-                  }
-                  )
-                }}>Edit Profile</button>
+                    response.then(function (responseResult) {
+                      // If the JWT is valid
+                      if (responseResult.ok) {
+                        openEditModal();
+                      }
+
+                      // If the JWT is invalid
+                      else {
+                        // Redirect user back to login page to refresh their JWT
+                        alert(
+                          "Your session has expired.\n\nPlease log back in to continue."
+                        );
+                        navigate("/login");
+                      }
+                    });
+                  }}
+                >
+                  Edit Profile
+                </button>
                 <button onClick={handleLogout}>Logout</button>
-                <button onClick={() => {
-                  response = checkJWT();
+                <button
+                  onClick={() => {
+                    response = checkJWT();
 
-                  response.then(function (responseResult) {
-                    // If the JWT is valid
-                    if (responseResult.ok) {
-                      handleDeleteAccount();
-                    }
-          
-                    // If the JWT is invalid
-                    else {
-                      // Redirect user back to login page to refresh their JWT
-                      alert("Your session has expired.\n\nPlease log back in to continue.");
-                      navigate("/login");
-                    }
-                  }
-                  )
-                }} className='deleteAccount'>Delete My Account</button>
+                    response.then(function (responseResult) {
+                      // If the JWT is valid
+                      if (responseResult.ok) {
+                        handleDeleteAccount();
+                      }
+
+                      // If the JWT is invalid
+                      else {
+                        // Redirect user back to login page to refresh their JWT
+                        alert(
+                          "Your session has expired.\n\nPlease log back in to continue."
+                        );
+                        navigate("/login");
+                      }
+                    });
+                  }}
+                  className="deleteAccount"
+                >
+                  Delete My Account
+                </button>
               </div>
             )}
           </div>
@@ -404,59 +456,73 @@ const ShelterDashboard = () => {
             ) : (
               <FaUser className="shelter-image default-icon" />
             )}
-
           </div>
 
           <div>
-            <h2 className="shelter-name">{data.shelter.name}<img className='verified' src='./images/verified.png' alt=""></img></h2>
+            <h2 className="shelter-name">
+              {data.shelter.name}
+              <img
+                className="verified"
+                src="./images/verified.png"
+                alt=""
+              ></img>
+            </h2>
             <p className="shelter-location">
-              {data.shelter.location.addressLine1}{' '}
+              {data.shelter.location.addressLine1}{" "}
               {data.shelter.location.addressLine2 && (
                 <React.Fragment>
-                  {data.shelter.location.addressLine2}{' '}
+                  {data.shelter.location.addressLine2}{" "}
                 </React.Fragment>
               )}
               {data.shelter.location.city}, {data.shelter.location.state}
             </p>
             <br></br>
             <p className="shelter-description">
-              {expanded ? data.shelter.description : `${data.shelter.description.slice(0, 125)}...`}
+              {expanded
+                ? data.shelter.description
+                : `${data.shelter.description.slice(0, 125)}...`}
               {!expanded && <span onClick={toggleDescription}>See More</span>}
             </p>
           </div>
-          <div className='upload'>
+          <div className="upload">
             <UploadPetForm addNewPet={addNewPet} />
           </div>
           <div className="shelteredit">
-            <div className='edit' onClick={() => {
-              response = checkJWT();
+            <div
+              className="edit"
+              onClick={() => {
+                response = checkJWT();
 
-              response.then(function (responseResult) {
-                // If the JWT is valid
-                if (responseResult.ok) {
-                  openEditModal();
-                }
-      
-                // If the JWT is invalid
-                else {
-                  // Redirect user back to login page to refresh their JWT
-                  alert("Your session has expired.\n\nPlease log back in to continue.");
-                  navigate("/login");
-                }
-              }
-              )
-            }}>
+                response.then(function (responseResult) {
+                  // If the JWT is valid
+                  if (responseResult.ok) {
+                    openEditModal();
+                  }
+
+                  // If the JWT is invalid
+                  else {
+                    // Redirect user back to login page to refresh their JWT
+                    alert(
+                      "Your session has expired.\n\nPlease log back in to continue."
+                    );
+                    navigate("/login");
+                  }
+                });
+              }}
+            >
               <FaPencilAlt /> Edit Profile
             </div>
           </div>
-
         </div>
 
         <div className="availablepets">
-          <AvailablePets pets={filteredPets} onEdit={handleEdit} onDelete={handleDelete} />
+          <AvailablePets
+            pets={filteredPets}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         </div>
         {showEditModal && (
-
           <EditProfileModal
             profileData={data.shelter}
             onSave={saveProfileChanges}
@@ -464,7 +530,7 @@ const ShelterDashboard = () => {
           />
         )}
       </div>
-    </div >
+    </div>
   );
 };
 

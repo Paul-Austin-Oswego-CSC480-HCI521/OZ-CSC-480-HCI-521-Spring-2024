@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import FAQs from "./AdoptionFAQ"; 
+import FAQs from "./AdoptionFAQ";
+import { Helmet } from "react-helmet";
 
 const YourComponent = () => {
   useEffect(() => {
@@ -7,9 +8,14 @@ const YourComponent = () => {
   }, []);
 
   return (
-
+    <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>FAQ</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <FAQs />
-
+    </div>
   );
 };
 
