@@ -53,13 +53,22 @@ a{
   font-size: 1.1rem;
   font-weight: 600;
   color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   background-color: #0000;
+  background-color: orange;
   cursor: pointer;
   border: none;
   position: relative;
   margin-bottom: 2%;
-  padding: 10%;
+  padding: 15px 25px;
+  border-radius: 20px;
+  border: 2px solid rgb(212, 139, 3);
 }
+.back-arrow:hover {
+  background-color: rgb(255, 206, 114);
+  border: 2px solid rgb(212, 149, 31);
+}
+
 
 .images-carousel {
   flex: auto;
