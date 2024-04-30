@@ -32,6 +32,7 @@ export const PetDetails = () => {
     dots: true,
     infinite: true,
     speed: 500,
+    adaptiveHeight: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     responsive: [
@@ -205,7 +206,7 @@ export const PetDetails = () => {
               </Link>
               </div>
         <div className="about-team-sections">
-          <Slider variableWidth={true}>
+          <Slider variableWidth={true} {...settings}>
             {[0, 3, 6].map((startIndex, groupIndex) => (
               <div className="work-section-info-container" key={groupIndex}>
                 {/* Map over each group of three items */}

@@ -78,7 +78,7 @@ a{
 .pet-images {
   /* width: 1000px; */
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   border-radius: 9%;
   
 }
@@ -86,7 +86,7 @@ a{
 .right-side {
   display: flex;
   margin-right: 2%;
-  margin-top: 2.5%;
+  margin-top: 3.5%;
   width: 100%;
   flex-direction: column;
 }
