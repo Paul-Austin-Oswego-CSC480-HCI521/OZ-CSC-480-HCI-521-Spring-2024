@@ -13,6 +13,7 @@ import "./Home.css";
 import FAQs from "./AdoptionFAQ";
 import { useState } from "react";
 import { items } from "./items";
+import { Helmet } from "react-helmet";
 
 export const Home = () => {
   const { setSelectedCategory } = useCategory();
@@ -32,17 +33,17 @@ export const Home = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const handleZipCodeChange = (e) => {
@@ -70,10 +71,13 @@ export const Home = () => {
     };
   }, []); // Empty dependency array means this effect runs once on mount
 
-  
-
   return (
     <div className="home-container">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Paws N Claws - Adopt</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <div className="home-banner-container">
         <div className="home-bannerImage-container">
           <img className="home-bannerDog" src={BannerBackground} alt="" />
@@ -143,7 +147,7 @@ export const Home = () => {
       <div className="about-meet-teamss">
         <h1>Furr-Ever friends near you</h1>
         <div className="about-team-sections">
-        <Slider variableWidth={true} {...settings}>
+          <Slider variableWidth={true} {...settings}>
             {[0, 3, 6].map((startIndex, groupIndex) => (
               <div className="work-section-info-container" key={groupIndex}>
                 {/* Map over each group of three items */}

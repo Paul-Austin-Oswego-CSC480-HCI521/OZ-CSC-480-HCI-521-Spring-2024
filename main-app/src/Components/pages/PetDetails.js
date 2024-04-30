@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import { items } from "./items";
 import { useNavigate } from "react-router";
 import Navbar from "../Navbar";
+import { Helmet } from "react-helmet";
 
 export const PetDetails = () => {
   let { id } = useParams();
@@ -42,17 +43,17 @@ export const PetDetails = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   if (loading || !pet) {
@@ -64,25 +65,33 @@ export const PetDetails = () => {
     );
   }
 
-
   <style>{(document.body.style.backgroundColor = "rgb(227, 234, 231)")}</style>;
-
 
   return (
     <div className="body">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Paws N Claws/PetDetails</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <Navbar />
 
       <div className="page">
         <div className="top-page">
           <div className="left-side">
-            <div><button className="back-arrow" onClick={() => navigate(-1)}>
-              <FiArrowLeft /> Back
-            </button>
+            <div>
+              <button className="back-arrow" onClick={() => navigate(-1)}>
+                <FiArrowLeft /> Back
+              </button>
             </div>
             <div className="images-carousel">
               <Slider {...settings}>
                 <div>
-                  <img src={pet.image} alt="Jak Jax" className="pet-images"></img>
+                  <img
+                    src={pet.image}
+                    alt="Jak Jax"
+                    className="pet-images"
+                  ></img>
                 </div>
                 <div>
                   <img src={hex} alt="Jak Jax" className="pet-images"></img>
@@ -92,52 +101,57 @@ export const PetDetails = () => {
           </div>
 
           <div className="right-side">
-
             <div className="bubble-container">
-              <div className="text-introduction">Hi, My name is {pet.name}!
+              <div className="text-introduction">
+                Hi, My name is {pet.name}!
               </div>
-              <div className="text-pet-details">{pet.sex}, {pet.age}
+              <div className="text-pet-details">
+                {pet.sex}, {pet.age}
               </div>
             </div>
 
             <div className="categories-container">
-              <div className="text-category-type">{pet.category}
-              </div>
-              <div className="text-category-breed">{pet.breed}
-              </div>
-              <div className="text-category-distance">10.5 miles away
-              </div>
+              <div className="text-category-type">{pet.category}</div>
+              <div className="text-category-breed">{pet.breed}</div>
+              <div className="text-category-distance">10.5 miles away</div>
             </div>
 
             <div className="pet-details-container">
-              <div className="text-heading">My Story
+              <div className="text-heading">My Story</div>
+              <div className="text-pet-introduction">
+                My name is {pet.name} and I am very cute.
               </div>
-              <div className="text-pet-introduction">My name is {pet.name} and I am very cute.
-              </div>
-              <div className="text-facts">Facts About Me
-              </div>
+              <div className="text-facts">Facts About Me</div>
             </div>
 
             <div className="specifications-container">
               <div className="specifications1">
-                <div className="name-title">Name: <b>{pet.name}</b>
+                <div className="name-title">
+                  Name: <b>{pet.name}</b>
                 </div>
-                <div className="age-title">Age: <b>{pet.age}</b>
+                <div className="age-title">
+                  Age: <b>{pet.age}</b>
                 </div>
-                <div className="age-title">Color: <b>{pet.color}</b>
+                <div className="age-title">
+                  Color: <b>{pet.color}</b>
                 </div>
-                <div className="size-title">Size: <b>{pet.size}</b>
+                <div className="size-title">
+                  Size: <b>{pet.size}</b>
                 </div>
               </div>
 
               <div className="specifications2">
-                <div className="temperament-title">Temperament: <b>{pet.temperament}</b>
+                <div className="temperament-title">
+                  Temperament: <b>{pet.temperament}</b>
                 </div>
-                <div className="sex-title">Sex: <b>{pet.sex}</b>
+                <div className="sex-title">
+                  Sex: <b>{pet.sex}</b>
                 </div>
-                <div className="breed-title">Breed: <b>{pet.breed}</b>
+                <div className="breed-title">
+                  Breed: <b>{pet.breed}</b>
                 </div>
-                <div className="health-title">Health: <b>Vaccinated</b>
+                <div className="health-title">
+                  Health: <b>Vaccinated</b>
                 </div>
               </div>
             </div>
@@ -154,7 +168,8 @@ export const PetDetails = () => {
                         alt=""
                       />
                       <div className="text-name-verification">
-                        <div className="text-shelter-name">Pulaski County Shelter
+                        <div className="text-shelter-name">
+                          Pulaski County Shelter
                         </div>
                         <i>
                           <IoIosCheckmarkCircle />
@@ -162,21 +177,17 @@ export const PetDetails = () => {
                       </div>
                     </div>
                     <div className="email-info">
-                      <div className="text-email-title">Email:
-                      </div>
-                      <div className="text-email">hello@pcs.com
-                      </div>
+                      <div className="text-email-title">Email:</div>
+                      <div className="text-email">hello@pcs.com</div>
                     </div>
                     <div className="phone-info">
-                      <div className="text-phone-title">Phone:
-                      </div>
-                      <div className="text-phone">+1 (315) 766 9933
-                      </div>
+                      <div className="text-phone-title">Phone:</div>
+                      <div className="text-phone">+1 (315) 766 9933</div>
                     </div>
                     <div className="address-info">
-                      <div className="text-address-title">Address:
-                      </div>
-                      <div className="text-address">235 Adopt Me Ln, Somerset, KY 42501
+                      <div className="text-address-title">Address:</div>
+                      <div className="text-address">
+                        235 Adopt Me Ln, Somerset, KY 42501
                       </div>
                     </div>
                   </div>
@@ -187,59 +198,53 @@ export const PetDetails = () => {
         </div>
 
         <div className="bottom-page">
-
-          <div >
-            <div className="carousel-heading">
-            
-            
-            </div>
+          <div>
+            <div className="carousel-heading"></div>
 
             <div className="about-meet-teamsss">
-            <div className="see-more-button">
-              
-            <h1>Furr-Ever friends near you</h1>
-            <Link to="/ExplorePets">
-                <button className="see-more-arrow">
-                  See more
-                  <FiArrowRight />{" "}
-                </button>
-              </Link>
+              <div className="see-more-button">
+                <h1>Furr-Ever friends near you</h1>
+                <Link to="/ExplorePets">
+                  <button className="see-more-arrow">
+                    See more
+                    <FiArrowRight />{" "}
+                  </button>
+                </Link>
               </div>
-        <div className="about-team-sections">
-          <Slider variableWidth={true} {...settings}>
-            {[0, 3, 6].map((startIndex, groupIndex) => (
-              <div className="work-section-info-container" key={groupIndex}>
-                {/* Map over each group of three items */}
-                {items.slice(startIndex, startIndex + 5).map((item, index) => (
-                  <a key={index} href={`/PetDetails/${item.id}`}>
-                    <div className="work-section-info">
-                      <div className="info-boxes-img-container">
-                        <img
-                          src={item.image}
-                          alt=""
-                          style={{ maxWidth: "80%", height: "70%" }}
-                        />
-                      </div>
-                      <h2>{item.name}</h2>
-                      <p>{item.breed}</p>
-                      <span>{item.age}</span>
+              <div className="about-team-sections">
+                <Slider variableWidth={true} {...settings}>
+                  {[0, 3, 6].map((startIndex, groupIndex) => (
+                    <div
+                      className="work-section-info-container"
+                      key={groupIndex}
+                    >
+                      {/* Map over each group of three items */}
+                      {items
+                        .slice(startIndex, startIndex + 5)
+                        .map((item, index) => (
+                          <a key={index} href={`/PetDetails/${item.id}`}>
+                            <div className="work-section-info">
+                              <div className="info-boxes-img-container">
+                                <img
+                                  src={item.image}
+                                  alt=""
+                                  style={{ maxWidth: "80%", height: "70%" }}
+                                />
+                              </div>
+                              <h2>{item.name}</h2>
+                              <p>{item.breed}</p>
+                              <span>{item.age}</span>
+                            </div>
+                          </a>
+                        ))}
                     </div>
-                  </a>
-                ))}
+                  ))}
+                </Slider>
               </div>
-            ))}
-          </Slider>
-        </div>
-      </div>
-
-            
+            </div>
           </div>
-
-
         </div>
       </div>
-
-
 
       {/* <div className="accordian-container">
             <div className="dropdown1">
@@ -306,7 +311,6 @@ export const PetDetails = () => {
                 </Accordion>
             </div>
         </div> */}
-
     </div>
   );
 };

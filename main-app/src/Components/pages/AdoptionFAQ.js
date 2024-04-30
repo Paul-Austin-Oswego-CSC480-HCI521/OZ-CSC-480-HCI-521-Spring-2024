@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AdoptionFAQ.css";
+import { Helmet } from "react-helmet";
 
 const AdoptionFAQ = () => {
   // State to keep track of which question is currently open
@@ -75,6 +76,11 @@ const AdoptionFAQ = () => {
 
   return (
     <div className="adoption-faq" id="FAQ">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>FAQs</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <h1>Adoption FAQ</h1>
       <p>
         Find answers to commonly asked questions about the pet adoption process,

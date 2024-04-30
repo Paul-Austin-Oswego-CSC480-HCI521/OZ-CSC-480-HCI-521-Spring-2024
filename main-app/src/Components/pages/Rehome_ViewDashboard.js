@@ -4,8 +4,8 @@ import BannerBackground from "../../Assets/Cat Hero Banner.png";
 import PersonIcon from "../../Assets/Icons/dashboard.svg"; // Import the person icon SVG
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import FAQs from "./AdoptionFAQ";
 import "./Rehome.css";
+import { Helmet } from "react-helmet";
 
 export const RehomePageViewDashboard = () => {
   useEffect(() => {
@@ -21,6 +21,11 @@ export const RehomePageViewDashboard = () => {
 
   return (
     <div className="body">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Paws N Claws - shelter</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <div
         className="rehome-banner-container"
         style={{ position: "relative", width: "100%" }}

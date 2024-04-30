@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { ReactComponent as Logo } from '../../Assets/purple_paw_Logo.svg';
-import "./Login.css"
+import { ReactComponent as Logo } from "../../Assets/purple_paw_Logo.svg";
+import "./Login.css";
+import { Helmet } from "react-helmet";
 
 function Login() {
   const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
-
 
   // Set background color when component renders
   React.useEffect(() => {
@@ -31,8 +31,9 @@ function Login() {
 
       //   Send JSON object to backend
       fetch(
-        process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/login?" +
-        new URLSearchParams(jsonObject),
+        process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+          "database-controller/api/shelter/login?" +
+          new URLSearchParams(jsonObject),
         {
           method: "POST",
           headers: {
@@ -44,12 +45,12 @@ function Login() {
         .then(async (response) => {
           if (response.ok) {
             const responseJson = await response.json();
-            const cookieJsonKeys = Object.entries(responseJson)
+            const cookieJsonKeys = Object.entries(responseJson);
 
             for (const entry of cookieJsonKeys) {
               const suffix = "path=/;";
               document.cookie = entry[0] + "=" + entry[1] + ";" + suffix;
-            };
+            }
 
             console.log(document.cookie);
 
@@ -93,12 +94,15 @@ function Login() {
     };
   }, [navigate]);
 
-
   return (
     <div className="container">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Paws N Claws Login</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <div className="hero-image" alt="Hero Image"></div>
       <div className="login-container">
-
         {/* <div class="back-button" onClick={(e) => e.preventDefault()}>
             <a href="#">
               <svg class="arrow-icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -112,11 +116,22 @@ function Login() {
           <Logo className="purple-logo" width="150" height="150" />
         </div>
 
-        <h1> Find your furr-ever friend <br /> today! </h1>
+        <h1>
+          {" "}
+          Find your furr-ever friend <br /> today!{" "}
+        </h1>
 
         <div className="login-action-links">
-          <NavLink to="/login" className="login-links" activeClassName="active">Login</NavLink>
-          <NavLink to="/signup" className="login-links" activeClassName="active">Sign Up</NavLink>
+          <NavLink to="/login" className="login-links" activeClassName="active">
+            Login
+          </NavLink>
+          <NavLink
+            to="/signup"
+            className="login-links"
+            activeClassName="active"
+          >
+            Sign Up
+          </NavLink>
         </div>
 
         <div class="invalid-error">
@@ -127,23 +142,48 @@ function Login() {
           )}
         </div>
 
-        <form action="login" method="post" className="login-form" id="loginForm">
+        <form
+          action="login"
+          method="post"
+          className="login-form"
+          id="loginForm"
+        >
           <label htmlFor="emailAddress"></label>
-          <input type="text" name="emailAddress" id="emailAddress" placeholder="Email Address" required />
-
+          <input
+            type="text"
+            name="emailAddress"
+            id="emailAddress"
+            placeholder="Email Address"
+            required
+          />
 
           <label htmlFor="password"></label>
-          <input type="password" name="password" id="password" placeholder="Password" required />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
 
           <br />
 
           <button type="submit" id="submitBtn" class="login-button">
             Login
-            <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-              <path d="M16.175 13H4V11H16.175L10.575 5.4L12 4L20 12L12 20L10.575 18.6L16.175 13Z" fill="currentColor" />
+            <svg
+              class="arrow-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+            >
+              <path
+                d="M16.175 13H4V11H16.175L10.575 5.4L12 4L20 12L12 20L10.575 18.6L16.175 13Z"
+                fill="currentColor"
+              />
             </svg>
           </button>
-
         </form>
       </div>
     </div>

@@ -31,24 +31,20 @@ function App() {
     location.pathname === "/ExplorePets" ||
     location.pathname === "/userboard" ||
     location.pathname === "/PetDetails" ||
-    location.pathname === "/FAQs" 
+    location.pathname === "/FAQs"
   ) {
     navbarComponent = <Navbar />;
-  } 
+  }
   // else if (
   //   location.pathname === "/shelter" ||
   //   location.pathname === "/login" ||
-  //   location.pathname === "/signup" 
+  //   location.pathname === "/signup"
   // ) {
   //   navbarComponent = <ShelterNavbar2 />;
-  // }  
-  else if (
-    location.pathname === "/viewdash" 
-  ) {
+  // }
+  else if (location.pathname === "/viewdash") {
     navbarComponent = <ShelterNavbar3 />;
-  } else if (
-    location.pathname === "/shelter" 
-  ) {
+  } else if (location.pathname === "/shelter") {
     navbarComponent = <ShelterNavbar4 />;
   }
 
@@ -65,7 +61,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" />
-          <Route path="#FAQ" element={<Home />} />
           <Route path="/ExplorePets" element={<MultiFilters />} />
           <Route path="/PetDetails/:id" element={<PetDetails />} />
           <Route path="/shelter" element={<RehomePage />} />

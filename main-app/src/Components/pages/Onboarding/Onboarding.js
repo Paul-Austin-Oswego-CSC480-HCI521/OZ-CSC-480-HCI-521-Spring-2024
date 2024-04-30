@@ -5,6 +5,7 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 import "./Onboarding.css";
+import { Helmet } from "react-helmet";
 
 const Onboarding = () => {
   const [step, setStep] = useState(1);
@@ -74,7 +75,14 @@ const Onboarding = () => {
           />
         );
       case 4:
-        return <Step4 prevStep={prevStep} formData={formData} step={step} getProgressBarWidth={getProgressBarWidth}  />;
+        return (
+          <Step4
+            prevStep={prevStep}
+            formData={formData}
+            step={step}
+            getProgressBarWidth={getProgressBarWidth}
+          />
+        );
       default:
         return null;
     }
@@ -96,13 +104,24 @@ const Onboarding = () => {
 
   return (
     <div className="onboarding-container">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Paws N Claws - Shelter Sign Up</title>
+        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+      </Helmet>
       <div className="onboarding-hero-image"></div>
       <div className="signup-container">
-        <h2>Find your furr-ever friend <br/> today!</h2>
-          <div className="signup-action-links">
-            <NavLink to="/login" className="signup-links">Login</NavLink>
-            <NavLink to="/signup" className="signup-links">Sign Up</NavLink>
-          </div>
+        <h2>
+          Find your furr-ever friend <br /> today!
+        </h2>
+        <div className="signup-action-links">
+          <NavLink to="/login" className="signup-links">
+            Login
+          </NavLink>
+          <NavLink to="/signup" className="signup-links">
+            Sign Up
+          </NavLink>
+        </div>
         {renderStep()}
       </div>
     </div>
