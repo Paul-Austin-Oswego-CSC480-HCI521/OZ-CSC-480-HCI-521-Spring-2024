@@ -387,7 +387,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
 
                   </div>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Pet Age"
                     name="age"
                     value={editingPet.age}
