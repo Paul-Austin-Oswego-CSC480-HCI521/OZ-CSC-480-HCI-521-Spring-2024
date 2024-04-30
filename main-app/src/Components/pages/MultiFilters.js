@@ -12,6 +12,62 @@ export default function MultiFilters() {
   const { selectedCategory } = useCategory();
   const [selectedFilters, setSelectedFilters] = useState([]);
 
+  // Dropdowns theme
+  const customStyles = {
+    placeholder: (defaultStyles, state) => ({
+      ...defaultStyles,
+      color: "black",
+    }),
+
+    option: (defaultStyles, state) => ({
+      ...defaultStyles,
+      backgroundColor: state.isFocused ? "orange" : "white",
+    }),
+
+    indicatorSeparator: () => {},
+
+    dropdownIndicator: (defaultStyles, state) => ({
+      ...defaultStyles,
+      color: "black",
+      transition: 'all .2s ease',
+      transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : null
+    }),
+
+    multiValueRemove: (defaultStyles, state) => ({
+      ...defaultStyles,
+      "&:hover": {
+        backgroundColor: "transparent",
+        color: "red"
+      }
+    }),
+
+    clearIndicator: (defaultStyles, state) => ({
+      ...defaultStyles,
+      "&:hover": {
+        backgroundColor: "transparent",
+        color: "red"
+      }
+    }),
+
+    valueContainer: (provided, state) => ({
+      ...provided,
+      maxHeight: "100px",
+      overflowY: "auto"
+    }),
+
+    control: (defaultStyles) => ({
+      ...defaultStyles,
+      backgroundColor: "whitesmoke",
+      color: "black",
+      border: "none",
+      boxShadow: "none",
+      minHeight: "50px",
+      maxHeight: "100px",
+      overflow: "hidden",
+      cursor: "pointer"
+    })
+  };
+
   // Dropdown states
   const [selectedSex, setSelectedSex] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
@@ -159,7 +215,7 @@ export default function MultiFilters() {
 
   return (
     <div className="DoYou">
-      <h1>Your Furr-ever Friend Awaits</h1>
+      <h1>Your Furr-ever Friend <br/> Awaits</h1>
       <img className="filter-bannerDog" src={FilterBackground} alt="" />
       <div className="custom-container">
         <div className="buttons-container" id="filters-button">
@@ -183,15 +239,7 @@ export default function MultiFilters() {
             onChange={handleChangeSex}
             isMulti
             className="dropdownFilters"
-            theme={(theme) => ({
-              ...theme,
-              borderRadius: 5,
-              colors: {
-                ...theme.colors,
-                primary25: "silver",
-                primary: "black",
-              },
-            })}
+            styles={customStyles}
           />
 
           <Select
@@ -201,15 +249,7 @@ export default function MultiFilters() {
             onChange={handleChangeColor}
             isMulti
             className="dropdownFilters"
-            theme={(theme) => ({
-              ...theme,
-              borderRadius: 5,
-              colors: {
-                ...theme.colors,
-                primary25: "silver",
-                primary: "black",
-              },
-            })}
+            styles={customStyles}
           />
 
           <Select
@@ -219,15 +259,7 @@ export default function MultiFilters() {
             onChange={handleChangeBreed}
             isMulti
             className="dropdownFilters"
-            theme={(theme) => ({
-              ...theme,
-              borderRadius: 5,
-              colors: {
-                ...theme.colors,
-                primary25: "silver",
-                primary: "black",
-              },
-            })}
+            styles={customStyles}
           />
 
           <Select
@@ -237,15 +269,7 @@ export default function MultiFilters() {
             onChange={handleChangeAge}
             isMulti
             className="dropdownFilters"
-            theme={(theme) => ({
-              ...theme,
-              borderRadius: 5,
-              colors: {
-                ...theme.colors,
-                primary25: "silver",
-                primary: "black",
-              },
-            })}
+            styles={customStyles}
           />
         </div>
 
