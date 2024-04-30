@@ -119,7 +119,7 @@ const ShelterDashboard = () => {
     params.set("current_shelter_id", currentShelterId);
     params.set("page_size", 2000);
     const petsData = await fetch(
-      "http://localhost:9080/database-controller/api/pet?" + params,
+      process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet?" + params,
       {
         method: "GET",
         headers: {
