@@ -1,100 +1,97 @@
 /*Temp font used for the page */
 .about-container {
-    font-family: 'Pacifico', cursive;
-  }
-  
-  /*Page stylings and margins */
-  .about-container {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-  }
-  /*Large page image */
-  .about-head-image {
-    border-radius: 40px;
-    width: 100%;
-    height: auto;
-    margin-bottom: 100px; 
-  }
-  /*Our Story Section */
-  .about-content-container {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    margin-bottom: 60px;
-  }
-  
-  .about-text-and-list {
-    flex: 1; 
-    padding-right: 5px; /* Add padding between text and the second image */
-    font-size:larger;
-    line-height: 1.5em;
-  }
-  
-  .about-info-list {
-    list-style-type: none; 
-    padding: 0;
-  }
-  
-  .about-second-image {
-    border-radius: 40px;
-    width: 50%; 
-    height: auto;
-    flex: 1; 
-  }
-  /*Literally just thw mission statement */
-  .about-mission-statement{
-    margin-bottom: 60px;
-    font-size:larger;
-    line-height: 1.5em;
-  }
-  
-  /* Carousel */
-  .about-meet-teams {
-    max-width: 1200px; 
-    margin: 0 auto; /* Center the carousel */
-    padding: 20px; 
-  }
-  
-  .about-meet-teams h1{
-    text-align: center;
-    margin-bottom: 60px;
-  
-  }
-  
-  .about-team-section {
-    margin-bottom: 50px; /* Add space between each team's carousel */
-  }
-  
-  .about-team-section h2 {
-    text-align: center;
-    margin-bottom: 20px; /* Space between the team name and the carousel */
-    font-size: 24px; 
-  }
-  
-  .about-team-member {
-    padding: 15px; /* Space inside each slide */
-    text-align: center; 
-  }
-  
-  .about-team-member img {
-    width: 200px; /* Make the image responsive to the container size */
-    height: 200px;
-    object-fit: cover;
-    margin: 0 auto 10px; /* Center the image and add space below */
-    border-radius: 20%; 
-  }
-  
-  /* Style for the names of team members */
-  .about-team-member h3 {
-    margin-top: 10px; /* Space above the team member's name */
-    font-size: 18px; 
-  }
-  
-  /* Style for the member info */
-  .about-team-member p {
-    font-size: 14px; 
-    color: #000; 
-  }
-  
+  font-family: 'Pacifico', cursive;
+}
+
+/*Page stylings and margins */
+.about-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+/*Our Story Section */
+.about-content-container {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 60px;
+}
+
+.about-Header{
+  margin-bottom: 10px;
+}
+
+.about-text-and-list {
+  flex: 1; 
+  padding-right: 5px; /* Add padding between text and the second image */
+  font-size:larger;
+  line-height: 1.6em;
+}
+
+.about-info-list {
+  list-style-type: none; 
+  padding: 0;
+}
+
+.about-second-image {
+  border-radius: 40px;
+  width: 50%; 
+  height: auto;
+  flex: 1; 
+}
+/*Literally just thw mission statement */
+.about-mission-statement{
+  margin-bottom: 60px;
+  font-size:larger;
+  line-height: 1.5em;
+}
+
+/* Carousel */
+.about-meet-teams {
+  max-width: 1200px; 
+  margin: 0 auto; /* Center the carousel */
+  padding: 20px; 
+}
+
+.about-meet-teams h1{
+  text-align: center;
+  margin-bottom: 60px;
+
+}
+
+.about-team-section {
+  margin-bottom: 50px; /* Add space between each team's carousel */
+}
+
+.about-team-section h2 {
+  text-align: center;
+  margin-bottom: 20px; /* Space between the team name and the carousel */
+  font-size: 24px; 
+}
+
+.about-team-member {
+  padding: 15px; /* Space inside each slide */
+  text-align: center; 
+}
+
+.about-team-member img {
+  width: 200px; /* Make the image responsive to the container size */
+  height: 200px;
+  object-fit: cover;
+  margin: 0 auto 10px; /* Center the image and add space below */
+  border-radius: 20%; 
+}
+
+/* Style for the names of team members */
+.about-team-member h3 {
+  margin-top: 10px; /* Space above the team member's name */
+  font-size: 18px; 
+}
+
+/* Style for the member info */
+.about-team-member p {
+  font-size: 14px; 
+  color: #000; 
+}

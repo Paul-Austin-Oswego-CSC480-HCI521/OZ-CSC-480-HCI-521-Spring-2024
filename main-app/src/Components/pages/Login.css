@@ -30,6 +30,36 @@
     height: 100%;
 }
 
+.login-back-button{
+    align-self: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 6.4em;
+    padding: 0;
+    cursor: pointer;
+}
+
+.login-back-button .login-home-button{
+    color: black;
+    font-size:medium;
+    flex-direction: row;
+    font-weight: bold;
+    text-decoration: none;
+    display:flex;
+    margin-bottom: 1em;
+    margin-left: 10px;
+
+}
+
+.login-back-button p{
+    margin-left: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+
+
 .logo {
     align-self: flex-start;
     display: flex;
