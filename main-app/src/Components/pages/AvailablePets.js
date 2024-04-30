@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import { checkJWT } from '../../Utils/JWTAuth';
-import { FaUpload, FaCheck, FaPlusSquare } from 'react-icons/fa';
+import { FaCheck, FaPlusSquare } from 'react-icons/fa';
 import './UploadPetForm.css';
 import './card.css';
 import { Link } from 'react-router-dom';
@@ -230,14 +230,15 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
               <div className="vertical-dots">&#8942;</div>
             </button>
           </div>
+          <Link to={"/PetDetails/" + pet.id}>
           {pet.images && pet.images.length > 0 && (
-            <Link to={"/PetDetails/" + pet.id}>
+            
               <div className="pet-images">
-                {pet.images.map((image, index) => (
-                  <img key={index} src={image} alt={`Pet ${index}`} className="pet-image" />
-                ))}
+                
+                  <img  src={pet.images[0]} alt={pet.name} className="pet-image" />
+                
               </div>
-            </Link>
+           
           )}
           <div className="pet-details">
             <h3 className="pet-name">{pet.name}</h3>
@@ -246,6 +247,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
               <span className="pet-age">{pet.age}</span>
             </div>
           </div>
+          </Link>
         </div>
       ))}
       {showPopup && (
