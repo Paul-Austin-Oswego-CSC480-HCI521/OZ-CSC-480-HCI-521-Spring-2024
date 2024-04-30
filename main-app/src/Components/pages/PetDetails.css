@@ -18,6 +18,10 @@ body {
   overflow-x: hidden;
 }
 
+a{
+  text-decoration: none;
+
+}
 .page {
   display: flex;
   flex-direction: column;
@@ -611,6 +615,8 @@ element.style {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+
 
 /* .accordian-container {
   display: flex;
