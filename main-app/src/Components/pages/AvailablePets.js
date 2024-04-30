@@ -132,6 +132,8 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
       sex: 'Male',
       images: [],
       size: 'Small',
+      temperament: '',
+      health: '',
       age: '',
       description: '',
       fileNames: [],
@@ -341,14 +343,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                       <option value="Female">Female</option>
                     </select>
                   </div>
-                  <input
-                    type="text"
-                    placeholder="Pet Age"
-                    name="age"
-                    value={editingPet.age}
-                    onChange={handleFormChange}
-                    required
-                  />
+                 
                   <div className="pet-details-row">
                     <input
                       type="text"
@@ -372,6 +367,33 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                     </select>
 
                   </div>
+                  <div className="pet-details-row">
+                    <input
+                      type="text"
+                      placeholder="Temperament"
+                      name="temperament"
+                      value={editingPet.temperament}
+                      onChange={handleFormChange}
+                      
+                    />
+                    <input
+                      type="text"
+                      placeholder="Health"
+                      name="health"
+                      value={editingPet.health}
+                      onChange={handleFormChange}
+                      
+                    />
+
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Pet Age"
+                    name="age"
+                    value={editingPet.age}
+                    onChange={handleFormChange}
+                    required
+                  />
                   <input
                     type="text"
                     placeholder="Pet Color"

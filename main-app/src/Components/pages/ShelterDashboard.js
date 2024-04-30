@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logo from "../../Assets/PawsnClawsWords.svg";
 import { useNavigate } from "react-router-dom";
 import { checkJWT } from "../../Utils/JWTAuth";
 import { FaPencilAlt } from "react-icons/fa";
@@ -9,7 +10,7 @@ import "./ShelterDashboard.css";
 import { NavLink as Link } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
-import { AiOutlineMenu, AiOutlineHome } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { BsPersonCircle } from "react-icons/bs";
 import EditProfileModal from "./EditProfileModal";
 import verified_shelter_image from "../images/verified.png";
@@ -348,23 +349,18 @@ const ShelterDashboard = () => {
           >
             <IoPawSharp /> Adopt
           </Link>
-          <Link to="/viewdash" className="active">
+          <Link to="/dashboard" className="active">
             <BsHouseHeartFill /> Shelter
           </Link>
         </div>
       </div>
       <div className="topnav">
         <div className="left-container">
-          <div className="logo-container">
-            <Link to="/" className="logo-link">
-              <img src="./images/loho.png" alt="logo" />
-            </Link>
-          </div>
-          <div className="home-container">
-            <Link to="/viewdash" className="home-icon">
-              <AiOutlineHome />
-            </Link>
-          </div>
+        <div style={{ backgroundColor: "white", borderRadius: "40px", border: "2px solid white", padding: "10px" }}>
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+        </div>
         </div>
         <div className="right-container">
           <div className="upload-pet">
