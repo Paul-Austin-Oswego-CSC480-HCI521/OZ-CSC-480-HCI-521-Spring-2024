@@ -27,6 +27,10 @@ body {
   background-color: rgb(227, 234, 231);
 }
 
+.button-container img{
+  border-radius: 50%;
+}
+
 /* Position the dropdown container */
 .dropdown {
   position: relative;
