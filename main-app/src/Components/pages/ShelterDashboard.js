@@ -33,7 +33,7 @@ const ShelterDashboard = () => {
         state: "",
         zipcode: "",
       },
-      contact: "",
+      phoneNumber: "",
       description: "",
     },
     pets: [],

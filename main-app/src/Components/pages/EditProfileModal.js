@@ -72,7 +72,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
     // Check if all required fields are filled
     if (
       !editedData.name ||
-      !editedData.contact ||
+      !editedData.phoneNumber ||
       !editedData.description ||
       !editedData.location.addressLine1 ||
       !editedData.location.city ||
@@ -185,7 +185,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             name="phoneNumber"
             id="phoneNumber"
             placeholder="Phone Number"
-            value={editedData.contact}
+            value={editedData.phoneNumber}
             onChange={handleInputChange}
             required
           />
