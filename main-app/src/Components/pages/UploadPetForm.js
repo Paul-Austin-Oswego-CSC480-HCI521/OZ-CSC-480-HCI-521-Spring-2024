@@ -98,6 +98,8 @@ const UploadPetForm = ({ addNewPet }) => {
       sex: 'Male',
       images: [],
       size: 'Small',
+      temperament:'',
+      health:'',
       age: '',
       description: '',
 
