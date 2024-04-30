@@ -81,10 +81,10 @@ export const PetDetails = () => {
             <div className="images-carousel">
               <Slider {...settings}>
                 <div>
-                  <img src={pet.image} alt="Jak Jax" className="pet-images"></img>
+                  <img src={pet.image} alt="Jak Jax" className="pet-image"></img>
                 </div>
                 <div>
-                  <img src={hex} alt="Jak Jax" className="pet-images"></img>
+                  <img src={hex} alt="Jak Jax" className="pet-image"></img>
                 </div>
               </Slider>
             </div>
@@ -187,51 +187,35 @@ export const PetDetails = () => {
 
         <div className="bottom-page">
 
-          <div >
-            <div className="carousel-heading">
-            
-            
+          <div style={{ paddingTop: 0, paddingBottom: 0 }} className="about-meet-teamss">
+            <h1>Furr-Ever friends near you</h1>
+            <div className="about-team-sections">
+              <Slider variableWidth={true}>
+                {[0, 3, 6].map((startIndex, groupIndex) => (
+                  <div className="work-section-info-container" key={groupIndex}>
+                    {/* Map over each group of three items */}
+                    {items.slice(startIndex, startIndex + 5).map((item, index) => (
+                      <a key={index} href={`/PetDetails/${item.id}`}>
+                        <div className="work-section-info">
+                          <div className="info-boxes-img-container">
+                            <img
+                              src={item.image}
+                              alt=""
+                              style={{ maxWidth: "80%", height: "70%" }}
+                            />
+                          </div>
+                          <h2>{item.name}</h2>
+                          <p>{item.breed}</p>
+                          <span>{item.age}</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </Slider>
             </div>
 
-            <div className="about-meet-teamsss">
-            <div className="see-more-button">
-              
-            <h1>Furr-Ever friends near you</h1>
-            <Link to="/ExplorePets">
-                <button className="see-more-arrow">
-                  See more
-                  <FiArrowRight />{" "}
-                </button>
-              </Link>
-              </div>
-        <div className="about-team-sections">
-          <Slider variableWidth={true}>
-            {[0, 3, 6].map((startIndex, groupIndex) => (
-              <div className="work-section-info-container" key={groupIndex}>
-                {/* Map over each group of three items */}
-                {items.slice(startIndex, startIndex + 5).map((item, index) => (
-                  <a key={index} href={`/PetDetails/${item.id}`}>
-                    <div className="work-section-info">
-                      <div className="info-boxes-img-container">
-                        <img
-                          src={item.image}
-                          alt=""
-                          style={{ maxWidth: "80%", height: "70%" }}
-                        />
-                      </div>
-                      <h2>{item.name}</h2>
-                      <p>{item.breed}</p>
-                      <span>{item.age}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </div>
 
-            
           </div>
 
 
@@ -306,6 +290,6 @@ export const PetDetails = () => {
             </div>
         </div> */}
 
-    </div>
+    </div >
   );
 };

@@ -398,6 +398,7 @@ body {
 /* Add more specific styles as needed */
 .work-section-wrapper {
   margin-top: 15rem;
+  margin-left: 20rem;
 }
 .work-section-top p {
   text-align: center;
@@ -419,7 +420,13 @@ body {
   flex-wrap: wrap; /* Ensure items wrap to the next line if they exceed the container width */
   align-content: center;
   align-items: center;
+  overflow:auto;
   
+}
+
+element.style {
+    width: 100%;
+    /* display: inline-block; */
 }
 
 
@@ -438,6 +445,7 @@ body {
   color: #505050;
   display: inline-block; /* Display inline-block to make them appear horizontally */
   vertical-align: top; /* Align them to the top */
+
 }
 
 .work-section-info .info-boxes-img-container {
@@ -447,6 +455,8 @@ body {
   width: 125%; /* Ensure container spans the entire width */
   height: 100%; /* Set height to 50% of the parent's height */
   overflow: hidden; /* Hide overflow content */
+  border-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .work-section-info .info-boxes-img-container img {
@@ -454,11 +464,12 @@ body {
   height: 100%; /* Ensure images fill 100% of the container's height */
   object-fit: cover; /* Cover the entire container with the image */
   display: block; /* Remove any default spacing or alignment */
-  border-radius: 0rem;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
 }
 /* Keep your existing styles */
 .work-section-info h2 {
-  margin: 0rem 3.8rem; /* Adjust top margin as needed */
+  margin: 0rem 4rem; /* Adjust top margin as needed */
   text-align: center; /* Center the text horizontally */
   align-items: center;
   align-content: center;
@@ -707,7 +718,7 @@ body {
 }
 
 .about-team-sections h2 {
-  text-align: left;
+  
   margin-bottom: 20px; /* Space between the team name and the carousel */
   font-size: 24px;
 }
