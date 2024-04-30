@@ -13,7 +13,7 @@ const ShelterNavbar3 = () => {
           <Link to="/">
             <IoPawSharp /> Adopt
           </Link>
-          <Link to="/shelter" className='active'>
+          <Link to="/viewdash" className='active'>
             <BsHouseHeartFill /> Shelter
           </Link>
         </div>
