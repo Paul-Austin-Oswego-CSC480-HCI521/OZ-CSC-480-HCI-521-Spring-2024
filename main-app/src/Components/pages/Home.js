@@ -18,6 +18,33 @@ export const Home = () => {
   const { setSelectedCategory } = useCategory();
   const [zipCode, setZipCode] = useState("13126"); // Define zipCode state
 
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    adaptiveHeight: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+
   const handleZipCodeChange = (e) => {
     setZipCode(e.target.value);
   };
@@ -42,6 +69,8 @@ export const Home = () => {
       document.body.style.backgroundColor = "";
     };
   }, []); // Empty dependency array means this effect runs once on mount
+
+  
 
   return (
     <div className="home-container">
@@ -114,7 +143,7 @@ export const Home = () => {
       <div className="about-meet-teamss">
         <h1>Furr-Ever friends near you</h1>
         <div className="about-team-sections">
-          <Slider>
+        <Slider variableWidth={true} {...settings}>
             {[0, 3, 6].map((startIndex, groupIndex) => (
               <div className="work-section-info-container" key={groupIndex}>
                 {/* Map over each group of three items */}

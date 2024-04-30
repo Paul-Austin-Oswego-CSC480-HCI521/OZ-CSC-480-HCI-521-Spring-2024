@@ -416,11 +416,13 @@ body {
 
 .work-section-info-container {
   display: flex;
+  width:100%;
   justify-content: center !important; /* Center the items horizontally */
   flex-wrap: wrap; /* Ensure items wrap to the next line if they exceed the container width */
   align-content: center;
   align-items: center;
-  overflow:auto;
+  overflow:hidden;
+  position: relative;
   
 }
 
