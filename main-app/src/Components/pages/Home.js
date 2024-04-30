@@ -82,21 +82,6 @@ export const Home = () => {
         <div className="home-bannerImage-container">
           <img className="home-bannerDog" src={BannerBackground} alt="" />
         </div>
-        {/* Sejal's code */}
-        <form onSubmit={handleSubmitZipCode} className="zip-form">
-          <input
-            type="text"
-            placeholder="Zip Code"
-            value={zipCode}
-            onChange={handleZipCodeChange}
-            className="zip-input"
-          />
-          <button type="submit" className="zip-submit">
-            {" "}
-            Go!{" "}
-          </button>
-        </form>
-        {/*  End of Sejal's Code*/}
 
         <div className="home-text-section">
           <div className="button-container">
