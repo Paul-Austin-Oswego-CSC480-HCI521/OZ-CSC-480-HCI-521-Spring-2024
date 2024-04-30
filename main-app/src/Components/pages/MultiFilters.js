@@ -13,6 +13,7 @@ export default function MultiFilters() {
   const { selectedCategory } = useCategory();
   const [selectedFilters, setSelectedFilters] = useState([]);
 
+<<<<<<< Updated upstream
   // Dropdowns theme
   const customStyles = {
     placeholder: (defaultStyles, state) => ({
@@ -69,39 +70,79 @@ export default function MultiFilters() {
     }),
   };
 
+=======
+  //TODO: DO AN IF STATEMENT TO SEE IF selectedCategory is null. If it is then set it as a parameter.
+>>>>>>> Stashed changes
   // Dropdown states
   const [selectedSex, setSelectedSex] = useState(null);
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [selectedBreed, setSelectedBreed] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
   const [selectedAge, setSelectedAge] = useState(null);
 
   // Filtered items states
   const [filteredItems, setFilteredItems] = useState(null);
 
+  const sexOptions = [
+    { value: "Male", label: "Male" },
+    { value: "Female", label: "Female" },
+  ];
+  
+  const ageOptions = [
+    { value: "1", label: "1-3 years" },
+    { value: "4", label: "4-6 years" },
+    { value: "7", label: "7-9 years" },
+    { value: "10", label: "10+ years" },
+    // Add more age options as needed
+  ];
+  const sizeOptions = [
+    { value: "Small", label: "Small" },
+    { value: "Medium", label: "Medium" },
+    { value: "Large", label: "Large" },
+    // Add more age options as needed
+  ];
+  let hasDone = false;
+
   const fetchData = async () => {
     const params = new URLSearchParams();
     //params.set("current_shelter_id", currentShelterId);
     params.set("page_size", 50);
+<<<<<<< Updated upstream
     if (selectedFilters.length !== 0) {
+=======
+    console.log("category", selectedCategory);
+    if(selectedCategory !== null && hasDone === false){
+      if(selectedCategory === "Small Critter"){
+        params.set("type", "Fish");
+      }
+      else{
+        params.set("type", selectedCategory);
+      }
+      hasDone = true;
+    }
+    if(selectedFilters.length !== 0){
+>>>>>>> Stashed changes
       console.log("selectedFilters", selectedFilters);
-      console.log(selectedBreed);
-      console.log(selectedColor);
       console.log(selectedAge);
       if (selectedFilters[0] === "Small Critter") {
         params.set("type", "Fish");
       } else {
         params.set("type", selectedFilters[0]);
       }
+<<<<<<< Updated upstream
     }
     if (selectedAge !== null && selectedAge[0] !== undefined) {
+=======
+    } 
+    if(selectedAge !== null && selectedAge[0] !== undefined){
+>>>>>>> Stashed changes
       //This is a mapped value? Has a label of 3 and a value of 3. Not sure how I would fix this and/or index it to send a GET request
       console.log(selectedAge[0].value);
-      params.set("max_age", selectedAge[0].value);
+      params.set("min_age", selectedAge[0].value);
     }
     if (selectedSex !== null && selectedSex[0] !== undefined) {
       console.log(selectedSex[0].value);
       params.set("sex", selectedSex[0].value);
     }
+<<<<<<< Updated upstream
     if (selectedColor !== null && selectedColor[0] !== undefined) {
       console.log(selectedColor[0].value);
       params.set("color", selectedColor[0].value);
@@ -120,6 +161,20 @@ export default function MultiFilters() {
         },
       }
     );
+=======
+    if(selectedSize !== null&& selectedSize[0] !== undefined){
+      console.log(selectedSize[0].value);
+      params.set("size", selectedSize[0].value);
+    }
+    console.log(params);
+    console.log(selectedCategory);
+    const petsData = await fetch("http://localhost:9080/database-controller/api/pet?" + params, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+>>>>>>> Stashed changes
 
     if (petsData.ok) {
       var petData = [];
@@ -140,12 +195,14 @@ export default function MultiFilters() {
       // console.log(data);
       //console.log("filteredItems");
       //console.log(filteredItems);
+    }else if (petsData.status === 404){
+      setFilteredItems(null);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, [selectedFilters, selectedAge, selectedBreed, selectedColor, selectedSex]);
+  }, [selectedFilters, selectedAge, selectedAge, selectedSex]);
   // Handles changing Category buttons
 
   // Category options
@@ -155,7 +212,7 @@ export default function MultiFilters() {
   const uniqueItems = (key) => {
     if (selectedFilters.length === 0) {
       if (filteredItems == null) {
-        return null;
+        return [];
       } else {
         const uniqueSet = new Set(
           filteredItems.flatMap((item) => item[key]).flat()
@@ -194,15 +251,8 @@ export default function MultiFilters() {
     //fetchData();
   };
 
-  const handleChangeColor = (selectedOption) => {
-    setSelectedColor(selectedOption);
-    console.log(selectedFilters);
-    console.log(selectedOption);
-    //fetchData();
-  };
-
-  const handleChangeBreed = (selectedOption) => {
-    setSelectedBreed(selectedOption);
+  const handleChangeSize = (selectedOption) => {
+    setSelectedSize(selectedOption);
     console.log(selectedFilters);
     console.log(selectedOption);
     //fetchData();
@@ -246,7 +296,7 @@ export default function MultiFilters() {
           <Select
             placeholder={"Sex"}
             value={selectedSex}
-            options={uniqueItems("sex")}
+            options={sexOptions}
             onChange={handleChangeSex}
             isMulti
             className="dropdownFilters"
@@ -254,6 +304,7 @@ export default function MultiFilters() {
           />
 
           <Select
+<<<<<<< Updated upstream
             placeholder={"Color"}
             value={selectedColor}
             options={uniqueItems("color")}
@@ -268,6 +319,12 @@ export default function MultiFilters() {
             value={selectedBreed}
             options={uniqueItems("breed")}
             onChange={handleChangeBreed}
+=======
+            placeholder={"Size"}
+            value={selectedSize}
+            options={sizeOptions}
+            onChange={handleChangeSize}
+>>>>>>> Stashed changes
             isMulti
             className="dropdownFilters"
             styles={customStyles}
@@ -276,7 +333,7 @@ export default function MultiFilters() {
           <Select
             placeholder={"Age"}
             value={selectedAge}
-            options={uniqueItems("age")}
+            options={ageOptions}
             onChange={handleChangeAge}
             isMulti
             className="dropdownFilters"
@@ -285,6 +342,7 @@ export default function MultiFilters() {
         </div>
 
         <div className="cards-container">
+<<<<<<< Updated upstream
           {filteredItems != null
             ? filteredItems.map((item, idx) => (
               <Link
@@ -303,6 +361,24 @@ export default function MultiFilters() {
               </Link>
             ))
             : "No pets found :("}
+=======
+          {filteredItems != null ? filteredItems.map((item, idx) => (
+            <Link
+              to={`/PetDetails/${item.id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <div key={`items-${idx}`} className="card">
+                <img className="image" src={item.images} alt="Null" />
+                <p className="name">{item.name}</p>
+                <p className="breed">{item.breed}</p>
+                {/* <p className="category">{item.category}</p> */}
+                {/* <p className="sex">{item.sex}</p> */}
+                {/* <p className="color">{item.color}</p> */}
+                <p className="age">{item.age}</p>
+              </div>
+            </Link>
+          )) : "No pets found :("}
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
