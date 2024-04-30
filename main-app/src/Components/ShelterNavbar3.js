@@ -9,7 +9,7 @@ const ShelterNavbar3 = () => {
   return (
     <>
       <div className="top-nav-container">
-        <div className="top-nav">
+        <div className="shelter-top-nav">
           <Link to="/">
             <IoPawSharp /> Adopt
           </Link>

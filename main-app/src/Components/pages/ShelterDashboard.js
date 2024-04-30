@@ -86,11 +86,11 @@ const ShelterDashboard = () => {
   }, []);
 
   const fetchShelterData = async () => {
-    if (getCookie("shelterID") == "") {
-      alert("You are not signed in as a shelter user.");
-      navigate("/shelter");
-      return;
-    }
+    // if (getCookie("shelterID") == "") {
+    //   alert("You are not signed in as a shelter user.");
+    //   navigate("/shelter");
+    //   return;
+    // }
 
     const currentShelterId = getCookie("shelterID");
 
