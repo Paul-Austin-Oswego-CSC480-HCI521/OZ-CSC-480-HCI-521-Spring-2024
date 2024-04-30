@@ -1,5 +1,7 @@
 package oz.rest.services;
 
+import com.mongodb.ErrorCategory;
+import com.mongodb.MongoWriteException;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -61,6 +63,7 @@ public class ShelterService extends AbstractService<Shelter> {
     @POST
     @APIResponses({
             @APIResponse(responseCode = "400", description = "The request was invalid"),
+            @APIResponse(responseCode = "409", description = "Conflict! Duplicate email address found"),
             @APIResponse(responseCode = "200", description = "Successfully added new shelter")
     })
     @Operation(summary = "Add a new shelter to the database")
@@ -74,13 +77,29 @@ public class ShelterService extends AbstractService<Shelter> {
                     .build();
         }
 
-        MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
-                Shelter.class);
-        InsertOneResult res = sheltersCollection.insertOne(newEntry);
+        try{
+            MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
+                    Shelter.class);
+            InsertOneResult res = sheltersCollection.insertOne(newEntry);
 
-        ObjectId oid = res.getInsertedId().asObjectId().getValue();
+            ObjectId oid = res.getInsertedId().asObjectId().getValue();
 
-        newEntry.setId(oid);
+            newEntry.setId(oid);
+
+        } catch (MongoWriteException e) {
+            if (e.getError().getCategory() == ErrorCategory.DUPLICATE_KEY) {
+                return Response
+                        .status(Response.Status.CONFLICT)
+                        .entity("{\"error\": \"A shelter with this email already exists.\"}")
+                        .build();
+            }
+            // any other thing besides duplicate key error
+            return Response
+                    .status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"error\": \"Internal server error occurred.\"}")
+                    .build();
+        }
+
 
         // Create the JWT for the Shelter
         String shelterJWT;
