@@ -3,6 +3,9 @@
   font-family: 'Pacifico', cursive;
 }
 
+.about-h1{
+  margin-bottom: 10px;
+}
 /*Page stylings and margins */
 .about-container {
   width: 90%;
