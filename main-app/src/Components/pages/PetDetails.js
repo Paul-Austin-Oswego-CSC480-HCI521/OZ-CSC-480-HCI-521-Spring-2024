@@ -19,15 +19,61 @@ import { Helmet } from "react-helmet";
 export const PetDetails = () => {
   let { id } = useParams();
   const [pet, setPet] = useState(null);
+  const [shelter, setShelter] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const petId = Number(id);
-    const petDetails = items.find((item) => item.id === petId);
-    setPet(petDetails);
-    setLoading(false);
+    // perform this check to show hardcoded pets like before for GUI people to continue to be able to test
+    if (!isNaN(id)) {
+      const petId = Number(id);
+      const petDetails = items.find((item) => item.id === petId);
+      setPet(petDetails);
+      setLoading(false);
+    } else {
+      fetchPetData();
+    }
+
   }, [id]);
+
+  const fetchPetData = async () => {
+    const petId = id;
+
+    const petResponse = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet/" + petId, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // body: JSON.stringify(newPet),
+    });
+
+    if (petResponse.ok) {
+      const petDetails = await petResponse.json();
+      console.log(petDetails);
+      setPet(petDetails);
+
+
+      const shelterResponse = await fetch(process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/shelter/" + petDetails.currentShelterId, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify(newPet),
+      });
+
+      if (shelterResponse.ok) {
+        const shelterDetails = await shelterResponse.json();
+        setShelter(shelterDetails);
+        console.log(shelterDetails);
+
+        setLoading(false);
+      }
+    }
+
+    // const petDetails = items.find((item) => item.id === petId);
+    // setPet(petDetails);
+    // setLoading(false);
+  };
 
   var settings = {
     dots: true,
@@ -86,16 +132,23 @@ export const PetDetails = () => {
             </div>
             <div className="images-carousel">
               <Slider {...settings}>
-                <div>
-                  <img
-                    src={pet.image}
-                    alt="Jak Jax"
-                    className="pet-images"
-                  ></img>
-                </div>
-                <div>
+                {
+                  isNaN(id) ?
+                    pet.images.map((img, idx) => (
+                      <div>
+                        <img key={idx} src={img} alt={"A pet named " + pet.name}>
+                        </img>
+                      </div>
+                    )) :
+                    <div>
+                      <img src={pet.image} alt="Jak Jax" className="pet-images"></img>
+                    </div>
+                }
+
+                {/* <img src={pet.image} alt="Jak Jax" className="pet-images"></img> */}
+                {/* <div>
                   <img src={hex} alt="Jak Jax" className="pet-images"></img>
-                </div>
+                </div> */}
               </Slider>
             </div>
           </div>
@@ -106,12 +159,12 @@ export const PetDetails = () => {
                 Hi, My name is {pet.name}!
               </div>
               <div className="text-pet-details">
-                {pet.sex}, {pet.age}
+                {pet.sex != null ? pet.sex + "," : ""} {pet.age != null ? pet.age : 0} years old
               </div>
             </div>
 
             <div className="categories-container">
-              <div className="text-category-type">{pet.category}</div>
+              <div className="text-category-type">{pet.type}</div>
               <div className="text-category-breed">{pet.breed}</div>
               <div className="text-category-distance">10.5 miles away</div>
             </div>
@@ -156,44 +209,51 @@ export const PetDetails = () => {
               </div>
             </div>
 
-            <Link to="/userboard">
-              <div className="shelter-box">
-                <div className="left-alignment">
-                  <div className="info-container">
-                    <div className="shelter-info">
-                      <img
-                        loading="lazy"
-                        srcSet={ShelterLogo}
-                        className="shelter-logo"
-                        alt=""
-                      />
-                      <div className="text-name-verification">
-                        <div className="text-shelter-name">
-                          Pulaski County Shelter
+            {shelter != null ?
+              <Link to={"/userboard/" + shelter.id}>
+                {shelter != null ?
+                  <div className="shelter-box">
+                    <div className="left-alignment">
+                      <div className="info-container">
+                        <div className="shelter-info">
+                          <img
+                            loading="lazy"
+                            srcSet={ShelterLogo}
+                            className="shelter-logo"
+                            alt=""
+                          />
+                          <div className="text-name-verification">
+                            <div className="text-shelter-name">{shelter.name} <i><IoIosCheckmarkCircle /></i>
+                            </div>
+                          </div>
                         </div>
-                        <i>
-                          <IoIosCheckmarkCircle />
-                        </i>
+                        <div className="email-info">
+                          <div className="text-email-title">Email:
+                          </div>
+                          <div className="text-email">{shelter.emailAddress}
+                          </div>
+                        </div>
+                        <div className="phone-info">
+                          <div className="text-phone-title">Phone:
+                          </div>
+                          <div className="text-phone">{shelter.phoneNumber}
+                          </div>
+                        </div>
+                        <div className="address-info">
+                          <div className="text-address-title">Address:
+                          </div>
+                          {/* this should probably check that the field actually exists and only do a <br> is it exists. see above for example if needed using ternary operators */}
+                          <div className="text-address">{shelter.location.addressLine1} <br />{shelter.location.addressLine2} <br /> {shelter.location.city} <br />{shelter.location.state}<br /> {shelter.location.zipCode}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="email-info">
-                      <div className="text-email-title">Email:</div>
-                      <div className="text-email">hello@pcs.com</div>
-                    </div>
-                    <div className="phone-info">
-                      <div className="text-phone-title">Phone:</div>
-                      <div className="text-phone">+1 (315) 766 9933</div>
-                    </div>
-                    <div className="address-info">
-                      <div className="text-address-title">Address:</div>
-                      <div className="text-address">
-                        235 Adopt Me Ln, Somerset, KY 42501
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
+
+                    {/* this one didn't work for me so i did it below but didn't remove this one */}
+                  </div> : "Associated shelter not found :("
+                }
+              </Link>
+              : "Associated shelter not found :("}
           </div>
         </div>
 

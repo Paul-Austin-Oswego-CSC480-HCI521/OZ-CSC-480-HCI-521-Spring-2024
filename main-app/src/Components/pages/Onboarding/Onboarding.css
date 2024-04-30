@@ -19,6 +19,34 @@
   background-color: #fff;
 }
 
+.signup-back-button{
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 6.4em;
+  padding: 0;
+  cursor: pointer;
+}
+
+.signup-back-button .signup-home-button{
+  color: black;
+  font-size:medium;
+  flex-direction: row;
+  font-weight: bold;
+  text-decoration: none;
+  display:flex;
+  margin-bottom: 1em;
+  margin-left: 10px;
+}
+
+.signup-back-button p{
+  margin-left: 5px;
+  font-weight: bold;
+  color: black;
+}
+
+
 .signup-container h2 {
   /* font-family: "Pacifico", cursive; */
    font-family: "Madimi One", sans-serif; 

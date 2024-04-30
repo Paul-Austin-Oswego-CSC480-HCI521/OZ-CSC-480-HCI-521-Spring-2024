@@ -12,6 +12,7 @@ import { BsHouseHeartFill } from "react-icons/bs";
 import { AiOutlineMenu, AiOutlineHome } from "react-icons/ai";
 import { BsPersonCircle } from "react-icons/bs";
 import EditProfileModal from "./EditProfileModal";
+import verified_shelter_image from "../images/verified.png";
 import { FaUser } from "react-icons/fa";
 import { deleteCookies, getCookie } from "../../Utils/CookieUtils";
 import { Helmet } from "react-helmet";
@@ -66,8 +67,8 @@ const ShelterDashboard = () => {
       // TODO: also needs to delete all pets in shelter; currently only deleting the shelter entry.
       const response = await fetch(
         process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-          "database-controller/api/shelter/" +
-          shelterID,
+        "database-controller/api/shelter/" +
+        shelterID,
         {
           method: "DELETE",
           headers: {
@@ -104,8 +105,8 @@ const ShelterDashboard = () => {
     console.log(currentShelterId);
     const shelterData = await fetch(
       process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-        "database-controller/api/shelter/" +
-        currentShelterId,
+      "database-controller/api/shelter/" +
+      currentShelterId,
       {
         method: "GET",
         headers: {
@@ -118,7 +119,7 @@ const ShelterDashboard = () => {
     params.set("current_shelter_id", currentShelterId);
     params.set("page_size", 2000);
     const petsData = await fetch(
-      "http://localhost:9080/database-controller/api/pet?" + params,
+      process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet?" + params,
       {
         method: "GET",
         headers: {
@@ -208,8 +209,8 @@ const ShelterDashboard = () => {
     //const cookie = JSON.parse(document.cookie);
     fetch(
       process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-        "database-controller/api/shelter/" +
-        shelterID,
+      "database-controller/api/shelter/" +
+      shelterID,
       {
         method: "PUT",
         headers: {
@@ -248,8 +249,8 @@ const ShelterDashboard = () => {
 
     const response = await fetch(
       process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-        "database-controller/api/pet/" +
-        petId,
+      "database-controller/api/pet/" +
+      petId,
       {
         method: "DELETE",
         headers: {
@@ -286,8 +287,8 @@ const ShelterDashboard = () => {
     // console.log("my edited pet" + editedPet.id);
     fetch(
       process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-        "database-controller/api/pet/" +
-        editedPet.id,
+      "database-controller/api/pet/" +
+      editedPet.id,
       {
         method: "PUT",
         headers: {
@@ -463,7 +464,7 @@ const ShelterDashboard = () => {
               {data.shelter.name}
               <img
                 className="verified"
-                src="./images/verified.png"
+                src={verified_shelter_image}
                 alt=""
               ></img>
             </h2>

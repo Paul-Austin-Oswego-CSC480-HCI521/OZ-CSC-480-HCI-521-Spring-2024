@@ -25,7 +25,7 @@ export default function MultiFilters() {
       backgroundColor: state.isFocused ? "orange" : "white",
     }),
 
-    indicatorSeparator: () => {},
+    indicatorSeparator: () => { },
 
     dropdownIndicator: (defaultStyles, state) => ({
       ...defaultStyles,
@@ -112,7 +112,7 @@ export default function MultiFilters() {
     }
     console.log(params);
     const petsData = await fetch(
-      "http://localhost:9080/database-controller/api/pet?" + params,
+      process.env.REACT_APP_OPEN_LIBERTY_ROOT + "database-controller/api/pet?" + params,
       {
         method: "GET",
         headers: {
@@ -233,9 +233,8 @@ export default function MultiFilters() {
           {filters.map((category, idx) => (
             <button
               onClick={() => handleFilterButtonClick(category)}
-              className={`button-top ${
-                selectedFilters?.includes(category) ? "active" : ""
-              }`}
+              className={`button-top ${selectedFilters?.includes(category) ? "active" : ""
+                }`}
               key={`filters-${idx}`}
             >
               {category}
@@ -288,21 +287,21 @@ export default function MultiFilters() {
         <div className="cards-container">
           {filteredItems != null
             ? filteredItems.map((item, idx) => (
-                <Link
-                  to={`/PetDetails/${item.id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <div key={`items-${idx}`} className="card">
-                    <img className="image" src={item.image[0]} alt="Null" />
-                    <p className="name">{item.name}</p>
-                    <p className="breed">{item.breed}</p>
-                    {/* <p className="category">{item.category}</p> */}
-                    {/* <p className="sex">{item.sex}</p> */}
-                    {/* <p className="color">{item.color}</p> */}
-                    <p className="age">{item.age}</p>
-                  </div>
-                </Link>
-              ))
+              <Link
+                to={`/PetDetails/${item.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <div key={`items-${idx}`} className="card">
+                  <img className="image" src={item.image[0]} alt="Null" />
+                  <p className="name">{item.name}</p>
+                  <p className="breed">{item.breed}</p>
+                  {/* <p className="category">{item.category}</p> */}
+                  {/* <p className="sex">{item.sex}</p> */}
+                  {/* <p className="color">{item.color}</p> */}
+                  <p className="age">{item.age}</p>
+                </div>
+              </Link>
+            ))
             : "No pets found :("}
         </div>
       </div>
