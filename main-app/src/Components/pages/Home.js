@@ -10,14 +10,11 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import FAQs from "./AdoptionFAQ";
-import { useState } from "react";
 import { items } from "./items";
 import { Helmet } from "react-helmet";
 
 export const Home = () => {
   const { setSelectedCategory } = useCategory();
-  const [zipCode, setZipCode] = useState("13126"); // Define zipCode state
 
   var settings = {
     dots: true,
@@ -44,16 +41,6 @@ export const Home = () => {
         },
       },
     ],
-  };
-
-  const handleZipCodeChange = (e) => {
-    setZipCode(e.target.value);
-  };
-
-  const handleSubmitZipCode = (e) => {
-    e.preventDefault();
-
-    console.log("Hello World");
   };
 
   const handleSelectedCategory = (category) => {
