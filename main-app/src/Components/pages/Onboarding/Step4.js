@@ -55,10 +55,16 @@ const Step4 = ({ prevStep, formData }) => {
     const formDataToSend = {
       name,
       emailAddress,
-      streetAddress,
-      city,
-      state,
-      zipcode,
+      location: {
+        addressLine1: streetAddress,
+        city,
+        state,
+        zipcode
+      },
+      // streetAddress,
+      // city,
+      // state,
+      // zipcode,
       phoneNumber,
       description,
       password,
@@ -91,7 +97,13 @@ const Step4 = ({ prevStep, formData }) => {
         const responseJson = await response.json();
         // console.log(responseText);
 
-        document.cookie = JSON.stringify(responseJson);
+        const cookieJsonKeys = Object.entries(responseJson)
+
+        for (const entry of cookieJsonKeys) {
+          const suffix = "path=/;";
+          document.cookie = entry[0] + "=" + entry[1] + ";" + suffix;
+        };
+
 
         console.log(document.cookie);
 
