@@ -17,7 +17,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
     const { name, value } = event.target;
     const capitalizedValue = capitalizeFirstLetter(value);
     if (name.includes('location.')) {
-      const locationField = name.split('.')[1]; // Extract the nested field (e.g., addressLine1, city, state, zipcode)
+      const locationField = name.split('.')[1]; // Extract the nested field (e.g., addressLine1, city, state, zipCode)
       // Check for phone number validation
       if (name === 'phoneNumber') {
         const phoneRegex = /^\+1 \(\d{3}\) \d{3}-\d{4}$/;
@@ -77,7 +77,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
       !editedData.location.addressLine1 ||
       !editedData.location.city ||
       !editedData.location.state ||
-      !editedData.location.zipcode
+      !editedData.location.zipCode
     ) {
       alert('Please fill in all required fields.');
       return;
@@ -174,6 +174,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             type="text"
             name="name"
             placeholder='Shelter Name'
+            maxLength={4096} // Set your desired maximum character limit here
             value={editedData.name}
             onChange={handleInputChange}
             required
@@ -208,6 +209,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             type="text"
             name="location.addressLine1"
             placeholder="Address Line 1"
+            maxLength={4096} // Set your desired maximum character limit here
             value={editedData.location.addressLine1}
             onChange={handleInputChange}
             required
@@ -217,6 +219,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             type="text"
             name="location.addressLine2"
             placeholder="Address Line 2"
+            maxLength={4096} // Set your desired maximum character limit here
             value={editedData.location.addressLine2}
             onChange={handleInputChange}
           />
@@ -225,6 +228,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             type="text"
             name="location.city"
             placeholder='City'
+            maxLength={4096} // Set your desired maximum character limit here
             value={editedData.location.city}
             onChange={handleInputChange}
             required
@@ -233,6 +237,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             <input
               type="text"
               name="location.state"
+              maxLength={4096} // Set your desired maximum character limit here
               value={editedData.location.state}
               placeholder='State'
               onChange={handleInputChange}
@@ -241,9 +246,10 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
 
             <input
               type="number"
-              name="location.zipcode"
+              name="location.zipCode"
               placeholder='Zipcode'
-              value={editedData.zipcode}
+              maxLength={4096} // Set your desired maximum character limit here
+              value={editedData.location.zipCode}
               onChange={handleInputChange}
               required
             />

@@ -31,7 +31,7 @@ const ShelterDashboard = () => {
         addressLine2: "",
         city: "",
         state: "",
-        zipcode: "",
+        zipCode: "",
       },
       phoneNumber: "",
       description: "",
