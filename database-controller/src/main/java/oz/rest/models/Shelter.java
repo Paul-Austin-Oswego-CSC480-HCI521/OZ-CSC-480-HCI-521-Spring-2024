@@ -1,8 +1,5 @@
 package oz.rest.models;
 
-import java.util.Set;
-
-import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import jakarta.validation.constraints.Email;

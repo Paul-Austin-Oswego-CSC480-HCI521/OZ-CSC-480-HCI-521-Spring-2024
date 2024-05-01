@@ -2,11 +2,11 @@ package oz.rest.models;
 
 import java.util.ArrayList;
 
-import org.bson.codecs.pojo.annotations.BsonCreator;
-import org.bson.codecs.pojo.annotations.BsonProperty;
+// import org.bson.codecs.pojo.annotations.BsonCreator;
+// import org.bson.codecs.pojo.annotations.BsonProperty;
 
-import jakarta.json.bind.annotation.JsonbCreator;
-import jakarta.json.bind.annotation.JsonbProperty;
+// import jakarta.json.bind.annotation.JsonbCreator;
+// import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.validation.constraints.NotEmpty;
 // import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -56,6 +56,10 @@ public class Pet extends AbstractModel {
     private Integer age;
 
     private String sex;
+
+    private String size;
+
+    private String temperament;
 
     public String getName() {
         return name;
@@ -134,4 +138,19 @@ public class Pet extends AbstractModel {
         this.sex = sex;
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getTemperament() {
+        return temperament;
+    }
+
+    public void setTemperament(String temperament) {
+        this.temperament = temperament;
+    }
 }

@@ -114,6 +114,7 @@ public class PetService extends AbstractService<Pet> {
             @QueryParam(value = "min_age") Integer minAge,
             @QueryParam(value = "max_age") Integer maxAge,
             @QueryParam(value = "sex") String sex,
+            @QueryParam(value = "size") String size,
             @QueryParam(value = "page_size") Integer pageSize,
             @QueryParam(value = "page_number") Integer pageNumber) {
         MongoCollection<Pet> petsCollection = db.getCollection("Pets", Pet.class);
@@ -154,6 +155,10 @@ public class PetService extends AbstractService<Pet> {
 
         if (sex != null) {
             filters.add(eq("sex", sex));
+        }
+
+        if (size != null) {
+            filters.add(eq("size", size));
         }
 
         if (pageSize == null) {
