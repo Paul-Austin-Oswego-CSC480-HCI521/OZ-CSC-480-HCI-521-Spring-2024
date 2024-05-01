@@ -212,7 +212,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   response.then(function (responseResult) {
                     // If the JWT is valid
                     if (responseResult.ok) {
-                      handleMarkAdopted(pet.id);
+                      handleDeleteClick(pet.id);
                     }
 
                     // If the JWT is invalid
@@ -241,15 +241,15 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   <img src={pet.images[0]} alt={pet.name} className="pet-image" />
                 )}
               </div>
-
-            )}
-            <div className="pet-details">
-              <h3 className="pet-name">{pet.name}</h3>
-              <p className="pet-breed">{pet.breed}</p>
-              <div className="pet-info">
-                <span className="pet-age">{pet.age}</span>
-              </div>
+           
+          )}
+          <div className="pet-details">
+            <h3 className="pet-name">{pet.name}</h3>
+            <p className="pet-breed">{pet.breed}</p>
+            <div className="pet-info">
+              <span className="pet-age">{pet.age}&nbsp;year old</span>
             </div>
+          </div>
           </Link>
         </div>
       ))}

@@ -240,10 +240,10 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             />
 
             <input
-              type="text"
+              type="number"
               name="location.zipcode"
               placeholder='Zipcode'
-              value={editedData.location.zipcode}
+              value={editedData.zipcode}
               onChange={handleInputChange}
               required
             />
