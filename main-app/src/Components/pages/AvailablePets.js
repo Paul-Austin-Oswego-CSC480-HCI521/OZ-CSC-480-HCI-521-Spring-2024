@@ -231,22 +231,25 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
             </button>
           </div>
           <Link to={"/PetDetails/" + pet.id}>
-          {pet.images && pet.images.length > 0 && (
-            
+            {pet.images && pet.images.length > 0 && (
+
               <div className="pet-images">
-                
-                  <img  src={pet.images[0]} alt={pet.name} className="pet-image" />
-                
+                {/* when uploading, pet list is stored in an array for some reason; when fetched, pet list not in array */}
+                {Array.isArray(pet.images[0]) && pet.images[0].length > 0 ? (
+                  <img src={pet.images[0][0]} alt={pet.name} className="pet-image" />
+                ) : (
+                  <img src={pet.images[0]} alt={pet.name} className="pet-image" />
+                )}
               </div>
-           
-          )}
-          <div className="pet-details">
-            <h3 className="pet-name">{pet.name}</h3>
-            <p className="pet-breed">{pet.breed}</p>
-            <div className="pet-info">
-              <span className="pet-age">{pet.age}</span>
+
+            )}
+            <div className="pet-details">
+              <h3 className="pet-name">{pet.name}</h3>
+              <p className="pet-breed">{pet.breed}</p>
+              <div className="pet-info">
+                <span className="pet-age">{pet.age}</span>
+              </div>
             </div>
-          </div>
           </Link>
         </div>
       ))}
@@ -345,7 +348,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                       <option value="Female">Female</option>
                     </select>
                   </div>
-                 
+
                   <div className="pet-details-row">
                     <input
                       type="text"
@@ -376,7 +379,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                       name="temperament"
                       value={editingPet.temperament}
                       onChange={handleFormChange}
-                      
+
                     />
                     <input
                       type="text"
@@ -384,7 +387,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                       name="health"
                       value={editingPet.health}
                       onChange={handleFormChange}
-                      
+
                     />
 
                   </div>

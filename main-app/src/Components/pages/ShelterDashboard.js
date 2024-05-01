@@ -65,6 +65,48 @@ const ShelterDashboard = () => {
       const shelterID = getCookie("shelterID");
       // console.log(cookie.shelterID);
 
+      const params = new URLSearchParams();
+      params.set("current_shelter_id", shelterID);
+      params.set("page_size", 2000);
+      const deletePetsResponse = await fetch(
+        process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+        "database-controller/api/pet?" +
+        params,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // body: JSON.stringify(getCookie("shelterID")),
+        }
+      );
+
+      if (deletePetsResponse.ok) {
+        const pets = await deletePetsResponse.json();
+        console.log(pets)
+        for (const pet of pets) {
+          const response = await fetch(
+            process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+            "database-controller/api/pet/" +
+            pet.id, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          if (!response.ok) {
+            alert("There was a problem deleting the account, please try again.");
+            throw Error("There was a problem deleting the account");
+          }
+        }
+      } else {
+        alert("There was a problem deleting the account, please try again.");
+        throw Error("There was a problem deleting the account");
+      }
+
+      // throw Error("t");
+
+
       // TODO: also needs to delete all pets in shelter; currently only deleting the shelter entry.
       const response = await fetch(
         process.env.REACT_APP_OPEN_LIBERTY_ROOT +
@@ -81,9 +123,10 @@ const ShelterDashboard = () => {
 
       if (response.ok) {
         // console.log(response)
-        alert("successfully deleted account");
+        alert("Account was successfully deleted.");
         handleLogout();
       } else {
+        alert("There was an issue deleting your account, please try again.")
         // TODO: handle else
       }
     }
@@ -356,11 +399,11 @@ const ShelterDashboard = () => {
       </div>
       <div className="topnav">
         <div className="left-container">
-        <div style={{ backgroundColor: "white", borderRadius: "40px", border: "2px solid white", padding: "10px" }}>
-          <Link to="/">
-            <img src={logo} alt="logo" />
-          </Link>
-        </div>
+          <div style={{ backgroundColor: "white", borderRadius: "40px", border: "2px solid white", padding: "10px" }}>
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
+          </div>
         </div>
         <div className="right-container">
           <div className="upload-pet">

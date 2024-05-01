@@ -45,7 +45,13 @@ const Step4 = ({ prevStep, formData, step, getProgressBarWidth }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit form data');
+        console.log(response.status)
+        if (response.status == 409) {
+          alert('The email address entered is already being used, please choose a different one.');
+          // throw new Error('Failed to submit form data');
+        } else {
+          throw new Error('Failed to submit form data');
+        }
       } else {
         //   if (1) {
         // Redirect to another component upon successful login
@@ -87,30 +93,30 @@ const Step4 = ({ prevStep, formData, step, getProgressBarWidth }) => {
 
   return (
     <>
-    <form onSubmit={handleSubmit} className="signup-form">
-      <div className="progress-bar">
-        <div className="progress" style={{ width: getProgressBarWidth() }}></div>
-      </div>
-      <h2>Review Your Information</h2>
-      <p><strong>Shelter Name:</strong> {name}</p>
-      <p><strong>Contact Email:</strong> {emailAddress}</p>
-      <p><strong>Address:</strong> {streetAddress}</p>
-      <p><strong>City:</strong> {city}</p>
-      <p><strong>State:</strong> {state}</p>
-      <p><strong>Zipcode:</strong> {zipcode}</p>
-      <p><strong>Contact Phone:</strong> {phoneNumber}</p>
-      <p><strong>Shelter Description:</strong> {description}</p>
+      <form onSubmit={handleSubmit} className="signup-form">
+        <div className="progress-bar">
+          <div className="progress" style={{ width: getProgressBarWidth() }}></div>
+        </div>
+        <h2>Review Your Information</h2>
+        <p><strong>Shelter Name:</strong> {name}</p>
+        <p><strong>Contact Email:</strong> {emailAddress}</p>
+        <p><strong>Address:</strong> {streetAddress}</p>
+        <p><strong>City:</strong> {city}</p>
+        <p><strong>State:</strong> {state}</p>
+        <p><strong>Zipcode:</strong> {zipcode}</p>
+        <p><strong>Contact Phone:</strong> {phoneNumber}</p>
+        <p><strong>Shelter Description:</strong> {description}</p>
 
-      <div className="signup-buttons-container">
-        <button onClick={prevStep}>Back</button>
-        <button type="submit">
-          Finish
-          <svg class="checkmark" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-            <path d="M9.54961 18L3.84961 12.3L5.27461 10.875L9.54961 15.15L18.7246 5.97498L20.1496 7.39998L9.54961 18Z" fill="currentColor" />
-          </svg>
-        </button>
-      </div>
-    </form>
+        <div className="signup-buttons-container">
+          <button onClick={prevStep}>Back</button>
+          <button type="submit">
+            Finish
+            <svg class="checkmark" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+              <path d="M9.54961 18L3.84961 12.3L5.27461 10.875L9.54961 15.15L18.7246 5.97498L20.1496 7.39998L9.54961 18Z" fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+      </form>
     </>
   );
 };
