@@ -77,7 +77,11 @@ public class ShelterService extends AbstractService<Shelter> {
                     .build();
         }
 
-        try{
+        // by setting all emails to lowercase, emails can be case-insensitive to end
+        // user :)
+        newEntry.setEmailAddress(newEntry.getEmailAddress().toLowerCase());
+
+        try {
             MongoCollection<Shelter> sheltersCollection = db.getCollection("Shelters",
                     Shelter.class);
             InsertOneResult res = sheltersCollection.insertOne(newEntry);
@@ -99,7 +103,6 @@ public class ShelterService extends AbstractService<Shelter> {
                     .entity("{\"error\": \"Internal server error occurred.\"}")
                     .build();
         }
-
 
         // Create the JWT for the Shelter
         String shelterJWT;
@@ -232,6 +235,10 @@ public class ShelterService extends AbstractService<Shelter> {
                     .entity(vio.toString())
                     .build();
         }
+
+        // by setting all emails to lowercase, emails can be case-insensitive to end
+        // user :)
+        updatedEntry.setEmailAddress(updatedEntry.getEmailAddress().toLowerCase());
         MongoCollection<Shelter> shelters = db.getCollection("Shelters",
                 Shelter.class);
 
@@ -297,7 +304,10 @@ public class ShelterService extends AbstractService<Shelter> {
 
         // TODO: encrypt passwords at rest, java.security MessageDigest looks promising
 
-        var record = sheltersCollection.find(and(eq("emailAddress", emailAddress), eq("password", password))).first();
+        // by setting all emails to lowercase, emails can be case-insensitive to end
+        // user :)
+        var lowerCaseEmail = emailAddress.toLowerCase();
+        var record = sheltersCollection.find(and(eq("emailAddress", lowerCaseEmail), eq("password", password))).first();
 
         if (record == null) {
             return Response.status(401).build();
@@ -364,8 +374,10 @@ public class ShelterService extends AbstractService<Shelter> {
 
                 ZoneId zoneID = ZoneId.of("America/New_York");
 
-                LocalDateTime expirationDate = Instant.ofEpochSecond(Long.parseLong(expiryTime)).atZone(zoneID).toLocalDateTime();
-                LocalDateTime currentDate = Instant.ofEpochMilli(System.currentTimeMillis()).atZone(zoneID).toLocalDateTime();
+                LocalDateTime expirationDate = Instant.ofEpochSecond(Long.parseLong(expiryTime)).atZone(zoneID)
+                        .toLocalDateTime();
+                LocalDateTime currentDate = Instant.ofEpochMilli(System.currentTimeMillis()).atZone(zoneID)
+                        .toLocalDateTime();
 
                 // If the current shelter is the one to be expected and the current date comes
                 // before the expiration date
