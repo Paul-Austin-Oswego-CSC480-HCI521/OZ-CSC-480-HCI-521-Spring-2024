@@ -82,25 +82,27 @@ const ShelterDashboard = () => {
       );
 
       // TODO: REIMPLEMENT THIS SO IT KNOWS IF THE FAILURE IS FROM NO PETS FOUND OR FROM SERVER FAILURE!
-      // if (deletePetsResponse.ok) {
-      const pets = await deletePetsResponse.json();
-      console.log(pets)
-      for (const pet of pets) {
-        const response = await fetch(
-          process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-          "database-controller/api/pet/" +
-          pet.id, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        if (!response.ok) {
-          alert("There was a problem deleting the account, please try again.");
-          throw Error("There was a problem deleting the account");
+      if (deletePetsResponse.ok) {
+        const pets = await deletePetsResponse.json();
+        console.log(pets)
+        for (const pet of pets) {
+          const response = await fetch(
+            process.env.REACT_APP_OPEN_LIBERTY_ROOT +
+            "database-controller/api/pet/" +
+            pet.id, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          if (!response.ok) {
+            alert("There was a problem deleting the account, please try again.");
+            throw Error("There was a problem deleting the account");
+          }
         }
       }
-      // } else {
+
+      // else {
       //   alert("There was a problem deleting the account, please try again.");
       //   throw Error("There was a problem deleting the account");
       // }
