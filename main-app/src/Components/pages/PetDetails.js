@@ -73,7 +73,6 @@ export const PetDetails = () => {
         const shelterDetails = await shelterResponse.json();
         setShelter(shelterDetails);
         console.log(shelterDetails);
-
         setLoading(false);
       }
     }
@@ -120,6 +119,67 @@ export const PetDetails = () => {
   }
 
   <style>{(document.body.style.backgroundColor = "rgb(227, 234, 231)")}</style>;
+
+  const testZipCode = "06237";
+
+  async function getCoords(zipcode) {
+    const accessToken =
+      "pk.eyJ1IjoiaGpyb3NlMjkiLCJhIjoiY2x1MGFmbzNmMDJxYTJrbnAyY3J6MWN1NiJ9.T_K7aTjSSiqtAIeRbL5Msw";
+    const url =
+      "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
+      zipcode +
+      ".json?access_token=" +
+      accessToken;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const latitude = data.features[0].geometry.coordinates[1];
+      const longitude = data.features[0].geometry.coordinates[0];
+      const coords = [latitude, longitude];
+      return coords;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
+  }
+
+  function coordsDistance(coords, coords2) {
+    const lat1Rad = toRadians(coords[0]);
+    const lon1Rad = toRadians(coords[1]);
+    const lat2Rad = toRadians(coords2[0]);
+    const lon2Rad = toRadians(coords2[1]);
+
+    const latDiff = lat2Rad - lat1Rad;
+    const lonDiff = lon2Rad - lon1Rad;
+
+    const a =
+      Math.pow(Math.sin(latDiff / 2), 2) +
+      Math.cos(lat1Rad) *
+        Math.cos(lat2Rad) *
+        Math.pow(Math.sin(lonDiff / 2), 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const d = 3963 * c;
+
+    return d;
+  }
+
+  function toRadians(degrees) {
+    return (degrees * Math.PI) / 180;
+  }
+
+  async function generateHTML() {
+    try {
+      const testCoords = await getCoords(testZipCode);
+      const shelterCoords = await getCoords("13126");
+      const distance = coordsDistance(testCoords, shelterCoords);
+      const distanceElement = document.getElementById("distance");
+      distanceElement.textContent = `Distance: ${distance.toFixed(2)} miles`;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+  generateHTML();
 
   return (
     <div className="body">
@@ -182,7 +242,13 @@ export const PetDetails = () => {
             <div className="categories-container">
               <div className="text-category-type">{pet.type}</div>
               <div className="text-category-breed">{pet.breed}</div>
-              <div className="text-category-distance">10.5 miles away</div>
+
+              <div className="text-category-distance">
+                <body>
+                  <div id="distance"></div>
+                  <script src="your_script.js"></script>
+                </body>
+              </div>
             </div>
 
             <div className="pet-details-container">
