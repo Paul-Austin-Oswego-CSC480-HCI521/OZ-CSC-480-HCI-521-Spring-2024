@@ -6,6 +6,10 @@
 .about-h1{
   margin-bottom: 10px;
 }
+
+.about-p{
+  font-weight:500;
+}
 /*Page stylings and margins */
 .about-container {
   width: 90%;
