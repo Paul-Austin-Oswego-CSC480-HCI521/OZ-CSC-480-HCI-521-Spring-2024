@@ -11,13 +11,12 @@ export const About = () => {
             {/*Our story and secondary image section on page*/}
             <div className="about-content-container">
                 <div className="about-text-and-list">
-                    <h1 className="about-h1">Our Story</h1>
-                    <ul className="about-info-list">
-                        <li><b>Founded with Love:</b> Began as a small dream driven by a passion for animals.</li>
-                        <li><b>Roots:</b> Established in the heart of our local community, earning trust and recognition.</li>
-                        <li><b>Growth:</b> Evolved from a modest start into a trusted name in pet care.</li>
-                        <li><b>Team of Passionate People:</b> Comprised of devoted pet lovers and experts in various fields.</li>
-                        <li><b>A Family of Pet Advocates:</b> United by a shared mission to make a positive impact on pets and their families.</li>
+                    <h1 className="about-h1">We Believe</h1>
+                    <ul className="about-p">
+                        <li>Passion is necessary when connecting loving homes and amazing animals in need</li>
+                        <li>Adoption is about more than just finding a pet.</li>
+                        <li>That this is essential for creating lifelong bonds and building a stronger community. </li>
+                        <li>We can help you find your fur-ever friend.</li>
                     </ul>
                 </div>
                 <img 
@@ -30,19 +29,19 @@ export const About = () => {
             {/*/Mission statement*/}
             <div className="about-mission-statement" >
                 <h1 className="about-h1">Our Mission</h1>
-                <p>At Furrytale, our mission is to bring a
-                    splash of joy and companionship into
-                    every home through our dedicated service
-                    and passion for animals. We believe in
-                        creating strong bonds between pets and
-                        their families by providing top-tier
-                        care and an array of services tailored
-                        to meet the unique needs of every furry
-                            friend. Our commitment to excellence and
-                            love for animals drives us to constantly
-                            innovate and improve, ensuring that every
-                            pet enjoys a happy, healthy, and fulfilling
-                                life</p>
+                <p className= "about-p">Our mission is to revolutionize 
+                    pet adoption by creating a 
+                    centralized hub for adoptable animals. 
+                    By providing a user-friendly platform 
+                    to list pets, manage profiles, and 
+                    connect with adopters, we empower 
+                    shelters to find loving homes for their 
+                    animals more efficiently.
+                    By offering a wider search pool 
+                    for potential adopters and detailed 
+                    profiles for each pet, we aim to 
+                    significantly increase pet adoptions 
+                    and reduce overcrowding in shelters.</p>
             </div>
 
                 
