@@ -172,7 +172,7 @@ export const PetDetails = () => {
   async function generateHTML() {
     try {
       const testCoords = await getCoords(testZipCode);
-      const shelterCoords = await getCoords("13126");
+      const shelterCoords = await getCoords("13126"); //replace with shelter.location.zipCode when implemented instead of hardcoded zip code
       const distance = coordsDistance(testCoords, shelterCoords);
       const distanceElement = document.getElementById("distance");
       distanceElement.textContent = `Distance: ${distance.toFixed(2)} miles`;
