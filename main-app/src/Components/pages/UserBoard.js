@@ -5,6 +5,7 @@ import "./ShelterDashboard.css";
 import { Helmet } from "react-helmet";
 import verified_shelter_image from "../images/verified.png";
 import { useParams } from "react-router";
+import Navbar from "../Navbar.js";
 
 const UserBoard = () => {
   let { id } = useParams();
@@ -91,60 +92,64 @@ const UserBoard = () => {
     : pets;
 
   return (
-    <div className="wholepage">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Paws N Claws - Adopt Userboard</title>
-        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
-      </Helmet>
-      <br></br>
-      <CategoryFilter
-        onSelectCategory={filterPetsByCategory}
-        selectedCategory={selectedCategory}
-      />
-      <div className="main-content">
-        <div className="shelter-profile">
-          <div>
-            <img
-              src={shelter.image}
-              alt="Shelter"
-              className="shelter-image"
-            />
-          </div>
+    <div className="body">
+      <Navbar />
+      <div className="wholepage">
+        < Helmet >
+          <meta charSet="utf-8" />
+          <title>Paws N Claws - Adopt Userboard</title>
+          <link rel="canonical" href={process.env.REACT_APP_OPEN_LIBERTY_ROOT} />
+        </Helmet >
 
-          <div>
-            <h2 className="shelter-name">
-              {shelter.name}
+        <br></br>
+        <CategoryFilter
+          onSelectCategory={filterPetsByCategory}
+          selectedCategory={selectedCategory}
+        />
+        <div className="main-content">
+          <div className="shelter-profile">
+            <div>
               <img
-                className="verified"
-                src={verified_shelter_image}
-                alt=""
-              ></img>
-            </h2>
-            <p className="shelter-location">
-              {shelter.location.addressLine1}{" "}
-              {shelter.location.addressLine2 && (
-                <React.Fragment>
-                  {shelter.location.addressLine2}{" "}
-                </React.Fragment>
-              )}
-              {shelter.location.city}, {shelter.location.state}
-            </p>
-            <br></br>
-            <p className="shelter-description">
-              {expanded
-                ? shelter.description
-                : `${shelter.description.slice(0, 125)}...`}
-              {!expanded && <span onClick={toggleDescription}>See More</span>}
-            </p>
+                src={shelter.image}
+                alt="Shelter"
+                className="shelter-image"
+              />
+            </div>
+
+            <div>
+              <h2 className="shelter-name">
+                {shelter.name}
+                <img
+                  className="verified"
+                  src={verified_shelter_image}
+                  alt=""
+                ></img>
+              </h2>
+              <p className="shelter-location">
+                {shelter.location.addressLine1}{" "}
+                {shelter.location.addressLine2 && (
+                  <React.Fragment>
+                    {shelter.location.addressLine2}{" "}
+                  </React.Fragment>
+                )}
+                {shelter.location.city}, {shelter.location.state}
+              </p>
+              <br></br>
+              <p className="shelter-description">
+                {expanded
+                  ? shelter.description
+                  : `${shelter.description.slice(0, 125)}...`}
+                {!expanded && <span onClick={toggleDescription}>See More</span>}
+              </p>
+            </div>
+          </div>
+
+          <div className="availablepets">
+            <UserPets pets={filteredPets} />
           </div>
         </div>
-
-        <div className="availablepets">
-          <UserPets pets={filteredPets} />
-        </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
