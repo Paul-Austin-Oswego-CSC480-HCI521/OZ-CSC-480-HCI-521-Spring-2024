@@ -40,8 +40,8 @@ export const PetDetails = () => {
 
     const petResponse = await fetch(
       process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-        "database-controller/api/pet/" +
-        petId,
+      "database-controller/api/pet/" +
+      petId,
       {
         method: "GET",
         headers: {
@@ -58,8 +58,8 @@ export const PetDetails = () => {
 
       const shelterResponse = await fetch(
         process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-          "database-controller/api/shelter/" +
-          petDetails.currentShelterId,
+        "database-controller/api/shelter/" +
+        petDetails.currentShelterId,
         {
           method: "GET",
           headers: {
@@ -155,8 +155,8 @@ export const PetDetails = () => {
     const a =
       Math.pow(Math.sin(latDiff / 2), 2) +
       Math.cos(lat1Rad) *
-        Math.cos(lat2Rad) *
-        Math.pow(Math.sin(lonDiff / 2), 2);
+      Math.cos(lat2Rad) *
+      Math.pow(Math.sin(lonDiff / 2), 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     const d = 3963 * c;
@@ -300,7 +300,7 @@ export const PetDetails = () => {
                         <div className="shelter-info">
                           <img
                             loading="lazy"
-                            srcSet={ShelterLogo}
+                            srcSet={shelter.image}
                             className="shelter-logo"
                             alt=""
                           />

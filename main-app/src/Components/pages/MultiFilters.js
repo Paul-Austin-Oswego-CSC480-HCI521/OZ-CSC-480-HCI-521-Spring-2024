@@ -84,10 +84,10 @@ export default function MultiFilters() {
   ];
 
   const ageOptions = [
-    { value: "1", label: "1-3 years" },
-    { value: "4", label: "4-6 years" },
-    { value: "7", label: "7-9 years" },
-    { value: "10", label: "10+ years" },
+    { value: "0", label: "0-3 years" },
+    { value: "4", label: "4-7 years" },
+    { value: "7", label: "10+ years" },
+    // { value: "10", label: "10+ years" },
     // Add more age options as needed
   ];
   const sizeOptions = [
@@ -125,6 +125,7 @@ export default function MultiFilters() {
       //This is a mapped value? Has a label of 3 and a value of 3. Not sure how I would fix this and/or index it to send a GET request
       console.log(selectedAge[0].value);
       params.set("min_age", selectedAge[0].value);
+      params.set("max_age", Number(selectedAge[0].value) + 2)
     }
     if (selectedSex !== null && selectedSex[0] !== undefined) {
       console.log(selectedSex[0].value);
@@ -169,7 +170,7 @@ export default function MultiFilters() {
 
   useEffect(() => {
     fetchData();
-  }, [selectedFilters, selectedAge, selectedAge, selectedSex]);
+  }, [selectedFilters, selectedSize, selectedAge, selectedAge, selectedSex]);
   // Handles changing Category buttons
 
   // Category options
