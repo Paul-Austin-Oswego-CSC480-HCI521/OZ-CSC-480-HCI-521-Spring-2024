@@ -842,7 +842,8 @@ element.style {
   margin-left: 10px;
   padding: 8px;
   border-radius: 10px;
-  width: 55px;
+  width: 75px;
+  text-align: center;
 }
 
 .zip-submit {

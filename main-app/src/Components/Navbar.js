@@ -169,7 +169,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li id="nav-zipcode-container">
-            <form onSubmit={handleSubmitZipCode} className="">
+            <form onSubmit={handleSubmitZipCode} className="zipcode-form">
               <input
                 type="text"
                 placeholder="Zip Code"
