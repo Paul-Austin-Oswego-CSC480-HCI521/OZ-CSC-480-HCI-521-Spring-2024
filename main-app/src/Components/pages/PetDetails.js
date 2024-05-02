@@ -186,7 +186,7 @@ export const PetDetails = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Paws N Claws/PetDetails</title>
-        <link rel="canonical" href="http://moxie.cs.oswego.edu:48021" />
+        <link rel="canonical" href={process.env.REACT_APP_OPEN_LIBERTY_ROOT} />
       </Helmet>
       <Navbar />
 
@@ -206,7 +206,8 @@ export const PetDetails = () => {
                       <img
                         key={idx}
                         src={img}
-                        alt={"A pet named " + pet.name}
+                        className="pet-images"
+                        alt={"A photo of a pet named " + pet.name}
                       ></img>
                     </div>
                   ))
@@ -214,7 +215,7 @@ export const PetDetails = () => {
                   <div>
                     <img
                       src={pet.image}
-                      alt="Jak Jax"
+                      alt={"A photo of a pet named" + pet.name}
                       className="pet-images"
                     ></img>
                   </div>
@@ -255,6 +256,8 @@ export const PetDetails = () => {
               <div className="text-heading">My Story</div>
               <div className="text-pet-introduction">
                 My name is {pet.name} and I am very cute.
+                <br />
+                {pet.description}
               </div>
               <div className="text-facts">Facts About Me</div>
             </div>
@@ -286,7 +289,7 @@ export const PetDetails = () => {
                   Breed: <b>{pet.breed}</b>
                 </div>
                 <div className="health-title">
-                  Health: <b>Vaccinated</b>
+                  Health: <b>{pet.health}</b>
                 </div>
               </div>
             </div>
@@ -302,7 +305,7 @@ export const PetDetails = () => {
                             loading="lazy"
                             srcSet={shelter.image}
                             className="shelter-logo"
-                            alt=""
+                            alt={shelter.name + " logo"}
                           />
                           <div className="text-name-verification">
                             <div className="text-shelter-name">
@@ -381,7 +384,7 @@ export const PetDetails = () => {
                               <div className="info-boxes-img-container">
                                 <img
                                   src={item.image}
-                                  alt=""
+                                  alt={"An image of a pet named " + item.name}
                                   style={{ maxWidth: "80%", height: "70%" }}
                                 />
                               </div>
