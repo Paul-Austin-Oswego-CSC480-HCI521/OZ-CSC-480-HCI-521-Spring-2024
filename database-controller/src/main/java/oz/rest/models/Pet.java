@@ -61,6 +61,8 @@ public class Pet extends AbstractModel {
 
     private String temperament;
 
+    private String description;
+
     public String getName() {
         return name;
     }
@@ -152,5 +154,13 @@ public class Pet extends AbstractModel {
 
     public void setTemperament(String temperament) {
         this.temperament = temperament;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
