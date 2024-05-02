@@ -626,6 +626,9 @@ element.style {
     -moz-osx-font-smoothing: grayscale;
 }
 
+#distance {
+  background-color: #fe9e0d67;
+}
 
 
 /* .accordian-container {

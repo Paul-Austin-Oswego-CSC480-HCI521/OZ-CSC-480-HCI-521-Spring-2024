@@ -6,10 +6,11 @@ import { NavLink as Link } from "react-router-dom";
 import { IoPawSharp } from "react-icons/io5";
 import { BsHouseHeartFill } from "react-icons/bs";
 import { getCookie } from "../Utils/CookieUtils";
+import { useZipCode } from "./zipCodeContext";
 
 const Navbar = () => {
   const { setSelectedCategory } = useCategory();
-  const [zipCode, setZipCode] = useState("13126"); // Define zipCode state
+  const { zipCode, setZipCode } = useZipCode(); // Define zipCode state
 
   const handleZipCodeChange = (e) => {
     setZipCode(e.target.value);

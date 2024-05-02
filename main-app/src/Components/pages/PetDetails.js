@@ -1,11 +1,9 @@
 import React from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { FiArrowRight } from "react-icons/fi";
-import ShelterLogo from "../images/Shelterlogo.svg";
 import "./PetDetails.css";
 import { Link } from "react-router-dom";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import hex from "../images/hex.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { items } from "./items";
 import { useNavigate } from "react-router";
+import { useZipCode } from "../zipCodeContext";
 import Navbar from "../Navbar";
 import { Helmet } from "react-helmet";
 
@@ -22,6 +21,8 @@ export const PetDetails = () => {
   const [shelter, setShelter] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const { zipCode } = useZipCode();
 
   useEffect(() => {
     // perform this check to show hardcoded pets like before for GUI people to continue to be able to test
@@ -40,8 +41,8 @@ export const PetDetails = () => {
 
     const petResponse = await fetch(
       process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-      "database-controller/api/pet/" +
-      petId,
+        "database-controller/api/pet/" +
+        petId,
       {
         method: "GET",
         headers: {
@@ -58,8 +59,8 @@ export const PetDetails = () => {
 
       const shelterResponse = await fetch(
         process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-        "database-controller/api/shelter/" +
-        petDetails.currentShelterId,
+          "database-controller/api/shelter/" +
+          petDetails.currentShelterId,
         {
           method: "GET",
           headers: {
@@ -120,7 +121,7 @@ export const PetDetails = () => {
 
   <style>{(document.body.style.backgroundColor = "rgb(227, 234, 231)")}</style>;
 
-  const testZipCode = "06237";
+  const testZipCode = zipCode;
 
   async function getCoords(zipcode) {
     const accessToken =
@@ -155,8 +156,8 @@ export const PetDetails = () => {
     const a =
       Math.pow(Math.sin(latDiff / 2), 2) +
       Math.cos(lat1Rad) *
-      Math.cos(lat2Rad) *
-      Math.pow(Math.sin(lonDiff / 2), 2);
+        Math.cos(lat2Rad) *
+        Math.pow(Math.sin(lonDiff / 2), 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     const d = 3963 * c;
