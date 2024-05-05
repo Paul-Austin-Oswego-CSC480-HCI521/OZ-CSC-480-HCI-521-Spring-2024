@@ -121,16 +121,17 @@ export const PetDetails = () => {
 
   <style>{(document.body.style.backgroundColor = "rgb(227, 234, 231)")}</style>;
 
-  const testZipCode = zipCode;
+  let testZipCode = zipCode;
 
   async function getCoords(zipcode) {
     const accessToken =
       "pk.eyJ1IjoiaGpyb3NlMjkiLCJhIjoiY2x1MGFmbzNmMDJxYTJrbnAyY3J6MWN1NiJ9.T_K7aTjSSiqtAIeRbL5Msw";
     const url =
       "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
-      zipcode +
+      zipcode + "%20United%20States" +
       ".json?access_token=" +
       accessToken;
+      console.log(url);
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -171,8 +172,12 @@ export const PetDetails = () => {
 
   async function generateHTML() {
     try {
+
+      console.log(testZipCode)
       const testCoords = await getCoords(testZipCode);
       const shelterCoords = await getCoords("13126"); //replace with shelter.location.zipCode when implemented instead of hardcoded zip code
+      console.log(testCoords);
+      console.log(shelterCoords);
       const distance = coordsDistance(testCoords, shelterCoords);
       const distanceElement = document.getElementById("distance");
       distanceElement.textContent = `Distance: ${distance.toFixed(2)} miles`;
