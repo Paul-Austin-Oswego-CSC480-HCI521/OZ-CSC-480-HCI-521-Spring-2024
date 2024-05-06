@@ -18,14 +18,14 @@ body {
   overflow-x: hidden;
 }
 
-a{
+a {
   text-decoration: none;
 
 }
+
 .page {
   display: flex;
   flex-direction: column;
-  
   padding-bottom: 40px;
 }
 
@@ -36,7 +36,7 @@ a{
   width: 100%;
   margin-top: 3%;
   position: relative;
-  margin-bottom: 10%;
+  margin-bottom: 3%;
   padding-left: 60px;
   padding-right: 40px;
 }
@@ -64,6 +64,7 @@ a{
   border-radius: 20px;
   border: 2px solid rgb(212, 139, 3);
 }
+
 .back-arrow:hover {
   background-color: rgb(255, 206, 114);
   border: 2px solid rgb(212, 149, 31);
@@ -80,14 +81,14 @@ a{
   width: 100%;
   padding: 10px;
   border-radius: 9%;
-  
+
 }
 
 .right-side {
   display: flex;
   margin-right: 2%;
   margin-top: 3.5%;
-  width: 100%;
+  width: 50%;
   flex-direction: column;
 }
 
@@ -197,7 +198,7 @@ a{
   max-width: 600px;
   position: relative;
   font-weight: 400;
-  margin-top: 3%;
+  /* margin-top: 3%; */
 }
 
 .text-facts {
@@ -208,14 +209,14 @@ a{
   max-width: 600px;
   position: relative;
   font-weight: 600;
-  margin-top: 10%;
+  margin-top: 3rem;
 }
 
 .specifications-container {
   display: flex;
   flex-direction: row;
   position: relative;
-  margin-top: 3%;
+  /* margin-top: 3rem; */
 }
 
 .specifications1 {
@@ -304,14 +305,14 @@ a{
   border-radius: 16px;
   background-color: #fff;
   max-width: 532px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   padding-right: 250px;
   align-items: left;
   align-content: left;
   justify-content: left;
   position: relative;
-  margin-top: 10%;
+  margin-top: 3rem;
 }
 
 .left-alignment {
@@ -438,8 +439,8 @@ a{
 
 .about-meet-teamsss {
   max-width: 1500px;
-  margin: 0 auto; 
-  padding-top: 10px;
+  margin: 0 auto;
+  /* padding-top: 10px; */
   padding-bottom: 50px;
   padding-right: 50px;
   padding-left: 40px;
@@ -447,7 +448,7 @@ a{
 
 .pet-details-carousel {
   display: flex;
-  margin: 500px 0px auto; 
+  margin: 500px 0px auto;
   /* Center the carousel */
   padding-top: 100px;
   position: relative;
@@ -578,12 +579,12 @@ element.style {
   color: rgb(0, 0, 0);
   border: none;
   background-color: #0000;
-  
+
   align-items: center;
   justify-content: center;
   flex-direction: row;
- padding-left: 890px;
- padding-top: 20px;
+  padding-left: 890px;
+  padding-top: 20px;
 }
 
 .pet-work-section-info-container1 {
@@ -597,12 +598,12 @@ element.style {
   width: fit-content;
 }
 
-.carousel-heading{
+.carousel-heading {
   display: flex;
   flex-direction: row;
   padding-left: 50px;
-  margin: 0 auto; 
-  
+  margin: 0 auto;
+
 }
 
 .see-more-button {
@@ -611,19 +612,18 @@ element.style {
 }
 
 .slick-prev:before,
-.slick-next:before
-{
-    font-family: 'slick';
-    font-size: 30px;
-    margin-right: 30%;
+.slick-next:before {
+  font-family: 'slick';
+  font-size: 30px;
+  margin-right: 30%;
 
 
-    
-    opacity: .75;
-    color: black;
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  opacity: .75;
+  color: black;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #distance {

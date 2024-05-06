@@ -237,9 +237,9 @@ export const PetDetails = () => {
 
           <div className="right-side">
             <div className="bubble-container">
-              <div className="text-introduction">
-                Hi, My name is {pet.name}!
-              </div>
+              {/* <div className="text-introduction"> */}
+              {/* Hi, my name is {pet.name}! */}
+              {/* </div> */}
               <div className="text-pet-details">
                 {pet.sex != null ? pet.sex + "," : ""}{" "}
                 {pet.age != null ? pet.age : 0} years old
@@ -247,8 +247,13 @@ export const PetDetails = () => {
             </div>
 
             <div className="categories-container">
-              <div className="text-category-type">{pet.type}</div>
-              <div className="text-category-breed">{pet.breed}</div>
+              {pet.type && (
+                <div className="text-category-type">{pet.type}</div>
+              )}
+
+              {pet.breed && (
+                <div className="text-category-breed">{pet.breed}</div>
+              )}
 
               <div className="text-category-distance">
                 <body>
@@ -270,40 +275,62 @@ export const PetDetails = () => {
 
             <div className="specifications-container">
               <div className="specifications1">
-                <div className="name-title">
-                  Name: <b>{pet.name}</b>
-                </div>
-                <div className="age-title">
-                  Age: <b>{pet.age}</b>
-                </div>
-                <div className="age-title">
-                  Color: <b>{pet.color}</b>
-                </div>
-                <div className="size-title">
-                  Size: <b>{pet.size}</b>
-                </div>
+                {pet.name && (
+                  <div className="name-title">
+                    Name: <b>{pet.name}</b>
+                  </div>
+                )}
+
+                {pet.age && (
+                  <div className="age-title">
+                    Age: <b>{pet.age}</b>
+                  </div>
+                )}
+
+                {pet.color && (
+                  <div className="age-title">
+                    Color: <b>{pet.color}</b>
+                  </div>
+                )}
+
+                {pet.color && (
+                  <div className="size-title">
+                    Size: <b>{pet.size}</b>
+                  </div>
+                )}
               </div>
 
               <div className="specifications2">
-                <div className="temperament-title">
-                  Temperament: <b>{pet.temperament}</b>
-                </div>
-                <div className="sex-title">
-                  Sex: <b>{pet.sex}</b>
-                </div>
-                <div className="breed-title">
-                  Breed: <b>{pet.breed}</b>
-                </div>
-                <div className="health-title">
-                  Health: <b>{pet.health}</b>
-                </div>
+                {pet.temperament && (
+                  <div className="temperament-title">
+                    Temperament: <b>{pet.temperament}</b>
+                  </div>
+                )}
+
+                {pet.sex && (
+                  <div className="sex-title">
+                    Sex: <b>{pet.sex}</b>
+                  </div>
+                )}
+
+                {pet.breed && (
+                  <div className="breed-title">
+                    Breed: <b>{pet.breed}</b>
+                  </div>
+                )}
+
+                {pet.health && (
+                  <div className="health-title">
+                    Health: <b>{pet.health}</b>
+                  </div>
+                )}
               </div>
             </div>
 
             {shelter != null ? (
-              <Link to={"/userboard/" + shelter.id}>
+              <Link className="shelter-box" to={"/userboard/" + shelter.id}>
                 {shelter != null ? (
-                  <div className="shelter-box">
+                  <div>
                     <div className="left-alignment">
                       <div className="info-container">
                         <div className="shelter-info">
@@ -322,27 +349,42 @@ export const PetDetails = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="email-info">
-                          <div className="text-email-title">Email:</div>
-                          <div className="text-email">
-                            {shelter.emailAddress}
+                        {shelter.emailAddress && (
+                          <div className="email-info">
+                            <div className="text-email-title">Email:</div>
+                            <div className="text-email">
+                              {shelter.emailAddress}
+                            </div>
                           </div>
-                        </div>
-                        <div className="phone-info">
-                          <div className="text-phone-title">Phone:</div>
-                          <div className="text-phone">
-                            {shelter.phoneNumber}
+                        )}
+
+                        {shelter.phoneNumber && (
+                          <div className="phone-info">
+                            <div className="text-phone-title">Phone:</div>
+                            <div className="text-phone">
+                              {shelter.phoneNumber}
+                            </div>
                           </div>
-                        </div>
+                        )}
                         <div className="address-info">
                           <div className="text-address-title">Address:</div>
                           {/* this should probably check that the field actually exists and only do a <br> is it exists. see above for example if needed using ternary operators */}
                           <div className="text-address">
-                            {shelter.location.addressLine1} <br />
-                            {shelter.location.addressLine2} <br />{" "}
-                            {shelter.location.city} <br />
-                            {shelter.location.state}
-                            <br /> {shelter.location.zipCode}
+                            {shelter.location.addressLine1 && (
+                              <div>{shelter.location.addressLine1}<br /></div>
+                            )}
+                            {shelter.location.addressLine2 && (
+                              <div>{shelter.location.addressLine2}<br /></div>
+                            )}
+                            {shelter.location.city && (
+                              <div>{shelter.location.city}<br /></div>
+                            )}
+                            {shelter.location.state && (
+                              <div>{shelter.location.state}<br /></div>
+                            )}
+                            {shelter.location.zipCode && (
+                              <div>{shelter.location.zipCode}<br /></div>
+                            )}
                           </div>
                         </div>
                       </div>

@@ -9,18 +9,18 @@ const Step4 = ({ prevStep, formData }) => {
     streetAddress,
     city,
     state,
-    zipcode,
+    zipCode,
     emailAddress,
     phoneNumber,
     description,
     password,
   } = formData;
-  let address = streetAddress + " " + city + " " + state + " " + zipcode;
+  let address = streetAddress + " " + city + " " + state + " " + zipCode;
   const accessToken =
     "pk.eyJ1IjoiaGpyb3NlMjkiLCJhIjoiY2x1MGFmbzNmMDJxYTJrbnAyY3J6MWN1NiJ9.T_K7aTjSSiqtAIeRbL5Msw";
   const url =
     "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
-    zipcode +
+    zipCode +
     ".json?access_token=" +
     accessToken;
   let latitude = 0;
@@ -59,12 +59,12 @@ const Step4 = ({ prevStep, formData }) => {
         addressLine1: streetAddress,
         city,
         state,
-        zipcode
+        zipCode
       },
       // streetAddress,
       // city,
       // state,
-      // zipcode,
+      // zipCode,
       phoneNumber,
       description,
       password,
@@ -149,7 +149,7 @@ const Step4 = ({ prevStep, formData }) => {
         <strong>State:</strong> {state}
       </p>
       <p>
-        <strong>Zipcode:</strong> {zipcode}
+        <strong>ZIP Code:</strong> {zipCode}
       </p>
       <p>
         <strong>Contact Phone:</strong> {phoneNumber}
