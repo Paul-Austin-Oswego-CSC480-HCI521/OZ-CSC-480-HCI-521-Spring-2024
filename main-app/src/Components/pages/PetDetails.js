@@ -41,8 +41,8 @@ export const PetDetails = () => {
 
     const petResponse = await fetch(
       process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-        "database-controller/api/pet/" +
-        petId,
+      "database-controller/api/pet/" +
+      petId,
       {
         method: "GET",
         headers: {
@@ -59,8 +59,8 @@ export const PetDetails = () => {
 
       const shelterResponse = await fetch(
         process.env.REACT_APP_OPEN_LIBERTY_ROOT +
-          "database-controller/api/shelter/" +
-          petDetails.currentShelterId,
+        "database-controller/api/shelter/" +
+        petDetails.currentShelterId,
         {
           method: "GET",
           headers: {
@@ -131,7 +131,7 @@ export const PetDetails = () => {
       zipcode + "%20United%20States" +
       ".json?access_token=" +
       accessToken;
-      console.log(url);
+    console.log(url);
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -157,8 +157,8 @@ export const PetDetails = () => {
     const a =
       Math.pow(Math.sin(latDiff / 2), 2) +
       Math.cos(lat1Rad) *
-        Math.cos(lat2Rad) *
-        Math.pow(Math.sin(lonDiff / 2), 2);
+      Math.cos(lat2Rad) *
+      Math.pow(Math.sin(lonDiff / 2), 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     const d = 3963 * c;
@@ -237,9 +237,9 @@ export const PetDetails = () => {
 
           <div className="right-side">
             <div className="bubble-container">
-              {/* <div className="text-introduction"> */}
-              {/* Hi, my name is {pet.name}! */}
-              {/* </div> */}
+              <div className="text-introduction">
+                Hi, my name is {pet.name}!
+              </div>
               <div className="text-pet-details">
                 {pet.sex != null ? pet.sex + "," : ""}{" "}
                 {pet.age != null ? pet.age : 0} years old
@@ -266,8 +266,8 @@ export const PetDetails = () => {
             <div className="pet-details-container">
               <div className="text-heading">My Story</div>
               <div className="text-pet-introduction">
-                My name is {pet.name} and I am very cute.
-                <br />
+                {/* My name is {pet.name} and I am very cute. */}
+                {/* <br /> */}
                 {pet.description}
               </div>
               <div className="text-facts">Facts About Me</div>
