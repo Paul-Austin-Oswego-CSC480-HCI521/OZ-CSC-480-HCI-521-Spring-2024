@@ -33,6 +33,7 @@ import static com.mongodb.client.model.Filters.eq;
 // import static com.mongodb.client.model.Filters.and;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import oz.rest.models.Pet;
 
@@ -107,7 +108,7 @@ public class PetService extends AbstractService<Pet> {
     @GET
     public Response find(@QueryParam(value = "name") String name,
             @QueryParam(value = "current_shelter_id") String currentShelterId,
-            @QueryParam(value = "type") String type,
+            @QueryParam(value = "type") List<String> type,
             @QueryParam(value = "breed") String breed,
             @QueryParam(value = "color") String color,
             @QueryParam(value = "health") String health,
@@ -129,8 +130,10 @@ public class PetService extends AbstractService<Pet> {
             filters.add(eq("currentShelterId", currentShelterId));
         }
 
-        if (type != null) {
-            filters.add(eq("type", type));
+        if (type != null && !type.isEmpty()) {
+            for(int i = 0; i < type.size(); i++){
+                filters.add(eq("type", type.get(i)));
+            }
         }
 
         if (breed != null) {
