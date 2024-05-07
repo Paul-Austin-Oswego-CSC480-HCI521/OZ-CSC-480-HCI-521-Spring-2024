@@ -12,13 +12,11 @@ export default function MultiFilters() {
   // Category button states
   const { selectedCategory } = useCategory();
   const [selectedFilters, setSelectedFilters] = useState([]);
-
   //TODO: DO AN IF STATEMENT TO SEE IF selectedCategory is null. If it is then set it as a parameter.
   // Dropdown states
   const [selectedSex, setSelectedSex] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedAge, setSelectedAge] = useState(null);
-
   // Filtered items states
   const [filteredItems, setFilteredItems] = useState(null);
 
@@ -96,36 +94,42 @@ export default function MultiFilters() {
     { value: "Large", label: "Large" },
     // Add more age options as needed
   ];
-  let hasDone = false;
+  //let hasDone = false;
 
   const fetchData = async () => {
     const params = new URLSearchParams();
     //params.set("current_shelter_id", currentShelterId);
     params.set("page_size", 50);
     console.log("category", selectedCategory);
-    if (selectedCategory !== null && hasDone === false) {
+    if (selectedCategory !== null) {
       if (selectedCategory === "Small Critter") {
         params.set("type", "Fish");
       }
       else {
         params.set("type", selectedCategory);
       }
-      hasDone = true;
     }
     if (selectedFilters.length !== 0) {
       console.log("selectedFilters", selectedFilters);
       console.log(selectedAge);
-      if (selectedFilters[0] === "Small Critter") {
-        params.set("type", "Fish");
-      } else {
-        params.set("type", selectedFilters[0]);
-      }
+      const petTypes = selectedFilters.map(filter => {
+        if(filter === "Small Critter"){
+          return "Fish";
+        }
+          return filter;
+      });
+      params.set("type", petTypes.join(','))
     }
     if (selectedAge !== null && selectedAge[0] !== undefined) {
       //This is a mapped value? Has a label of 3 and a value of 3. Not sure how I would fix this and/or index it to send a GET request
       console.log(selectedAge[0].value);
-      params.set("min_age", selectedAge[0].value);
-      params.set("max_age", Number(selectedAge[0].value) + 2)
+      if(selectedAge[0].value === 7){
+        params.set("min_age", 10);
+      }
+      else{
+        params.set("min_age", selectedAge[0].value);
+        params.set("max_age", Number(selectedAge[0].value) + 2);
+      }
     }
     if (selectedSex !== null && selectedSex[0] !== undefined) {
       console.log(selectedSex[0].value);
@@ -206,6 +210,7 @@ export default function MultiFilters() {
         ? prevFilters.filter((f) => f !== category)
         : [...prevFilters, category];
     });
+    
     console.log(category);
     //DO A FETCH HERE
     //fetchData();
@@ -299,7 +304,7 @@ export default function MultiFilters() {
               style={{ textDecoration: "none" }}
             >
               <div key={`items-${idx}`} className="card">
-                <img className="image" src={item.images} alt="Null" />
+                <img className="image" src={item.images[0]} alt="Null" />
                 <p className="name">{item.name}</p>
                 <p className="breed">{item.breed}</p>
                 {/* <p className="category">{item.category}</p> */}
