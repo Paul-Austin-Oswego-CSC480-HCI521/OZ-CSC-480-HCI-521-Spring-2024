@@ -22,7 +22,7 @@ export default function MultiFilters() {
 
   //This will set the selected filter to whatever the chosen catagory is, then set catagory to null
   useEffect(() => {
-    if(selectedCategory !== null){
+    if (selectedCategory !== null) {
       setSelectedFilters([selectedCategory]);
       setSelectedCategory(null);
     }
@@ -112,20 +112,20 @@ export default function MultiFilters() {
       console.log("selectedFilters", selectedFilters);
       console.log(selectedAge);
       const petTypes = selectedFilters.map(filter => {
-        if(filter === "Small Critter"){
+        if (filter === "Small Critter") {
           return "Fish";
         }
-          return filter;
+        return filter;
       });
       params.set("type", petTypes.join(','));
     }
     if (selectedAge !== null && selectedAge[0] !== undefined) {
       //This is a mapped value? Has a label of 3 and a value of 3. Not sure how I would fix this and/or index it to send a GET request
       console.log(selectedAge[0].value);
-      if(selectedAge[0].value === 7){
+      if (selectedAge[0].value === 7) {
         params.set("min_age", 10);
       }
-      else{
+      else {
         params.set("min_age", selectedAge[0].value);
         params.set("max_age", Number(selectedAge[0].value) + 2);
       }
@@ -209,7 +209,7 @@ export default function MultiFilters() {
         ? prevFilters.filter((f) => f !== category)
         : [...prevFilters, category];
     });
-    
+
     console.log(category);
     //DO A FETCH HERE
     //fetchData();
@@ -303,7 +303,7 @@ export default function MultiFilters() {
               style={{ textDecoration: "none" }}
             >
               <div key={`items-${idx}`} className="card">
-                <img className="image" src={item.images} alt="Null" />
+                <img className="image" src={item.images[0]} alt="Null" />
                 <p className="name">{item.name}</p>
                 <p className="breed">{item.breed}</p>
                 {/* <p className="category">{item.category}</p> */}
