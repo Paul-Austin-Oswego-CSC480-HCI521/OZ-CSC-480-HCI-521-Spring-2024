@@ -403,20 +403,25 @@ export const PetDetails = () => {
         </div>
 
         <div className="bottom-page">
-          <div>
-            <div className="carousel-heading"></div>
+        </div>
+      </div>
+    </div>
+  )
+}
+{/* <div> */ }
+{/* <div className="carousel-heading"></div> */ }
 
-            <div className="about-meet-teamsss">
-              <div className="see-more-button">
-                <h1>Furr-Ever friends near you</h1>
-                <Link to="/ExplorePets">
-                  <button className="see-more-arrow">
-                    See more
-                    <FiArrowRight />{" "}
-                  </button>
-                </Link>
-              </div>
-              <div className="about-team-sections">
+{/* <div className="about-meet-teamsss"> */ }
+{/* <div className="see-more-button"> */ }
+{/* <h1>Furr-Ever friends near you</h1> */ }
+{/* <Link to="/ExplorePets"> */ }
+{/* <button className="see-more-arrow"> */ }
+{/* See more */ }
+{/* <FiArrowRight />{" "} */ }
+{/* </button> */ }
+{/* </Link> */ }
+{/* </div> */ }
+{/* <div className="about-team-sections">
                 <Slider variableWidth={true} {...settings}>
                   {[0, 3, 6].map((startIndex, groupIndex) => (
                     <div
@@ -424,34 +429,34 @@ export const PetDetails = () => {
                       key={groupIndex}
                     >
                       {/* Map over each group of three items */}
-                      {items
-                        .slice(startIndex, startIndex + 5)
-                        .map((item, index) => (
-                          <a key={index} href={`/PetDetails/${item.id}`}>
-                            <div className="work-section-info">
-                              <div className="info-boxes-img-container">
-                                <img
-                                  src={item.image}
-                                  alt={"An image of a pet named " + item.name}
-                                  style={{ maxWidth: "80%", height: "70%" }}
-                                />
-                              </div>
-                              <h2>{item.name}</h2>
-                              <p>{item.breed}</p>
-                              <span>{item.age}</span>
-                            </div>
-                          </a>
-                        ))}
+{/* {items
+                .slice(startIndex, startIndex + 5)
+                .map((item, index) => (
+                  <a key={index} href={`/PetDetails/${item.id}`}>
+                    <div className="work-section-info">
+                      <div className="info-boxes-img-container">
+                        <img
+                          src={item.image}
+                          alt={"An image of a pet named " + item.name}
+                          style={{ maxWidth: "80%", height: "70%" }}
+                        />
+                      </div>
+                      <h2>{item.name}</h2>
+                      <p>{item.breed}</p>
+                      <span>{item.age}</span>
                     </div>
-                  ))}
-                </Slider>
-              </div>
+                  </a>
+                ))}
             </div>
-          </div>
-        </div>
-      </div>
+                  ))}
+          </Slider> */}
+{/* </div> */ }
+{/* </div> */ }
+{/* </div> */ }
+{/* </div > */ }
+{/* </div > */ }
 
-      {/* <div className="accordian-container">
+{/* <div className="accordian-container">
             <div className="dropdown1">
                 <Accordion>
                     <AccordionSummary
@@ -516,6 +521,6 @@ export const PetDetails = () => {
                 </Accordion>
             </div>
         </div> */}
-    </div>
-  );
-};
+{/* </div >
+      );
+}; */}

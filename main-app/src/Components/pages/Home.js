@@ -116,36 +116,36 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className="about-meet-teamss">
-        <h1>Furr-Ever friends near you</h1>
-        <div className="about-team-sections">
-          <Slider variableWidth={true} {...settings}>
-            {[0, 3, 6].map((startIndex, groupIndex) => (
-              <div className="work-section-info-container" key={groupIndex}>
-                {/* Map over each group of three items */}
-                {items.slice(startIndex, startIndex + 5).map((item, index) => (
-                  <a key={index} href={`/PetDetails/${item.id}`}>
-                    <div className="work-section-info">
-                      <div className="info-boxes-img-container">
-                        <img
-                          src={item.image}
-                          alt=""
-                          style={{ maxWidth: "80%", height: "70%" }}
-                        />
-                      </div>
-                      <h2>{item.name}</h2>
-                      <p>{item.breed}</p>
-                      <span>{item.age}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </div>
+      {/* <div className="about-meet-teamss"> */}
+      {/* <h1>Furr-Ever friends near you</h1> */}
+      {/* <div className="about-team-sections"> */}
+      {/* <Slider variableWidth={true} {...settings}> */}
+      {/* {[0, 3, 6].map((startIndex, groupIndex) => ( */}
+      {/* <div className="work-section-info-container" key={groupIndex}> */}
+      {/* Map over each group of three items */}
+      {/* {items.slice(startIndex, startIndex + 5).map((item, index) => ( */}
+      {/* <a key={index} href={`/PetDetails/${item.id}`}> */}
+      {/* <div className="work-section-info"> */}
+      {/* <div className="info-boxes-img-container"> */}
+      {/* <img */}
+      {/* src={item.image} */}
+      {/* alt="" */}
+      {/* style={{ maxWidth: "80%", height: "70%" }} */}
+      {/* /> */}
+      {/* </div> */}
+      {/* <h2>{item.name}</h2> */}
+      {/* <p>{item.breed}</p> */}
+      {/* <span>{item.age}</span> */}
+      {/* </div> */}
+      {/* </a> */}
+      {/* ))} */}
+      {/* </div> */}
+      {/* ))} */}
+      {/* </Slider> */}
+      {/* </div> */}
+      {/* </div> */}
 
       {/* <FAQs /> */}
-    </div>
+    </div >
   );
 };
