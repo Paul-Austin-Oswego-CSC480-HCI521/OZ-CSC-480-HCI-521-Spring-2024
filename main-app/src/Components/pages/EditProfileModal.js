@@ -29,7 +29,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
       // Handle phone number separately
       setEditedData((prevData) => ({
         ...prevData,
-        contact: capitalizedValue,
+        phoneNumber: capitalizedValue,
       }));
     } else {
       setEditedData((prevData) => ({
@@ -174,7 +174,10 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             onChange={handleInputChange}
             required
           />
-          <input
+          {/* <label htmlFor="phoneNumber"></label> */}
+          <InputMask
+            mask="+1 (999) 999-9999"
+            maskChar="_"
             type="tel"
             name="phoneNumber"
             id="phoneNumber"
