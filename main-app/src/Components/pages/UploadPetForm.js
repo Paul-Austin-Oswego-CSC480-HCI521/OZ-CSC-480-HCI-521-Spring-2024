@@ -98,8 +98,8 @@ const UploadPetForm = ({ addNewPet }) => {
       sex: 'Male',
       images: [],
       size: 'Small',
-      temperament:'',
-      health:'',
+      temperament: '',
+      health: '',
       age: '',
       description: '',
 
@@ -252,7 +252,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       <option value="Dog">Dog</option>
                       <option value="Cat">Cat</option>
                       <option value="Bird">Bird</option>
-                      <option value="Fish">Small Critter</option>
+                      <option value="Other">Other</option>
                     </select>
                     <select
                       name="sex"
@@ -317,7 +317,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       name="temperament"
                       value={pet.temperament}
                       onChange={handleInputChange}
-                      
+
                     />
                     <input
                       type="text"
@@ -325,7 +325,7 @@ const UploadPetForm = ({ addNewPet }) => {
                       name="health"
                       value={pet.health}
                       onChange={handleInputChange}
-                      
+
                     />
 
                   </div>

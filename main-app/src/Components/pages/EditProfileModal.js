@@ -18,11 +18,6 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
     const capitalizedValue = capitalizeFirstLetter(value);
     if (name.includes('location.')) {
       const locationField = name.split('.')[1]; // Extract the nested field (e.g., addressLine1, city, state, zipCode)
-      // Check for phone number validation
-      if (name === 'phoneNumber') {
-        const phoneRegex = /^\+1 \(\d{3}\) \d{3}-\d{4}$/;
-        setPhoneError(!phoneRegex.test(value));
-      }
       setEditedData((prevData) => ({
         ...prevData,
         location: {
@@ -34,7 +29,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
       // Handle phone number separately
       setEditedData((prevData) => ({
         ...prevData,
-        contact: capitalizedValue,
+        phoneNumber: capitalizedValue,
       }));
     } else {
       setEditedData((prevData) => ({
@@ -179,6 +174,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
             onChange={handleInputChange}
             required
           />
+          {/* <label htmlFor="phoneNumber"></label> */}
           <InputMask
             mask="+1 (999) 999-9999"
             maskChar="_"
@@ -192,7 +188,7 @@ const EditProfileModal = ({ profileData, onSave, onCancel }) => {
           />
           {phoneError && (
             <p className="error-message">
-              Please enter a valid phone number in the format +1 (123) 456-7890
+              Please enter a valid phone number
             </p>
           )}
 

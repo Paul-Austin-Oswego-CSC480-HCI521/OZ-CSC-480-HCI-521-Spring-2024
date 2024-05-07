@@ -89,9 +89,12 @@ const Step4 = ({ prevStep, formData }) => {
         }
       );
 
-      if (!response.ok) {
+      if (response.status == 500) {
         throw new Error("Failed to submit form data");
-      } else {
+      } else if (response.status == 409) {
+        alert("The email address entered is already associated with an existing account, please try another.")
+      }
+      else if (response.ok) {
         //   if (1) {
         // Redirect to another component upon successful login
         const responseJson = await response.json();
@@ -121,12 +124,16 @@ const Step4 = ({ prevStep, formData }) => {
         // document.cookie = email + "ID=" + shelter_id + "; expires=" + expirationDate + "; path=/";
 
         navigate("/dashboard");
+      } else {
+        // console.error("Error submitting form:", error);
+        alert("There was a problem submitting the request, is the server down?");
       }
 
       // alert('Form submitted successfully!');
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("An error occurred while submitting the form");
+      alert("There was a problem submitting the request, is the server down?");
+
     }
   };
 

@@ -241,15 +241,15 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                   <img src={pet.images[0]} alt={pet.name} className="pet-image" />
                 )}
               </div>
-           
-          )}
-          <div className="pet-details">
-            <h3 className="pet-name">{pet.name}</h3>
-            <p className="pet-breed">{pet.breed}</p>
-            <div className="pet-info">
-              <span className="pet-age">{pet.age}&nbsp;year old</span>
+
+            )}
+            <div className="pet-details">
+              <h3 className="pet-name">{pet.name}</h3>
+              <p className="pet-breed">{pet.breed}</p>
+              <div className="pet-info">
+                <span className="pet-age">{pet.age}&nbsp;year old</span>
+              </div>
             </div>
-          </div>
           </Link>
         </div>
       ))}
@@ -334,7 +334,7 @@ const AvailablePets = ({ pets, onEdit, onDelete, onAdopt }) => {
                       <option value="Dog">Dog</option>
                       <option value="Cat">Cat</option>
                       <option value="Bird">Bird</option>
-                      <option value="Fish">Small Critter</option>
+                      <option value="Other">Other</option>
                     </select>
                     <select
                       name="sex"

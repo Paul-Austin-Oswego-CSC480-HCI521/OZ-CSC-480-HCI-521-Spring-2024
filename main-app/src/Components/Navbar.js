@@ -145,10 +145,10 @@ const Navbar = () => {
                 </Link>
                 <Link
                   to="/ExplorePets"
-                  onClick={() => handleSelectedCategory("Small Critter")}
+                  onClick={() => handleSelectedCategory("Other")}
                 >
                   {" "}
-                  Small Critter
+                  Other
                 </Link>
               </div>
             )}
