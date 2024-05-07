@@ -247,7 +247,7 @@ export const PetDetails = () => {
             </div>
 
             <div className="categories-container">
-              {pet.type && (
+              {pet.type && pet.type != "Other" && (
                 <div className="text-category-type">{pet.type}</div>
               )}
 

@@ -105,11 +105,11 @@ export const Home = () => {
             {/* Navigate to Multifilters page when this button is clicked */}
             <Link
               to="/ExplorePets"
-              onClick={() => handleSelectedCategory("Small Critter")}
+              onClick={() => handleSelectedCategory("Other")}
               className="fifth-button"
             >
-              <img src={bunnyImage} alt="Small Critters" />
-              Small Critters
+              <img src={bunnyImage} alt="Other" />
+              Other
             </Link>
           </div>
           <h1 className="primary-heading">Find your furr-ever friend today!</h1>

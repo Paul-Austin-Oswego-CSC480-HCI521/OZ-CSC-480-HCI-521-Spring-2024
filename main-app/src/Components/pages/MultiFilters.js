@@ -182,7 +182,7 @@ export default function MultiFilters() {
   // Handles changing Category buttons
 
   // Category options
-  let filters = ["Dog", "Cat", "Bird", "Small Critter"];
+  let filters = ["Dog", "Cat", "Bird", "Other"];
 
   // Dropdown options
   const uniqueItems = (key) => {
