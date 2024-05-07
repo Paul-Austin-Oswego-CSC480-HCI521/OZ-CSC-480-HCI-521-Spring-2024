@@ -304,7 +304,7 @@ export default function MultiFilters() {
               style={{ textDecoration: "none" }}
             >
               <div key={`items-${idx}`} className="card">
-                <img className="image" src={item.images} alt="Null" />
+                <img className="image" src={item.images[0]} alt="Null" />
                 <p className="name">{item.name}</p>
                 <p className="breed">{item.breed}</p>
                 {/* <p className="category">{item.category}</p> */}
