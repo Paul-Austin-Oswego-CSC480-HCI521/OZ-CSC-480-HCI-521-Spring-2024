@@ -118,7 +118,10 @@ export default function MultiFilters() {
         }
           return filter;
       });
-      params.set("type", petTypes.join(','))
+      for(let i = 0; i < petTypes.length; i++){
+        params.append("type", petTypes[i]);
+      }
+      
     }
     if (selectedAge !== null && selectedAge[0] !== undefined) {
       //This is a mapped value? Has a label of 3 and a value of 3. Not sure how I would fix this and/or index it to send a GET request
@@ -304,7 +307,7 @@ export default function MultiFilters() {
               style={{ textDecoration: "none" }}
             >
               <div key={`items-${idx}`} className="card">
-                <img className="image" src={item.images[0]} alt="Null" />
+                <img className="image" src={item.images} alt="Null" />
                 <p className="name">{item.name}</p>
                 <p className="breed">{item.breed}</p>
                 {/* <p className="category">{item.category}</p> */}
