@@ -30,6 +30,7 @@ import static com.mongodb.client.model.Filters.gte;
 import static com.mongodb.client.model.Filters.lte;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.in;
 // import static com.mongodb.client.model.Filters.and;
 
 import java.util.ArrayList;
@@ -131,9 +132,7 @@ public class PetService extends AbstractService<Pet> {
         }
 
         if (type != null && !type.isEmpty()) {
-            for(int i = 0; i < type.size(); i++){
-                filters.add(eq("type", type.get(i)));
-            }
+            filters.add(in("type", type));
         }
 
         if (breed != null) {
