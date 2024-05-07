@@ -132,7 +132,8 @@ const Step4 = ({ prevStep, formData }) => {
       // alert('Form submitted successfully!');
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("An error occurred while submitting the form, make sure all fields are correctly filled.");
+      alert("There was a problem submitting the request, is the server down?");
+
     }
   };
 

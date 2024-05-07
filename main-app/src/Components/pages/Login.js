@@ -80,7 +80,9 @@ function Login() {
         .catch((error) => {
           console.error("Error:", error);
           // Handle error cases
-          setLoginError(true);
+          alert("There was a problem submitting the request, is the server down?");
+
+          // setLoginError(true);
         });
     };
 
