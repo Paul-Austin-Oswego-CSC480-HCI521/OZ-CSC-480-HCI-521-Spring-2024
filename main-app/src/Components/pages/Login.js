@@ -45,8 +45,9 @@ function Login() {
         .then(async (response) => {
           if (response.status == 401) {
             setLoginError(true);
+
           }
-          if (response.ok) {
+          else if (response.ok) {
             const responseJson = await response.json();
             const cookieJsonKeys = Object.entries(responseJson);
 
