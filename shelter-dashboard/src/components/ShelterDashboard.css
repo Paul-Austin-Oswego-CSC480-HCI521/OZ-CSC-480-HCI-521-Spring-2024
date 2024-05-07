@@ -1,0 +1,108 @@
+/* ShelterDashboard.css */
+
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.shelter-dashboard {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.shelter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.shelter-header h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+.edit-icon {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.edit-button {
+  padding: 10px 20px;
+  background-color: #43cea2;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-button:hover {
+  background-color: #30a88a;
+}
+
+.shelter-info {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.shelter-image {
+  flex: 0 0 300px;
+  margin-right: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.shelter-image img {
+  width: 100%;
+  border-radius: 20px;
+  border: 3px solid #fff;
+}
+
+.shelter-details {
+  flex-grow: 1;
+}
+
+.shelter-details input,
+.shelter-details textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.shelter-details textarea {
+  resize: vertical;
+}
+
+.pet-carousel {
+  margin-top: 20px;
+}
+
+.shelter-info {
+  position: relative;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: black;
+  font-size: 24px;
+}
+
+.edit-icon:hover {
+  color: #0056b3;
+}

@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.DoYou h1{
+  margin-top: 5%;
+  margin-left: 15%;
+  font-family: "Grandstander", cursive;
+  font-size: 3.5rem;
+}
+
+.filter-bannerDog {
+  position: relative;
+  margin-top: -10%;
+  margin-left: 70%;
+  width: 300px; /* Adjust the width to make the image smaller */
+  height: auto; /* Maintain aspect ratio */
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #5b21b6, #1e40af);
+  color: #fff;
+}
+
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.buttons-container .button{
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add faint box shadow */
+}
+
+.filter-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button {
+  border: 1px solid rgb(194, 194, 194);
+  background-color: rgb(218, 218, 218);
+  background: transparent;
+  margin: 5px 5px;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-top {
+  border: 1px solid transparent;
+  background-color: whitesmoke;
+  margin: 20px 5px;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-container{
+  background-color: white;
+  width: 90%;
+  margin-left: 5%; 
+  margin-top: -5%;
+  border-radius: 10px;
+}
+
+.button-top:hover {
+  box-shadow: 3px 3px 0px 0px black;
+}
+
+.dropdowns-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  height: 150%;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 0%;
+  margin-bottom: 2%;
+}
+
+.dropdownFilters {
+  max-width: 250px;
+  padding: 4px 10px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  width: 250px; /* Set a fixed width for all items */
+  height: 250px; /* Set a fixed height for all items */
+  margin: 4px 10px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  position: relative; /* Positioning for the image */
+  overflow: hidden; /* Hide overflow to ensure images are contained */
+}
+
+.name {
+  margin: 10px 0; /* Adjust top and bottom margin */
+  text-align: center; /* Center the text horizontally */
+  font-size: large !important; /* Changed font size to smaller */
+  font-weight: 600;
+  color: #000;
+  font-family: 'Grandstander', cursive; /* Changed font to Grandstander */
+  margin-top: 10px !important;
+}
+
+.category {
+  color: #2e2e2e;
+  font-size: 14px;
+}
+
+.sex {
+  color: #000;
+  background-color: #cceddf;
+  border-radius: 30px;
+  font-family: Manrope, sans-serif;
+  width: 27%;
+  margin-left:10%;
+}
+
+.color {
+  color: #000;
+  background-color: #ffeecd;
+  border-radius: 30px;
+  font-family: Manrope, sans-serif;
+  width: 27%;
+  margin-left:40%;
+  margin-top: -6.5%;
+}
+
+.breed {
+  margin: 0;
+  margin-top: 5px !important ;
+  font-family: "Raleway", sans-serif;
+}
+
+.age {
+  background-color: #cceddf;
+  border-radius: 30px;
+  font-family: Manrope, sans-serif;
+  padding: 2px 5px;
+  width: 35%;
+  margin-left: 95px !important; /* Move to the right */
+  margin-top: 5px !important;
+  display: block; /* or display: inline-block; */
+}
+
+#filters-button .active{
+    background-color: orange;
+    color: black;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  position: relative; /* Added for positioning the edit and delete buttons */
+  border-radius: 16px;
+  box-shadow: 0px 8px 40px 0px rgba(24, 18, 7, 0.08);
+  background-color: var(--White, #fff);
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  text-align: center;
+  flex-basis: calc(33.33% - 20px); /* 3 pets in one line */
+  width: 300px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  cursor: pointer; /* Added to indicate clickable */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  margin: 10px;
+  height: 400px;
+
+}
+.card:hover {
+  box-shadow: 4px 4px 0px 0px black;
+}
+.image {
+  width: 300px;
+  height: 300px; /* Set a fixed height for all images */
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.breed,
+.age {
+  margin: 5px 0;
+}

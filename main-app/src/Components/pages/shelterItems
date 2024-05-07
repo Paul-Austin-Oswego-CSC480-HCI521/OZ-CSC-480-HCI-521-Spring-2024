@@ -1,0 +1,9 @@
+export const shelterItems = [
+  {
+    id: 1,
+    name: "Pulaski",
+    email: "test@email.com",
+    age: "2-month old",
+    image: "../images/Pet photo1.png",
+  },
+];

@@ -1,0 +1,377 @@
+body {
+  background-color: rgb(227, 234, 231);
+}
+.wholepage {
+  display: flex;
+  flex-direction: column;
+  padding-left: 60px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+
+}
+
+.topnav {
+display: flex;
+justify-content: space-between;
+padding: 10px;
+
+}
+
+.top-navbar {
+  border-radius: 30px;
+  display: flex;
+  justify-content: center; 
+  background-color: rgba(255,255,255,0.9); 
+  padding: .6em;
+  border: none;
+  width: 16%;
+}
+
+
+.top-navbar a {
+  text-decoration: none;
+  color: #000; 
+  font-size: medium;
+  font-weight: bold;
+  padding: 0.5em 1em; 
+  border-radius: 15px; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.top-navbar a:hover {
+  color: #000;
+  background-color: #e0e0e0; 
+  transition: color 0.3s; 
+  transition: background-color 0.3s; 
+}
+
+.top-navbar a:active{
+  color: #000;
+  background-color: #B0B0B0;
+}
+
+ .top-navbar a.active{
+  color: white;
+  background-color: orange;
+}
+
+.left-container {
+  display: flex;
+  align-items: center;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+}
+
+ 
+.home-container {
+  margin-right: 20px;
+}
+
+.upload-pet {
+  margin-right: 20px;
+}
+
+.home-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes the button rounded */
+  background-color: #ffffff; /* White background color */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for a raised effect */
+}
+
+/* Style the icon inside the button */
+.home-icon svg {
+  font-size: 18px; /* Adjust icon size as needed */
+  color: #333;
+  stroke-width: 50px;
+}
+
+.upload button{
+margin-top: 30px;
+}
+.logo-link {
+  text-decoration: none;
+}
+
+.logo-container {
+  cursor: pointer;
+  
+}
+
+.logo-container img{
+  border-radius: 60px;
+  height: 55px;
+  width: 180px;
+}
+
+.main-content {
+  display: flex;
+  
+}
+
+.shelter-profile {
+  padding-top: 100px;
+  flex: 1;
+  display: flex;
+  background-color: #fff;
+  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-right: 20px;
+  
+  
+}
+
+
+
+.shelter-image {
+  width: 300px; /* Adjust to your needs */
+  height: 300px; /* Adjust to your needs */
+  border-radius: 50%; /* Makes the image round, adjust or remove as needed */
+  margin-bottom: 30px;
+}
+
+.default-icon {
+  width: 300px; /* Adjust to your needs */
+  height: 300px; /* Adjust to your needs */
+  color: #ccc; /* Color for the default icon */
+  margin-bottom: 30px;
+}
+
+.shelteredit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shelter-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.verified {
+  margin: -5px;
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
+}
+
+.shelter-location {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.shelter-description {
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.shelter-description span {
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.shelteredit {
+  padding: 20px;
+  border-radius: 8px;
+  
+}
+.edit-image{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.shelteredit input[type="text"],
+.shelteredit textarea {
+  width: 200%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+.shelteredit textarea {
+  resize: vertical;
+}
+
+.shelteredit button {
+  display: block;
+  width: 70%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #81edba; /* Yellow button color */
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.shelteredit button:hover {
+  background-color: #79cfad; /* Darker yellow on hover */
+}
+
+
+.upload{
+  margin-top: 10px;
+}
+.edit{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  
+}
+
+.availablepets {
+  flex: 2;
+}
+
+.availablepets h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.custom-file-input {
+  display: inline-block;
+  position: relative;
+  width: 350px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background-color: #e1e1e1;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  padding: 10px;
+}
+
+.custom-file-input:hover {
+  background-color: #f0f0f0;
+}
+
+.custom-file-input:focus {
+  outline: none;
+}
+
+
+.custom-file-input::after {
+  content: 'Drop Your Photo or Browse';
+  display: block;
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.user-profile-dropdown {
+  position: relative;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  
+}
+
+.user-profile-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 2;
+  font-size: 14px;
+  
+  width: 160px; /* Adjust width as needed */
+  white-space: nowrap;
+  flex-direction: column;
+  left: -75px;
+  top: 45px; /* Adjust top position as needed */
+  margin-top: 15px;
+}
+
+.user-profile-dropdown:hover .dropdown-content {
+  display: block;
+  padding: 8px;
+}
+
+.user-profile-dropdown .dropdown-content a,
+.user-profile-dropdown .dropdown-content button {
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  font-family: Manrope, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  display: block;
+  margin: 0;
+  border: none;
+  background: none;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+}
+
+.user-profile-dropdown .dropdown-content a:hover,
+.user-profile-dropdown .dropdown-content button:hover {
+  background-color: #f5f5f5;
+  
+}
+
+.deleteAccount, .logout {
+  color: #dd0426; /* Red color for "Delete My Account" */
+}
+
+.profile-icon {
+  text-align: center;
+}
+
+.profile-icon {
+  padding: 4px;
+}
+
+.profile-icon-p svg{
+  font-size: 30px;
+  color: rgb(109, 1, 163);
+}
+
+.profile-icon-b svg{
+  font-size: 20px;
+  color:rgb(53, 53, 53);
+  margin-bottom: 4.5px;
+  
+}
+

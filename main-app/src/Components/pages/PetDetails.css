@@ -1,0 +1,656 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand';
+  font-style: normal;
+}
+
+body {
+  background-image: url('../../Assets/BG pattern.png');
+  background-color: rgb(227, 234, 231);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+.top-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 3%;
+  position: relative;
+  margin-bottom: 3%;
+  padding-left: 60px;
+  padding-right: 40px;
+}
+
+.left-side {
+  display: flex;
+  margin-right: 3%;
+  margin-left: 1%;
+  width: 50%;
+  flex-direction: column;
+}
+
+.back-arrow {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  background-color: #0000;
+  background-color: orange;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  margin-bottom: 2%;
+  padding: 15px 25px;
+  border-radius: 20px;
+  border: 2px solid rgb(212, 139, 3);
+}
+
+.back-arrow:hover {
+  background-color: rgb(255, 206, 114);
+  border: 2px solid rgb(212, 149, 31);
+}
+
+
+.images-carousel {
+  flex: auto;
+  border-radius: 10%;
+}
+
+.pet-images {
+  /* width: 1000px; */
+  width: 100%;
+  padding: 10px;
+  border-radius: 9%;
+
+}
+
+.right-side {
+  display: flex;
+  margin-right: 2%;
+  margin-top: 3.5%;
+  width: 50%;
+  flex-direction: column;
+}
+
+.bubble-container {
+  border-radius: 16px;
+  border-color: rgba(81, 77, 69, 1);
+  border-style: solid;
+  border-width: 1px;
+  background-color: var(--White, #fff);
+  display: flex;
+  flex-direction: column;
+  line-height: 120%;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 20px;
+  padding-right: 50px;
+  position: relative;
+}
+
+.text-introduction {
+  color: #000;
+  margin-top: 12px;
+  font: 700 40px Grandstander, -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.text-pet-details {
+  color: var(--Black, #181207);
+  margin-top: 4px;
+  font-size: large;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  font-weight: 500;
+}
+
+.categories-container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 5%;
+
+}
+
+.text-category-type {
+  padding: .3rem .7rem;
+  background-color: #fe0dba3d;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: black;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.text-category-breed {
+  padding: .3rem .7rem;
+  background-color: #8e0dfe50;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: black;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.text-category-distance {
+  padding: .3rem .7rem;
+  background-color: #fe9e0d67;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: black;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.pet-details-container {
+  display: flex;
+  padding-top: 3rem;
+  flex-direction: column;
+}
+
+.text-heading {
+  font-size: clamp(1rem, 2vw, 3rem);
+  font-family: Grandstander, sans-serif;
+  color: black;
+  max-width: 600px;
+  position: relative;
+  font-weight: 600;
+}
+
+.text-pet-introduction {
+  display: flex;
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  max-width: 600px;
+  position: relative;
+  font-weight: 400;
+  /* margin-top: 3%; */
+}
+
+.text-facts {
+  display: flex;
+  font-family: Grandstander, sans-serif;
+  font-size: clamp(1rem, 2vw, 3rem);
+  color: black;
+  max-width: 600px;
+  position: relative;
+  font-weight: 600;
+  margin-top: 3rem;
+}
+
+.specifications-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  /* margin-top: 3rem; */
+}
+
+.specifications1 {
+  width: vw;
+  position: relative;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+  margin-right: 20%;
+}
+
+.name-title {
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  max-width: 600px;
+  padding-bottom: 5px;
+  font-weight: 400;
+}
+
+.age-title {
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  font-weight: 400;
+  max-width: 600px;
+  padding-bottom: 5px;
+}
+
+.color-title {
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  max-width: 600px;
+  padding-bottom: 5px;
+  font-weight: 400;
+}
+
+.size-title {
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  max-width: 600px;
+  padding-bottom: 5px;
+  font-weight: 400;
+}
+
+.specifications2 {
+  width: vw;
+  position: relative;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+  margin-right: 20%;
+}
+
+.temperament-title {
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  max-width: 600px;
+  padding-bottom: 5px;
+  font-weight: 400;
+}
+
+.sex-title {
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  max-width: 600px;
+  padding-bottom: 5px;
+  font-weight: 400;
+}
+
+.breed-title {
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  max-width: 600px;
+  padding-bottom: 5px;
+  font-weight: 400;
+}
+
+.health-title {
+  font-size: clamp(1rem, 1vw, 1rem);
+  color: black;
+  max-width: 600px;
+  padding-bottom: 5px;
+  font-weight: 400;
+}
+
+.shelter-box {
+  border-radius: 16px;
+  background-color: #fff;
+  max-width: 532px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 250px;
+  align-items: left;
+  align-content: left;
+  justify-content: left;
+  position: relative;
+  margin-top: 3rem;
+}
+
+.left-alignment {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 55%;
+  margin-left: 20px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  font-size: 16px;
+  margin: 10px;
+  width: 200%;
+}
+
+.shelter-info {
+  display: flex;
+  gap: 8px;
+  color: var(--Black, #181207);
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.shelter-logo {
+  aspect-ratio: 1;
+  object-fit: auto;
+  object-position: center;
+  width: 60px;
+  border-color: rgba(236, 236, 235, 1);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.text-name-verification {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  margin: auto 0;
+}
+
+.text-shelter-name {
+  font-family: Quicksand, sans-serif;
+  flex: 1;
+}
+
+.email-info {
+  display: flex;
+  margin-top: 16px;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.text-email-title {
+  color: #000;
+  font-family: Quicksand, sans-serif;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.text-email {
+  color: var(--Purple-Purple, #803cc7);
+  font-family: Quicksand, sans-serif;
+  font-weight: 600;
+  line-height: 120%;
+  flex: 1;
+  margin: auto 0;
+}
+
+.phone-info {
+  display: flex;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.text-phone-title {
+  color: #000;
+  font-family: Quicksand, sans-serif;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.text-phone {
+  color: var(--Black, #181207);
+  font-family: Quicksand, sans-serif;
+  font-weight: 600;
+  line-height: 120%;
+  flex: 1;
+  margin: auto 0;
+}
+
+.address-info {
+  display: flex;
+  text-underline-position: unset;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.text-address-title {
+  color: #000;
+  font-family: Quicksand, sans-serif;
+  font-weight: 400;
+  line-height: 160%;
+  align-self: start;
+}
+
+.text-address {
+  color: var(--Black, #181207);
+  font-family: Quicksand, sans-serif;
+  font-weight: 600;
+  line-height: 19px;
+  flex: 1;
+}
+
+.bottom-page {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* margin-top: 3%; */
+  /* position: relative; */
+}
+
+.about-meet-teamsss {
+  max-width: 1500px;
+  margin: 0 auto;
+  /* padding-top: 10px; */
+  padding-bottom: 50px;
+  padding-right: 50px;
+  padding-left: 40px;
+}
+
+.pet-details-carousel {
+  display: flex;
+  margin: 500px 0px auto;
+  /* Center the carousel */
+  padding-top: 100px;
+  position: relative;
+}
+
+.pet-details-carousel h1 {
+  text-align: left;
+  font-size: 24px;
+  font-family: 'Grandstander', cursive;
+  /* Changed font to Grandstander */
+}
+
+.pet-about-team-sections {
+  margin-bottom: 50px;
+  /* Add space between each team's carousel */
+}
+
+.pet-about-team-sections h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  /* Space between the team name and the carousel */
+  font-size: 24px;
+}
+
+.pet-about-meet-teamss .pet-about-team-members {
+  position: relative;
+  width: 250px;
+  height: 400px;
+  margin: 0px 0px 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.pet-about-meet-teamss .pet-about-team-members img {
+  width: 100%;
+  height: 75%;
+  /* Adjust image height to half of the container's height */
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  /* Increase the z-index to bring the image in front of the text */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.pet-about-meet-teamss .about-team-members h3 {
+  font-family: "Grandstander", cursive;
+}
+
+.pet-about-meet-teamss .about-team-members p {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* change this shit!!! */
+}
+
+.pet-about-meet-teamss .pet-about-team-members h3,
+.pet-about-meet-teamss .pet-about-team-members p {
+
+  position: absolute;
+  /* Position text absolutely */
+  z-index: 2;
+  /* Ensure text is in front of the image */
+  width: calc(100% - 40px);
+  /* Subtract padding from container width */
+  left: 20px;
+  /* Move text to the side */
+  text-align: center;
+  /* Center the text horizontally */
+
+}
+
+.pet-about-meet-teamss .pet-about-team-members h3 {
+  font-size: 18px;
+  top: 80%;
+  /* Position text at the center vertically */
+  transform: translateY(-50%);
+  /* Adjust vertically to center text */
+}
+
+.pet-about-meet-teamss .pet-about-team-members p {
+  font-size: 14px;
+  color: #000;
+  top: 85%;
+  /* Position text below the h3 with additional space */
+}
+
+.work-section-info {
+  position: relative;
+  /* Ensure proper positioning of children */
+  width: 16.5rem;
+  /* Adjust the width as needed */
+  height: 23rem;
+  /* Adjust the height as needed */
+  align-items: center !important;
+  margin-right: 3px;
+  /* Adjust the spacing between items */
+  margin-top: 40px;
+  margin-left: 3px;
+  /* Move it to the right */
+  background-color: white;
+  padding: 2rem;
+  /* Increase padding to move text down */
+  border-radius: 1rem;
+  color: #505050;
+  display: inline-block;
+  /* Display inline-block to make them appear horizontally */
+  vertical-align: top;
+  /* Align them to the top */
+}
+
+.slick-next {
+  margin-left: 0%;
+}
+
+element.style {
+  width: 100%;
+  /* display: inline-block; */
+}
+
+.see-more-arrow {
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  border: none;
+  background-color: #0000;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding-left: 890px;
+  padding-top: 20px;
+}
+
+.pet-work-section-info-container1 {
+  display: flex;
+  flex: 1;
+
+}
+
+.info-boxes-img-container {
+  display: flex;
+  width: fit-content;
+}
+
+.carousel-heading {
+  display: flex;
+  flex-direction: row;
+  padding-left: 50px;
+  margin: 0 auto;
+
+}
+
+.see-more-button {
+  display: flex;
+  flex-direction: row;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'slick';
+  font-size: 30px;
+  margin-right: 30%;
+
+
+
+  opacity: .75;
+  color: black;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#distance {
+  background-color: #fe9e0d67;
+}
+
+
+/* .accordian-container {
+  display: flex;
+  width: vw;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  align-content:center;
+  justify-content: center;
+  color: #fe9e0d;
+  padding-top: 300px;
+  padding-bottom: 150px;
+  font-weight: 600;
+}
+  
+.dropdown1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.dropdown2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+} */

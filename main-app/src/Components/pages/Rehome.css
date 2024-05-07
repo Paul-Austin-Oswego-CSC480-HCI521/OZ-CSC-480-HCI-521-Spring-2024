@@ -1,0 +1,38 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap');
+
+.text {
+  color: black;
+  margin-right: 10px;
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: "Grandstander", cursive;
+}
+.rehome-bannerImage-container img{
+    width: 100%;
+}
+.button-container {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #fe9e0d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+  background-image: url('../../Assets/BG pattern.png');
+  background-color: rgb(227, 234, 231);
+}

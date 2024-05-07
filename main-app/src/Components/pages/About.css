@@ -1,0 +1,57 @@
+/*Temp font used for the page */
+.about-container {
+  font-family: 'Pacifico', cursive;
+}
+
+.about-h1{
+  margin-bottom: 10px;
+}
+
+.about-p{
+  font-weight:500;
+}
+/*Page stylings and margins */
+.about-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+/*Our Story Section */
+.about-content-container {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 60px;
+}
+
+.about-Header{
+  margin-bottom: 10px;
+}
+
+.about-text-and-list {
+  flex: 1; 
+  padding-right: 5px; /* Add padding between text and the second image */
+  font-size:larger;
+  line-height: 1.6em;
+}
+
+.about-info-list {
+  list-style-type: none; 
+  padding: 0;
+}
+
+.about-second-image {
+  border-radius: 40px;
+  width: 50%; 
+  height: auto;
+  flex: 1; 
+}
+/*Literally just thw mission statement */
+.about-mission-statement{
+  margin-bottom: 60px;
+  font-size:larger;
+  line-height: 1.5em;
+}
+
