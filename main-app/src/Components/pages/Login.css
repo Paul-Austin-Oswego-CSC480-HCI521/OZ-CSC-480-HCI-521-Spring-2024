@@ -17,6 +17,7 @@
     margin-top: 20px;
     color: black;
     background-color: #fff;
+    max-width: 1440px;
 }
 
 .login-container{
