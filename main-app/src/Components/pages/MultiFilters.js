@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet";
 export default function MultiFilters() {
   <style>{(document.body.style.backgroundColor = "#ffffff")}</style>;
   // Category button states
-  const { selectedCategory } = useCategory();
+  const { selectedCategory, setSelectedCategory } = useCategory();
   const [selectedFilters, setSelectedFilters] = useState([]);
   //TODO: DO AN IF STATEMENT TO SEE IF selectedCategory is null. If it is then set it as a parameter.
   // Dropdown states
@@ -20,6 +20,13 @@ export default function MultiFilters() {
   // Filtered items states
   const [filteredItems, setFilteredItems] = useState(null);
 
+  //This will set the selected filter to whatever the chosen catagory is, then set catagory to null
+  useEffect(() => {
+    if(selectedCategory !== null){
+      setSelectedFilters([selectedCategory]);
+      setSelectedCategory(null);
+    }
+  }, [selectedCategory]);
   // Dropdowns theme
   const customStyles = {
     placeholder: (defaultStyles, state) => ({
@@ -101,14 +108,6 @@ export default function MultiFilters() {
     //params.set("current_shelter_id", currentShelterId);
     params.set("page_size", 50);
     console.log("category", selectedCategory);
-    if (selectedCategory !== null) {
-      if (selectedCategory === "Small Critter") {
-        params.set("type", "Fish");
-      }
-      else {
-        params.set("type", selectedCategory);
-      }
-    }
     if (selectedFilters.length !== 0) {
       console.log("selectedFilters", selectedFilters);
       console.log(selectedAge);
@@ -118,10 +117,7 @@ export default function MultiFilters() {
         }
           return filter;
       });
-      for(let i = 0; i < petTypes.length; i++){
-        params.append("type", petTypes[i]);
-      }
-      
+      params.set("type", petTypes.join(','));
     }
     if (selectedAge !== null && selectedAge[0] !== undefined) {
       //This is a mapped value? Has a label of 3 and a value of 3. Not sure how I would fix this and/or index it to send a GET request
